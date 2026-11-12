@@ -1,0 +1,1205 @@
+{
+  "checkedUTC": "2026-11-12T20:03:12.629057+00:00",
+  "publisher": "Official MOHW and programme subdomains",
+  "pages": [
+    {
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "count": 79,
+      "error": null
+    },
+    {
+      "page": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "count": 20,
+      "error": null
+    },
+    {
+      "page": "https://www.moh.gov.jm/guidelines/",
+      "count": 13,
+      "error": null
+    },
+    {
+      "page": "https://www.moh.gov.jm/policy-procedure/",
+      "count": 32,
+      "error": null
+    },
+    {
+      "page": "https://www.moh.gov.jm/publications/",
+      "count": 19,
+      "error": null
+    },
+    {
+      "page": "https://www.moh.gov.jm/data/",
+      "count": 21,
+      "error": null
+    },
+    {
+      "page": "https://www.moh.gov.jm/physical-activity/",
+      "count": 12,
+      "error": null
+    },
+    {
+      "page": "https://www.moh.gov.jm/technical-services-division/environment-health-unit/",
+      "count": 12,
+      "error": null
+    },
+    {
+      "page": "https://www.moh.gov.jm/standards-and-regulation-division/guidelines-forms-lists/",
+      "count": 15,
+      "error": null
+    },
+    {
+      "page": "https://www.moh.gov.jm/physical-activity-bible/",
+      "count": 13,
+      "error": null
+    },
+    {
+      "page": "https://hstu.moh.gov.jm/media/manuals/",
+      "count": 7,
+      "error": null
+    },
+    {
+      "page": "https://hstu.moh.gov.jm/media/guidelines/",
+      "count": 2,
+      "error": null
+    },
+    {
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "count": 70,
+      "error": null
+    },
+    {
+      "page": "https://ncdip.moh.gov.jm/resources/page/2/",
+      "count": 16,
+      "error": null
+    },
+    {
+      "page": "https://hssp.moh.gov.jm/resources/",
+      "count": 12,
+      "error": null
+    }
+  ],
+  "candidateCount": 160,
+  "candidates": [
+    {
+      "url": "https://hssp.moh.gov.jm/wp-content/uploads/2025/05/3-C-ESMP-Updates-Report_Addendum-1.1_Old-Harbour-Health-Centre_Cenitech-Engineering-Ltd_February-10-2025Rev2.pdf",
+      "page": "https://hssp.moh.gov.jm/resources/",
+      "label": "C-ESMP Updates Report_Addendum #1.1 – Old Harbour Health Centre",
+      "context": "C-ESMP Updates Report_Addendum #1.1 – Old Harbour Health Centre",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hssp.moh.gov.jm/wp-content/uploads/2025/08/Greater-Portmore-Health-Center-CSMP.pdf",
+      "page": "https://hssp.moh.gov.jm/resources/",
+      "label": "Greater Portmore Health Center CSMP",
+      "context": "Greater Portmore Health Center CSMP",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hssp.moh.gov.jm/wp-content/uploads/2020/02/HSSP-Brochure-FINAL.pdf",
+      "page": "https://hssp.moh.gov.jm/resources/",
+      "label": "HSSP Brochure",
+      "context": "HSSP Brochure",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hssp.moh.gov.jm/wp-content/uploads/2020/02/HSSP-HEALTH-SYSTEMS-CURVES-FINAL.pdf",
+      "page": "https://hssp.moh.gov.jm/resources/",
+      "label": "HSSP Health Systems Curves",
+      "context": "HSSP Health Systems Curves",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hssp.moh.gov.jm/wp-content/uploads/2022/06/FINAL_HSSP_FAQ_HEALTH-SYSTEMS_INFRASTRUCTURE_6X8.pdf",
+      "page": "https://hssp.moh.gov.jm/resources/",
+      "label": "HSSP Health Systems Infrastructure",
+      "context": "HSSP Health Systems Infrastructure",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hssp.moh.gov.jm/wp-content/uploads/2022/06/FINAl_HSSP_IS4H_HEALTH-SYSTEMS_HSS_6X8_CURVES.pdf",
+      "page": "https://hssp.moh.gov.jm/resources/",
+      "label": "HSSP Information Systems for Health",
+      "context": "HSSP Information Systems for Health",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hssp.moh.gov.jm/wp-content/uploads/2024/04/Livelihood-Restoration-and-Grievance-Plan-M12-1-v-2.pdf",
+      "page": "https://hssp.moh.gov.jm/resources/",
+      "label": "Livelihood Restoration Plan and Grievance Plan",
+      "context": "Livelihood Restoration Plan and Grievance Plan",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hssp.moh.gov.jm/wp-content/uploads/2024/04/Non-objection-Stakeholder-Consultation-Report-and-Livelihood-Restoration-Plan.pdf",
+      "page": "https://hssp.moh.gov.jm/resources/",
+      "label": "Non-objection Stakeholder Consultation Report and Livelihood Restoration Plan",
+      "context": "Non-objection Stakeholder Consultation Report and Livelihood Restoration Plan",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hssp.moh.gov.jm/wp-content/uploads/2020/05/Protocol-for-the-Nutritional-Management-of-Non-communicable-Diseases-in-Jamaica.pdf",
+      "page": "https://hssp.moh.gov.jm/resources/",
+      "label": "Protocol for the Nutritional Management of Non-communicable Diseases in Jamaica",
+      "context": "Protocol for the Nutritional Management of Non-communicable Diseases in Jamaica",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hssp.moh.gov.jm/wp-content/uploads/2025/08/St.-Jago-Health-Center-CSMP.pdf",
+      "page": "https://hssp.moh.gov.jm/resources/",
+      "label": "St. Jago Health Centre CSMP",
+      "context": "St. Jago Health Centre CSMP",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hssp.moh.gov.jm/wp-content/uploads/2024/04/Stakeholder-Consultation-Report-Final.pdf",
+      "page": "https://hssp.moh.gov.jm/resources/",
+      "label": "Stakeholder Consultation Final Report",
+      "context": "Stakeholder Consultation Final Report",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hssp.moh.gov.jm/wp-content/uploads/2026/01/Grievance-Redress-Mechanism-UPDATE-2.pdf",
+      "page": "https://hssp.moh.gov.jm/resources/",
+      "label": "Updated Grievance Redress Mechanism",
+      "context": "Updated Grievance Redress Mechanism",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hstu.moh.gov.jm/wp-content/uploads/2020/07/Clinical-Management-of-HIV-Disease-2017.pdf",
+      "page": "https://hstu.moh.gov.jm/media/guidelines/",
+      "label": "Download",
+      "context": "Download",
+      "looksPdf": true
+    },
+    {
+      "url": "http://moh.gov.jm/wp-content/uploads/2015/07/Jamaica_NHP_ME_Operations_Manual_Aug_2009.pdf",
+      "page": "https://hstu.moh.gov.jm/media/manuals/",
+      "label": "",
+      "context": "",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hstu.moh.gov.jm/wp-content/uploads/2023/07/Final-PMTCT-Manual.pdf",
+      "page": "https://hstu.moh.gov.jm/media/manuals/",
+      "label": "",
+      "context": "",
+      "looksPdf": true
+    },
+    {
+      "url": "https://hstu.moh.gov.jm/media/policy-papers/",
+      "page": "https://hstu.moh.gov.jm/media/manuals/",
+      "label": "Policy Papers",
+      "context": "Policy Papers",
+      "looksPdf": false
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/policy-direction/health-conscious-jamaicans/",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "About",
+      "context": "About",
+      "looksPdf": false
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4279/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Asthma Management Form ( 4126 downloads )",
+      "context": "Asthma Management Form ( 4126 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4066/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Better For You ( 6962 downloads )",
+      "context": "Better For You ( 6962 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2388/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Big Man Thing ( 5621 downloads )",
+      "context": "Big Man Thing ( 5621 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4136/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Breast Cancer Basic Facts - Brochure.pdf ( 5404 downloads )",
+      "context": "Breast Cancer Basic Facts - Brochure.pdf ( 5404 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2657/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Breast Cancer Posters ( 13337 downloads )",
+      "context": "Breast Cancer Posters ( 13337 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3107/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Breast Self Examination ( 5470 downloads )",
+      "context": "Breast Self Examination ( 5470 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3538/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Cervical Cancer Awareness ( 4958 downloads )",
+      "context": "Cervical Cancer Awareness ( 4958 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4132/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Cervical Cancer FAQS ( 5112 downloads )",
+      "context": "Cervical Cancer FAQS ( 5112 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/1271/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Cervical Cancer Infographic ( 6576 downloads )",
+      "context": "Cervical Cancer Infographic ( 6576 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2667/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Cervical Cancer Posters ( 13115 downloads )",
+      "context": "Cervical Cancer Posters ( 13115 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2661/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Cervical Cancer Talking Points ( 6284 downloads )",
+      "context": "Cervical Cancer Talking Points ( 6284 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2674/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Colorectal Cancer Posters ( 13731 downloads )",
+      "context": "Colorectal Cancer Posters ( 13731 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2683/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Depression Posters ( 12220 downloads )",
+      "context": "Depression Posters ( 12220 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2965/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Diabetes & You, Obey the Signs ( 6537 downloads )",
+      "context": "Diabetes & You, Obey the Signs ( 6537 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2968/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Diabetes & You, Take the Best Route ( 6402 downloads )",
+      "context": "Diabetes & You, Take the Best Route ( 6402 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2686/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Diabetes Awareness Posters ( 13894 downloads )",
+      "context": "Diabetes Awareness Posters ( 13894 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/1324/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Diabetes Control Checklist ( 11628 downloads )",
+      "context": "Diabetes Control Checklist ( 11628 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/1322/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Diabetes Know the Facts Brochure ( 10936 downloads )",
+      "context": "Diabetes Know the Facts Brochure ( 10936 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/1326/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Diabetes Know the Facts Brochure ( 12386 downloads )",
+      "context": "Diabetes Know the Facts Brochure ( 12386 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3016/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Diabetes Talking Points ( 6404 downloads )",
+      "context": "Diabetes Talking Points ( 6404 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3072/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Diabetes, Accessing Care....The Time is Now ( 6182 downloads )",
+      "context": "Diabetes, Accessing Care....The Time is Now ( 6182 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2411/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Dr. Knight and Child ( 5139 downloads )",
+      "context": "Dr. Knight and Child ( 5139 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3458/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Every Woman Should Do a Pap Smear ( 12454 downloads )",
+      "context": "Every Woman Should Do a Pap Smear ( 12454 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2376/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Guide for the Promotion of Healthy Eating in Workplaces ( 6727 downloads )",
+      "context": "Guide for the Promotion of Healthy Eating in Workplaces ( 6727 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4248/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Guideline for the Management of Nicotine Use Disorders ( 5011 downloads )",
+      "context": "Guideline for the Management of Nicotine Use Disorders ( 5011 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4291/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Guidelines for The Clinical Management of Asthma in Jamaica (Pocket Guide) ( 3079 downloads )",
+      "context": "Guidelines for The Clinical Management of Asthma in Jamaica (Pocket Guide) ( 3079 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4243/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Guidelines for the Management of Gender-Based Violence in Health Care Settings - March 6, 2024 - content ( 5108 downloads )",
+      "context": "Guidelines for the Management of Gender-Based Violence in Health Care Settings - March 6, 2024 - content ( 5108 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4265/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Guidelines for the Management of Gender-Based Violence in Heath Care Settings ( 3762 downloads )",
+      "context": "Guidelines for the Management of Gender-Based Violence in Heath Care Settings ( 3762 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4262/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Guidelines for the clinical management of Hypertension in Jamaica (2024) ( 5260 downloads )",
+      "context": "Guidelines for the clinical management of Hypertension in Jamaica (2024) ( 5260 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4259/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Guidelines for the clinical management of Type 2 diabetes in Jamaica (2024) ( 5541 downloads )",
+      "context": "Guidelines for the clinical management of Type 2 diabetes in Jamaica (2024) ( 5541 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3157/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Healthy Eating and the 6 Food Groups ( 6098 downloads )",
+      "context": "Healthy Eating and the 6 Food Groups ( 6098 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2037/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Hydroxyurea and SCD ( 5878 downloads )",
+      "context": "Hydroxyurea and SCD ( 5878 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2401/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Hypertension Infographic ( 5488 downloads )",
+      "context": "Hypertension Infographic ( 5488 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2692/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Hypertension Posters ( 13122 downloads )",
+      "context": "Hypertension Posters ( 13122 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2689/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Hypertension Talking Points ( 6054 downloads )",
+      "context": "Hypertension Talking Points ( 6054 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2380/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Interim Guidelines for Beverages in Schools ( 5335 downloads )",
+      "context": "Interim Guidelines for Beverages in Schools ( 5335 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2664/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Janet Comic Strip ( 13194 downloads )",
+      "context": "Janet Comic Strip ( 13194 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2917/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "MOH Prostate Health and Prostate Cancer ( 1 download )",
+      "context": "MOH Prostate Health and Prostate Cancer ( 1 download )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3066/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "MOHW Diabetes Awareness Month Launch Ceremony ( 6274 downloads )",
+      "context": "MOHW Diabetes Awareness Month Launch Ceremony ( 6274 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3105/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Mammogram ( 5183 downloads )",
+      "context": "Mammogram ( 5183 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/resources/",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "NCD Screening",
+      "context": "NCD Screening Screening Screening for Major NCDs Wellness Check Wellness Calculators Physical Activity Nutrition Non-Communicable Disease Substance Abuse Know Your Numbers Blood Cholesterol (Lipids) Blood Gluco",
+      "looksPdf": false
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/policy-direction/national-committee-on-non-communicable-diseases/",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "National Committee on Non-Communicable Diseases",
+      "context": "National Committee on Non-Communicable Diseases",
+      "looksPdf": false
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3069/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Ngozi Wright performs for Diabetes Awareness Month ( 6720 downloads )",
+      "context": "Ngozi Wright performs for Diabetes Awareness Month ( 6720 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/wellness-calculators/bmi-calculator/",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Nutrition",
+      "context": "Nutrition",
+      "looksPdf": false
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2714/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Nutrition Posters ( 13763 downloads )",
+      "context": "Nutrition Posters ( 13763 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3520/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Nutrition and Colorectal Cancer Care for Persons with Colorectal Cancer ( 5063 downloads )",
+      "context": "Nutrition and Colorectal Cancer Care for Persons with Colorectal Cancer ( 5063 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4135/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Prostate Cancer Basic Facts - Brochure.pdf ( 5340 downloads )",
+      "context": "Prostate Cancer Basic Facts - Brochure.pdf ( 5340 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2902/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Prostate Cancer Champion ( 5461 downloads )",
+      "context": "Prostate Cancer Champion ( 5461 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2904/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Prostate Cancer Interview with Dr Adrian Rhudd September 8, 2021 ( 5477 downloads )",
+      "context": "Prostate Cancer Interview with Dr Adrian Rhudd September 8, 2021 ( 5477 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2907/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Prostate Cancer Message Mark Chisholm ( 5590 downloads )",
+      "context": "Prostate Cancer Message Mark Chisholm ( 5590 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2909/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Prostate Cancer Message Pastor Micheal Carter ( 5482 downloads )",
+      "context": "Prostate Cancer Message Pastor Micheal Carter ( 5482 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2704/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Prostate Cancer Posters ( 13334 downloads )",
+      "context": "Prostate Cancer Posters ( 13334 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/policy-direction/public-private-partnership-for-non-communicable-diseases-ppp4ncds/",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Public Private Partnership for Non-Communicable Diseases (PPP4NCDs)",
+      "context": "Public Private Partnership for Non-Communicable Diseases (PPP4NCDs)",
+      "looksPdf": false
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2034/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "SCD Colouring Book ( 6252 downloads )",
+      "context": "SCD Colouring Book ( 6252 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2043/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "SCD Education Booklet ( 6383 downloads )",
+      "context": "SCD Education Booklet ( 6383 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2031/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "SCD Patient Leaflets ( 7114 downloads )",
+      "context": "SCD Patient Leaflets ( 7114 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2040/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "SCD Teen Booklet ( 5988 downloads )",
+      "context": "SCD Teen Booklet ( 5988 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3537/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Screening Saves Lives Cervical Cancer ( 5177 downloads )",
+      "context": "Screening Saves Lives Cervical Cancer ( 5177 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3208/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Sickle Cell Disease NHF Benefits ( 6062 downloads )",
+      "context": "Sickle Cell Disease NHF Benefits ( 6062 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2698/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Sickle Cell Disease Posters ( 13766 downloads )",
+      "context": "Sickle Cell Disease Posters ( 13766 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/policy-direction/strategic-planning/",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Strategic Plans",
+      "context": "Strategic Plans",
+      "looksPdf": false
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2385/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Take Care of You ( 5390 downloads )",
+      "context": "Take Care of You ( 5390 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4139/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "The National Cancer Registry - Brochure.pdf ( 5102 downloads )",
+      "context": "The National Cancer Registry - Brochure.pdf ( 5102 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3528/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Treating Yuh Body Right? ( 5205 downloads )",
+      "context": "Treating Yuh Body Right? ( 5205 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2406/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "Wellness Booklet ( 6692 downloads )",
+      "context": "Wellness Booklet ( 6692 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2708/?tmstv=1794508121",
+      "page": "https://ncdip.moh.gov.jm/resources/",
+      "label": "World Cancer Day Talking Points ( 6342 downloads )",
+      "context": "World Cancer Day Talking Points ( 6342 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/1262/?tmstv=1794513792",
+      "page": "https://ncdip.moh.gov.jm/resources/page/2/",
+      "label": "Interim Guidelines for the Clinical Management of Diabetes in Jamaica ( 4698 downloads )",
+      "context": "Interim Guidelines for the Clinical Management of Diabetes in Jamaica ( 4698 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/1258/?tmstv=1794513792",
+      "page": "https://ncdip.moh.gov.jm/resources/page/2/",
+      "label": "Interim Guidelines for the Clinical Management of Hypertension in Jamaica ( 4524 downloads )",
+      "context": "Interim Guidelines for the Clinical Management of Hypertension in Jamaica ( 4524 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/3532/?tmstv=1794513792",
+      "page": "https://ncdip.moh.gov.jm/resources/page/2/",
+      "label": "Management of Interpersonal Violence Manual ( 3849 downloads )",
+      "context": "Management of Interpersonal Violence Manual ( 3849 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/resources/page/2/",
+      "page": "https://ncdip.moh.gov.jm/resources/page/2/",
+      "label": "NCD Screening",
+      "context": "NCD Screening Screening Screening for Major NCDs Wellness Check Wellness Calculators Physical Activity Nutrition Non-Communicable Disease Substance Abuse Know Your Numbers Blood Cholesterol (Lipids) Blood Gluco",
+      "looksPdf": false
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4283/?tmstv=1794513792",
+      "page": "https://ncdip.moh.gov.jm/resources/page/2/",
+      "label": "National Screening Guidelines for Priority Non-Communicable Diseases (NCDs) 0n Primary Headth Care (2nd Edition) ( 1361 downloads )",
+      "context": "National Screening Guidelines for Priority Non-Communicable Diseases (NCDs) 0n Primary Headth Care (2nd Edition) ( 1361 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4288/?tmstv=1794513792",
+      "page": "https://ncdip.moh.gov.jm/resources/page/2/",
+      "label": "National Screening Guidelines for Priority on Non-Communicable Diseases and NCDs in Primary Health Care (Pocket Guide) ( 1146 downloads )",
+      "context": "National Screening Guidelines for Priority on Non-Communicable Diseases and NCDs in Primary Health Care (Pocket Guide) ( 1146 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2367/?tmstv=1794513792",
+      "page": "https://ncdip.moh.gov.jm/resources/page/2/",
+      "label": "Physical Activity Bible ( 2995 downloads )",
+      "context": "Physical Activity Bible ( 2995 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2374/?tmstv=1794513792",
+      "page": "https://ncdip.moh.gov.jm/resources/page/2/",
+      "label": "Protocol for the Nutritional Management of NCDs ( 3166 downloads )",
+      "context": "Protocol for the Nutritional Management of NCDs ( 3166 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/4297/?tmstv=1794513792",
+      "page": "https://ncdip.moh.gov.jm/resources/page/2/",
+      "label": "Standard Operating Procedure - Exercise Prescription 2025 ( 530 downloads )",
+      "context": "Standard Operating Procedure - Exercise Prescription 2025 ( 530 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://ncdip.moh.gov.jm/download/2378/?tmstv=1794513792",
+      "page": "https://ncdip.moh.gov.jm/resources/page/2/",
+      "label": "Tool for Assessing the Nutrition Environment in Workplaces ( 2732 downloads )",
+      "context": "Tool for Assessing the Nutrition Environment in Workplaces ( 2732 downloads )",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Corporate-Wellness-Manual-Final-edition.pdf",
+      "page": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "label": "Corporate Wellness Manual",
+      "context": "Corporate Wellness Manual",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "page": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "label": "Divisions",
+      "context": "Divisions Standards and Regulation Division The Enabling Environment in Health and Client Service Division Policy Planning & Development Division Health Infrastructure Planning & Project Management Executive Di",
+      "looksPdf": false
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/MOH-Wellness-Fitness-Guide-March-7-2022.pdf",
+      "page": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "label": "Fitness Test Guide",
+      "context": "Fitness Test Guide",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Moh-Final-Draft-Workplace-Policy-October-2009-Read-Only.pdf",
+      "page": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "label": "HIV/AIDS Action Plan",
+      "context": "HIV/AIDS Action Plan",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Healthy-Eating-workplace0904.pdf",
+      "page": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "label": "Healthy Eating Guide",
+      "context": "Healthy Eating Guide",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/MoHW_WELNESS-BOOKLET-2.pdf",
+      "page": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "label": "Living Well Booklet",
+      "context": "Living Well Booklet",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Physical-Activity-Guide-for-the-Workplace_compressed.pdf",
+      "page": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "label": "Physical Activity Guide & Toolkit",
+      "context": "Physical Activity Guide & Toolkit",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Thank-you-for-taking-the-stairs-today-Banner.pdf",
+      "page": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "label": "Taking The Stairs",
+      "context": "Taking The Stairs",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Final-Wellness-Coordinators-Checklist.pdf",
+      "page": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "label": "Wellness Coordinators Checklist",
+      "context": "Wellness Coordinators Checklist",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/data/national-surveillance-manual-for-jamaica-2009/",
+      "page": "https://www.moh.gov.jm/data/",
+      "label": "",
+      "context": "May 9, 2024 National Surveillance Manual for Jamaica, 2009 View",
+      "looksPdf": false
+    },
+    {
+      "url": "https://www.moh.gov.jm/data/",
+      "page": "https://www.moh.gov.jm/data/",
+      "label": "Divisions",
+      "context": "Divisions Standards and Regulation Division The Enabling Environment in Health and Client Service Division Policy Planning & Development Division Health Infrastructure Planning & Project Management Executive Di",
+      "looksPdf": false
+    },
+    {
+      "url": "http://moh.gov.jm/wp-content/uploads/2015/03/Clinical-Management-of-HIV-Disease-2017.pdf",
+      "page": "https://www.moh.gov.jm/guidelines/",
+      "label": "Clinical Management of HIV Disease 2017",
+      "context": "Clinical Management of HIV Disease 2017",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/guidelines/",
+      "page": "https://www.moh.gov.jm/guidelines/",
+      "label": "Divisions",
+      "context": "Divisions Standards and Regulation Division The Enabling Environment in Health and Client Service Division Policy Planning & Development Division Health Infrastructure Planning & Project Management Executive Di",
+      "looksPdf": false
+    },
+    {
+      "url": "http://moh.gov.jm/wp-content/uploads/2015/03/Application-for-Registration-as-a-Medical-Practioner.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Application for Registration as a Medical Practioner",
+      "context": "Application for Registration as a Medical Practioner",
+      "looksPdf": true
+    },
+    {
+      "url": "http://moh.gov.jm/wp-content/uploads/2015/03/Application-for-Registration-as-a-Pharmacist.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Application for Registration as a Pharmacist",
+      "context": "Application for Registration as a Pharmacist",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/08/Clinical-Management-of-HIV-Disease-2020-Recommendations-Final-Justified_PDF.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Clinical Management of HIV Disease (2020)",
+      "context": "Clinical Management of HIV Disease (2020) View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/mp-resources/",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Divisions",
+      "context": "Divisions Standards and Regulation Division The Enabling Environment in Health and Client Service Division Policy Planning & Development Division Health Infrastructure Planning & Project Management Executive Di",
+      "looksPdf": false
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2024/08/EPI-Field-Guide-For-Health-Workers-Vol-2-Cold-Chain-and-Vaccine-Logistics-Management-Nov2023.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Expanded Programme for Immunizartion Field Guide for Health Workers – Volume 2",
+      "context": "Expanded Programme for Immunizartion Field Guide for Health Workers – Volume 2 View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2025/05/EPI-Field-Guide-For-Health-Workers-Volume-1-Vaccine-Administration-and-Programme-Management-Jan-2024.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Expanded Programme on Immunization Field Guide for Health Workers – Volume 1",
+      "context": "Expanded Programme on Immunization Field Guide for Health Workers – Volume 1 View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2024/10/EPI-Field-Guide-For-Health-Workers-Vol-2-Cold-Chain-and-Vaccine-Logistics-Management-Nov2023.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Expanded Programme on Immunization Field Guide for Health Workers – Volume 2",
+      "context": "Expanded Programme on Immunization Field Guide for Health Workers – Volume 2 View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2025/05/Expanded-Programme-on-Immunization-Field-Guide-for-Health-Workers-Volume-3-Surveillance-of-ESAVIs-and-VPDs.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Expanded Programme on Immunization Field Guide for Health Workers – Volume 3",
+      "context": "Expanded Programme on Immunization Field Guide for Health Workers – Volume 3 View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/gift-donation-policy/",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Gift/Donation Policy",
+      "context": "Gift/Donation Policy",
+      "looksPdf": false
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2020/07/Guide-for-the-Promotion-of-Healthy-Eating-in-Workplaces.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Guide for Promoting Healthy Eating in the Workplace",
+      "context": "Guide for Promoting Healthy Eating in the Workplace View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/06/Final-PMTCT-Manual.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Guideline for the Prevention of Vertical Transmission of HIV & Syphilis",
+      "context": "Guideline for the Prevention of Vertical Transmission of HIV & Syphilis View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2020/07/MOHW-Guidelines-for-the-importation-of-Human-Remains.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Guidelines for the Importation of Human Remains into Jamaica",
+      "context": "Guidelines for the Importation of Human Remains into Jamaica View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2020/07/Interim-Guidelines-For-Beverages-In-Schools.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Interim Guidelines For Beverages In Schools",
+      "context": "Interim Guidelines For Beverages In Schools View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2020/10/HYPERTENSIONGUIDELINES_Interim_final.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Interim Guidelines for Hypertension in Jamaica",
+      "context": "Interim Guidelines for Hypertension in Jamaica View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2020/10/DIABETESGUIDELINES_Interim_final.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Interim Guidelines for The Clincal Management of Diabetes in Jamaica",
+      "context": "Interim Guidelines for The Clincal Management of Diabetes in Jamaica View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2020/07/MOHW-Islandwide-Schedule-Adolescent-Health-Clinic.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Island Wide Schedules Adolescent Health Clinic",
+      "context": "Island Wide Schedules Adolescent Health Clinic View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://moh.gov.jm/wp-content/uploads/2015/12/Ven-List-2015.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "List of Vital Essential and Necessary Drugs and Medical Sundries for Public Health Institutions",
+      "context": "List of Vital Essential and Necessary Drugs and Medical Sundries for Public Health Institutions View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2024/09/Ven-List-Book-2020.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "List of Vital Essential and Necessary Drugs and Medical Sundries for Public Health Institutions (2020)",
+      "context": "List of Vital Essential and Necessary Drugs and Medical Sundries for Public Health Institutions (2020) View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2022/12/Management-of-Interpersonal-Violence-Procedures-for-Healthcare-Workers-2022.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Management of Interpersonal Violence: Procedures of Healthcare Workers 2022",
+      "context": "Management of Interpersonal Violence: Procedures of Healthcare Workers 2022 View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2019/03/MOH-Mental-Health-Clinic-Schedules.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Mental Health Clinic Schedules",
+      "context": "Mental Health Clinic Schedules View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://moh.gov.jm/wp-content/uploads/2015/07/Ministry-of-Healths-Strategic-Business-Plan-2015-2018.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Ministry of Health Strategic Business Plan",
+      "context": "Ministry of Health Strategic Business Plan View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2021/03/National-Screening-Guidelines-for-Priority-Non-Communicable-Diseases-NCDs-in-Primary-Health-Care.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "National Screening Guidelines for Priority Non- Communicable Diseases (NCDs) in Primary Health Care",
+      "context": "National Screening Guidelines for Priority Non- Communicable Diseases (NCDs) in Primary Health Care View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://moh.gov.jm/wp-content/uploads/2016/11/Revised-MOH-Policy-and-Procedure-Manual-for-the-Referral-and-Transfer-of-Patients-22.09.16.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Patient Transfer Manual",
+      "context": "Patient Transfer Manual",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2026/03/Peer-Approval-Instructions-and-Checklist.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Peer Approval Instructions and Checklist",
+      "context": "Peer Approval Instructions and Checklist View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2026/03/Peer-Approval-Signature-Form-Medical-Staff.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Peer Approval Signature Form – Medical Staff",
+      "context": "Peer Approval Signature Form – Medical Staff View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2026/02/PharmWatch-Drug-Monitoring-Form-Current-FRM-PMS-SRD-STRD-026-R1-1.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "PharmWatch",
+      "context": "PharmWatch View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/policy-planning-development-division/",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Policy Planning & Development Division",
+      "context": "Policy Planning & Development Division",
+      "looksPdf": false
+    },
+    {
+      "url": "https://www.moh.gov.jm/policy-procedure/",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Policy Procedure",
+      "context": "Policy Procedure",
+      "looksPdf": false
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2024/11/2023-National-Drug-Prevalence-Survey_Press-Conference_Adjusted.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Press Conference- 2023 National Drug Prevalence Survey",
+      "context": "Press Conference- 2023 National Drug Prevalence Survey View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Protocol-for-the-Nutritional-Management-of-Non-communicable-Diseases-in-Jamaica.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Protocol for the Nutritional Management of Non-communicable Diseases in Jamaica",
+      "context": "Protocol for the Nutritional Management of Non-communicable Diseases in Jamaica View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2019/03/Ministry-of-Healths-Public-SectorCustomer-Service-Satisfaction-Assessment-Report-2019.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Public Sector Customer Service Satisfaction",
+      "context": "Public Sector Customer Service Satisfaction View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/08/Registered-Nursing-Homes-and-Health-Facilities.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Registeres Nursing Home and Health Facilities",
+      "context": "Registeres Nursing Home and Health Facilities View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2021/09/Appendix-E_Annex-E-ESAVI-Form.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Reporting Forms for Events Supposedly Atrributed to Vaccination or Immunization (ESAVI)",
+      "context": "Reporting Forms for Events Supposedly Atrributed to Vaccination or Immunization (ESAVI) View",
+      "looksPdf": true
+    },
+    {
+      "url": "http://moh.gov.jm/wp-content/uploads/2015/03/The-Council-for-Professions-Supplementary-to-Medicine-Volunteer-Application-Form.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "The Council for Professions Supplementary to Medicine Volunteer Application Form",
+      "context": "The Council for Professions Supplementary to Medicine Volunteer Application Form",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2021/08/MOHW-PPH-Management-Protocol-Final-for-circulation.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "The Protocol for the Management Postpartum Heaemorrhage",
+      "context": "The Protocol for the Management Postpartum Heaemorrhage View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2021/09/The-Tobacco-Control-Act-2020.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Tobacco Control Act",
+      "context": "Tobacco Control Act View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2020/07/Tool-for-Assessing-the-Nutrition-Environment-in-Workplaces.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Tool for the Assessment of the Nutrition Environment in Workplaces",
+      "context": "Tool for the Assessment of the Nutrition Environment in Workplaces View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2021/06/Report-NEW-UNAIDS- Annual Report 2020.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "UNAIDS Annual Reports",
+      "context": "UNAIDS Annual Reports View",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Vision for Health 2019 – 2030",
+      "context": "Vision for Health 2019 – 2030",
+      "looksPdf": true
+    },
+    {
+      "url": "http://moh.gov.jm/wp-content/uploads/2015/03/Work-Permit-Exemption-Form.pdf",
+      "page": "https://www.moh.gov.jm/mp-resources/",
+      "label": "Work Permit Exemption Form",
+      "context": "Work Permit Exemption Form",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2020/11/Physical-Activity-Bible.pdf",
+      "page": "https://www.moh.gov.jm/physical-activity-bible/",
+      "label": "Click here to download the full PDF Document.",
+      "context": "Click here to download the full PDF Document.",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/physical-activity-bible/",
+      "page": "https://www.moh.gov.jm/physical-activity-bible/",
+      "label": "Divisions",
+      "context": "Divisions Standards and Regulation Division The Enabling Environment in Health and Client Service Division Policy Planning & Development Division Health Infrastructure Planning & Project Management Executive Di",
+      "looksPdf": false
+    },
+    {
+      "url": "https://www.moh.gov.jm/physical-activity/",
+      "page": "https://www.moh.gov.jm/physical-activity/",
+      "label": "Divisions",
+      "context": "Divisions Standards and Regulation Division The Enabling Environment in Health and Client Service Division Policy Planning & Development Division Health Infrastructure Planning & Project Management Executive Di",
+      "looksPdf": false
+    },
+    {
+      "url": "https://www.moh.gov.jm/access-to-information/",
+      "page": "https://www.moh.gov.jm/policy-procedure/",
+      "label": "Access to Information",
+      "context": "Gift/Donation Policy Policy Procedure Access to Information",
+      "looksPdf": false
+    },
+    {
+      "url": "http://moh.gov.jm/wp-content/uploads/2015/03/MOH-Register-of-Manuals-and-Policies-2014-2015.pdf",
+      "page": "https://www.moh.gov.jm/policy-procedure/",
+      "label": "Download MOH Register of Manuals and Policies 2014 – 2015",
+      "context": "Download MOH Register of Manuals and Policies 2014 – 2015",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/data/27598/",
+      "page": "https://www.moh.gov.jm/publications/",
+      "label": "",
+      "context": "Published On August 24, 2026 National Surveillance Manual for Jamaica – July 2026 View",
+      "looksPdf": false
+    },
+    {
+      "url": "https://www.moh.gov.jm/data/nutrition-at-a-glance-2024/",
+      "page": "https://www.moh.gov.jm/publications/",
+      "label": "",
+      "context": "Published On February 10, 2025 Nutrition at a Glance, 2024 View",
+      "looksPdf": false
+    },
+    {
+      "url": "https://www.moh.gov.jm/publications/",
+      "page": "https://www.moh.gov.jm/publications/",
+      "label": "Divisions",
+      "context": "Divisions Standards and Regulation Division The Enabling Environment in Health and Client Service Division Policy Planning & Development Division Health Infrastructure Planning & Project Management Executive Di",
+      "looksPdf": false
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2015/03/Annual-Report-final-v5-May-2-2017-min.pdf",
+      "page": "https://www.moh.gov.jm/publications/",
+      "label": "Read the Latest Annual Report",
+      "context": "Read the Latest Annual Report",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2019/04/2018-gazette-list_final.pdf",
+      "page": "https://www.moh.gov.jm/standards-and-regulation-division/guidelines-forms-lists/",
+      "label": "2018 Gazette List",
+      "context": "2018 Gazette List",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2019/04/2019-gazette-list_final.pdf",
+      "page": "https://www.moh.gov.jm/standards-and-regulation-division/guidelines-forms-lists/",
+      "label": "2019 Gazette List",
+      "context": "2019 Gazette List",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/standards-and-regulation-division/guidelines-forms-lists/",
+      "page": "https://www.moh.gov.jm/standards-and-regulation-division/guidelines-forms-lists/",
+      "label": "Divisions",
+      "context": "Divisions Standards and Regulation Division The Enabling Environment in Health and Client Service Division Policy Planning & Development Division Health Infrastructure Planning & Project Management Executive Di",
+      "looksPdf": false
+    },
+    {
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2024/08/Registered-Facilities-for-Website-31.03.2024.pdf",
+      "page": "https://www.moh.gov.jm/standards-and-regulation-division/guidelines-forms-lists/",
+      "label": "Registered Facilities for Website",
+      "context": "Registered Facilities for Website",
+      "looksPdf": true
+    },
+    {
+      "url": "https://www.moh.gov.jm/technical-services-division/environment-health-unit/",
+      "page": "https://www.moh.gov.jm/technical-services-division/environment-health-unit/",
+      "label": "Divisions",
+      "context": "Divisions Standards and Regulation Division The Enabling Environment in Health and Client Service Division Policy Planning & Development Division Health Infrastructure Planning & Project Management Executive Di",
+      "looksPdf": false
+    }
+  ],
+  "warning": "Discovery inventory, not endorsement of latest revision or automatic rights to mirror. PDF reading depends on publisher CORS and download policies."
+}
