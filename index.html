@@ -128,7 +128,21 @@
       </div>
     </div>
     <iframe id="pdfFrame" title="Browser PDF viewer — used when document server blocks PDF.js" loading="lazy" referrerpolicy="no-referrer" hidden></iframe>
-    <div id="pdfWebResource" class="reader-webresource" hidden>
+    <div id="pdfBlocked" class="reader-blocked" hidden role="region" aria-label="External PDF preview and access options">
+  <div class="reader-blocked-visual">
+    <img id="pdfBlockedCover" src="" alt="First-page thumbnail of the requested PDF" loading="eager">
+    <span class="reader-preview-label">Verified first-page thumbnail</span>
+  </div>
+  <div class="reader-blocked-details">
+    <span class="eyebrow">EXTERNAL PDF ACCESS RESTRICTED</span>
+    <h3>PDF available — in-page reading restricted</h3>
+    <p>The publisher's server does not allow this browser to load the complete document into our reader. To avoid a blank screen or an automatic download, we've shown its actual first-page preview instead.</p>
+    <p><strong>This image is only a preview, not the complete manual.</strong> Use the official PDF link if you need to read every page. The publisher may open it or download it depending on your browser.</p>
+    <div class="reader-blocked-actions"><a id="pdfBlockedOpen" class="btn btn-primary" href="#" target="_blank" rel="noopener">Open official PDF ↗</a><a id="pdfBlockedPublisher" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Publisher page ↗</a></div>
+    <p class="reader-permission-note">Full in-hub PDF viewing requires a publisher-permitted embedding option or an authorised local copy.</p>
+  </div>
+</div>
+<div id="pdfWebResource" class="reader-webresource" hidden>
       <div class="reader-web-icon" aria-hidden="true">▤</div>
       <h3>Official web resource</h3>
       <p>This entry is a webpage or collection of links, not a verified downloadable PDF. We will not present it as a PDF or invent a download.</p>
