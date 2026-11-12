@@ -122,7 +122,9 @@ try{
  assert((await page.locator('#hubDownloadQr').getAttribute('href'))==='./assets/wrha-hub-share-qr.svg');
  await page.screenshot({path:'artifacts/wrha-share-qr.png'});
  await page.locator('#hubQrBack').click();
+ await page.context().grantPermissions(['clipboard-read','clipboard-write'],{origin:'http://127.0.0.1:8765'});
  await page.locator('#hubCopyLink').click();
+ await page.locator('#hubShareStatus').filter({hasText:/copied|highlighted/i}).waitFor({timeout:7000});
  const copiedStatus=await page.locator('#hubShareStatus').textContent();
  assert(copiedStatus.includes('copied')||copiedStatus.includes('highlighted'),'Copy link must provide user feedback');
  await page.locator('#hubShareDialog [data-hub-close]').click();
