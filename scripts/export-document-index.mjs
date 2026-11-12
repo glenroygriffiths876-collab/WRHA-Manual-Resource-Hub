@@ -1,7 +1,7 @@
 /* Export final effective catalogue, including manually verified direct PDF overrides. */
 import fs from 'node:fs';
 import vm from 'node:vm';
-const scripts=['data.js','catalog-extra.js','document-overrides.js','establishment-resource.js'];
+const scripts=['data.js','catalog-extra.js','document-overrides.js','establishment-resource.js','deep-manual-sources.js'];
 const window={};
 vm.runInNewContext(scripts.map(p=>fs.readFileSync(p,'utf8')).join('\n'),{window},{timeout:10000});
 if(!window.WRHA_DATA)throw Error('Catalogue did not initialise');
