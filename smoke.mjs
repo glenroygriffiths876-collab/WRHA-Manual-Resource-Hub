@@ -7,7 +7,7 @@ const vcon=new VirtualConsole();const issues=[];
 vcon.on('jsdomError',e=>issues.push(String(e.message||e)));
 const dom=new JSDOM(html,{url:'https://example.org/WRHA-Manual-Resource-Hub/',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vcon});
 const {window:w}=dom,{document:d}=w;
-w.matchMedia=()=>({matches:true,addListener(){},removeListener(){}});w.scrollTo=()=>{};
+w.matchMedia=query=>({matches:String(query).includes('prefers-reduced-motion'),addListener(){},removeListener(){},addEventListener(){},removeEventListener(){}});w.scrollTo=()=>{};
 w.HTMLElement.prototype.scrollIntoView=function(){};
 for(const dialog of d.querySelectorAll('dialog')){dialog.showModal=function(){this.setAttribute('open','')};dialog.close=function(){this.removeAttribute('open');this.dispatchEvent(new w.Event('close'))};}
 w.open=()=>{};
@@ -19,6 +19,8 @@ w.eval(fs.readFileSync('verified-role-public.js','utf8'));
 w.eval(fs.readFileSync('viewer.js','utf8'));
 w.eval(fs.readFileSync('app-v2.js','utf8'));
 w.eval(fs.readFileSync('hub-utilities.js','utf8'));
+w.eval(fs.readFileSync('pwa-install.js','utf8'));
+assert(w.WRHA_PWA&&!w.WRHA_PWA.installed());
 assert.equal(w.WRHA_HUB_UTILITIES.phone,'18765029756');
 const click=q=>{const e=d.querySelector(q);assert(e,'Missing clickable element '+q);e.click();return e;};
 const visible=q=>{const el=d.querySelector(q);assert(el,'Missing '+q);return el;};
@@ -111,5 +113,29 @@ assert(d.getElementById('hubShareChoices').hidden);
 click('#hubQrBack');
 assert(!d.getElementById('hubShareChoices').hidden);
 click('#hubShareDialog [data-hub-close]');
+// WAPS-equivalent Install: native prompt where supported, otherwise device instructions.
+const manifest=JSON.parse(fs.readFileSync('manifest.webmanifest','utf8'));
+assert.equal(manifest.start_url,'./#home');
+assert(manifest.icons.some(x=>x.purpose==='maskable'&&x.sizes==='512x512'));
+click('#hubInstallFab');
+assert(d.querySelector('#hubInstallDialog[open]'),'Install guidance must open when there is no native prompt');
+assert(d.getElementById('hubInstallSteps').textContent.includes('Install')||d.getElementById('hubInstallSteps').textContent.includes('browser'));
+assert(d.getElementById('hubInstallNow').hidden,'Must not show a fake native install option');
+click('#hubCloseInstall');
+// Simulated native event; the real browser must still approve any installation.
+const installEvent=new w.Event('beforeinstallprompt',{cancelable:true});
+let promptClicks=0;
+installEvent.prompt=()=>{promptClicks++;return Promise.resolve()};
+installEvent.userChoice=Promise.resolve({outcome:'accepted'});
+w.dispatchEvent(installEvent);
+assert(installEvent.defaultPrevented,'Native browser install prompt should be deferred until user click');
+click('#hubInstallFab');
+await Promise.resolve();await Promise.resolve();
+assert.equal(promptClicks,1,'Install button must invoke the native prompt exactly once');
+w.dispatchEvent(new w.Event('appinstalled'));
+assert(w.WRHA_PWA.installed(),'Installed state missing');
+assert(d.getElementById('hubInstallFab').hidden,'Install button must disappear within the installed app');
+// The offline banner must not claim all externally hosted manuals remain usable.
+assert(d.getElementById('hubOfflineBanner').textContent.includes('official PDF'));
 assert.equal(issues.length,0,'Console errors: '+issues.join('; '));
-console.log('DOM SMOKE: PASS — all previous sections, contextual WhatsApp feedback and issue reporting, share and canonical QR link');
+console.log('DOM SMOKE: PASS — existing hub, WAPS-style feedback/share plus native install lifecycle, manifest and device guidance');
