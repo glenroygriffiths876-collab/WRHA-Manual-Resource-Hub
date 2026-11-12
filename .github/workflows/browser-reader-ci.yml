@@ -1,11 +1,16 @@
-name: Browser PDF reader and hub utility tests
+name: Browser PDF reader, hub utilities and WRHA PWA installation tests
 on:
   push:
-    branches: [fix-embedded-pdf-reader-20261112, fix-pdf-visible-roles-evidence-mohw-footer, verified-roles-and-mofps-establishment, waps-style-feedback-issue-share]
+    branches: [fix-embedded-pdf-reader-20261112, fix-pdf-visible-roles-evidence-mohw-footer, verified-roles-and-mofps-establishment, waps-style-feedback-issue-share, installable-wrha-hub-pwa]
     paths:
       - 'index.html'
       - 'viewer.js'
       - 'hub-utilities.js'
+      - 'pwa-install.js'
+      - 'pwa-install.css'
+      - 'manifest.webmanifest'
+      - 'sw.js'
+      - 'assets/app-icons/**'
       - 'hub-utilities.css'
       - 'assets/wrha-hub-share-qr.svg'
       - 'viewer.css'

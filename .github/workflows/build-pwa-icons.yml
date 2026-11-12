@@ -1,0 +1,38 @@
+name: Generate WRHA branded PWA icons
+on:
+  push:
+    branches: [installable-wrha-hub-pwa]
+    paths:
+      - '.github/workflows/build-pwa-icons.yml'
+      - 'scripts/build_pwa_icons.py'
+      - 'wrha-logo.webp'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Pillow
+        run: pip install --disable-pip-version-check -q 'Pillow>=11,<13'
+      - name: Generate accurate square WRHA logo app icons
+        run: python scripts/build_pwa_icons.py
+      - name: Commit generated real icon assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/app-icons/*.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Add real WRHA logo home-screen and maskable icons"
+            for attempt in 1 2 3; do
+              git fetch origin "$GITHUB_REF_NAME"
+              git rebase "origin/$GITHUB_REF_NAME"
+              if git push "origin" "HEAD:$GITHUB_REF_NAME"; then exit 0; fi
+              sleep 3
+            done
+            exit 1
+          fi

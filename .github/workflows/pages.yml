@@ -42,15 +42,22 @@ jobs:
         run: |
           set -e
           mkdir -p _site/assets _site/covers
-          cp index.html styles.css enhance.css viewer.css roles-evidence.css hub-utilities.css \
+          cp index.html styles.css enhance.css viewer.css roles-evidence.css hub-utilities.css pwa-install.css \
              data.js catalog-extra.js document-overrides.js establishment-resource.js \
-             verified-role-public.js app-v2.js viewer.js hub-utilities.js wrha-logo.webp jamaicaHigh.svg _site/
+             verified-role-public.js app-v2.js viewer.js hub-utilities.js pwa-install.js manifest.webmanifest sw.js wrha-logo.webp jamaicaHigh.svg _site/
           cp assets/mohw-logo.png assets/wrha-hub-share-qr.svg _site/assets/
+          cp -r assets/app-icons _site/assets/app-icons
           find covers -maxdepth 1 -name '*.webp' -type f -exec cp {} _site/covers/ \;
           touch _site/.nojekyll
           test -f _site/verified-role-public.js
           test -s _site/assets/wrha-hub-share-qr.svg
           test -s _site/hub-utilities.js
+          test -s _site/pwa-install.js
+          test -s _site/sw.js
+          test -s _site/manifest.webmanifest
+          test -s _site/assets/app-icons/wrha-icon-192.png
+          test -s _site/assets/app-icons/wrha-maskable-512.png
+          test -s _site/assets/app-icons/apple-touch-icon.png
           if test -e _site/role-evidence.js; then
             echo "Unverified legacy roles were accidentally included in deployment"
             exit 1

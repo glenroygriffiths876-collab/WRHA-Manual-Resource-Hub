@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 const ROOT=process.cwd();
-const mime={'.html':'text/html; charset=utf-8','.js':'application/javascript; charset=utf-8','.css':'text/css','.svg':'image/svg+xml','.webp':'image/webp','.pdf':'application/pdf','.json':'application/json'};
+const mime={'.html':'text/html; charset=utf-8','.js':'application/javascript; charset=utf-8','.css':'text/css','.svg':'image/svg+xml','.webp':'image/webp','.pdf':'application/pdf','.json':'application/json','.png':'image/png','.webmanifest':'application/manifest+json'};
 const server=http.createServer((req,res)=>{
  let file;
  try{
@@ -128,12 +128,43 @@ try{
  const copiedStatus=await page.locator('#hubShareStatus').textContent();
  assert(copiedStatus.includes('copied')||copiedStatus.includes('highlighted'),'Copy link must provide user feedback');
  await page.locator('#hubShareDialog [data-hub-close]').click();
+ // WAPS-like PWA: authentic manifest/icon paths and manual install help.
+ const manifest=await page.evaluate(async()=>{const res=await fetch('./manifest.webmanifest');return {status:res.status,type:res.headers.get('content-type'),data:await res.json()}});
+ assert.equal(manifest.status,200);
+ assert.equal(manifest.data.start_url,'./#home');
+ assert.equal(manifest.data.display,'standalone');
+ assert(manifest.data.icons.some(x=>x.sizes==='512x512'&&x.purpose==='maskable'));
+ const icon=await page.evaluate(async()=>{
+  const image=new Image();image.src='./assets/app-icons/wrha-icon-512.png';
+  await image.decode();return [image.naturalWidth,image.naturalHeight];
+ });
+ assert.deepEqual(icon,[512,512],'WRHA icon is not a valid 512×512 image');
+ assert(await page.locator('#hubInstallFab').isVisible(),'Install entry point missing');
+ await page.evaluate(()=>window.WRHA_PWA.openInstallHelp());
+ await page.locator('#hubInstallDialog[open]').waitFor();
+ assert((await page.locator('#hubInstallSteps').textContent()).includes('Install this site')||(await page.locator('#hubInstallSteps').textContent()).includes('address bar'),'Desktop install guidance missing');
+ await page.screenshot({path:'artifacts/wrha-desktop-install.png'});
+ await page.locator('#hubCloseInstall').click();
+ // Simulate a supported Chromium beforeinstallprompt; browser/user still controls final install.
+ await page.evaluate(()=>{
+  const event=new Event('beforeinstallprompt',{cancelable:true});
+  window.__installPromptCalls=0;
+  event.prompt=()=>{window.__installPromptCalls++;return Promise.resolve()};
+  event.userChoice=Promise.resolve({outcome:'accepted'});
+  window.dispatchEvent(event);
+ });
+ await page.locator('#hubInstallFab').click();
+ assert.equal(await page.evaluate(()=>window.__installPromptCalls),1,'Install button did not request native install from user interaction');
+ await page.locator('#hubInstallDialog[open]').waitFor();
+ assert((await page.locator('#hubInstallTitle').textContent()).includes('accepted'),'Accepted install prompt not acknowledged');
+ await page.evaluate(()=>window.dispatchEvent(new Event('appinstalled')));
+ assert(await page.locator('#hubInstallFab').isHidden(),'Install button should hide after appinstalled');
  const phone=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1});
  await phone.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
- // Ensure mobile floating feedback/issue/share buttons are visible and do not overlap.
- for(const selector of ['#hubFeedbackFab','#hubIssueFab','#hubShareFab'])assert(await phone.locator(selector).isVisible(),selector+' hidden on phone');
- const bounds=await Promise.all(['#hubFeedbackFab','#hubIssueFab','#hubShareFab'].map(s=>phone.locator(s).boundingBox()));
- assert(bounds.every(Boolean)&&bounds[0].x+bounds[0].width<=bounds[1].x+1&&bounds[1].x+bounds[1].width<bounds[2].x,'Mobile utility buttons overlap');
+ // Ensure mobile floating feedback/issue/install/share buttons remain visible and distinct.
+ for(const selector of ['#hubFeedbackFab','#hubIssueFab','#hubInstallFab','#hubShareFab'])assert(await phone.locator(selector).isVisible(),selector+' hidden on phone');
+ const bounds=await Promise.all(['#hubFeedbackFab','#hubIssueFab','#hubInstallFab','#hubShareFab'].map(s=>phone.locator(s).boundingBox()));
+ assert(bounds.every(Boolean)&&bounds[0].x+bounds[0].width<=bounds[1].x+1&&bounds[2].x+bounds[2].width<bounds[3].x,'Mobile utility buttons overlap');
  await phone.locator('#hubShareFab').click();
  await phone.locator('#hubShowQr').click();
  await phone.locator('#hubQrImage').evaluate(async image=>{if(!image.complete)await new Promise(resolve=>image.addEventListener('load',resolve,{once:true}));if(!image.naturalWidth)throw Error('Phone QR missing')});
@@ -146,5 +177,29 @@ try{
  const overflow=await phone.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+2);
  assert(!overflow,'Mobile horizontal overflow detected');
  await phone.screenshot({path:'artifacts/mobile-document-reader.png',fullPage:false});
- console.log('CHROMIUM E2E PASS: all existing hub sections + WhatsApp feedback/issue, canonical share link, local QR display, phone layout');
+ // iPhone home-screen guidance (not a false native-install promise on Safari).
+ const ios=await browser.newPage({viewport:{width:390,height:844},userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1'});
+ await ios.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
+ await ios.locator('#hubInstallFab').click();
+ await ios.locator('#hubInstallDialog[open]').waitFor();
+ assert((await ios.locator('#hubInstallSteps').textContent()).includes('Add to Home Screen'),'Safari Add to Home Screen instructions missing');
+ await ios.screenshot({path:'artifacts/wrha-iphone-install-guidance.png'});
+ await ios.close();
+ // Offline smoke: public shell usable after one successful visit; external PDFs deliberately uncached.
+ const offlinePage=await browser.newPage({viewport:{width:1110,height:760}});
+ await offlinePage.goto('http://127.0.0.1:8765/',{waitUntil:'load'});
+ await offlinePage.waitForFunction(()=>!!navigator.serviceWorker?.controller,{timeout:25000});
+ const cacheNames=await offlinePage.evaluate(()=>caches.keys());
+ assert(cacheNames.some(x=>x.startsWith('wrha-public-shell-')),'WRHA public shell service worker was not installed');
+ await offlinePage.context().setOffline(true);
+ await offlinePage.reload({waitUntil:'domcontentloaded',timeout:20000});
+ assert(await offlinePage.locator('[data-page="home"].active').isVisible(),'Cached home page not accessible offline');
+ assert(await offlinePage.locator('#hubOfflineBanner').isVisible(),'Offline limitations banner should be visible');
+ await offlinePage.locator('[data-view="manuals"]').click();
+ await offlinePage.locator('#manualSearch').fill('Nutrition');
+ assert((await offlinePage.locator('#manualCount').textContent()).includes('resource'),'Manual metadata not available offline');
+ await offlinePage.screenshot({path:'artifacts/wrha-offline-shell.png'});
+ await offlinePage.context().setOffline(false);
+ await offlinePage.close();
+ console.log('CHROMIUM E2E PASS: WRHA logo PWA manifest/icons, Android native prompt simulation, iOS guidance, service worker offline shell and existing hub');
 }finally{await browser.close();server.close()}

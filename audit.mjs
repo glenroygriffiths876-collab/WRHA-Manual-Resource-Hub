@@ -3,7 +3,7 @@ import fs from 'node:fs';import vm from 'node:vm';import path from 'node:path';
 const read=n=>fs.readFileSync(path.resolve(n),'utf8');const errors=[];
 const requireCheck=(ok,message)=>{if(!ok)errors.push(message)};
 const html=read('index.html'),app=read('app-v2.js'),css=read('enhance.css');
-for(const script of ['hub-utilities.js','viewer.js','app-v2.js','verified-role-public.js','establishment-resource.js','document-overrides.js','catalog-extra.js','data.js'])try{new vm.Script(read(script),{filename:script})}catch(err){errors.push(script+' syntax '+err.message)}
+for(const script of ['pwa-install.js','sw.js','hub-utilities.js','viewer.js','app-v2.js','verified-role-public.js','establishment-resource.js','document-overrides.js','catalog-extra.js','data.js'])try{new vm.Script(read(script),{filename:script})}catch(err){errors.push(script+' syntax '+err.message)}
 const window={};vm.runInNewContext(read('data.js')+'\n'+read('catalog-extra.js')+'\n'+read('document-overrides.js')+'\n'+read('establishment-resource.js')+'\n'+read('verified-role-public.js'),{window}, {timeout:15000});
 const D=window.WRHA_DATA;
 requireCheck(D.roleEvidenceCounts?.rha>=75,'RHA verified roles missing');
@@ -14,7 +14,7 @@ const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));
 for(const match of app.matchAll(/\$\('([^']+)'\)/g))requireCheck(ids.has(match[1]),'Missing DOM id: '+match[1]);
 for(const page of ['home','manuals','legislation','facilities','training','roles','about'])requireCheck(html.includes('data-page="'+page+'"'),'Missing '+page+' page');
 for(const page of ['manuals','legislation','facilities','training','roles'])requireCheck(html.includes('data-view="'+page+'"'),'Missing '+page+' nav');
-for(const file of ['assets/wrha-hub-share-qr.svg','hub-utilities.css','hub-utilities.js','wrha-logo.webp','styles.css','enhance.css','data.js','catalog-extra.js','establishment-resource.js','verified-role-public.js','app-v2.js'])requireCheck(fs.existsSync(file),'Missing asset '+file);
+for(const file of ['manifest.webmanifest','sw.js','pwa-install.js','pwa-install.css','assets/app-icons/wrha-icon-192.png','assets/app-icons/wrha-icon-512.png','assets/app-icons/wrha-maskable-192.png','assets/app-icons/wrha-maskable-512.png','assets/app-icons/apple-touch-icon.png','assets/wrha-hub-share-qr.svg','hub-utilities.css','hub-utilities.js','wrha-logo.webp','styles.css','enhance.css','data.js','catalog-extra.js','establishment-resource.js','verified-role-public.js','app-v2.js'])requireCheck(fs.existsSync(file),'Missing asset '+file);
 requireCheck(D.legislation.length>=20,'Legislation catalogue unexpectedly small');
 requireCheck(roleRows.length>=80,'Verified job directory unexpectedly empty');
 requireCheck(roleRows.length===D.roleEvidenceCounts.total,'Published role count does not reconcile');
@@ -42,6 +42,32 @@ requireCheck(html.includes('assets/wrha-hub-share-qr.svg'),'Locally hosted QR im
 requireCheck(read('assets/wrha-hub-share-qr.svg').includes('<svg'),'Local QR asset not SVG');
 requireCheck(read('hub-utilities.css').includes('@media print'),'Support buttons must be hidden in print');
 requireCheck(read('.github/workflows/pages.yml').includes('hub-utilities.js')&&read('.github/workflows/pages.yml').includes('wrha-hub-share-qr.svg'),'Pages whitelist missing utility assets');
+// Installable PWA: exact manifest paths, icon dimensions, user-consented install and safe offline shell.
+const manifest=JSON.parse(read('manifest.webmanifest'));
+requireCheck(manifest.name==='WRHA Manual & Resource Hub','Wrong PWA title');
+requireCheck(manifest.id==='./'&&manifest.start_url==='./#home'&&manifest.scope==='./','PWA must start at the WRHA Hub home inside its GitHub Pages scope');
+requireCheck(manifest.display==='standalone','Installed hub should open without browser chrome');
+requireCheck(manifest.icons.some(i=>i.sizes==='192x192'&&i.purpose==='any'),'Missing 192px WRHA icon');
+requireCheck(manifest.icons.some(i=>i.sizes==='512x512'&&i.purpose==='any'),'Missing 512px WRHA icon');
+requireCheck(manifest.icons.some(i=>i.sizes==='512x512'&&i.purpose==='maskable'),'Missing maskable home-screen icon');
+for(const file of ['wrha-icon-32.png','wrha-icon-192.png','wrha-icon-512.png','wrha-maskable-192.png','wrha-maskable-512.png','apple-touch-icon.png']){
+ const path='assets/app-icons/'+file;
+ if(!fs.existsSync(path)){errors.push('Missing WRHA PWA icon '+path);continue;}
+ const image=fs.readFileSync(path);
+ const size=file==='apple-touch-icon.png'?180:Number(file.match(/-(\d+)\.png$/)[1]);
+ requireCheck(image.subarray(1,4).toString()==='PNG','Not a PNG: '+file);
+ requireCheck(image.readUInt32BE(16)===size&&image.readUInt32BE(20)===size,'Icon dimensions wrong '+file);
+}
+requireCheck(html.includes('rel="manifest"')&&html.includes('apple-touch-icon'),'Missing install metadata');
+requireCheck(html.includes('hubInstallFab')&&html.includes('hubInstallDialog'),'Missing install controls');
+requireCheck(html.includes('pwa-install.js')&&html.includes('pwa-install.css'),'Install JS/CSS not wired');
+const installer=read('pwa-install.js'),serviceWorker=read('sw.js');
+requireCheck(installer.includes("'beforeinstallprompt'")&&installer.includes("'appinstalled'"),'Native install lifecycle missing');
+requireCheck(installer.includes("navigator.serviceWorker.register('./sw.js'"),'Service worker registration missing');
+requireCheck(serviceWorker.includes("withinScope(url)")&&serviceWorker.includes("!allowed.has(url.pathname)"),'Offline cache must be limited to trusted public same-origin shell');
+requireCheck(!serviceWorker.includes('mof.gov.jm')||serviceWorker.includes('Never proxy/cache external'),'Verify external government PDFs are never cached');
+const pages=read('.github/workflows/pages.yml');
+for(const item of ['pwa-install.js','pwa-install.css','manifest.webmanifest','sw.js','app-icons'])requireCheck(pages.includes(item),'PWA asset omitted from Pages whitelist: '+item);
 requireCheck(html.includes('WRHA-NCD-Adherence-Counselling-Academy')&&html.includes('JASDIS-STUDY-HUB'),'Approved learning links missing');
 const report={manuals:D.manuals.length,legislation:D.legislation.length,roles:roleRows.length,roleGroups:D.roleGroups.length,facilityEntries:D.facilities.length,parishes:Object.keys(D.rhaMap).length,errors};
 console.log(JSON.stringify(report,null,2));
