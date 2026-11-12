@@ -1,0 +1,29 @@
+name: Cache Jamaica parish map SVG
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/map-asset.yml'
+permissions:
+  contents: write
+jobs:
+  map:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download CC BY 4.0 Jamaica map outline
+        run: |
+          set -e
+          curl --fail --location --retry 3 --max-time 30 --user-agent 'Mozilla/5.0 (WRHA resource hub map asset fetch)' 'https://amcharts.com/static/svg-maps/jamaicaHigh.svg' --output jamaicaHigh.svg
+          grep -Eiq '<svg|<\?xml' jamaicaHigh.svg
+          test "$(wc -c < jamaicaHigh.svg)" -gt 2000
+      - name: Commit locally cached map asset
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add jamaicaHigh.svg
+          if ! git diff --cached --quiet; then
+            git commit -m "Cache attributed Jamaica parish SVG to support offline-ish map navigation"
+            git push
+          fi
