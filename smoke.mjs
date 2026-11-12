@@ -7,10 +7,9 @@ const vcon=new VirtualConsole();const issues=[];
 vcon.on('jsdomError',e=>issues.push(String(e.message||e)));
 const dom=new JSDOM(html,{url:'https://example.org/WRHA-Manual-Resource-Hub/',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole:vcon});
 const {window:w}=dom,{document:d}=w;
-w.matchMedia=()=>({matches:true,addListener(){},removeListener(){}});
+w.matchMedia=()=>({matches:true,addListener(){},removeListener(){}});w.scrollTo=()=>{};
 w.HTMLElement.prototype.scrollIntoView=function(){};
-w.HTMLDialogElement.prototype.showModal=function(){this.setAttribute('open','')};
-w.HTMLDialogElement.prototype.close=function(){this.removeAttribute('open');this.dispatchEvent(new w.Event('close'))};
+for(const dialog of d.querySelectorAll('dialog')){dialog.showModal=function(){this.setAttribute('open','')};dialog.close=function(){this.removeAttribute('open');this.dispatchEvent(new w.Event('close'))};}
 w.open=()=>{};
 w.eval(fs.readFileSync('data.js','utf8'));
 w.eval(fs.readFileSync('catalog-extra.js','utf8'));
