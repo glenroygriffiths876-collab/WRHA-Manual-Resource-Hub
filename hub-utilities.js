@@ -10,7 +10,7 @@ const feedback=$('hubFeedbackDialog'),share=$('hubShareDialog');
 if(!feedback||!share)return;
 const pageNames={home:'Overview',manuals:'Manual Library',legislation:'Health Legislation',facilities:'Health Centres',training:'Training Academy',roles:'Verified Healthcare Positions',about:'About the Hub'};
 const feedbackTypes=['Suggestion / new idea','Content correction','Missing manual or legislation','Health-centre information correction','Accessibility or readability','Something could be easier to use','Other feedback'];
-const issueTypes=['PDF not opening or downloading unexpectedly','Broken link or missing document','Search or filter not working','Layout or display issue','Incorrect role title or classification','Incorrect or outdated information','Other technical issue'];
+const issueTypes=['Something broke or did not work','PDF not opening or downloading unexpectedly','Broken link or missing document','Search or filter not working','Layout or display issue','Incorrect role title or classification','Incorrect or outdated information','Other technical issue'];
 let pendingContext=null,mode='feedback';
 function closeIfOpen(el){if(el.open)el.close()}
 function currentContext(){
