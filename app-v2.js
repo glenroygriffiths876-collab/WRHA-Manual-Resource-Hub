@@ -57,8 +57,8 @@ function coverMarkup(d){const pdf=isPdf(d);const label=pdf?'FIRST-PAGE PREVIEW':
  const safeURL=pdf?esc(d.url):'';
  return '<div class="doc-cover '+(pdf?'':'not-previewable')+'" '+(pdf?'data-pdf="'+safeURL+'"':'')+'><div class="cover-placeholder"><span class="crest">♛</span><strong>'+esc(d.title)+'</strong><small>'+label+'</small></div>'+(pdf?'<img class="static-cover" loading="lazy" decoding="async" src="./covers/'+encodeURIComponent(d.id)+'.webp" alt="First page of '+esc(d.title)+'"><canvas aria-hidden="true" hidden></canvas>':'')+'</div>';}
 function docCard(d,type){const law=type==='law',pdf=isPdf(d),title=esc(d.title),href=esc(d.url);
- const mainButton=pdf?'<button type="button" class="read-btn" data-read="'+esc(type+':'+d.id)+'">Read PDF</button>':'<a class="read-btn" href="'+href+'" target="_blank" rel="noopener">Official resource ↗</a>';
- const secondary='<a class="download-btn" href="'+href+'" target="_blank" rel="noopener">'+(pdf?'PDF / Download ↗':'Visit source ↗')+'</a>';
+ const mainButton='<button type="button" class="read-btn" data-read="'+esc(type+':'+d.id)+'">'+(pdf?'Read PDF':'View resource details')+'</button>';
+ const secondary='<a class="download-btn" href="'+href+'" target="_blank" rel="noopener">'+(pdf?'Open / download PDF ↗':'Official webpage ↗')+'</a>';
  return '<article class="manual-card '+(law?'manual-legal':'')+'"><div class="manual-top">'+coverMarkup(d)+'<span class="manual-year">'+esc(d.year||d.type||'Resource')+'</span></div><div class="manual-body"><span class="category-label">'+esc(d.category)+'</span><h3>'+title+'</h3><p>'+esc(d.description||'A publicly linked guidance or reference resource.')+'</p><span class="manual-status">'+esc(d.status||'Confirm edition')+'</span><div class="manual-actions">'+mainButton+secondary+'</div></div></article>';
 }
 function bindDocumentActions(node){node.querySelectorAll('[data-read]').forEach(btn=>btn.addEventListener('click',()=>{const [kind,id]=btn.dataset.read.split(':');openPdf((kind==='law'?laws:allDocs).find(d=>d.id===id))}));observeCovers(node)}
@@ -98,18 +98,7 @@ function filterLaws(){const q=$('lawSearch').value.trim().toLowerCase(),cat=$('l
 ['lawSearch','lawCategory','lawType'].forEach(x=>$(x).addEventListener(x==='lawSearch'?'input':'change',()=>{lawLimit=18;filterLaws()}));
 $('clearLaws').addEventListener('click',()=>{$('lawSearch').value='';$('lawCategory').value='';$('lawType').value='';lawLimit=18;filterLaws()});filterLaws();
 
-let opened=null;
-function pdfFragment(){return '#page='+Math.max(1,Number($('pdfPage').value)||1)+'&zoom='+encodeURIComponent($('pdfZoom').value)}
-function updatePdf(){if(opened)$('pdfFrame').src=opened.url+pdfFragment()}
-function openPdf(d){if(!d)return;if(!isPdf(d)){window.open(d.url,'_blank','noopener');return;}
- opened=d;$('pdfTitle').textContent=d.title;$('pdfMeta').textContent=[d.publisher,d.year,d.status].filter(Boolean).join(' · ');$('pdfPage').value=1;$('pdfZoom').value='auto';
- $('pdfSource').href=d.sourceUrl||d.url;$('pdfSource').textContent='Official source ↗';
- $('pdfDownload').href=d.url;$('pdfDownload').textContent='Open / Download PDF ↗';
- updatePdf();$('pdfDialog').showModal();$('closePdf').focus();}
-$('goPdfPage').addEventListener('click',updatePdf);$('pdfPage').addEventListener('keydown',e=>{if(e.key==='Enter')updatePdf()});$('pdfZoom').addEventListener('change',updatePdf);
-$('closePdf').addEventListener('click',()=>$('pdfDialog').close());
-$('pdfDialog').addEventListener('click',e=>{if(e.target===$('pdfDialog'))$('pdfDialog').close()});
-$('pdfDialog').addEventListener('close',()=>{$('pdfFrame').src='about:blank';opened=null});
+function openPdf(d){if(!d)return;if(window.WRHA_DocViewer){window.WRHA_DocViewer.open(d);return;}if(isPdf(d))window.open(d.url,'_blank','noopener');else window.open(d.sourceUrl||d.url,'_blank','noopener');}
 
 const parishes=Object.keys(D.rhaMap).sort();
 $('parishFilter').innerHTML='<option value="">All 14 parishes</option>'+parishes.map(p=>'<option value="'+esc(p)+'">'+esc(p)+'</option>').join('');
