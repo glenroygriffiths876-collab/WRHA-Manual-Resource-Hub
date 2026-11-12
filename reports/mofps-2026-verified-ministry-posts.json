@@ -1,0 +1,1296 @@
+{
+  "documentHash": "eff3a8e38b0d07b1f0d05e029c50b794def488563e7c95b47dbabfc51a5ce899",
+  "documentPages": 1541,
+  "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf",
+  "totalDistinctTitleGradePairs": 66,
+  "scopeNotice": "Central civil-service MOHW roles only; never infer an RHA establishment",
+  "records": [
+    {
+      "title": "Access Officer",
+      "classification": "GMG/SEG 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "61484"
+      ],
+      "pdfPage": 1156,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1156",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Accounting Clerk 1",
+      "classification": "FMG/AC 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27492"
+      ],
+      "pdfPage": 1158,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1158",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Administrative Assistant",
+      "classification": "GMG/AM 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "76876",
+        "27658",
+        "76861",
+        "76863",
+        "76870",
+        "74735"
+      ],
+      "pdfPage": 1195,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1195",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Administrative Assistant",
+      "classification": "GMG/AM 3",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27234",
+        "76860",
+        "76945",
+        "76933",
+        "76923",
+        "74701",
+        "27367",
+        "50155"
+      ],
+      "pdfPage": 1150,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1150",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Administrative Assistant",
+      "classification": "GMG/AM 4",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27663",
+        "54928"
+      ],
+      "pdfPage": 1204,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1204",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Administrator 2",
+      "classification": "GMG/AM 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27401",
+        "73258",
+        "27325",
+        "27375"
+      ],
+      "pdfPage": 1150,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1150",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Administrator 4",
+      "classification": "GMG/AM 4",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27765",
+        "53735"
+      ],
+      "pdfPage": 1150,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1150",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Artisan 2",
+      "classification": "LMO/TS 3",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27583",
+        "27603",
+        "27600"
+      ],
+      "pdfPage": 1154,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1154",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Artisan 3",
+      "classification": "LMO/TS 4",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27558",
+        "27543",
+        "27555",
+        "27553",
+        "27556",
+        "27552"
+      ],
+      "pdfPage": 1154,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1154",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Bio-Medical Engineer",
+      "classification": "SOG/ST 7",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "54118",
+        "74654"
+      ],
+      "pdfPage": 1158,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1158",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Chief Programme Officer",
+      "classification": "GMG/CTD 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "77727"
+      ],
+      "pdfPage": 1149,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1149",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Civil Engineer",
+      "classification": "SOG/ST 7",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "56647"
+      ],
+      "pdfPage": 1157,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1157",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Co-ordinator, In-Service Education",
+      "classification": "HPC/RN 6",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27752"
+      ],
+      "pdfPage": 1162,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1162",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Data Entry Clerk",
+      "classification": "MIS/IT 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27735",
+        "27739",
+        "27741",
+        "73803",
+        "73804",
+        "61185",
+        "53732",
+        "53619"
+      ],
+      "pdfPage": 1160,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1160",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Data Entry Clerk",
+      "classification": "MIS/IT 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "53636",
+        "74678"
+      ],
+      "pdfPage": 1160,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1160",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Data Protection Officer",
+      "classification": "GMG/SEG 3",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "76912"
+      ],
+      "pdfPage": 1150,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1150",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Director, Administration",
+      "classification": "GMG/SEG 3",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27369"
+      ],
+      "pdfPage": 1150,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1150",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Director, Environmental Health",
+      "classification": "HPC/EH 8",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "53741"
+      ],
+      "pdfPage": 1223,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1223",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Director, Transport & Security",
+      "classification": "GMG/SEG 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "56660"
+      ],
+      "pdfPage": 1154,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1154",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Dispatcher",
+      "classification": "GMG/AM 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "37712"
+      ],
+      "pdfPage": 1155,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1155",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Documentation & Filing Clerk",
+      "classification": "PIDG/LA 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27384"
+      ],
+      "pdfPage": 1156,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1156",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Driver 2",
+      "classification": "LMO/DR 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "37321",
+        "27622",
+        "27623",
+        "27412",
+        "27664",
+        "27743",
+        "53463",
+        "27414",
+        "27416",
+        "58026",
+        "27409",
+        "37318",
+        "27415",
+        "27408",
+        "58027",
+        "27411",
+        "27410",
+        "27413",
+        "37320",
+        "37319"
+      ],
+      "pdfPage": 1155,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1155",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Electrical Engineer",
+      "classification": "SOG/ST 7",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27442"
+      ],
+      "pdfPage": 1158,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1158",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Electro-Mechanical Technician",
+      "classification": "SOG/ST 3",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27472",
+        "27474"
+      ],
+      "pdfPage": 1158,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1158",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Epidemiological Clerk",
+      "classification": "PIDG/RIM 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27721"
+      ],
+      "pdfPage": 1222,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1222",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Estate/Property Manager",
+      "classification": "GMG/SEG 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27372"
+      ],
+      "pdfPage": 1154,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1154",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Executive Engineer",
+      "classification": "SOG/ST 6",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27445"
+      ],
+      "pdfPage": 1158,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1158",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Executive Secretary 1",
+      "classification": "OPS/SS 4",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27228",
+        "50388",
+        "27811",
+        "76859",
+        "76921",
+        "27662",
+        "27336",
+        "61011"
+      ],
+      "pdfPage": 1150,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1150",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Executive Secretary 2",
+      "classification": "OPS/SS 5",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27226",
+        "27227",
+        "74647"
+      ],
+      "pdfPage": 1150,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1150",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Helpline Counsellor",
+      "classification": "GMG/AM 3",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "53671",
+        "53670"
+      ],
+      "pdfPage": 1223,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1223",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Industrial Relations Officer",
+      "classification": "GMG/AM 4",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27318"
+      ],
+      "pdfPage": 1159,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1159",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Inventory Officer",
+      "classification": "PIDG/RIM 3",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "73260",
+        "27377"
+      ],
+      "pdfPage": 1151,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1151",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Librarian 5",
+      "classification": "PIDG/LB 5",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27727"
+      ],
+      "pdfPage": 1156,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1156",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Library Assistant",
+      "classification": "PIDG/LA 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "53785"
+      ],
+      "pdfPage": 1157,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1157",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Manager, Office Services",
+      "classification": "GMG/SEG 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27381"
+      ],
+      "pdfPage": 1151,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1151",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "National Physical Activity Specialist",
+      "classification": "GMG/SEG 3",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "74675"
+      ],
+      "pdfPage": 1222,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1222",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Nurse Educator/Tutor",
+      "classification": "HPC/RN 3",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "37630",
+        "37626",
+        "37620",
+        "37631",
+        "37654",
+        "37628",
+        "37627"
+      ],
+      "pdfPage": 1163,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1163",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Occupational Health & Safety Officer",
+      "classification": "GMG/SEG 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "73275"
+      ],
+      "pdfPage": 1159,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1159",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Office Administrator",
+      "classification": "GMG/SEG 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "37656"
+      ],
+      "pdfPage": 1163,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1163",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Office Attendant",
+      "classification": "LMO/TS 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27632",
+        "27633",
+        "27763",
+        "37664",
+        "27855",
+        "27425",
+        "27436",
+        "37665",
+        "27421",
+        "27422",
+        "27547",
+        "27601",
+        "27856",
+        "27630",
+        "27599",
+        "27423",
+        "27424",
+        "27437",
+        "27557",
+        "27818"
+      ],
+      "pdfPage": 1152,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1152",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Permanent Secretary",
+      "classification": "GMG/EMG 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27219"
+      ],
+      "pdfPage": 1149,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1149",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Physical Activity Specialist",
+      "classification": "GMG/SEG 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "74674"
+      ],
+      "pdfPage": 1222,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1222",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Principal Director, Corporate Services",
+      "classification": "GMG/SEG 6",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27233"
+      ],
+      "pdfPage": 1150,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1150",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Property Officer",
+      "classification": "GMG/AM 3",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27373"
+      ],
+      "pdfPage": 1154,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1154",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Records Clerk",
+      "classification": "PIDG/RIM 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27497",
+        "37658",
+        "37312",
+        "37315",
+        "37313",
+        "31444",
+        "27353",
+        "27844",
+        "27394"
+      ],
+      "pdfPage": 1158,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1158",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Records Officer",
+      "classification": "OPS/CR 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "37311"
+      ],
+      "pdfPage": 1206,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1206",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Records Officer",
+      "classification": "PIDG/RIM 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "73264",
+        "37386"
+      ],
+      "pdfPage": 1154,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1154",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Records Officer 1",
+      "classification": "PIDG/RIM 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "73262",
+        "31439",
+        "27350",
+        "27392",
+        "27332",
+        "27348",
+        "73269",
+        "27660",
+        "27346",
+        "27347",
+        "27349",
+        "27351",
+        "27355",
+        "77293",
+        "27354",
+        "27342",
+        "27330",
+        "27345",
+        "77292",
+        "27331"
+      ],
+      "pdfPage": 1155,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1155",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Registrar",
+      "classification": "PIDG/RIM 4",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "53783"
+      ],
+      "pdfPage": 1157,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1157",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Secretary 2",
+      "classification": "OPS/SS 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27400",
+        "27402",
+        "27368",
+        "73268",
+        "27489",
+        "27487",
+        "27340",
+        "27334",
+        "27399",
+        "31442",
+        "37660",
+        "37659",
+        "27366",
+        "73278",
+        "73270",
+        "27243",
+        "27244",
+        "27286",
+        "54633",
+        "73805"
+      ],
+      "pdfPage": 1150,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1150",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Security Coordinator",
+      "classification": "GMG/SEG 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "73263"
+      ],
+      "pdfPage": 1156,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1156",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Senior Biomedical Technician",
+      "classification": "SOG/ST 4",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "58031",
+        "27456"
+      ],
+      "pdfPage": 1158,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1158",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Senior Civil Works Technician",
+      "classification": "SOG/ST 4",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27460"
+      ],
+      "pdfPage": 1158,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1158",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Senior Electro-mechanical Technician",
+      "classification": "SOG/ST 4",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "50364"
+      ],
+      "pdfPage": 1158,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1158",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Senior Human Resource Officer",
+      "classification": "GMG/SEG 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "73273"
+      ],
+      "pdfPage": 1160,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1160",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Senior Industrial Relations Officer",
+      "classification": "GMG/SEG 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "73274"
+      ],
+      "pdfPage": 1159,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1159",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Senior Library Assistant",
+      "classification": "PIDG/LA 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "37657",
+        "77304",
+        "53784",
+        "27338",
+        "27738"
+      ],
+      "pdfPage": 1157,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1157",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Senior Nurse Educator/Tutor",
+      "classification": "HPC/RN 4",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "37618",
+        "37615",
+        "27753",
+        "68803",
+        "68804",
+        "27755",
+        "27756",
+        "27757",
+        "27754"
+      ],
+      "pdfPage": 1162,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1162",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Senior Office Attendant",
+      "classification": "LMO/TS 3",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27418",
+        "73259"
+      ],
+      "pdfPage": 1151,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1151",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Senior Secretary",
+      "classification": "OPS/SS 3",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27229",
+        "27486",
+        "27242",
+        "27306",
+        "37300",
+        "37374",
+        "27701",
+        "27231",
+        "27333",
+        "27718"
+      ],
+      "pdfPage": 1150,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1150",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Stores Clerk",
+      "classification": "PIDG/RIM 3",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "53623",
+        "27393",
+        "77298",
+        "77297",
+        "77296"
+      ],
+      "pdfPage": 1151,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1151",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Stores Manager",
+      "classification": "GMG/SEG 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "54115"
+      ],
+      "pdfPage": 1151,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1151",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Surveillance Officer",
+      "classification": "HPC/ALH 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "27716",
+        "54668",
+        "54667"
+      ],
+      "pdfPage": 1223,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1223",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Surveillance Officer",
+      "classification": "HPC/ALH 2",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "54669"
+      ],
+      "pdfPage": 1223,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1223",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Transport Manager",
+      "classification": "GMG/SEG 1",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "56661"
+      ],
+      "pdfPage": 1155,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1155",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    },
+    {
+      "title": "Transport Officer",
+      "classification": "GMG/AM 4",
+      "authority": "MOHW",
+      "sourceType": "Central Civil Service Establishment",
+      "verificationTier": "C",
+      "postIds": [
+        "73261"
+      ],
+      "pdfPage": 1155,
+      "sourceUrl": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf#page=1155",
+      "documentTitle": "Civil Service Establishment (General) Order 2026",
+      "published": "2026-04-22",
+      "jobPurpose": null,
+      "verifiedQualifications": null,
+      "warning": "Central MOHW civil-service post, not an established RHA post."
+    }
+  ]
+}
