@@ -51,6 +51,21 @@ Excluded records remain available for research only in archived `role-evidence.j
 
 The official MOFPS website lists a separate *Health Establishment* heading, but the reviewed public page does not provide a clearly downloadable health-specific RHA establishment schedule. Further direct confirmation from MOHW/MOFPS/RHA HR is needed for Tier A.
 
+## Install WRHA Hub on a phone, tablet or desktop
+
+The WRHA Manual & Resource Hub is an installable **Progressive Web App (PWA)**, modelled on the working WAPS installation flow.
+
+- **Android Chrome / compatible browsers:** Tap the green **Install** button. If the browser provides its native prompt, approve it. Otherwise use **⋮ → Install app** or **Add to Home screen**.
+- **Samsung Internet:** Open the menu and choose **Add page to → Home screen** (or Install app, when offered).
+- **iPhone/iPad:** Open the hub in **Safari**, tap **Share**, then **Add to Home Screen → Add**. iOS does not support a universal browser install prompt.
+- **Desktop Chrome / Edge:** Tap **Install** or select the install option in the browser menu/address bar, then confirm.
+
+**Branding:** Genuine source `wrha-logo.webp` is used for all square PNG app icons (192/512 px), Android maskable icons and the Apple Touch icon (180 px). These images are generated from the supplied original WRHA logo by `scripts/build_pwa_icons.py`, never redrawn by AI.
+
+**Offline scope:** `sw.js` caches the hub's *public page and scripts*, not private data or publisher-hosted PDFs. Users who have previously visited may be able to browse cached manual metadata, legislation names, role records and the hub interface without internet. Official PDF documents, external websites, training sites, map links and newly updated source data still need internet. Network requests take precedence whenever available.
+
+**Deploy requirements:** `.github/workflows/pages.yml` explicitly includes `manifest.webmanifest`, `sw.js`, `pwa-install.js`, `pwa-install.css` and `assets/app-icons/` in the clean Pages bundle. The native `beforeinstallprompt` and `appinstalled` browser events are handled gracefully, with manual instructions as fallback. Installation can only complete with the user's approval.
+
 ## Features
 - **Clinical & Public-Health Manuals:** 57 manually catalogued source-linked materials, including HIV/STI/TB, surveillance, NCD, nursing/maternal, immunisation, nutrition, environmental health, pharmacy, administration and additional programmes. Searchable, category-filterable PDF cover gallery and embedded document reader where technically permitted.
 - **Health Legislation:** 30 laws and regulations indexed by topic and type. Direct PDF versions are preferred where source-verified; some entries must link to official Ministry of Justice legal records or index pages.
