@@ -72,7 +72,7 @@ assert(!d.getElementById('hubFeedbackResult').hidden);
 click('#hubFeedbackDialog [data-hub-close]');
 click('#hubIssueFab');
 assert(d.querySelector('#hubFeedbackDialog[open]'),'Issue form must open');
-assert.equal(d.getElementById('hubFeedbackType').value,'PDF not opening or downloading unexpectedly');
+assert.equal(d.getElementById('hubFeedbackType').value,'Something broke or did not work');
 d.getElementById('hubFeedbackMessage').value='The PDF did not render.';
 d.getElementById('hubFeedbackForm').dispatchEvent(new w.Event('submit',{bubbles:true,cancelable:true}));
 const issueLink=d.getElementById('hubWhatsAppFallback').href;
