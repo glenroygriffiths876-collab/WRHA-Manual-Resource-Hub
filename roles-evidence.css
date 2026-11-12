@@ -1,0 +1,35 @@
+/* Evidence-based RHA role cards, detailed source modal, and authentic MOHW partner logo */
+.role-summary-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:12px 0 24px}
+.role-summary-strip>div{border:1px solid #d8e6f3;border-radius:13px;background:#fff;padding:14px 16px;box-shadow:0 4px 15px #17447809}
+.role-summary-strip strong{font-size:22px;color:#0d559c;line-height:1.2;display:block}
+.role-summary-strip span{font-size:11px;color:#687f99}
+.role-card-heading{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0}
+.role-verified{font-size:10px;font-weight:800;border-radius:999px;padding:5px 9px;line-height:1.2}
+.role-verified.evidenced{background:#e5f6ed;color:#086337;border:1px solid #bee9d3}
+.role-verified.general{background:#f0f4f9;color:#657891;border:1px solid #dfe6ef}
+.role-grade{font-size:10px;color:#135e9b;border:1px solid #bfd8ef;background:#f1f9ff;padding:5px 8px;border-radius:8px;font-weight:800}
+.role-card{display:flex;flex-direction:column;align-items:stretch}
+.role-details-btn{border:1px solid #bcd5ef;background:#eff7ff;color:#07509b;border-radius:9px;padding:10px 12px;font-weight:800;font-size:11px;width:100%;margin-top:auto}
+.role-details-btn:hover{background:#d9ecff}
+.role-card .role-detail{margin-bottom:16px}
+.role-dialog{width:min(720px,94vw);max-width:94vw;max-height:min(87vh,900px);overflow:auto;border:0;border-radius:18px}
+.role-dialog .small-modal-inner{padding:clamp(21px,3.2vw,34px)}
+.role-dialog h2{font-size:clamp(20px,2.1vw,27px);line-height:1.3}
+.role-info-rows{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.role-info-row{border-radius:11px;background:#f5f9fe;padding:13px}
+.role-info-row span{font-size:10px;font-weight:800;letter-spacing:.7px;color:#4d83b4;display:block;text-transform:uppercase}
+.role-info-row p{font-size:12px;color:#334e6b;line-height:1.65;margin:6px 0 0;overflow-wrap:anywhere}
+.role-proof-section{border-top:1px solid #dfeaf5;margin-top:17px;padding-top:16px}
+.role-proof-section h3{font-size:14px;color:#173f72;margin:0 0 9px}
+.role-proof-section p{font-size:12px;line-height:1.7;color:#57728e}
+.role-source-link{display:block;padding:12px 15px;border:1px solid #cfdeec;border-radius:11px;margin:8px 0;background:#fff;color:#174c84;font-size:12px;line-height:1.65}
+.role-source-link span{color:#1464ac;font-weight:700;display:block}
+.role-disclaimer{background:#fffaf0;border:1px solid #f0ddae;border-radius:11px;padding:14px;color:#7a663d;font-size:11px;line-height:1.75}
+.site-footer .footer-social{align-items:center;min-width:250px}
+.mohw-partner-block{display:flex;flex-direction:column;align-items:center;gap:8px;border-top:1px solid #dce5ef;margin-top:16px;padding-top:16px;width:100%}
+.mohw-logo-link{display:block;border:1px solid transparent;border-radius:12px;padding:8px 14px;transition:transform .22s,box-shadow .22s}
+.mohw-logo-link:hover{transform:translateY(-3px);box-shadow:0 10px 25px #12396512}
+.mohw-logo-link img{display:block;width:260px;max-width:100%;height:auto;object-fit:contain}
+.mohw-partner-caption{font-size:10px;color:#8197ad;text-align:center}
+@media(max-width:680px){.role-summary-strip{grid-template-columns:1fr;gap:8px}.role-info-rows{grid-template-columns:1fr}.site-footer .footer-social{align-items:flex-start;width:100%}.mohw-partner-block{align-items:flex-start}.mohw-logo-link img{width:220px}}
+@media(prefers-reduced-motion:reduce){.mohw-logo-link{transition:none}}
