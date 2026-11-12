@@ -54,7 +54,7 @@ for(const file of ['wrha-icon-32.png','wrha-icon-192.png','wrha-icon-512.png','w
  const path='assets/app-icons/'+file;
  if(!fs.existsSync(path)){errors.push('Missing WRHA PWA icon '+path);continue;}
  const image=fs.readFileSync(path);
- const size=file==='apple-touch-icon.png'?180:Number(file.match(/-(\\d+)\\.png$/)[1]);
+ const size=file==='apple-touch-icon.png'?180:Number(file.match(/-(\d+)\.png$/)[1]);
  requireCheck(image.subarray(1,4).toString()==='PNG','Not a PNG: '+file);
  requireCheck(image.readUInt32BE(16)===size&&image.readUInt32BE(20)===size,'Icon dimensions wrong '+file);
 }
