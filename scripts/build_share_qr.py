@@ -16,4 +16,11 @@ text=out.read_text(encoding="utf-8")
 root=ET.fromstring(text)
 assert root.tag.endswith("svg") and len(text)>500
 assert "path" in text
-print(f"Created {out}, {len(text)} bytes, {q.modules_count} modules; QR encodes {URL}")
+# Decode the exact QR matrix independently before publication (not a URL-string comparison).
+import cv2
+import numpy as np
+image_png=q.make_image(fill_color="#000000",back_color="#ffffff").convert("RGB")
+data,points,_=cv2.QRCodeDetector().detectAndDecode(cv2.cvtColor(np.asarray(image_png),cv2.COLOR_RGB2BGR))
+if points is None or data!=URL:
+    raise RuntimeError(f"QR scan failed. Expected {URL!r}, decoded {data!r}")
+print(f"Created {out}, {len(text)} bytes, {q.modules_count} modules; scan verified: {data}")
