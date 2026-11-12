@@ -28,7 +28,7 @@ jobs:
         run: npm install --no-save --no-audit --no-fund jsdom@24
       - name: Run in-app PDF reader and existing navigation smoke tests
         run: node smoke.mjs
-      - name: Ensure PDF entries use real document or approved download endpoints
+      - name: Ensure declared PDFs use document URLs
         run: |
           node scripts/export-document-index.mjs
-          node -e "const fs=require('fs');const a=JSON.parse(fs.readFileSync('reports/document-index.json'));const bad=a.filter(d=>d.format==='pdf' && (!d.url.startsWith('https://')||!(/\\.pdf(?:[?#]|$)|\\/download\\//i.test(d.url))));if(bad.length){console.error('Declared PDF entries with non-document-shaped URLs:',bad);process.exit(1)}console.log('All',a.filter(x=>x.format==='pdf').length,'declared PDFs have document-shaped URLs; remote HTTP audit runs separately.')"
+          node scripts/check-document-urls.mjs
