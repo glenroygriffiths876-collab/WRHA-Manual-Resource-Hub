@@ -60,13 +60,30 @@ try{
  await page.locator('#closePdf').click();
  await page.locator('[data-view="roles"]').click();
  await page.locator('#roleSearch').fill('HPC/EH 1');
- assert((await page.locator('#roleCount').textContent()).includes('source-backed'),'Verified role count must be shown');
+ assert((await page.locator('#roleCount').textContent()).includes('source-verified'),'Verified role count must be shown');
+ assert((await page.locator('#rolesGrid').textContent()).includes('Public Health Inspector 1'));
  await page.locator('#rolesGrid [data-role-id]').first().click();
  await page.locator('#roleDialog[open]').waitFor();
- assert((await page.locator('#roleDetailBody').textContent()).includes('Public Health Inspector'),'Official role source missing');
+ assert((await page.locator('#roleDetailBody').textContent()).includes('RHA publication evidence'),'Official RHA role source missing');
  await page.locator('#closeRole').click();
+ // No unverified or related-title-only positions may appear anywhere in the public roles page.
  await page.locator('#roleSearch').fill('Dental Nurse');
- assert((await page.locator('#rolesGrid').textContent()).includes('Dental Nurse'));
+ assert((await page.locator('#roleCount').textContent()).includes('0 source-verified'),'Unverified general Dental Nurse profile must not display');
+ await page.locator('#roleSearch').fill('');
+ await page.locator('#roleAuthority').selectOption('MOHW');
+ await page.locator('#roleSearch').fill('Data Protection Officer');
+ assert((await page.locator('#rolesGrid').textContent()).includes('MOHW central civil-service'));
+ await page.locator('#rolesGrid [data-role-id]').first().click();
+ await page.locator('#roleDialog[open]').waitFor();
+ assert((await page.locator('#roleDetailBody').textContent()).includes('MOFPS Establishment evidence'));
+ assert((await page.locator('#roleDetailBody').textContent()).includes('PDF page'));
+ await page.locator('#closeRole').click();
+ await page.locator('[data-view="manuals"]').click();
+ await page.locator('#manualSearch').fill('Civil Service Establishment (General) Order 2026');
+ await page.locator('#manualGrid [data-read="manual:mofps-civil-establishment-2026"]').click();
+ await page.locator('#pdfDialog[open]').waitFor();
+ assert((await page.locator('#pdfDownload').getAttribute('href')).endsWith('/Civil-Service-Establishment-General-Order-2026.pdf'),'MOFPS 2026 official PDF is not linked');
+ await page.locator('#closePdf').click();
  assert(await page.locator('#mohwPartnerLogo').evaluate(img=>img.complete&&img.naturalWidth>100),'MOHW logo must actually load');
  const phone=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1});
  await phone.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
@@ -77,5 +94,5 @@ try{
  const overflow=await phone.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+2);
  assert(!overflow,'Mobile horizontal overflow detected');
  await phone.screenshot({path:'artifacts/mobile-document-reader.png',fullPage:false});
- console.log('CHROMIUM E2E PASS: direct PDF, modal, legal alternative, roles, mobile layout');
+ console.log('CHROMIUM E2E PASS: manual/legislation reader, MOFPS PDF, only exact verified RHA/MOHW roles, role citations and mobile layout');
 }finally{await browser.close();server.close()}

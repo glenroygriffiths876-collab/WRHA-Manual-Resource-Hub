@@ -23,22 +23,39 @@ A responsive Western Regional Health Authority–branded knowledge-access platfo
 
 **MOHW branding.** The actual Ministry of Health & Wellness logo supplied for the project is saved as `assets/mohw-logo.png` and displayed beneath the four WRHA social icons. The downloaded-from-site method was removed after the official website returned HTTP 403 to the automated runner. This is authentic user-supplied artwork, not an invented icon. Seek confirmation of institutional permission to use the logo in a formally endorsed publication.
 
-**Roles.** The old single count of 229 general functional overviews was misleading. The latest directory contains a **dynamic count of source-backed titles, related-title references and unverified general profiles**. The first evidence pass matched **81 exact RHA title references**, with classification and source links where published. The machine-readable audit is `reports/rha-role-evidence.json`. Sources:
+**Roles — superseded by verified-only rebuild.** The previous 298 broad/related profiles are no longer loaded publicly. The new directory is generated exclusively from official documentary evidence: **81 titles matched exactly in published RHA sources** and **66 unique central MOHW title-grade records found in the 2026 Civil Service Establishment Order**. Historical advertisements are not current vacancies; MOFPS central civil-service establishments are not RHA posts. The source reconciliation reports are `reports/strict-role-source-audit.json` and `reports/mofps-2026-verified-ministry-posts.json`.
 - WRHA vacancy archive: https://www.wrha.gov.jm/vacancy/ (pages 1–6, including archived 2026 advertisements)
 - SRHA regional office qualification listing: https://srha.gov.jm/pdf/HR/Positions-Qualifications.pdf
 - SRHA vacancy advertisements: https://srha.gov.jm/jobs.php
 - NERHA vacancies and recruitment notices: https://www.nerha.gov.jm/vacancies
 - MOFPS establishment publications: https://www.mof.gov.jm/documents/publications/
 
-**Verification limitations:** an old RHA job advert proves publication of that title at the time, not that a vacancy is currently open, its classification applies to all RHAs, or a civil-service establishment list proves a statutory RHA post. For most existing role descriptions, official responsibility and qualification text has **not** yet been transcribed from individual job descriptions. No SERHA primary vacancy/establishment source has been confirmed for this pass; its filter remains available for future verified records. Continue the research before treating the directory as a complete RHA establishment list.
+**Verification limitations:** Every displayed title has a matched primary government source. Qualifications, duties and reporting arrangements are shown only where documented in an official individual job notice. Most have title/grade verification only. No RHA current establishment register is available in the reviewed public sources; official RHA advertisements are not establishment certificates. The MOFPS 2026 document is central government only.
 
 **Testing:** JS and DOM regression, accessible role-detail navigation, and a real Chromium test simulating blocked NCDIP network access (showing the nonblank preview and no automatic download). PDF viewer success is measured by actual rendered PDF.js output; blocked source cases are intentionally distinguished from rendered documents.
+
+## 2026 Establishment Order & strict public-role verification
+
+The original Ministry of Finance and the Public Service document is linked beside Staff Orders under **Administration & Governance**, and also on the Roles page:
+
+**[Civil Service Establishment (General) Order 2026](https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf)** — official publication **April 22, 2026**, 1,541 PDF pages, SHA256 recorded in `reports/mofps-2026-establishment-evidence.json`. This contains central-government establishments; it is not an approved list of statutory RHA posts.
+
+The public role catalogue is generated in `verified-role-public.js` from:
+- `verified-roles.json` and `reports/strict-role-source-audit.json`: **81** exact title matches from original RHA notices and the SRHA formal qualifications PDF. Individual grade codes appear only where found in official context.
+- `reports/mofps-2026-verified-ministry-posts.json`: **66** curated exact Ministry of Health & Wellness title/grade combinations, with central-government post numbers and PDF page locators.
+- `reports/public-role-reconciliation.json`: explicit counts and the rule excluding ALL prior generic and related-title-only entries.
+
+Excluded records remain available for research only in archived `role-evidence.js` and the source audit, and **are not loaded into the live website or included in public counts**. The previous generic role block was removed from `catalog-extra.js`.
+
+**Tier B** = exact title found in published RHA documents, generally a vacancy or qualification listing; this does not prove the post is still established, filled or vacant. **Tier C** = Ministry of Health & Wellness central civil-service post in the 2026 MOFPS Order; cannot be described as an RHA post. The directory does not claim Tier A RHA establishment verification without the relevant approved establishment schedule.
+
+The official MOFPS website lists a separate *Health Establishment* heading, but the reviewed public page does not provide a clearly downloadable health-specific RHA establishment schedule. Further direct confirmation from MOHW/MOFPS/RHA HR is needed for Tier A.
 
 ## Features
 - **Clinical & Public-Health Manuals:** 57 manually catalogued source-linked materials, including HIV/STI/TB, surveillance, NCD, nursing/maternal, immunisation, nutrition, environmental health, pharmacy, administration and additional programmes. Searchable, category-filterable PDF cover gallery and embedded document reader where technically permitted.
 - **Health Legislation:** 30 laws and regulations indexed by topic and type. Direct PDF versions are preferred where source-verified; some entries must link to official Ministry of Justice legal records or index pages.
 - **Health Centres:** 234 source-linked entries across 14 parishes. Region/parish/text search and clickable illustrated parish map. **This is not yet a complete or certified national facility directory.** The green markers represent the number of *catalogued* entries per parish, not verified facility coordinates.
-- **Roles & Functions:** individual healthcare roles grouped into 14 professional/operational areas with core functions, work settings and typical collaborators. These are general educational descriptions, not official job descriptions or proof that every title is an authorised post.
+- **Verified Healthcare Positions & Functions:** 81 exact source-listed RHA titles and 66 MOHW central civil-service title/grade records, separated by verification source. No generic, related or speculative titles are displayed. Exact duties and qualifications appear only if verified from the full individual job advertisement.
 - **Training:** WRHA NCD Adherence Counselling Academy and JASDIS Study Hub only.
 - **Institutional visuals:** WRHA source logo, enlarged/animated header and hero identity, responsive animations, social icons and WRHA/MOHW source links.
 

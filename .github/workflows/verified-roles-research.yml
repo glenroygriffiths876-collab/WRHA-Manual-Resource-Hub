@@ -1,0 +1,57 @@
+name: Audit RHA posts and inspect MOFPS 2026 Order
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: true}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install -q --disable-pip-version-check requests beautifulsoup4 pymupdf
+      - name: Export source-backed candidate titles only
+        run: node scripts/export-role-candidates.mjs
+      - name: Check exact title strings in original RHA publications and create publishable list
+        run: python scripts/verify_rha_titles.py
+      - name: Extract MOFPS 2026 Order and record its health-related pages
+        id: establishment
+        continue-on-error: true
+        run: python scripts/extract_mofps_2026.py
+      - name: Record Order retrieval issues transparently
+        if: steps.establishment.outcome != 'success'
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          path=pathlib.Path('reports/mofps-2026-establishment-evidence.json')
+          if not path.exists():
+              path.write_text(json.dumps({
+                "sourceUrl":"https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf",
+                "retrievalStatus":"UNAVAILABLE_TO_AUTOMATED_RUNNER",
+                "warning":"The PDF must be reviewed before reporting extracted MOFPS establishment posts."
+              },indent=2)+'\n')
+          PY
+      - name: Derive curated exact Ministry job titles with page and post numbers
+        run: node scripts/derive-mofps-positions.mjs
+      - name: Build the public catalogue from verified-only sources
+        run: node scripts/build-verified-public.mjs
+      - name: Save verified title list and source reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/role-source-candidates.json reports/strict-role-source-audit.json reports/mofps-2026-establishment-evidence.json reports/mofps-2026-verified-ministry-posts.json reports/public-role-reconciliation.json verified-roles.json verified-role-public.js
+          if ! git diff --cached --quiet; then
+            git commit -m "Audit individual official RHA titles and inspect MOFPS 2026 Establishment Order"
+            for attempt in 1 2 3; do
+              git fetch origin "$GITHUB_REF_NAME"
+              git rebase "origin/$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then exit 0; fi
+              sleep 3
+            done
+            exit 1
+          fi

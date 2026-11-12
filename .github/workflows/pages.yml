@@ -38,9 +38,24 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Build clean public site (verified roles only; exclude research archives)
+        run: |
+          set -e
+          mkdir -p _site/assets _site/covers
+          cp index.html styles.css enhance.css viewer.css roles-evidence.css \
+             data.js catalog-extra.js document-overrides.js establishment-resource.js \
+             verified-role-public.js app-v2.js viewer.js wrha-logo.webp jamaicaHigh.svg _site/
+          cp assets/mohw-logo.png _site/assets/
+          find covers -maxdepth 1 -name '*.webp' -type f -exec cp {} _site/covers/ \;
+          touch _site/.nojekyll
+          test -f _site/verified-role-public.js
+          if test -e _site/role-evidence.js; then
+            echo "Unverified legacy roles were accidentally included in deployment"
+            exit 1
+          fi
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

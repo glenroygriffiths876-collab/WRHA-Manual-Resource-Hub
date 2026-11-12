@@ -1,7 +1,7 @@
 name: Embedded PDF reader regression tests
 on:
   push:
-    branches: [fix-embedded-pdf-reader-20261112]
+    branches: [fix-embedded-pdf-reader-20261112, verified-roles-and-mofps-establishment]
   pull_request:
     paths:
       - 'index.html'
@@ -9,6 +9,9 @@ on:
       - 'viewer.css'
       - 'document-overrides.js'
       - 'app-v2.js'
+      - 'verified-role-public.js'
+      - 'establishment-resource.js'
+      - 'catalog-extra.js'
       - 'smoke.mjs'
       - 'audit.mjs'
   workflow_dispatch:
