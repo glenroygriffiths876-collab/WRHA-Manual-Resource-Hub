@@ -1,0 +1,46 @@
+name: Generate real document covers
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/covers.yml'
+      - 'scripts/export-covers.mjs'
+      - 'scripts/generate_covers.py'
+      - 'catalog-extra.js'
+permissions:
+  contents: write
+concurrency:
+  group: wrha-covers
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install image and PDF libraries
+        run: python -m pip install --disable-pip-version-check -q requests pillow pymupdf
+      - name: Export catalogue document links
+        run: node scripts/export-covers.mjs
+      - name: Generate first-page WebP thumbnails
+        run: python scripts/generate_covers.py
+      - name: Commit generated cover images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add covers/*.webp
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate genuine PDF first-page cover thumbnails"
+            git push
+          else
+            echo "No new cover images"
+          fi
