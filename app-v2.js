@@ -60,7 +60,7 @@ $('featured').innerHTML=featured.map(d=>docCard(d,'manual')).join('');bindDocume
 let activeManCat='',manItems=[],activeLawCat='';
 const cats=[...new Set(allDocs.map(d=>d.category))].sort();
 $('manualCategory').innerHTML='<option value="">All programme areas</option>'+cats.map(c=>'<option value="'+esc(c)+'">'+esc(c)+'</option>').join('');
-function addPills(anchorId,list,onPick){const anchor=$(anchorId);const p=document.createElement('div');p.className='filter-pills';p.setAttribute('aria-label','Popular category filters');p.innerHTML=['All',...list].map(c=>'<button type="button" data-pill="'+esc(c)+'">'+esc(c)+'</button>').join('');anchor.parentNode.insertBefore(p,anchor.nextSibling);p.querySelectorAll('[data-pill]').forEach(b=>b.addEventListener('click',()=>onPick(b.dataset.pill==='All'?'':b.dataset.pill)));return p;}
+function addPills(anchorId,list,onPick){const anchor=$(anchorId);const p=document.createElement('div');p.className='filter-pills';p.setAttribute('aria-label','Popular category filters');p.innerHTML=['All',...list].map(c=>'<button type="button" data-pill="'+esc(c)+'">'+esc(c)+'</button>').join('');const bar=anchor.closest('.toolbar');bar.parentNode.insertBefore(p,bar.nextSibling);p.querySelectorAll('[data-pill]').forEach(b=>b.addEventListener('click',()=>onPick(b.dataset.pill==='All'?'':b.dataset.pill)));return p;}
 const manPills=addPills('manualSearch',['Communicable Diseases','Non-Communicable Diseases','Environmental Health','Maternal & Child Health','Immunisation','Nutrition & Dietetics','Administration & Governance'],cat=>{$('manualCategory').value=cat;manualLimit=18;filterManuals();});
 function syncPills(container,category){container.querySelectorAll('button').forEach(b=>b.classList.toggle('active',(b.dataset.pill==='All'?'':b.dataset.pill)===category))}
 function filterManuals(){
@@ -83,8 +83,8 @@ const lawPills=addPills('lawSearch',['Public Health','Nursing & Midwifery','Medi
 function filterLaws(){const q=$('lawSearch').value.trim().toLowerCase(),cat=$('lawCategory').value,type=$('lawType').value;
  const list=laws.filter(l=>(!cat||l.category===cat)&&(!type||l.type===type)&&(!q||[l.title,l.category,l.type].join(' ').toLowerCase().includes(q)));
  $('lawCount').textContent=list.length+' legislation records';
- $('lawEmpty').hidden=list.length!==0;$('lawGrid').innerHTML=list.slice(0,lawLimit).map(l=>docCard(l,'law')).join('');$('moreLaws')?.remove();
- if(list.length>lawLimit){const b=document.createElement('button');b.id='moreLaws';b.className='btn btn-primary';b.textContent='Show more legislation ↓';b.addEventListener('click',()=>{lawLimit+=18;filterLaws()});const holder=document.createElement('div');holder.className='load-more-holder';holder.append(b);$('lawGrid').after(holder);}
+ $('lawEmpty').hidden=list.length!==0;$('lawGrid').innerHTML=list.slice(0,lawLimit).map(l=>docCard(l,'law')).join('');document.querySelector('#moreLawsHolder')?.remove();
+ if(list.length>lawLimit){const b=document.createElement('button');b.id='moreLaws';b.className='btn btn-primary';b.textContent='Show more legislation ↓';b.addEventListener('click',()=>{lawLimit+=18;filterLaws()});const holder=document.createElement('div');holder.id='moreLawsHolder';holder.className='load-more-holder';holder.append(b);$('lawGrid').after(holder);}
  syncPills(lawPills,cat);bindDocumentActions($('lawGrid'));
 }
 ['lawSearch','lawCategory','lawType'].forEach(x=>$(x).addEventListener(x==='lawSearch'?'input':'change',()=>{lawLimit=18;filterLaws()}));
