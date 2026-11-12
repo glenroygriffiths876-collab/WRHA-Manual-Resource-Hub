@@ -11,7 +11,7 @@ const elements={
  web:$('pdfWebResource'),webLink:$('pdfWebLink'),page:$('pdfPage'),
  total:$('pdfTotal'),zoom:$('pdfZoom'),search:$('pdfSearch'),
  prev:$('pdfPrevious'),next:$('pdfNext'),find:$('pdfFindButton'),
- fullscreen:$('pdfFullScreen'),source:$('pdfSource'),download:$('pdfDownload')
+ fullscreen:$('pdfFullScreen'),source:$('pdfSource'),download:$('pdfDownload'),legalAlt:$('pdfLegalAlt')
 };
 let current=null,pdf=null,task=null,renderTask=null,currentPage=1,session=0,finding=false,mode='closed',pageCount=0;
 const pdfFileName=(d)=>((d.title||'document').replace(/[^a-z0-9\s_-]+/gi,'').trim().replace(/\s+/g,'_').slice(0,85)||'document')+'.pdf';
@@ -87,6 +87,13 @@ async function loadPdf(d){
   elements.page.max=String(pageCount);updateControls();await render(1);
  }catch(err){
   if(version!==session)return;
+  const problem=String(err?.name||'')+' '+String(err?.message||err);
+  if(/InvalidPDFException|Invalid PDF structure|MissingPDFException|404|not a PDF/i.test(problem)){
+    setMode('web');elements.web.querySelector('h3').textContent='PDF not available';
+    elements.web.querySelector('p').textContent='This source did not provide a readable PDF. Use the publisher link or request a corrected official document link.';
+    elements.webLink.href=current.sourceUrl||url;elements.download.hidden=true;
+    setStatus('A PDF could not be verified; no HTML webpage is being presented as a PDF.');return;
+  }
   const reason=/cors|network|fetch|failed to/i.test(String(err))?
    'The publisher does not permit this browser to fetch PDF data for the enhanced reader. Trying its original PDF in the built-in viewer instead.':
    'The enhanced viewer could not read this PDF. Trying the original PDF in the browser viewer instead.';
@@ -107,7 +114,10 @@ function open(d){
  elements.zoom.value='auto';elements.search.value='';
  $('pdfTitle').textContent=d.title||'Document';
  $('pdfMeta').textContent=[d.publisher,d.year,d.status].filter(Boolean).join(' · ');
- const source=d.sourceUrl||d.url;elements.source.href=source;elements.source.textContent='Publisher / official source ↗';
+ const source=d.sourceUrl||d.url;elements.source.href=source;
+ const isLaw=(window.WRHA_DATA?.legislation||[]).some(l=>l.id===d.id);
+ elements.legalAlt.hidden=!isLaw;
+ if(isLaw)elements.legalAlt.href='https://lipj.gov.jm/';elements.source.textContent='Publisher / official source ↗';
  elements.download.href=d.url;
  let sameOrigin=false;try{sameOrigin=new URL(d.url,location.href).origin===location.origin}catch{}
  const isPDF=d.format!=='page'&&(/\.pdf(?:[?#]|$)/i.test(d.url)||/\/download\/?(?:[?#]|$)/i.test(d.url)||d.format==='pdf');
@@ -119,6 +129,7 @@ function open(d){
  if(!modal.open)modal.showModal();
  $('closePdf').focus();
  if(!isPDF){
+  elements.web.querySelector('h3').textContent='Official web resource';elements.web.querySelector('p').textContent='This entry is a webpage or collection of links, not a verified downloadable PDF. We will not present it as a PDF or invent a download.';
   setMode('web');elements.webLink.href=d.url;setStatus('This record is an official webpage or index, not a verified PDF. No PDF download is shown.');
   updateControls();
  }else{setMode('loading');loadPdf(d);}
