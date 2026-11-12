@@ -1,9 +1,140 @@
 {
-  "verifiedRHA": 81,
-  "acceptedRHA": 81,
-  "verifiedMOHWCentral": 66,
-  "publishedCount": 147,
-  "excludedGeneralProfiles": 207,
-  "excludedRelatedProfiles": 10,
-  "scope": "RHA advertised/listed positions are not current establishment certificates; MOFPS central-government positions remain separate."
+  "checkedOn": "2026-11-12",
+  "prior": {
+    "manuals": 58,
+    "legislation": 30,
+    "publishedRoleRecords": 147,
+    "uniqueRHARoles": 81,
+    "MOHWCentralRoles": 66
+  },
+  "current": {
+    "manuals": 74,
+    "legislation": 30,
+    "uniqueOfficialTitleGradeRecords": 234,
+    "RHAExactVerifiedTitleGradeRecords": 168,
+    "MOHWCentralEstablishedTitleGradeRecords": 66,
+    "preConsolidationOfficialSourceRecords": 239
+  },
+  "verification": "Each public job record has exact title and source; cross-region names are combined when the exact grade matches. Historic RHA advertisements do not establish current filled/approved posts.",
+  "regionEvidencePresent": {
+    "WRHA": 28,
+    "SRHA": 128,
+    "NERHA": 17,
+    "SERHA": 0
+  },
+  "keyNewRoles": [
+    {
+      "title": "Chief Contact Investigator (Regional)",
+      "grade": "HPC/SDI 3",
+      "authorities": [
+        "SRHA",
+        "NERHA"
+      ],
+      "sourceLinks": [
+        "https://www.srha.gov.jm/pdf/HR/Positions-Qualifications.pdf#page=6",
+        "https://www.nerha.gov.jm/pdf/Advert_-_Chief_Contact_Investigator__-_HPC-_SDI_3-_RO_-_2025_JUN_20_-_REVISED.pdf"
+      ]
+    },
+    {
+      "title": "Contact Investigator",
+      "grade": "HPC/SDI 1",
+      "authorities": [
+        "NERHA"
+      ],
+      "sourceLinks": [
+        "https://www.nerha.gov.jm/pdf/Job_Advertisement_-___Contact_Investigator_-_HPC-_SDI_1___-_St_Ann_Health_Department.pdf"
+      ]
+    },
+    {
+      "title": "Contact Investigator",
+      "grade": "HPC/SDI 2",
+      "authorities": [
+        "NERHA"
+      ],
+      "sourceLinks": [
+        "https://www.nerha.gov.jm/pdf/Re-Advert_-Contact_Investigator_2_-_HPC-_SDI_2-_PHD_-_2024_July_12.pdf"
+      ]
+    },
+    {
+      "title": "Senior Contact Investigator",
+      "grade": "HPC/SDI 2",
+      "authorities": [
+        "WRHA"
+      ],
+      "sourceLinks": [
+        "https://www.wrha.gov.jm/wp-content/uploads/2026/03/Advertisement-SJHD-Senior-Contact-Investigator.pdf"
+      ]
+    },
+    {
+      "title": "Dental Surgeon 1",
+      "grade": "HPC/DS 1",
+      "authorities": [
+        "SRHA"
+      ],
+      "sourceLinks": [
+        "https://www.srha.gov.jm/pdf/jobs/Advertisement%20-%20Dental%20Surgeon%201.pdf"
+      ]
+    },
+    {
+      "title": "Community Peer Educator",
+      "grade": "HSC/HS 4",
+      "authorities": [
+        "SRHA",
+        "NERHA"
+      ],
+      "sourceLinks": [
+        "https://www.srha.gov.jm/pdf/jobs/Advertisement%20Community%20Peer%20Educator%20MPW%202025.pdf",
+        "https://www.nerha.gov.jm/pdf/Advert_-_Community_Peer_Educator_SMHD_-_2023_June_08.pdf"
+      ]
+    },
+    {
+      "title": "Health Promotion and Education Officer",
+      "grade": "HPC/HPE 1",
+      "authorities": [
+        "SRHA",
+        "NERHA"
+      ],
+      "sourceLinks": [
+        "https://www.nerha.gov.jm/pdf/Advert_-_Health_Promotion___Education_Officer__SAHD-_2026_APR_14.pdf",
+        "https://www.srha.gov.jm/pdf/jobs/Job%20Advertisement-%20Health%20Promotion%20Education%20Officer%202026.pdf"
+      ]
+    },
+    {
+      "title": "Public Health Nurse 3",
+      "grade": "HPC/RN 5",
+      "authorities": [
+        "NERHA"
+      ],
+      "sourceLinks": [
+        "https://www.nerha.gov.jm/pdf/Job_Advertisement_-Public_Health_Nurse_3_-_PHD.pdf"
+      ]
+    },
+    {
+      "title": "Parish Nutritionist",
+      "grade": "HPC/ND 3",
+      "authorities": [
+        "NERHA"
+      ],
+      "sourceLinks": [
+        "https://www.nerha.gov.jm/pdf/Advertisement_-_Parish_Nutritionist__SAHD_-_2024_May_07.pdf"
+      ]
+    },
+    {
+      "title": "Regional Contact Investigator",
+      "grade": "HPC/SDI 3",
+      "authorities": [
+        "NERHA"
+      ],
+      "sourceLinks": [
+        "https://www.nerha.gov.jm/pdf/Advert_-_Chief_Contact_Investigator__-_HPC-_SDI_3-_RO_-_2025_JUL_22_-_REVISED.pdf"
+      ]
+    }
+  ],
+  "gaps": [
+    "No comprehensive certified establishment schedules for all four RHAs found online",
+    "No independent SERHA-specific vacancy records validated for this expansion",
+    "The 34-page SRHA list concerns regional office posts and does not contain every hospital/parish cadre",
+    "Individual roles without a full job-description advertisement show verified titles and grades, not invented functions"
+  ],
+  "publicationSafety": "All prior speculative titles remain excluded. MOFPS central government roles are not RHA-established posts."
 }
