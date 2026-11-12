@@ -3,12 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#073b86">
+<meta name="theme-color" content="#0750a6">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="WRHA Hub">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="description" content="Western Regional Health Authority Manual & Resource Hub. Browse official MOHW manuals, health-centre directories, healthcare roles and professional training.">
 <meta property="og:title" content="WRHA Manual & Resource Hub">
 <meta property="og:description" content="Trusted knowledge. Better practice. Stronger healthcare.">
 <title>WRHA Manual & Resource Hub | Western Regional Health Authority</title>
-<link rel="icon" type="image/webp" href="./wrha-logo.webp">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/app-icons/wrha-icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./assets/app-icons/wrha-icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/app-icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -18,6 +25,7 @@
 <link rel="stylesheet" href="./viewer.css">
 <link rel="stylesheet" href="./roles-evidence.css">
 <link rel="stylesheet" href="./hub-utilities.css">
+<link rel="stylesheet" href="./pwa-install.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script>
 <script defer src="./data.js"></script>
 <script defer src="./catalog-extra.js"></script>
@@ -27,9 +35,11 @@
 <script defer src="./viewer.js"></script>
 <script defer src="./app-v2.js"></script>
 <script defer src="./hub-utilities.js"></script>
+<script defer src="./pwa-install.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+<div id="hubOfflineBanner" class="hub-offline-banner" role="status" aria-live="polite" hidden>You are offline. Saved hub pages may still open, but official PDF documents and other external resources require internet access.</div>
 <div class="app-shell">
 <header class="topbar">
   <a href="#home" class="brand" aria-label="WRHA Manual and Resource Hub, home" data-view="home">
@@ -124,10 +134,35 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2.6 20h18.8L12 3Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Report issue</span>
     </button>
   </div>
+  <div class="hub-right-actions">
+  <button id="hubInstallFab" class="hub-fab hub-fab-install" type="button" aria-haspopup="dialog" aria-controls="hubInstallDialog" title="Install WRHA Manual & Resource Hub on your device" aria-label="Install WRHA Hub">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 17v4h16v-4"/></svg><span>Install</span>
+  </button>
   <button id="hubShareFab" class="hub-fab hub-fab-share" type="button" aria-haspopup="dialog" aria-controls="hubShareDialog" title="Share this hub by link or QR code" aria-label="Share the WRHA Manual and Resource Hub">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.6 6.8-4.2M8.6 13.4l6.8 4.2"/></svg><span>Share</span>
   </button>
+  </div>
 </div>
+<dialog id="hubInstallDialog" class="hub-utility-dialog hub-install-dialog" aria-labelledby="hubInstallTitle">
+ <div class="hub-dialog-header">
+  <img class="hub-install-logo" src="./wrha-logo.webp" alt="Western Regional Health Authority">
+  <div><span class="hub-eyebrow">WRHA MANUAL & RESOURCE HUB</span><h2 id="hubInstallTitle">Install the Hub</h2></div>
+  <button type="button" class="hub-dialog-x" id="hubCloseInstall" aria-label="Close install instructions">×</button>
+ </div>
+ <p class="hub-dialog-lead" id="hubInstallLead">Add the hub to your home screen for an app-like experience with its own WRHA icon.</p>
+ <div class="hub-install-preview" aria-label="App icon preview">
+  <img src="./assets/app-icons/wrha-icon-192.png" alt="Official WRHA Hub app icon">
+  <div><strong>WRHA Hub</strong><small>Western Regional Health Authority</small></div>
+  <span class="hub-install-mini-label">FREE</span>
+ </div>
+ <div id="hubInstallSteps" class="hub-install-steps" aria-live="polite"></div>
+ <p class="hub-install-hint" id="hubInstallBrowserNote">Your browser controls whether an Install prompt appears.</p>
+ <div class="hub-dialog-actions">
+  <button id="hubInstallNow" type="button" class="hub-primary-action hub-install-now" hidden>Install WRHA Hub</button>
+  <button type="button" class="hub-secondary-action" id="hubInstallDone">Close</button>
+ </div>
+ <div class="hub-install-caveat">No app store, account or payment is required. The hub's public navigation can work with cached content when offline; external manuals, legislation sources and linked training websites still require internet access.</div>
+</dialog>
 <dialog id="hubFeedbackDialog" class="hub-utility-dialog" aria-labelledby="hubFeedbackTitle">
   <form id="hubFeedbackForm">
     <div class="hub-dialog-header"><div class="hub-dialog-emblem" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16v12H9l-5 4V5Z"/><path d="M8 9h8M8 13h6"/></svg></div><div><span class="hub-eyebrow">WRHA RESOURCE HUB</span><h2 id="hubFeedbackTitle">Share feedback</h2></div><button class="hub-dialog-x" type="button" data-hub-close aria-label="Close feedback dialog">×</button></div>
