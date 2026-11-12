@@ -378,5 +378,21 @@ for(const [category,title,type,url,sourceUrl] of additionalLaws){
  D.legislation.push({id:'law-extra-'+D.legislation.length,title,category,type,url,sourceUrl,format:url.endsWith('/download')||url.endsWith('.pdf')?'pdf':'page',publisher:'Ministry of Justice & Constitutional Affairs, Jamaica',status:'Official record located — verify current amendments',description:'Legal instrument relevant to Jamaican health services. Confirm current amendments and subsidiary rules before use.'});
 }
 
+
+/* Additional official first-party PDFs, with historical labels where applicable. */
+const verifiedMore=[
+ {id:'mohw-dental-2020',title:'Guidance to the Dental Team: COVID-19',category:'Dental & Oral Health',year:2020,url:'https://www.moh.gov.jm/wp-content/uploads/2020/04/Oral-Health-Document-What-Members-of-the-Dental-Team-Need-to-Know-About-COVID-19.pdf',sourceUrl:'https://www.moh.gov.jm/coronavirus-disease-covid19/covid-19-resources-and-protocols/',status:'Historical COVID-19 guidance — do not assume current',description:'Public MOHW oral-health IPC guidance for dental teams, issued March 2020.',publisher:'Ministry of Health & Wellness, Jamaica',format:'pdf',local:false},
+ {id:'mohw-me-operations-2009',title:'Jamaica National HIV/STI Programme Monitoring & Evaluation System Operations Manual',category:'Health Information & Digital Systems',year:2009,url:'https://moh.gov.jm/wp-content/uploads/2015/07/Jamaica_NHP_ME_Operations_Manual_Aug_2009.pdf',sourceUrl:'https://moh.gov.jm/wp-content/uploads/2015/07/Jamaica_NHP_ME_Operations_Manual_Aug_2009.pdf',status:'Historical operational manual (2007–2012) — archival',description:'241-page historical monitoring and evaluation manual, useful for programme history rather than current reporting instructions.',publisher:'Ministry of Health, Jamaica',format:'pdf',local:false}
+];
+for(const m of verifiedMore)if(!D.manuals.some(x=>x.id===m.id||x.url===m.url))D.manuals.push(m);
+const pmtct=D.manuals.find(x=>x.id==='local-9');
+if(pmtct){
+ pmtct.title='Guidelines for the Prevention of Vertical Transmission of HIV & Syphilis, Jamaica';
+ pmtct.url='https://hstu.moh.gov.jm/wp-content/uploads/2023/07/Final-PMTCT-Manual.pdf';
+ pmtct.sourceUrl='https://hstu.moh.gov.jm/wp-content/uploads/2023/07/Final-PMTCT-Manual.pdf';
+ pmtct.year=2020;pmtct.publisher='Ministry of Health & Wellness, Jamaica';pmtct.hostedLegacy=false;pmtct.status='MOHW 2020 edition — check latest';
+ pmtct.description='Official 2020 edition hosted on the HSTU website, covering HIV and syphilis prevention of vertical transmission.';
+}
+
 D.updated='2026-11-12';
 })();
