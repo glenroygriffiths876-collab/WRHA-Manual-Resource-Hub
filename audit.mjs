@@ -3,7 +3,7 @@ import fs from 'node:fs';import vm from 'node:vm';import path from 'node:path';
 const read=n=>fs.readFileSync(path.resolve(n),'utf8');const errors=[];
 const requireCheck=(ok,message)=>{if(!ok)errors.push(message)};
 const html=read('index.html'),app=read('app-v2.js'),css=read('enhance.css');
-for(const script of ['viewer.js','app-v2.js','verified-role-public.js','establishment-resource.js','document-overrides.js','catalog-extra.js','data.js'])try{new vm.Script(read(script),{filename:script})}catch(err){errors.push(script+' syntax '+err.message)}
+for(const script of ['hub-utilities.js','viewer.js','app-v2.js','verified-role-public.js','establishment-resource.js','document-overrides.js','catalog-extra.js','data.js'])try{new vm.Script(read(script),{filename:script})}catch(err){errors.push(script+' syntax '+err.message)}
 const window={};vm.runInNewContext(read('data.js')+'\n'+read('catalog-extra.js')+'\n'+read('document-overrides.js')+'\n'+read('establishment-resource.js')+'\n'+read('verified-role-public.js'),{window}, {timeout:15000});
 const D=window.WRHA_DATA;
 requireCheck(D.roleEvidenceCounts?.rha>=75,'RHA verified roles missing');
@@ -14,7 +14,7 @@ const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));
 for(const match of app.matchAll(/\$\('([^']+)'\)/g))requireCheck(ids.has(match[1]),'Missing DOM id: '+match[1]);
 for(const page of ['home','manuals','legislation','facilities','training','roles','about'])requireCheck(html.includes('data-page="'+page+'"'),'Missing '+page+' page');
 for(const page of ['manuals','legislation','facilities','training','roles'])requireCheck(html.includes('data-view="'+page+'"'),'Missing '+page+' nav');
-for(const file of ['wrha-logo.webp','styles.css','enhance.css','data.js','catalog-extra.js','establishment-resource.js','verified-role-public.js','app-v2.js'])requireCheck(fs.existsSync(file),'Missing asset '+file);
+for(const file of ['assets/wrha-hub-share-qr.svg','hub-utilities.css','hub-utilities.js','wrha-logo.webp','styles.css','enhance.css','data.js','catalog-extra.js','establishment-resource.js','verified-role-public.js','app-v2.js'])requireCheck(fs.existsSync(file),'Missing asset '+file);
 requireCheck(D.legislation.length>=20,'Legislation catalogue unexpectedly small');
 requireCheck(roleRows.length>=80,'Verified job directory unexpectedly empty');
 requireCheck(roleRows.length===D.roleEvidenceCounts.total,'Published role count does not reconcile');
@@ -34,6 +34,14 @@ requireCheck(html.includes('mohwPartnerLogo')&&html.includes('assets/mohw-logo.p
 requireCheck(fs.existsSync('assets/mohw-logo.png'),'Supplied MOHW logo not found');
 requireCheck(html.includes('pdfBlockedCover'),'Restricted PDF preview area missing');
 requireCheck(read('viewer.js').includes('function restrictedFallback('),'Restricted access fallback missing');
+const utilities=read('hub-utilities.js');
+requireCheck(utilities.includes("WHATSAPP_NUMBER='18765029756'"),'Feedback issue reporting must use +1 876 502 9756');
+requireCheck(utilities.includes("https://glenroygriffiths876-collab.github.io/WRHA-Manual-Resource-Hub/#home"),'Share must use canonical #home URL');
+for(const feature of ['hubFeedbackFab','hubIssueFab','hubShareFab','hubFeedbackDialog','hubShareDialog','hubPdfReportIssue','hubQrImage','hubWhatsAppFallback'])requireCheck(ids.has(feature),'Missing support/share UI id '+feature);
+requireCheck(html.includes('assets/wrha-hub-share-qr.svg'),'Locally hosted QR image not linked');
+requireCheck(read('assets/wrha-hub-share-qr.svg').includes('<svg'),'Local QR asset not SVG');
+requireCheck(read('hub-utilities.css').includes('@media print'),'Support buttons must be hidden in print');
+requireCheck(read('.github/workflows/pages.yml').includes('hub-utilities.js')&&read('.github/workflows/pages.yml').includes('wrha-hub-share-qr.svg'),'Pages whitelist missing utility assets');
 requireCheck(html.includes('WRHA-NCD-Adherence-Counselling-Academy')&&html.includes('JASDIS-STUDY-HUB'),'Approved learning links missing');
 const report={manuals:D.manuals.length,legislation:D.legislation.length,roles:roleRows.length,roleGroups:D.roleGroups.length,facilityEntries:D.facilities.length,parishes:Object.keys(D.rhaMap).length,errors};
 console.log(JSON.stringify(report,null,2));
