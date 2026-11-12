@@ -1,184 +1,184 @@
 {
-  "auditDateUTC": "2026-11-12T16:10:15.556417+00:00",
+  "auditDateUTC": "2026-11-12T16:17:17.872441+00:00",
   "records": 87,
   "states": {
     "html_page": 5,
-    "network_error": 30,
+    "tls_certificate_error": 30,
     "verified_pdf": 52
   },
   "incorrectPdfEntries": [
     {
       "id": "law-1",
       "title": "The Public Health Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/P/Public%20Health%20Act.pdf",
       "http": null
     },
     {
       "id": "law-3",
       "title": "The Food and Drugs Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/library/statute/the-food-and-drugs-act/download",
       "http": null
     },
     {
       "id": "law-4",
       "title": "The Pharmacy Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/P/Pharmacy%20Act_1.pdf",
       "http": null
     },
     {
       "id": "law-5",
       "title": "The Nurses and Midwives Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/N/Nurses%20and%20Midwives%20Act_1.pdf",
       "http": null
     },
     {
       "id": "law-7",
       "title": "The Mental Health Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/M/Mental%20Health%20Act_1.pdf",
       "http": null
     },
     {
       "id": "law-9",
       "title": "The Data Protection Act, 2020",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/aop/2/7_2020-The%20Data%20Protection%20Act.pdf",
       "http": null
     },
     {
       "id": "law-10",
       "title": "The Access to Information Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/A/The%20Access%20to%20Information%20Act.pdf",
       "http": null
     },
     {
       "id": "law-11",
       "title": "The Electronic Transactions Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/E/The%20Electronic%20Transactions%20Act_update.pdf",
       "http": null
     },
     {
       "id": "law-12",
       "title": "The Dental Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/D/Dental%20Act.pdf",
       "http": null
     },
     {
       "id": "law-13",
       "title": "The National Health Services Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/library/statute/the-national-health-services-act/download",
       "http": null
     },
     {
       "id": "law-15",
       "title": "The Dangerous Drugs Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/D/The%20Dangerous%20Drugs%20Act%20%282%29_0.pdf",
       "http": null
     },
     {
       "id": "law-16",
       "title": "Food and Drugs Regulations, 1975",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/subsids/F/The%20Food%20and%20Drugs%20Act.pdf",
       "http": null
     },
     {
       "id": "law-17",
       "title": "Public Health (Food Handling) Regulations, 1998",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/subsids/P/The%20Public%20Health%20Act_0.pdf",
       "http": null
     },
     {
       "id": "law-18",
       "title": "The Child Care and Protection Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/C/Child%20Care%20and%20Protection%20Act_0.pdf",
       "http": null
     },
     {
       "id": "law-19",
       "title": "The Nursing Homes Registration Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/library/statute/the-nursing-homes-registration-act/download",
       "http": null
     },
     {
       "id": "law-21",
       "title": "The Pesticides Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/P/Pesticides%20Act_1.pdf",
       "http": null
     },
     {
       "id": "law-22",
       "title": "The National Solid Waste Management Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/N/National%20Solid%20Waste%20Management%20Act.pdf",
       "http": null
     },
     {
       "id": "law-24",
       "title": "The Opticians Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/library/statute/the-opticians-act/download",
       "http": null
     },
     {
       "id": "law-25",
       "title": "The Professions Supplementary to Medicine Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/P/Professions%20Supplementary%20to%20Medicine%20Act_1.pdf",
       "http": null
     },
     {
       "id": "law-26",
       "title": "The Coroners Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/C/Coroners%20Act.pdf",
       "http": null
     },
     {
       "id": "law-extra-25",
       "title": "Dental Regulations, 1974",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/subsids/D/Dental%20Act%20LN%20409%20of%2074.pdf",
       "http": null
     },
     {
       "id": "law-extra-26",
       "title": "Pharmacy Regulations, 1975",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/subsids/P/Pharmacy%20Act_0.pdf",
       "http": null
     },
     {
       "id": "law-extra-27",
       "title": "Nursing Homes Registration Regulations, 1934",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/subsids/N/Nursing%20Homes%20Registration%20Act_0.pdf",
       "http": null
     },
     {
       "id": "law-extra-28",
       "title": "The Quarantine Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/library/statute/the-quarantine-act/download",
       "http": null
     },
     {
       "id": "law-extra-29",
       "title": "The Medical Act",
-      "status": "network_error",
+      "status": "tls_certificate_error",
       "url": "https://laws.moj.gov.jm/legislation/statutes/M/Medical%20Act_1.pdf",
       "http": null
     }
@@ -188,19 +188,6 @@
       "id": "expanded-16",
       "title": "Short-Term Volunteer Health Services — Guidance (web)",
       "candidates": [
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "label": "Vision for Health  2019 – 2030",
-          "state": "verified_pdf",
-          "http": 200,
-          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "contentType": "application/pdf",
-          "pdfSignature": true,
-          "cors": "",
-          "xFrameOptions": "",
-          "frameAncestorsRestricted": false,
-          "byteCountHeader": "3145402"
-        },
         {
           "url": "https://www.moh.gov.jm/wp-content/uploads/2024/06/PROFESSIONAL-REGISTRATION-FOR-SHORT-TERM-VOLUNTEERS-updated.pdf",
           "label": "Download the Short Term Volunteer Form",
@@ -213,63 +200,6 @@
           "xFrameOptions": "",
           "frameAncestorsRestricted": false,
           "byteCountHeader": "137646"
-        }
-      ]
-    },
-    {
-      "id": "expanded-19",
-      "title": "MOHW Physical Activity Resources and Guides",
-      "candidates": [
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "label": "Vision for Health  2019 – 2030",
-          "state": "verified_pdf",
-          "http": 200,
-          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "contentType": "application/pdf",
-          "pdfSignature": true,
-          "cors": "",
-          "xFrameOptions": "",
-          "frameAncestorsRestricted": false,
-          "byteCountHeader": "3145402"
-        }
-      ]
-    },
-    {
-      "id": "expanded-21",
-      "title": "MOHW Mental Health Unit Resources",
-      "candidates": [
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "label": "Vision for Health  2019 – 2030",
-          "state": "verified_pdf",
-          "http": 200,
-          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "contentType": "application/pdf",
-          "pdfSignature": true,
-          "cors": "",
-          "xFrameOptions": "",
-          "frameAncestorsRestricted": false,
-          "byteCountHeader": "3145402"
-        }
-      ]
-    },
-    {
-      "id": "expanded-22",
-      "title": "MOHW Environmental Health Unit Guidance",
-      "candidates": [
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "label": "Vision for Health  2019 – 2030",
-          "state": "verified_pdf",
-          "http": 200,
-          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "contentType": "application/pdf",
-          "pdfSignature": true,
-          "cors": "",
-          "xFrameOptions": "",
-          "frameAncestorsRestricted": false,
-          "byteCountHeader": "3145402"
         }
       ]
     }

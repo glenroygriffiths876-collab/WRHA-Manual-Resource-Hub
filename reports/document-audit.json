@@ -1,10 +1,10 @@
 {
-  "auditDateUTC": "2026-11-12T16:10:15.556417+00:00",
+  "auditDateUTC": "2026-11-12T16:17:17.872441+00:00",
   "scope": "All publicly indexed manuals and legislation; remote responses from GitHub Actions",
   "records": 87,
   "summary": {
     "html_page": 5,
-    "network_error": 30,
+    "tls_certificate_error": 30,
     "verified_pdf": 52
   },
   "declaredPdfWithoutVerifiedPdf": [
@@ -35,10 +35,7 @@
     "law-extra-29"
   ],
   "webPagesWithDiscoveredPdf": [
-    "expanded-16",
-    "expanded-19",
-    "expanded-21",
-    "expanded-22"
+    "expanded-16"
   ],
   "limitations": [
     "Verified PDF signature confirms reachable PDF content from audit runner, not CORS, browser iframe permission, legal permission to mirror or latest edition status.",
@@ -1006,19 +1003,6 @@
       },
       "discoveredCandidates": [
         {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "label": "Vision for Health  2019 – 2030",
-          "state": "verified_pdf",
-          "http": 200,
-          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "contentType": "application/pdf",
-          "pdfSignature": true,
-          "cors": "",
-          "xFrameOptions": "",
-          "frameAncestorsRestricted": false,
-          "byteCountHeader": "3145402"
-        },
-        {
           "url": "https://www.moh.gov.jm/wp-content/uploads/2024/06/PROFESSIONAL-REGISTRATION-FOR-SHORT-TERM-VOLUNTEERS-updated.pdf",
           "label": "Download the Short Term Volunteer Form",
           "state": "verified_pdf",
@@ -1091,21 +1075,7 @@
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
-      "discoveredCandidates": [
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "label": "Vision for Health  2019 – 2030",
-          "state": "verified_pdf",
-          "http": 200,
-          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "contentType": "application/pdf",
-          "pdfSignature": true,
-          "cors": "",
-          "xFrameOptions": "",
-          "frameAncestorsRestricted": false,
-          "byteCountHeader": "3145402"
-        }
-      ]
+      "discoveredCandidates": []
     },
     {
       "id": "expanded-20",
@@ -1126,10 +1096,6 @@
         "byteCountHeader": ""
       },
       "discoveredCandidates": [
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "label": "Vision for Health  2019 – 2030"
-        },
         {
           "url": "https://www.moh.gov.jm/wp-content/uploads/2021/02/Interim-COVID-19-Vaccine-Plan.pdf",
           "label": "Interim COVID-19 Vaccine Plan"
@@ -1221,6 +1187,10 @@
         {
           "url": "https://www.moh.gov.jm/wp-content/uploads/2020/10/COVID-19_SurveillanceProtocol_updated-Sept-15-2020_V19.pdf",
           "label": "COVID-19 Surveillance Protocol"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Oral-Health-Document-What-Members-of-the-Dental-Team-Need-to-Know-About-COVID-19.pdf",
+          "label": "Coronxiety the Big Thing? Guidance to the Dental\nTeam"
         }
       ]
     },
@@ -1242,21 +1212,7 @@
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
-      "discoveredCandidates": [
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "label": "Vision for Health  2019 – 2030",
-          "state": "verified_pdf",
-          "http": 200,
-          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "contentType": "application/pdf",
-          "pdfSignature": true,
-          "cors": "",
-          "xFrameOptions": "",
-          "frameAncestorsRestricted": false,
-          "byteCountHeader": "3145402"
-        }
-      ]
+      "discoveredCandidates": []
     },
     {
       "id": "expanded-22",
@@ -1276,21 +1232,7 @@
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
-      "discoveredCandidates": [
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "label": "Vision for Health  2019 – 2030",
-          "state": "verified_pdf",
-          "http": 200,
-          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
-          "contentType": "application/pdf",
-          "pdfSignature": true,
-          "cors": "",
-          "xFrameOptions": "",
-          "frameAncestorsRestricted": false,
-          "byteCountHeader": "3145402"
-        }
-      ]
+      "discoveredCandidates": []
     },
     {
       "id": "mohw-dental-2020",
@@ -1359,7 +1301,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-public-health-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/P/Public%20Health%20Act.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/P/Public%20Health%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai"
       },
@@ -1372,7 +1314,7 @@
       "declaredFormat": "page",
       "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-public-health-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-public-health-act",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/subsidiary-legislation/the-public-health-act (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify"
       },
@@ -1385,7 +1327,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-food-and-drugs-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/library/statute/the-food-and-drugs-act/download",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statute/the-food-and-drugs-act/download (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fail"
       },
@@ -1398,7 +1340,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-pharmacy-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/P/Pharmacy%20Act_1.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/P/Pharmacy%20Act_1.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: "
       },
@@ -1411,7 +1353,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-nurses-and-midwives-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/N/Nurses%20and%20Midwives%20Act_1.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/N/Nurses%20and%20Midwives%20Act_1.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate "
       },
@@ -1424,7 +1366,7 @@
       "declaredFormat": "page",
       "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-nurses-and-midwives-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-nurses-and-midwives-act",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/subsidiary-legislation/the-nurses-and-midwives-act (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate "
       },
@@ -1437,7 +1379,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-mental-health-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/M/Mental%20Health%20Act_1.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/M/Mental%20Health%20Act_1.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify f"
       },
@@ -1450,7 +1392,7 @@
       "declaredFormat": "page",
       "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-mental-health-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-mental-health-act",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/subsidiary-legislation/the-mental-health-act (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify"
       },
@@ -1463,7 +1405,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/act-of-parliament/7-2020-the-data-protection-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/aop/2/7_2020-The%20Data%20Protection%20Act.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/aop/2/7_2020-The%20Data%20Protection%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate "
       },
@@ -1476,7 +1418,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-access-to-information-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/A/The%20Access%20to%20Information%20Act.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/A/The%20Access%20to%20Information%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certif"
       },
@@ -1489,7 +1431,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-electronic-transactions-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/E/The%20Electronic%20Transactions%20Act_update.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/E/The%20Electronic%20Transactions%20Act_update.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED]"
       },
@@ -1502,7 +1444,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-dental-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/D/Dental%20Act.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/D/Dental%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unab"
       },
@@ -1515,7 +1457,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-national-health-services-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/library/statute/the-national-health-services-act/download",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statute/the-national-health-services-act/download (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate v"
       },
@@ -1528,7 +1470,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-dangerous-drugs-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/D/The%20Dangerous%20Drugs%20Act%20%282%29_0.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/D/The%20Dangerous%20Drugs%20Act%20%282%29_0.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] ce"
       },
@@ -1541,7 +1483,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-food-and-drugs-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/subsids/F/The%20Food%20and%20Drugs%20Act.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/subsids/F/The%20Food%20and%20Drugs%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate ve"
       },
@@ -1554,7 +1496,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-public-health-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/subsids/P/The%20Public%20Health%20Act_0.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/subsids/P/The%20Public%20Health%20Act_0.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate ver"
       },
@@ -1567,7 +1509,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-child-care-and-protection-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/C/Child%20Care%20and%20Protection%20Act_0.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/C/Child%20Care%20and%20Protection%20Act_0.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] cert"
       },
@@ -1580,7 +1522,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-nursing-homes-registration-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/library/statute/the-nursing-homes-registration-act/download",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statute/the-nursing-homes-registration-act/download (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate"
       },
@@ -1593,7 +1535,7 @@
       "declaredFormat": "page",
       "sourceUrl": "https://laws.moj.gov.jm/library/statutes/revised",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/library/statutes/revised",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statutes/revised (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local"
       },
@@ -1606,7 +1548,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-pesticides-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/P/Pesticides%20Act_1.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/P/Pesticides%20Act_1.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed"
       },
@@ -1619,7 +1561,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-national-solid-waste-management-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/N/National%20Solid%20Waste%20Management%20Act.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/N/National%20Solid%20Waste%20Management%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] "
       },
@@ -1632,7 +1574,7 @@
       "declaredFormat": "page",
       "sourceUrl": "https://laws.moj.gov.jm/library/statutes/revised",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/library/statutes/revised",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statutes/revised (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local"
       },
@@ -1645,7 +1587,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-opticians-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/library/statute/the-opticians-act/download",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statute/the-opticians-act/download (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: u"
       },
@@ -1658,7 +1600,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-professions-supplementary-to-medicine-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/P/Professions%20Supplementary%20to%20Medicine%20Act_1.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/P/Professions%20Supplementary%20to%20Medicine%20Act_1.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_"
       },
@@ -1671,7 +1613,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-coroners-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/C/Coroners%20Act.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/C/Coroners%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: un"
       },
@@ -1684,7 +1626,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-dental-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/subsids/D/Dental%20Act%20LN%20409%20of%2074.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/subsids/D/Dental%20Act%20LN%20409%20of%2074.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate"
       },
@@ -1697,7 +1639,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-pharmacy-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/subsids/P/Pharmacy%20Act_0.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/subsids/P/Pharmacy%20Act_0.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: u"
       },
@@ -1710,7 +1652,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-nursing-homes-registration-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/subsids/N/Nursing%20Homes%20Registration%20Act_0.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/subsids/N/Nursing%20Homes%20Registration%20Act_0.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certif"
       },
@@ -1723,7 +1665,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-quarantine-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/library/statute/the-quarantine-act/download",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statute/the-quarantine-act/download (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: "
       },
@@ -1736,7 +1678,7 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-medical-act",
       "result": {
-        "state": "network_error",
+        "state": "tls_certificate_error",
         "url": "https://laws.moj.gov.jm/legislation/statutes/M/Medical%20Act_1.pdf",
         "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/M/Medical%20Act_1.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: u"
       },
