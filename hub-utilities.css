@@ -93,3 +93,11 @@ body:has(dialog[open]) .hub-quick-actions{opacity:0;visibility:hidden;pointer-ev
 @media(max-width:400px){.hub-dialog-actions{flex-direction:column}.hub-dialog-actions button{width:100%}.hub-utility-dialog{padding:15px}.hub-dialog-header{gap:8px}.hub-dialog-emblem{width:42px;height:42px;flex-basis:42px}.hub-dialog-header h2{font-size:20px}}
 @media print{.hub-quick-actions,.hub-utility-dialog{display:none!important}}
 @media(prefers-reduced-motion:reduce){.hub-fab,.hub-share-tile{transition:none!important}.hub-fab:hover,.hub-share-tile:hover{transform:none!important}}
+
+/* Context-specific correction links in existing PDF, role and facility detail views. */
+.hub-inline-report{display:inline-flex;margin:0 0 12px;padding:6px 0;color:#a4394a;border:0;border-bottom:1px dashed #c98a98;background:transparent;font-size:11px;font-weight:800;line-height:1.5;cursor:pointer}
+.hub-inline-report:hover{color:#832039}
+.hub-inline-report:focus-visible{outline:3px solid #efaa3d;outline-offset:3px}
+.hub-pdf-report{color:#a4394a!important;border-color:#f1cfda!important;background:#fff7f8!important}
+.site-footer{margin-bottom:76px}
+@media(max-width:740px){.site-footer{margin-bottom:68px}.hub-inline-report{font-size:10.5px}}
