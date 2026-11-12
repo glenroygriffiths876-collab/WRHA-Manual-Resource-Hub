@@ -34,6 +34,22 @@ try{
  assert(/Nutrition at a Glance/i.test(title));
  await page.screenshot({path:'artifacts/desktop-document-reader.png',fullPage:false});
  await page.locator('#closePdf').click();
+ // Simulate NCDIP's missing CORS permission. The reader must never show a blank iframe or start a download.
+ await page.route('https://ncdip.moh.gov.jm/**',route=>route.abort('failed'));
+ await page.locator('#manualSearch').fill('National Screening Guidelines for Priority NCDs in Primary Health Care — 2nd Edition');
+ let autoDownloads=0;
+ page.on('download',()=>{autoDownloads++});
+ await page.locator('[data-read="manual:expanded-12"]').click();
+ await page.locator('#pdfDialog[open]').waitFor();
+ await page.locator('#pdfBlocked:not([hidden])').waitFor({timeout:15000});
+ assert((await page.locator('#pdfBlocked').textContent()).includes('in-page reading restricted'),'Must show clear restriction instead of a blank page');
+ assert(await page.locator('#pdfFrame').isHidden(),'Forbidden auto-loading of external PDF iframe');
+ assert((await page.locator('#pdfBlockedOpen').getAttribute('href')).includes('4283'),'Official PDF link missing');
+ assert((await page.locator('#pdfBlockedCover').getAttribute('src')).includes('covers/expanded-12.webp'),'Real cover thumbnail missing');
+ await page.screenshot({path:'artifacts/pdf-restricted-preview.png'});
+ assert.equal(autoDownloads,0,'Clicking Read PDF must not trigger a browser download');
+ await page.locator('#closePdf').click();
+ await page.locator('#manualSearch').fill('');
  await page.locator('[data-view="legislation"]').click();
  await page.locator('#lawSearch').fill('Medical Act');
  const read=page.locator('#lawGrid [data-read]').first();await read.click();
@@ -43,8 +59,15 @@ try{
  await page.screenshot({path:'artifacts/legislation-reader.png',fullPage:false});
  await page.locator('#closePdf').click();
  await page.locator('[data-view="roles"]').click();
+ await page.locator('#roleSearch').fill('HPC/EH 1');
+ assert((await page.locator('#roleCount').textContent()).includes('source-backed'),'Verified role count must be shown');
+ await page.locator('#rolesGrid [data-role-id]').first().click();
+ await page.locator('#roleDialog[open]').waitFor();
+ assert((await page.locator('#roleDetailBody').textContent()).includes('Public Health Inspector'),'Official role source missing');
+ await page.locator('#closeRole').click();
  await page.locator('#roleSearch').fill('Dental Nurse');
  assert((await page.locator('#rolesGrid').textContent()).includes('Dental Nurse'));
+ assert(await page.locator('#mohwPartnerLogo').evaluate(img=>img.complete&&img.naturalWidth>100),'MOHW logo must actually load');
  const phone=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1});
  await phone.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
  await phone.locator('#menuBtn').click();await phone.locator('[data-view="manuals"]').click();
