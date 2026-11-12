@@ -80,7 +80,7 @@ try{
  await page.locator('#closeRole').click();
  await page.locator('[data-view="manuals"]').click();
  await page.locator('#manualSearch').fill('Civil Service Establishment (General) Order 2026');
- await page.locator('[data-read="manual:mofps-civil-establishment-2026"]').click();
+ await page.locator('#manualGrid [data-read="manual:mofps-civil-establishment-2026"]').click();
  await page.locator('#pdfDialog[open]').waitFor();
  assert((await page.locator('#pdfDownload').getAttribute('href')).endsWith('/Civil-Service-Establishment-General-Order-2026.pdf'),'MOFPS 2026 official PDF is not linked');
  await page.locator('#closePdf').click();
