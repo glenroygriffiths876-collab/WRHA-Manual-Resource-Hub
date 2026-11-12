@@ -21,6 +21,10 @@ jobs:
           node-version: '22'
       - name: Validate application files and catalogues
         run: node audit.mjs
+      - name: Install browserless DOM test dependencies
+        run: npm install --no-save --no-audit --no-fund jsdom@24
+      - name: Exercise navigation, search, law and parish interactions
+        run: node smoke.mjs
   deploy:
     if: github.event_name != 'pull_request'
     needs: validate
