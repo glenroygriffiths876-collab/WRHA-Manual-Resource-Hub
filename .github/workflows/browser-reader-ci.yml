@@ -1,10 +1,13 @@
-name: Browser PDF viewer tests
+name: Browser PDF reader and hub utility tests
 on:
   push:
-    branches: [fix-embedded-pdf-reader-20261112, fix-pdf-visible-roles-evidence-mohw-footer, verified-roles-and-mofps-establishment]
+    branches: [fix-embedded-pdf-reader-20261112, fix-pdf-visible-roles-evidence-mohw-footer, verified-roles-and-mofps-establishment, waps-style-feedback-issue-share]
     paths:
       - 'index.html'
       - 'viewer.js'
+      - 'hub-utilities.js'
+      - 'hub-utilities.css'
+      - 'assets/wrha-hub-share-qr.svg'
       - 'viewer.css'
       - 'role-evidence.js'
       - 'roles-evidence.css'
