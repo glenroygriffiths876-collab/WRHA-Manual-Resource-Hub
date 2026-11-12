@@ -1,13 +1,15 @@
 {
-  "auditDateUTC": "2026-11-12T16:21:15.540368+00:00",
+  "auditDateUTC": "2026-11-12T17:56:17.741556+00:00",
   "scope": "All publicly indexed manuals and legislation; remote responses from GitHub Actions",
-  "records": 87,
+  "records": 88,
   "summary": {
     "html_page": 5,
     "tls_certificate_error": 30,
+    "unsupported_host": 1,
     "verified_pdf": 52
   },
   "declaredPdfWithoutVerifiedPdf": [
+    "mofps-civil-establishment-2026",
     "law-1",
     "law-3",
     "law-4",
@@ -480,6 +482,19 @@
         "xFrameOptions": "",
         "frameAncestorsRestricted": false,
         "byteCountHeader": "369276"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "mofps-civil-establishment-2026",
+      "kind": "manual",
+      "title": "Civil Service Establishment (General) Order 2026",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.mof.gov.jm/documents/publications/",
+      "result": {
+        "state": "unsupported_host",
+        "url": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf",
+        "error": "Host not in approved official-source set"
       },
       "discoveredCandidates": []
     },

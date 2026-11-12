@@ -1,12 +1,20 @@
 {
-  "auditDateUTC": "2026-11-12T16:21:15.540368+00:00",
-  "records": 87,
+  "auditDateUTC": "2026-11-12T17:56:17.741556+00:00",
+  "records": 88,
   "states": {
     "html_page": 5,
     "tls_certificate_error": 30,
+    "unsupported_host": 1,
     "verified_pdf": 52
   },
   "incorrectPdfEntries": [
+    {
+      "id": "mofps-civil-establishment-2026",
+      "title": "Civil Service Establishment (General) Order 2026",
+      "status": "unsupported_host",
+      "url": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf",
+      "http": null
+    },
     {
       "id": "law-1",
       "title": "The Public Health Act",
