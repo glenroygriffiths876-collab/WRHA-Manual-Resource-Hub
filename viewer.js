@@ -8,7 +8,7 @@ const modal=$('pdfDialog');if(!modal)return;
 const elements={
  frame:$('pdfFrame'),scroller:$('pdfCanvasScroll'),surface:$('pdfPageSurface'),canvas:$('pdfCanvas'),
  text:$('pdfTextLayer'),loading:$('pdfLoading'),status:$('pdfStatus'),
- web:$('pdfWebResource'),webLink:$('pdfWebLink'),page:$('pdfPage'),
+ web:$('pdfWebResource'),webLink:$('pdfWebLink'),blocked:$('pdfBlocked'),blockedCover:$('pdfBlockedCover'),blockedOpen:$('pdfBlockedOpen'),blockedPublisher:$('pdfBlockedPublisher'),page:$('pdfPage'),
  total:$('pdfTotal'),zoom:$('pdfZoom'),search:$('pdfSearch'),
  prev:$('pdfPrevious'),next:$('pdfNext'),find:$('pdfFindButton'),
  fullscreen:$('pdfFullScreen'),source:$('pdfSource'),download:$('pdfDownload'),legalAlt:$('pdfLegalAlt')
@@ -16,10 +16,10 @@ const elements={
 let current=null,pdf=null,task=null,renderTask=null,currentPage=1,session=0,finding=false,mode='closed',pageCount=0;
 const pdfFileName=(d)=>((d.title||'document').replace(/[^a-z0-9\s_-]+/gi,'').trim().replace(/\s+/g,'_').slice(0,85)||'document')+'.pdf';
 function setStatus(message){elements.status.textContent=message;}
-function setMode(value){mode=value;elements.scroller.hidden=value!=='pdfjs';elements.frame.hidden=value!=='native';elements.web.hidden=value!=='web';elements.loading.hidden=value!=='loading';const advanced=value==='pdfjs';elements.search.disabled=!advanced;elements.find.disabled=!advanced;elements.prev.disabled=value==='web'||value==='loading';elements.next.disabled=value==='web'||value==='loading';elements.page.disabled=value==='web'||value==='loading';elements.zoom.disabled=value==='web'||value==='loading';}
+function setMode(value){mode=value;elements.scroller.hidden=value!=='pdfjs';elements.frame.hidden=value!=='native';elements.web.hidden=value!=='web';elements.blocked.hidden=value!=='blocked';elements.loading.hidden=value!=='loading';const advanced=value==='pdfjs';const navigable=value==='pdfjs';elements.search.disabled=!advanced;elements.find.disabled=!advanced;elements.prev.disabled=!navigable;elements.next.disabled=!navigable;elements.page.disabled=!navigable;elements.zoom.disabled=!navigable;}
 function fragment(){return '#page='+currentPage+'&zoom='+encodeURIComponent(elements.zoom.value);}
-function destroy(){session++;if(renderTask)try{renderTask.cancel()}catch{}renderTask=null;if(task)try{task.destroy()}catch{}task=null;if(pdf)try{pdf.destroy()}catch{}pdf=null;current=null;pageCount=0;mode='closed';finding=false;elements.frame.src='about:blank';elements.scroller.hidden=true;elements.web.hidden=true;elements.loading.hidden=true;elements.canvas.width=1;elements.canvas.height=1;elements.text.textContent='';}
-function updateControls(){elements.page.value=String(currentPage);elements.total.textContent=pageCount?'/ '+pageCount:'/ —';elements.prev.disabled=mode==='loading'||mode==='web'||currentPage<=1;elements.next.disabled=mode==='loading'||mode==='web'||(pageCount>0&&currentPage>=pageCount);}
+function destroy(){session++;if(renderTask)try{renderTask.cancel()}catch{}renderTask=null;if(task)try{task.destroy()}catch{}task=null;if(pdf)try{pdf.destroy()}catch{}pdf=null;current=null;pageCount=0;mode='closed';finding=false;elements.frame.src='about:blank';elements.scroller.hidden=true;elements.web.hidden=true;elements.blocked.hidden=true;elements.loading.hidden=true;elements.blockedCover.removeAttribute('src');elements.canvas.width=1;elements.canvas.height=1;elements.text.textContent='';}
+function updateControls(){elements.page.value=String(currentPage);elements.total.textContent=pageCount?'/ '+pageCount:'/ —';elements.prev.disabled=mode!=='pdfjs'||currentPage<=1;elements.next.disabled=mode!=='pdfjs'||(pageCount>0&&currentPage>=pageCount);}
 async function render(pageNumber){
  if(!pdf||!current)return;
  const version=session;
@@ -68,16 +68,23 @@ async function render(pageNumber){
   if(e?.name!=='RenderingCancelledException')setStatus('This page could not be rendered. Try a different page or open the original PDF.');
  }
 }
-function nativeFallback(url,reason){
+function restrictedFallback(url,reason){
  if(!current)return;
- setMode('native');
- elements.frame.src=url+fragment();
- setStatus(reason||'Opening this PDF inside the page with the browser viewer. If the publisher blocks embedding, use the original PDF link above. Page/zoom controls may depend on your browser.');
+ // A cross-origin browser iframe can remain blank or trigger Content-Disposition: attachment.
+ // Never load one automatically. Only show a real first-page thumbnail where available.
+ setMode('blocked');elements.blockedOpen.href=url;elements.blockedPublisher.href=current.sourceUrl||url;
+ const img=elements.blockedCover;
+ img.alt='First page of '+(current.title||'the requested PDF');
+ img.hidden=false;
+ img.onerror=()=>{img.hidden=true;const label=img.closest('.reader-blocked-visual')?.querySelector('.reader-preview-label');if(label)label.textContent='First-page preview unavailable';};
+ img.onload=()=>{const label=img.closest('.reader-blocked-visual')?.querySelector('.reader-preview-label');if(label)label.textContent='Verified first-page thumbnail — not the full PDF';};
+ img.src='./covers/'+encodeURIComponent(current.id)+'.webp';
+ setStatus(reason||'Full in-page reading is not available from this publisher. The cover preview and original PDF link are available.');
  updateControls();
 }
 async function loadPdf(d){
  const version=session,url=d.url;
- if(!window.pdfjsLib){nativeFallback(url,'PDF.js is unavailable. Trying the browser’s in-page PDF viewer. If it remains blank, use the PDF source link.');return;}
+ if(!window.pdfjsLib){restrictedFallback(url,'PDF.js is unavailable. Trying the browser’s in-page PDF viewer. If it remains blank, use the PDF source link.');return;}
  try{
   setStatus('Loading the original PDF into the WRHA reader…');
   task=window.pdfjsLib.getDocument({url,withCredentials:false,disableAutoFetch:false,disableStream:false});
@@ -94,17 +101,17 @@ async function loadPdf(d){
     elements.webLink.href=current.sourceUrl||url;elements.download.hidden=true;
     setStatus('A PDF could not be verified; no HTML webpage is being presented as a PDF.');return;
   }
-  const reason=/cors|network|fetch|failed to/i.test(String(err))?
-   'The publisher does not permit this browser to fetch PDF data for the enhanced reader. Trying its original PDF in the built-in viewer instead.':
-   'The enhanced viewer could not read this PDF. Trying the original PDF in the browser viewer instead.';
-  nativeFallback(url,reason);
+  const reason=/cors|network|fetch|failed to/i.test(problem)?
+   'The publisher restricts cross-origin PDF access. We will not open a blank viewer or force an automatic download; use the original PDF link when ready.':
+   'This PDF could not be rendered in the WRHA reader. A first-page preview and original publisher PDF link are available.';
+  restrictedFallback(url,reason);
  }
 }
 function navigate(num){
- if(!current||mode==='web'||mode==='loading')return;
+ if(!current||mode!=='pdfjs')return;
  const p=Math.max(1,Math.min(pageCount||99999,Number(num)||1));
  currentPage=p;
- if(mode==='pdfjs')render(p);else{elements.frame.src=current.url+fragment();updateControls();}
+ if(mode==='pdfjs')render(p);
 }
 function open(d){
  if(!d||!d.url)return;
@@ -158,7 +165,7 @@ elements.prev.addEventListener('click',()=>navigate(currentPage-1));
 elements.next.addEventListener('click',()=>navigate(currentPage+1));
 $('goPdfPage').addEventListener('click',()=>navigate(elements.page.value));
 elements.page.addEventListener('keydown',e=>{if(e.key==='Enter')navigate(elements.page.value)});
-elements.zoom.addEventListener('change',()=>{if(mode==='pdfjs')render(currentPage);else if(mode==='native')navigate(currentPage)});
+elements.zoom.addEventListener('change',()=>{if(mode==='pdfjs')render(currentPage);else if(mode==='blocked')setStatus('Zoom is only available for PDFs rendered within the reader.')});
 elements.find.addEventListener('click',search);
 elements.search.addEventListener('keydown',e=>{if(e.key==='Enter')search()});
 elements.fullscreen.addEventListener('click',async()=>{
