@@ -132,14 +132,56 @@ function openFacility(f){if(!f)return;$('facilityTitle').textContent=f.name;cons
 $('closeFacility').addEventListener('click',()=>$('facilityDialog').close());$('facilityDialog').addEventListener('click',e=>{if(e.target===$('facilityDialog'))$('facilityDialog').close()});
 buildMap();filterFacilities();
 
-$('roleGroup').innerHTML='<option value="">All professional groups</option>'+D.roleGroups.map(g=>'<option value="'+esc(g.name)+'">'+esc(g.name)+'</option>').join('');
-function filterRoles(){const q=$('roleSearch').value.toLowerCase().trim(),grp=$('roleGroup').value,results=[];
- D.roleGroups.forEach(g=>{if(grp&&g.name!==grp)return;g.roles.forEach(r=>{const item=Array.isArray(r)?{title:r[0],summary:r[1],setting:'Service dependent',collaborates:'Multidisciplinary health teams'}:r;if(!q||[item.title,item.summary,item.setting,item.collaborates,g.name].join(' ').toLowerCase().includes(q))results.push({...item,group:g.name,icon:g.icon})})});
- $('roleCount').textContent=results.length+' distinct healthcare roles and functions';
- $('rolesGrid').innerHTML=results.slice(0,roleLimit).map(r=>'<article class="role-card"><span>'+esc(r.icon)+' '+esc(r.group)+'</span><h3>'+esc(r.title)+'</h3><p>'+esc(r.summary)+'</p><div class="role-detail"><b>Setting:</b> '+esc(r.setting)+'<br><b>Works with:</b> '+esc(r.collaborates)+'</div></article>').join('')||'<div class="empty-state">No matching roles found.</div>';
+const roleGroups=D.roleGroups.map(g=>g.name);
+$('roleGroup').innerHTML='<option value="">All professional groups</option>'+roleGroups.map(g=>'<option value="'+esc(g)+'">'+esc(g)+'</option>').join('');
+const roleRows=D.roleGroups.flatMap(g=>g.roles.map(r=>({...r,group:g.name,icon:g.icon})));
+const documentedRoles=roleRows.filter(r=>r.verification==='source-backed-title');
+const relatedRoles=roleRows.filter(r=>r.verification==='related-title-only');
+const generalRoles=roleRows.filter(r=>r.verification==='general-overview-unverified');
+$('roleSummaryStrip').innerHTML='<div><strong>'+documentedRoles.length+'</strong><span>Source-backed RHA titles</span></div><div><strong>'+relatedRoles.length+'</strong><span>Related titles only</span></div><div><strong>'+generalRoles.length+'</strong><span>General functional overviews — not verified titles</span></div>';
+const roleById=new Map(roleRows.map((r,i)=>['role-'+(i+1),r]));
+const verifiedLabel=r=>r.verification==='source-backed-title'?'RHA title documented':r.verification==='related-title-only'?'Related title evidence':'General overview — title not verified';
+function roleBadge(r){return '<span class="role-verified '+(r.verification==='source-backed-title'?'evidenced':'general')+'">'+esc(verifiedLabel(r))+'</span>';}
+function openRole(r){
+ if(!r)return;
+ $('roleTitle').textContent=r.title;
+ const src=r.source||[];
+ const rows=[['Classification',r.classification||'Not verified for this exact title'],
+ ['Role overview',r.summary||'Not available'],
+ ['Typical setting',r.setting||'Not independently confirmed'],
+ ['Works with',r.collaborates||'Not independently confirmed'],
+ ['Evidence status',verifiedLabel(r)]];
+ let content='<div class="role-info-rows">'+rows.map(([label,value])=>'<div class="role-info-row"><span>'+esc(label)+'</span><p>'+esc(value)+'</p></div>').join('')+'</div>';
+ if(r.documentedResponsibilities)content+='<section class="role-proof-section"><h3>Responsibilities reflected in official advertisement</h3><p>'+esc(r.documentedResponsibilities)+'</p></section>';
+ if(r.verifiedQualifications)content+='<section class="role-proof-section"><h3>Qualifications cited in this advertisement</h3><p>'+esc(r.verifiedQualifications)+'</p></section>';
+ if(r.verifiedReportsTo)content+='<section class="role-proof-section"><h3>Reporting relationship cited in this advertisement</h3><p>'+esc(r.verifiedReportsTo)+'</p></section>';
+ if(src.length){
+ content+='<section class="role-proof-section"><h3>Primary RHA documentation</h3><p class="role-source-note">The classification below is associated with the exact source-listed title, not a universal grade for all RHAs.</p>';
+ content+=src.map(e=>'<a class="role-source-link" href="'+esc(e.url)+'" target="_blank" rel="noopener"><strong>'+esc(e.authority)+'</strong> · '+esc(e.sourceTitle)+' '+(e.grade?'('+esc(e.grade)+')':'')+' <span>View original '+esc(e.kind==='qualification-list'?'qualification list':'recruitment source')+' ↗</span></a>').join('')+'</section>';
+ }else if(r.relatedEvidence?.length){
+ content+='<section class="role-proof-section"><h3>Related title — not proof of this exact post</h3><p>A similar or related title appears in published RHA documents. This does not verify the current title or grade of this particular role.</p>'+r.relatedEvidence.map(e=>'<a class="role-source-link" href="'+esc(e.url)+'" target="_blank" rel="noopener">Related '+esc(e.authority)+' source ↗</a>').join('')+'</section>';
+ }else content+='<section class="role-proof-section"><h3>Source still required</h3><p>No exact RHA vacancy or qualification-list record has yet been matched to this title. This description is an educational overview only.</p></section>';
+ content+='<p class="role-disclaimer">Old advertisements may be expired. Qualifications, reporting lines and salary bands should only be used when confirmed in the exact official vacancy or establishment record. MOFPS civil-service establishment orders do not automatically establish RHA posts.</p>';
+ $('roleDetailBody').innerHTML=content;
+ $('roleDialog').showModal();
+}
+function filterRoles(){
+ const q=$('roleSearch').value.trim().toLowerCase(),grp=$('roleGroup').value,auth=$('roleAuthority').value,status=$('roleVerification').value;
+ let results=roleRows.filter(r=>(!grp||r.group===grp)&&(!status||r.verification===status)&&(!auth||(r.source||[]).some(e=>e.authority===auth))&&(!q||[r.title,r.summary,r.classification,r.setting,r.collaborates,r.group,...(r.source||[]).map(e=>e.authority)].join(' ').toLowerCase().includes(q)));
+ const countVerified=results.filter(r=>r.verification==='source-backed-title').length;
+ $('roleCount').textContent=results.length+' profiles matched · '+countVerified+' source-backed titles in these results';
+ $('rolesGrid').innerHTML=results.slice(0,roleLimit).map(r=>{
+  const rid='role-'+(roleRows.indexOf(r)+1);
+  return '<article class="role-card"><span>'+esc(r.icon)+' '+esc(r.group)+'</span><div class="role-card-heading">'+roleBadge(r)+(r.classification?'<span class="role-grade">'+esc(r.classification)+'</span>':'')+'</div><h3>'+esc(r.title)+'</h3><p>'+esc(r.summary||'Function overview not yet available')+'</p><div class="role-detail"><b>Setting:</b> '+esc(r.setting||'Source dependent')+'</div><button type="button" data-role-id="'+esc(rid)+'" class="role-details-btn">View role & evidence ↗</button></article>';
+ }).join('')||'<div class="empty-state">No roles match the current filters.</div>';
+ $('rolesGrid').querySelectorAll('[data-role-id]').forEach(btn=>btn.addEventListener('click',()=>openRole(roleById.get(btn.dataset.roleId))));
  $('moreRoles').hidden=results.length<=roleLimit;
 }
-$('roleSearch').addEventListener('input',()=>{roleLimit=36;filterRoles()});$('roleGroup').addEventListener('change',()=>{roleLimit=36;filterRoles()});$('moreRoles').addEventListener('click',()=>{roleLimit+=36;filterRoles()});filterRoles();
+['roleSearch','roleGroup','roleAuthority','roleVerification'].forEach(id=>$(id).addEventListener(id==='roleSearch'?'input':'change',()=>{roleLimit=36;filterRoles()}));
+$('moreRoles').addEventListener('click',()=>{roleLimit+=36;filterRoles()});
+$('closeRole').addEventListener('click',()=>$('roleDialog').close());
+$('roleDialog').addEventListener('click',e=>{if(e.target===$('roleDialog'))$('roleDialog').close()});
+filterRoles();
 
 setView(location.hash.slice(1)||'home',false);
 })();

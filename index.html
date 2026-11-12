@@ -16,10 +16,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="./enhance.css">
 <link rel="stylesheet" href="./viewer.css">
+<link rel="stylesheet" href="./roles-evidence.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script>
 <script defer src="./data.js"></script>
 <script defer src="./catalog-extra.js"></script>
 <script defer src="./document-overrides.js"></script>
+<script defer src="./role-evidence.js"></script>
 <script defer src="./viewer.js"></script>
 <script defer src="./app-v2.js"></script>
 </head>
@@ -82,15 +84,15 @@
  <div class="training-grid"><article class="training-card"><div class="training-art art-ncd"><div class="art-bubble">✦</div><span>WRHA ACADEMY</span><strong>NCD</strong><div class="art-line"></div><p>Patient-centred care · Better adherence</p></div><div class="training-body"><div class="course-label">WRHA PROFESSIONAL LEARNING</div><h2>WRHA NCD Adherence Counselling Academy</h2><p>Learning experiences supporting NCD adherence counselling, effective patient communication and behaviour-change skills.</p><a class="btn btn-primary" href="https://glenroygriffiths876-collab.github.io/WRHA-NCD-Adherence-Counselling-Academy/#home" target="_blank" rel="noopener">Launch NCD Academy ↗</a></div></article>
  <article class="training-card"><div class="training-art art-study"><div class="art-bubble">▣</div><span>PROFESSIONAL STUDY</span><strong>STUDY HUB</strong><div class="art-line"></div><p>Knowledge · Practice · Progress</p></div><div class="training-body"><div class="course-label">PROFESSIONAL DEVELOPMENT</div><h2>JASDIS Study Hub</h2><p>Interactive study and knowledge reinforcement supporting Contact Investigator education and related professional development.</p><a class="btn btn-primary" href="https://glenroygriffiths876-collab.github.io/JASDIS-STUDY-HUB/index.html?source=pwa-v211" target="_blank" rel="noopener">Launch Study Hub ↗</a></div></article></div>
 </section>
-<section data-page="roles" class="page"><div class="page-heading"><div><span class="eyebrow">OUR HEALTH SYSTEM</span><h1>Departments, roles <em>& functions</em></h1><p>Explore how public-health departments, hospitals, allied disciplines and support teams collaborate to deliver healthcare.</p></div><span class="page-icon">♧</span></div><div class="content-note">Individual healthcare roles and typical functions across the regional health system. These are educational overviews—not certified RHA post titles or official job descriptions.</div><div class="toolbar"><label class="search-box"><span>⌕</span><input type="search" id="roleSearch" placeholder="Search a role or responsibility..." aria-label="Search roles"></label><select id="roleGroup" aria-label="Filter role group"><option value="">All departments</option></select></div><div class="result-heading"><b id="roleCount"></b></div><div id="rolesGrid" class="roles-grid"></div><div class="load-more-holder"><button id="moreRoles" class="btn btn-primary" hidden>Show more roles ↓</button></div></section>
+<section data-page="roles" class="page"><div class="page-heading"><div><span class="eyebrow">OUR HEALTH SYSTEM</span><h1>Departments, roles <em>& functions</em></h1><p>Explore how public-health departments, hospitals, allied disciplines and support teams collaborate to deliver healthcare.</p></div><span class="page-icon">♧</span></div><div class="content-note">Individual healthcare roles and typical functions across the regional health system. The directory distinguishes titles supported by official RHA vacancy notices or qualification lists from general, unverified functional examples. Historical advertisements are not current job openings.</div><div class="toolbar"><label class="search-box"><span>⌕</span><input type="search" id="roleSearch" placeholder="Search job title, classification code or functions..." aria-label="Search roles"></label><select id="roleGroup" aria-label="Filter role group"><option value="">All departments</option></select><select id="roleAuthority" aria-label="Filter RHA source"><option value="">All source authorities</option><option value="WRHA">WRHA</option><option value="SRHA">SRHA</option><option value="NERHA">NERHA</option><option value="SERHA">SERHA</option></select><select id="roleVerification" aria-label="Filter by verification status"><option value="">All role profiles</option><option value="source-backed-title">Documented RHA position</option><option value="related-title-only">Similar title supported</option><option value="general-overview-unverified">General overview (unverified title)</option></select></div><div class="role-summary-strip" id="roleSummaryStrip" aria-live="polite"></div><div class="result-heading"><b id="roleCount"></b></div><div id="rolesGrid" class="roles-grid"></div><div class="load-more-holder"><button id="moreRoles" class="btn btn-primary" hidden>Show more roles ↓</button></div></section>
 <section data-page="about" class="page"><div class="page-heading"><div><span class="eyebrow">ABOUT THIS PROJECT</span><h1>Trusted information. <em>Better practice.</em></h1><p>A practical digital knowledge-access initiative for healthcare workers and other interested users.</p></div><span class="page-icon">ⓘ</span></div><div class="about-grid"><article class="about-main"><h2>What is the WRHA Manual & Resource Hub?</h2><p>The hub brings together publicly accessible national clinical guidelines, health-system policies, professional learning opportunities and source-linked facility information in one organised, searchable interface.</p><p>It is designed with the Western Regional Health Authority's service context in mind while making relevant national MOHW resources easier to find.</p><h3>Our approach</h3><ul><li>Preserve issuing authority and original document attribution.</li><li>Provide embedded reading and source/download options when technically supported.</li><li>Flag incomplete or historically dated material rather than presenting it as verified current guidance.</li><li>Make resources accessible on mobile devices and modest network connections.</li></ul><h3>Important governance note</h3><p>This development preview does not imply institutional approval, clinical endorsement or confirmation of a document's latest status. Refer to the latest officially approved guidance and your organisation's policies.</p></article><aside class="about-aside"><span class="eyebrow">OFFICIAL INFORMATION</span><a href="https://www.wrha.gov.jm/" target="_blank" rel="noopener">WRHA official website ↗</a><a href="https://www.moh.gov.jm/" target="_blank" rel="noopener">MOHW official website ↗</a><a href="https://www.wrha.gov.jm/contact-us/" target="_blank" rel="noopener">WRHA contact information ↗</a><a href="https://www.moh.gov.jm/publications/" target="_blank" rel="noopener">MOHW publications ↗</a><hr><strong>Western Regional Health Authority</strong><p>31B Fairview Shopping Centre, Montego Bay, St. James, Jamaica</p><p>Tel: (876) 630-1860</p></aside></div></section>
 <footer class="site-footer"><div class="footer-identity"><img src="./wrha-logo.webp" alt="" loading="lazy"><div><b>Western Regional Health Authority</b><p>Healthy Families Living in Healthy Communities</p><small>National publications retain their original issuing authorities.</small></div></div><div class="footer-social"><span class="footer-social-label">CONNECT WITH WRHA</span><div class="social-buttons">
 <a class="social-website" href="https://www.wrha.gov.jm/" target="_blank" rel="noopener" aria-label="Official WRHA website" title="WRHA website"><i class="fa-solid fa-globe" aria-hidden="true"></i></a>
-<a class="social-mohw" href="https://www.moh.gov.jm/" target="_blank" rel="noopener" aria-label="Ministry of Health and Wellness website" title="MOHW website"><i class="fa-solid fa-building-columns" aria-hidden="true"></i></a>
+
 <a class="social-facebook" href="https://www.facebook.com/wrhagovjm" target="_blank" rel="noopener" aria-label="WRHA Facebook" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
 <a class="social-instagram" href="https://www.instagram.com/wrhagovjm" target="_blank" rel="noopener" aria-label="WRHA Instagram" title="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
 <a class="social-x" href="https://twitter.com/wrhagovjm" target="_blank" rel="noopener" aria-label="WRHA on X" title="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
-</div></div></footer>
+</div><div class="mohw-partner-block"><span class="footer-social-label">NATIONAL HEALTH PARTNER</span><a class="mohw-logo-link" href="https://www.moh.gov.jm/" target="_blank" rel="noopener" aria-label="Visit Ministry of Health and Wellness Jamaica official website" title="Ministry of Health & Wellness, Jamaica"><img id="mohwPartnerLogo" src="./assets/mohw-logo.png" alt="Ministry of Health & Wellness, Jamaica official logo" loading="lazy"></a><span class="mohw-partner-caption">Official national health guidance and policies</span></div></div></footer>
 <dialog id="pdfDialog" class="pdf-modal" aria-labelledby="pdfTitle">
   <div class="modal-header">
     <div class="modal-heading">
@@ -128,7 +130,21 @@
       </div>
     </div>
     <iframe id="pdfFrame" title="Browser PDF viewer — used when document server blocks PDF.js" loading="lazy" referrerpolicy="no-referrer" hidden></iframe>
-    <div id="pdfWebResource" class="reader-webresource" hidden>
+    <div id="pdfBlocked" class="reader-blocked" hidden role="region" aria-label="External PDF preview and access options">
+  <div class="reader-blocked-visual">
+    <img id="pdfBlockedCover" src="" alt="First-page thumbnail of the requested PDF" loading="eager">
+    <span class="reader-preview-label">Verified first-page thumbnail</span>
+  </div>
+  <div class="reader-blocked-details">
+    <span class="eyebrow">EXTERNAL PDF ACCESS RESTRICTED</span>
+    <h3>PDF available — in-page reading restricted</h3>
+    <p>The publisher's server does not allow this browser to load the complete document into our reader. To avoid a blank screen or an automatic download, we've shown its actual first-page preview instead.</p>
+    <p><strong>This image is only a preview, not the complete manual.</strong> Use the official PDF link if you need to read every page. The publisher may open it or download it depending on your browser.</p>
+    <div class="reader-blocked-actions"><a id="pdfBlockedOpen" class="btn btn-primary" href="#" target="_blank" rel="noopener">Open official PDF ↗</a><a id="pdfBlockedPublisher" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Publisher page ↗</a></div>
+    <p class="reader-permission-note">Full in-hub PDF viewing requires a publisher-permitted embedding option or an authorised local copy.</p>
+  </div>
+</div>
+<div id="pdfWebResource" class="reader-webresource" hidden>
       <div class="reader-web-icon" aria-hidden="true">▤</div>
       <h3>Official web resource</h3>
       <p>This entry is a webpage or collection of links, not a verified downloadable PDF. We will not present it as a PDF or invent a download.</p>
@@ -136,6 +152,14 @@
     </div>
     <div id="pdfStatus" class="pdf-help" role="status" aria-live="polite">View and download the source document without losing your place in the hub.</div>
   </div>
+</dialog>
+<dialog id="roleDialog" class="small-modal role-dialog" aria-labelledby="roleTitle">
+ <div class="small-modal-inner">
+ <button class="modal-close" id="closeRole" aria-label="Close role details">✕</button>
+ <span class="eyebrow">RHA PROFESSIONAL ROLE REFERENCE</span>
+ <h2 id="roleTitle"></h2>
+ <div id="roleDetailBody"></div>
+ </div>
 </dialog>
 <dialog id="facilityDialog" class="small-modal"><div class="small-modal-inner"><button class="modal-close" id="closeFacility" aria-label="Close facility details">✕</button><span class="eyebrow">FACILITY DIRECTORY</span><h2 id="facilityTitle"></h2><div id="facilityDetails"></div></div></dialog>
 </body></html>

@@ -3,9 +3,10 @@ import fs from 'node:fs';import vm from 'node:vm';import path from 'node:path';
 const read=n=>fs.readFileSync(path.resolve(n),'utf8');const errors=[];
 const requireCheck=(ok,message)=>{if(!ok)errors.push(message)};
 const html=read('index.html'),app=read('app-v2.js'),css=read('enhance.css');
-for(const script of ['viewer.js','app-v2.js','document-overrides.js','catalog-extra.js','data.js'])try{new vm.Script(read(script),{filename:script})}catch(err){errors.push(script+' syntax '+err.message)}
-const window={};vm.runInNewContext(read('data.js')+'\n'+read('catalog-extra.js')+'\n'+read('document-overrides.js'),{window}, {timeout:15000});
+for(const script of ['viewer.js','app-v2.js','role-evidence.js','document-overrides.js','catalog-extra.js','data.js'])try{new vm.Script(read(script),{filename:script})}catch(err){errors.push(script+' syntax '+err.message)}
+const window={};vm.runInNewContext(read('data.js')+'\n'+read('catalog-extra.js')+'\n'+read('document-overrides.js')+'\n'+read('role-evidence.js'),{window}, {timeout:15000});
 const D=window.WRHA_DATA;
+requireCheck(D.roleEvidenceCounts?.sourceBacked>=45,'Too few government-source-backed role titles');
 const roleRows=D.roleGroups.flatMap(g=>g.roles.map(r=>({group:g.name,...r})));
 const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));
 for(const match of app.matchAll(/\$\('([^']+)'\)/g))requireCheck(ids.has(match[1]),'Missing DOM id: '+match[1]);
@@ -24,6 +25,10 @@ requireCheck(!/JASON\s*(?:PrEP|Bot)/i.test(html),'JASON UI must not be present')
 requireCheck(css.includes('.parish-badge'),'Missing map-badge design');
 requireCheck(app.includes('pdfjsLib'),'PDF-cover renderer missing');
 requireCheck(html.includes('fa-instagram')&&html.includes('fa-facebook-f'),'Branded social icons missing');
+requireCheck(html.includes('mohwPartnerLogo')&&html.includes('assets/mohw-logo.png'),'Authentic MOHW logo missing');
+requireCheck(fs.existsSync('assets/mohw-logo.png'),'Supplied MOHW logo not found');
+requireCheck(html.includes('pdfBlockedCover'),'Restricted PDF preview area missing');
+requireCheck(read('viewer.js').includes('function restrictedFallback('),'Restricted access fallback missing');
 requireCheck(html.includes('WRHA-NCD-Adherence-Counselling-Academy')&&html.includes('JASDIS-STUDY-HUB'),'Approved learning links missing');
 const report={manuals:D.manuals.length,legislation:D.legislation.length,roles:roleRows.length,roleGroups:D.roleGroups.length,facilityEntries:D.facilities.length,parishes:Object.keys(D.rhaMap).length,errors};
 console.log(JSON.stringify(report,null,2));
