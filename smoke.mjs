@@ -15,7 +15,13 @@ w.eval(fs.readFileSync('data.js','utf8'));
 w.eval(fs.readFileSync('catalog-extra.js','utf8'));
 w.eval(fs.readFileSync('document-overrides.js','utf8'));
 w.eval(fs.readFileSync('establishment-resource.js','utf8'));
+w.eval(fs.readFileSync('deep-manual-sources.js','utf8'));
 w.eval(fs.readFileSync('verified-role-public.js','utf8'));
+w.eval(fs.readFileSync('deep-rha-job-evidence.js','utf8'));
+w.eval(fs.readFileSync('srha-verified-positions.js','utf8'));
+w.eval(fs.readFileSync('cross-region-role-consolidation.js','utf8'));
+assert.equal(w.WRHA_DATA.manuals.length,66);
+assert.equal(w.WRHA_DATA.roleEvidenceCounts.total,234);
 w.eval(fs.readFileSync('viewer.js','utf8'));
 w.eval(fs.readFileSync('app-v2.js','utf8'));
 w.eval(fs.readFileSync('hub-utilities.js','utf8'));
@@ -31,6 +37,7 @@ assert(visible('[data-page="manuals"]').classList.contains('active'));
 assert(d.querySelectorAll('#manualGrid .manual-card').length>0);
 assert(d.querySelector('#manualGrid .doc-cover'));
 const search=visible('#manualSearch');search.value='surveillance';search.dispatchEvent(new w.Event('input',{bubbles:true}));assert(d.getElementById('manualCount').textContent.includes('resource'));
+search.value='Corporate Wellness Manual';search.dispatchEvent(new w.Event('input',{bubbles:true}));assert(d.getElementById('manualGrid').textContent.includes('Corporate Wellness Manual'));
 search.value='';search.dispatchEvent(new w.Event('input',{bubbles:true}));
 click('[data-view="legislation"]');
 assert(visible('[data-page="legislation"]').classList.contains('active'));
@@ -59,7 +66,15 @@ assert.equal(d.getElementById('hubFeedbackType').value,'Incorrect role title or 
 click('#hubFeedbackDialog [data-hub-close]');
 click('#closeRole');
 assert.equal(w.WRHA_DATA.roleEvidenceCounts.unverified,0,'No unverified title allowed');
-assert(w.WRHA_DATA.roleEvidenceCounts.rha>=75&&w.WRHA_DATA.roleEvidenceCounts.civilService>=40);
+assert(w.WRHA_DATA.roleEvidenceCounts.rha>=160&&w.WRHA_DATA.roleEvidenceCounts.civilService===66);
+d.getElementById('roleAuthority').value='';d.getElementById('roleAuthority').dispatchEvent(new w.Event('change',{bubbles:true}));
+for(const title of ['Contact Investigator','Community Peer Educator','Parish Nutritionist']){
+ roleSearch.value=title;roleSearch.dispatchEvent(new w.Event('input',{bubbles:true}));
+ assert(d.getElementById('rolesGrid').textContent.includes(title),'Missing verified role '+title);
+}
+const community=w.WRHA_DATA.roleGroups.flatMap(g=>g.roles).find(r=>r.title==='Community Peer Educator');
+assert(community?.authorities?.includes('SRHA')&&community?.authorities?.includes('NERHA'),'Cross-regional evidence missing for Peer Educator');
+roleSearch.value='';roleSearch.dispatchEvent(new w.Event('input',{bubbles:true}));
 assert(w.WRHA_DATA.manuals.some(x=>x.id==='mofps-civil-establishment-2026'));
 roleSearch.value='Data Protection Officer';roleSearch.dispatchEvent(new w.Event('input',{bubbles:true}));
 d.getElementById('roleAuthority').value='MOHW';d.getElementById('roleAuthority').dispatchEvent(new w.Event('change',{bubbles:true}));
