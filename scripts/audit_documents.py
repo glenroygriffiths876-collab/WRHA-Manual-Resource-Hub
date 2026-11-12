@@ -55,6 +55,8 @@ def classify(url,include_html=False):
            'cors':cors,'xFrameOptions':xfo,'frameAncestorsRestricted':"frame-ancestors 'none'" in csp or "frame-ancestors 'self'" in csp,
            'byteCountHeader':resp.headers.get('Content-Length',''),
            'pageHtml':bytes(chunks).decode('utf-8',errors='replace') if state=='html_page' and include_html else ''}
+ except requests.exceptions.SSLError as e:
+  return {'state':'tls_certificate_error','url':url,'error':str(e)[:240]}
  except requests.RequestException as e:
   return {'state':'network_error','url':url,'error':str(e)[:240]}
 
@@ -62,10 +64,13 @@ def candidates_for_html(page_url,markup):
  if not markup:return []
  soup=BeautifulSoup(markup,'html.parser')
  out=[]
- for a in soup.find_all('a',href=True):
+ # Restrict to the publication body; shared header and footer links are not document candidates.
+ article=soup.select_one('.entry-content, .post-content, article, main') or soup
+ for a in article.find_all('a',href=True):
   href=urljoin(page_url,a['href'])
   if not safe_host(href):continue
   label=a.get_text(' ',strip=True)[:140]
+  if 'vision for health 2019' in label.lower() and 'vision-for-health' not in page_url.lower():continue
   if '.pdf' not in href.lower() and '/download' not in href.lower() and not re.search(r'download.*pdf|full pdf|download document',label,re.I):continue
   if href not in [x['url'] for x in out]:out.append({'url':href,'label':label})
  return out[:24]
