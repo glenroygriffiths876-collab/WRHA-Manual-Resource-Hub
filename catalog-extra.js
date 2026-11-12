@@ -348,5 +348,35 @@ D.roleGroups=groups.map(([name,icon,context,raw])=>{
  const roles=raw.trim().split('\n').map(line=>{const p=line.split('|');return {title:p[0].trim(),summary:p.slice(1).join('|').trim(),setting:context[0],collaborates:context[1],disclaimer:'General functional overview; confirm official post and scope with the relevant authority.'};}).filter(x=>{const k=x.title.toLowerCase();if(seen.has(k))return false;seen.add(k);return true;});
  return {name,icon,roles};
 });
+
+/* Direct legal PDF improvements cross-checked with the Ministry of Justice. */
+const directLawPDFs={
+ 'The Public Health Act':'https://laws.moj.gov.jm/legislation/statutes/P/Public%20Health%20Act.pdf',
+ 'The Pharmacy Act':'https://laws.moj.gov.jm/legislation/statutes/P/Pharmacy%20Act_1.pdf',
+ 'The Dental Act':'https://laws.moj.gov.jm/legislation/statutes/D/Dental%20Act.pdf',
+ 'The Food and Drugs Act':'https://laws.moj.gov.jm/library/statute/the-food-and-drugs-act/download',
+ 'The National Health Services Act':'https://laws.moj.gov.jm/library/statute/the-national-health-services-act/download',
+ 'The Nursing Homes Registration Act':'https://laws.moj.gov.jm/library/statute/the-nursing-homes-registration-act/download'
+};
+D.legislation=D.legislation.filter(l=>l.title!=='The Regional Health Authorities Act');
+for(const law of D.legislation){
+ if(directLawPDFs[law.title]){law.url=directLawPDFs[law.title];law.format='pdf';law.status='Official PDF located — verify amendments';}
+ if(law.title==='The Dental Act')law.sourceUrl='https://laws.moj.gov.jm/library/statute/the-dental-act';
+ if(law.title==='The Nursing Homes Registration Act')law.sourceUrl='https://laws.moj.gov.jm/library/statute/the-nursing-homes-registration-act';
+ if(law.title==='The National Health Services Act')law.sourceUrl='https://laws.moj.gov.jm/library/statute/the-national-health-services-act';
+}
+const additionalLaws=[
+ ['Dental & Allied Professions','Dental Regulations, 1974','Regulations','https://laws.moj.gov.jm/legislation/subsids/D/Dental%20Act%20LN%20409%20of%2074.pdf','https://laws.moj.gov.jm/library/subsidiary-legislation/the-dental-act'],
+ ['Medicines & Pharmacy','Pharmacy Regulations, 1975','Regulations','https://laws.moj.gov.jm/legislation/subsids/P/Pharmacy%20Act_0.pdf','https://laws.moj.gov.jm/library/subsidiary-legislation/the-pharmacy-act'],
+ ['Medicines & Pharmacy','Food and Drugs Regulations, 1975','Regulations','https://laws.moj.gov.jm/legislation/subsids/F/The%20Food%20and%20Drugs%20Act.pdf','https://laws.moj.gov.jm/library/subsidiary-legislation/the-food-and-drugs-act'],
+ ['Institutional Care','Nursing Homes Registration Regulations, 1934','Regulations','https://laws.moj.gov.jm/legislation/subsids/N/Nursing%20Homes%20Registration%20Act_0.pdf','https://laws.moj.gov.jm/library/subsidiary-legislation/the-nursing-homes-registration-act'],
+ ['Public Health','The Quarantine Act','Act','https://laws.moj.gov.jm/library/statute/the-quarantine-act/download','https://laws.moj.gov.jm/library/statute/the-quarantine-act'],
+ ['Medical Practice','The Medical Act','Act','https://laws.moj.gov.jm/library/statute/the-medical-act','https://laws.moj.gov.jm/library/statute/the-medical-act']
+];
+for(const [category,title,type,url,sourceUrl] of additionalLaws){
+ if(D.legislation.some(l=>l.title.toLowerCase()===title.toLowerCase()))continue;
+ D.legislation.push({id:'law-extra-'+D.legislation.length,title,category,type,url,sourceUrl,format:url.endsWith('/download')||url.endsWith('.pdf')?'pdf':'page',publisher:'Ministry of Justice & Constitutional Affairs, Jamaica',status:'Official record located — verify current amendments',description:'Legal instrument relevant to Jamaican health services. Confirm current amendments and subsidiary rules before use.'});
+}
+
 D.updated='2026-11-12';
 })();
