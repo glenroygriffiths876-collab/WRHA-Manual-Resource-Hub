@@ -21,7 +21,7 @@ def download(url):
     if len(resp.content)>23_000_000:raise ValueError("Source exceeds 23 MB limit")
     if resp.content[:4]==b"%PDF":
         doc=fitz.open(stream=resp.content,filetype="pdf")
-        return [{"page":i+1,"text":page.get_text(sort=True)} for i,page in enumerate(doc)]
+        return [{"page":i+1,"text":page.get_text(sort=True),"unsortedText":page.get_text(sort=False),"leftColumnText":page.get_text("text",clip=fitz.Rect(0,0,page.rect.width*.37,page.rect.height),sort=True)} for i,page in enumerate(doc)]
     if "html" in resp.headers.get("content-type","").lower() or b"<html" in resp.content[:500].lower():
         soup=BeautifulSoup(resp.content,"html.parser")
         for t in soup.select("script,style,noscript"):t.decompose()
@@ -43,14 +43,22 @@ for row in candidates:
     title=norm(row["title"])
     hit=None
     for page in src["pages"]:
-        txt=norm(page["text"])
-        # Exact ordered phrase only; no fuzzy matching or synonyms.
-        idx=txt.find(title)
-        if idx<0:continue
+        # In a three-column PDF table the default plain-text order may interleave the
+        # classification column in the middle of a multi-line title. A first-column
+        # crop restores its exact wording without fuzzy/synonym matching.
+        alternatives=[norm(page.get("text","")),norm(page.get("unsortedText","")),norm(page.get("leftColumnText",""))]
+        located=None
+        for text_body in alternatives:
+            idx=text_body.find(title)
+            if idx>=0:
+                located=(text_body,idx)
+                break
+        if located is None:continue
+        txt,idx=located
         original_code=row["classification"]
-        # Grade must be near the exact title, otherwise do NOT claim the grade verified.
-        matched_grade=bool(original_code and norm(original_code) in txt[max(0,idx-210):idx+380])
-        context=txt[max(0,idx-110):idx+min(420,len(title)+320)]
+        # Grade must be adjacent to this row/title in the official text.
+        matched_grade=bool(original_code and norm(original_code) in txt[max(0,idx-250):idx+450])
+        context=txt[max(0,idx-110):idx+min(450,len(title)+350)]
         hit={"page":page["page"],"gradeFound":matched_grade,"context":context}
         break
     if hit is None:
