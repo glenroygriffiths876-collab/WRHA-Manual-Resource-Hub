@@ -1,0 +1,41 @@
+/* WRHA in-app document viewer — page controls, PDF.js canvas, text layer and fallbacks. */
+.pdf-modal{width:min(1320px,98vw);height:min(96vh,1060px);max-height:96vh;display:none}
+.pdf-modal[open]{display:flex;flex-direction:column}
+.pdf-modal .modal-header{flex:0 0 auto}
+.pdf-modal .modal-heading{min-width:0}
+.pdf-modal #pdfTitle{max-width:1100px;overflow-wrap:anywhere}
+.pdf-tools{gap:8px;display:flex;flex-wrap:wrap;align-items:center;min-height:60px}
+.pdf-tools button.viewer-tool{min-width:34px;min-height:36px;border:1px solid #dae6f5;background:#f7fbff;border-radius:8px;color:#174c84;padding:7px 10px;white-space:nowrap;font-weight:800;transition:.2s}
+.pdf-tools button.viewer-tool:hover:not(:disabled){background:#e6f2ff;border-color:#96bfea}
+.pdf-tools button.viewer-tool:disabled{opacity:.38;cursor:not-allowed}
+.pdf-tools input[type=number]{height:36px;width:62px;padding:7px;border:1px solid #cddff0;border-radius:7px}
+.pdf-tools #pdfTotal{font-size:11px;font-weight:700;color:#526b85}
+.pdf-tools select{height:36px;min-width:84px}
+.pdf-tools .pdf-find{display:flex;align-items:center;gap:6px}
+.pdf-tools .pdf-find input{height:36px;width:clamp(110px,11vw,195px);padding:7px 10px;border:1px solid #cddff0;border-radius:8px;outline-offset:2px}
+#pdfSource,#pdfDownload{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:6px 11px;border-radius:8px;font-size:11px;font-weight:800;border:1px solid #c9dbee;white-space:nowrap}
+#pdfSource{background:#f1f7ff;color:#265c93}
+#pdfDownload{color:#fff;background:#0755a5;border-color:#0755a5}
+#pdfDownload[hidden]{display:none}
+#pdfDownload:hover{background:#03417c;text-decoration:none}
+.pdf-frame-wrap{display:flex;min-height:0;flex:1;flex-direction:column;position:relative;overflow:hidden;background:#dce7f2}
+.reader-loading{flex:1;display:grid;place-items:center;padding:40px;text-align:center;color:#276198;font-size:13px}
+.reader-pages{flex:1;overflow:auto;min-height:0;width:100%;padding:24px 14px;scrollbar-gutter:stable;background:#dfe8f2}
+.reader-page-surface{position:relative;margin:0 auto;background:#fff;box-shadow:0 16px 32px #19355230;line-height:1}
+.reader-page-surface canvas{display:block;margin:0 auto}
+.reader-page-surface .textLayer{position:absolute;left:0;top:0;right:0;bottom:0;z-index:2;overflow:hidden;opacity:1;line-height:1}
+.reader-page-surface .textLayer>span{color:transparent;position:absolute;white-space:pre;cursor:text;transform-origin:0% 0%}
+.reader-page-surface .textLayer ::selection{background:rgba(35,132,243,.24);color:transparent}
+.reader-page-surface .textLayer .markedContent{top:0;height:0}
+.pdf-frame-wrap #pdfFrame:not([hidden]){display:block;flex:1;min-height:0;width:100%;height:100%;border:0;background:#fff}
+.pdf-frame-wrap #pdfFrame[hidden],.reader-pages[hidden],.reader-webresource[hidden],.reader-loading[hidden]{display:none!important}
+.reader-webresource{flex:1;max-width:520px;width:100%;margin:auto;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+.reader-web-icon{width:70px;height:70px;border-radius:19px;background:#e9f4ff;color:#064d9d;font-size:33px;display:grid;place-items:center;margin-bottom:16px}
+.reader-webresource h3{margin:0 0 8px;color:#0a396b;font-size:22px}
+.reader-webresource p{font-size:13px;line-height:1.7;color:#59748f}
+.reader-webresource .btn{margin-top:13px}
+.pdf-modal .pdf-help{flex:0 0 auto;background:#eef5fe;border-top:1px solid #cee0f3;padding:10px 14px;font-size:11px;color:#46627e;line-height:1.55}
+.pdf-modal:fullscreen{border-radius:0;width:100vw;height:100vh;max-height:100vh;max-width:100vw}
+@media(max-width:1000px){.pdf-modal{width:100vw;height:98vh;max-height:98vh;border-radius:12px}.pdf-tools{gap:6px;padding:9px 12px}.pdf-tools .pdf-find input{width:120px}.pdf-tools #pdfFullScreen{display:none}}
+@media(max-width:620px){.pdf-modal{width:100vw;height:100dvh;max-height:100dvh;border-radius:0}.pdf-modal .modal-header{padding:9px 13px}.pdf-modal .modal-heading h2{font-size:13px;line-height:1.35}.pdf-modal .modal-heading .eyebrow{font-size:8px}.pdf-modal .modal-heading p{font-size:9px}.pdf-modal .pdf-tools{gap:5px;padding:7px 8px;max-height:155px;overflow-y:auto}.pdf-tools button.viewer-tool{font-size:11px;min-width:29px;min-height:32px;padding:5px 7px}.pdf-tools label{font-size:10px}.pdf-tools select{min-width:79px;height:32px}.pdf-tools .pdf-find input{width:104px;height:32px}.pdf-tools input[type=number]{width:45px;height:32px}.pdf-tools #pdfTotal{font-size:9px}.pdf-tools #pdfSource,.pdf-tools #pdfDownload{font-size:9px;padding:4px 7px;min-height:32px}.reader-pages{padding:12px 6px}.pdf-modal .pdf-help{font-size:10px;padding:8px}}
+@media(prefers-reduced-motion:reduce){.pdf-tools button.viewer-tool{transition:none}}
