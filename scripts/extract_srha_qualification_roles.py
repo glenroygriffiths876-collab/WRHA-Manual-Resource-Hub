@@ -27,17 +27,17 @@ for page_no,page in enumerate(doc):
    matched=m.group(1).replace(' ','')+' '+m.group(2)
    # Find approximate grade position on the line
    anchor=next((w for w in group if re.match(r'^(?:HPC|GMG|SOG|MIS|FMG|LMO|PIDG|JLG|PLG|MCG|HSC|HTAC|OPS)',w[4],re.I)),None)
-   if anchor and page.width*.23 <= anchor[0] <= page.width*.65:
+   if anchor and page.rect.width*.23 <= anchor[0] <= page.rect.width*.65:
     anchors.append((key,matched,anchor[0]))
  # Independently group left-column title words by anchor y, excluding header.
  anchors=sorted(set(anchors))
  for i,(y,grade,x) in enumerate(anchors):
   previous=anchors[i-1][0] if i else 80
-  next_y=anchors[i+1][0] if i+1<len(anchors) else page.height-55
+  next_y=anchors[i+1][0] if i+1<len(anchors) else page.rect.height-55
   # Title spans the beginning of row and may wrap to a second line.
   first=max(previous+6,y-9)
   limit=min(next_y-6,y+35)
-  left=[w for w in words if page.width*.05 <= w[0] <= x-10 and first<=w[1]<=limit and w[1]>75]
+  left=[w for w in words if page.rect.width*.05 <= w[0] <= x-10 and first<=w[1]<=limit and w[1]>75]
   title=' '.join(w[4] for w in sorted(left,key=lambda w:(round(w[1]/4),w[0])))
   title=re.sub(r'\s+',' ',title).strip(' |,.;')
   if len(title)<4 or len(title)>115:continue
