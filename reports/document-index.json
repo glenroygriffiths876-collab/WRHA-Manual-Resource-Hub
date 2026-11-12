@@ -1,0 +1,872 @@
+[
+  {
+    "id": "official-1",
+    "kind": "manual",
+    "title": "National Surveillance Manual for Jamaica — July 2026",
+    "format": "pdf",
+    "category": "Public Health Surveillance",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2026/08/National-Surveillance-Manual-for-Jamaica-July-2026.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/data/27598/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "official-2",
+    "kind": "manual",
+    "title": "Guidelines for the Clinical Management of Type 2 Diabetes in Jamaica",
+    "format": "pdf",
+    "category": "Non-Communicable Diseases",
+    "url": "https://ncdip.moh.gov.jm/download/4259/",
+    "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "official-3",
+    "kind": "manual",
+    "title": "Guidelines for the Clinical Management of Hypertension in Jamaica",
+    "format": "pdf",
+    "category": "Non-Communicable Diseases",
+    "url": "https://ncdip.moh.gov.jm/download/4262/",
+    "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "official-4",
+    "kind": "manual",
+    "title": "Guidelines for the Clinical Management of Asthma in Jamaica — Pocket Guide",
+    "format": "pdf",
+    "category": "Non-Communicable Diseases",
+    "url": "https://ncdip.moh.gov.jm/download/4291/",
+    "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "official-5",
+    "kind": "manual",
+    "title": "Guidelines for the Management of Gender-Based Violence in Health Care Settings",
+    "format": "pdf",
+    "category": "Clinical Care & Hospital Services",
+    "url": "https://ncdip.moh.gov.jm/download/4243/",
+    "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "official-6",
+    "kind": "manual",
+    "title": "Guideline for the Management of Nicotine Use Disorders",
+    "format": "pdf",
+    "category": "Non-Communicable Diseases",
+    "url": "https://ncdip.moh.gov.jm/download/4248/",
+    "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "local-1",
+    "kind": "manual",
+    "title": "Contact Investigator Field Guide",
+    "format": "pdf",
+    "category": "Communicable Diseases",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/CI_Field_Guide_2025.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/CI_Field_Guide_2025.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-2",
+    "kind": "manual",
+    "title": "DHIS2 User Manual",
+    "format": "pdf",
+    "category": "Health Information & Digital Systems",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/DHIS2_User_Manual_May_2026.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/DHIS2_User_Manual_May_2026.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-3",
+    "kind": "manual",
+    "title": "Clinical Management of HIV",
+    "format": "pdf",
+    "category": "Communicable Diseases",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Clinical_Management_2020.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Clinical_Management_2020.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-4",
+    "kind": "manual",
+    "title": "HIV Disclosure Protocol",
+    "format": "pdf",
+    "category": "Communicable Diseases",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Disclosure_Protocol_2021.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Disclosure_Protocol_2021.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-5",
+    "kind": "manual",
+    "title": "Linkage, Retention & Recovery Protocol",
+    "format": "pdf",
+    "category": "Communicable Diseases",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Linkage_Retention_Recovery_Protocol.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Linkage_Retention_Recovery_Protocol.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-6",
+    "kind": "manual",
+    "title": "National Strategic Plan for HIV 2023–2030",
+    "format": "pdf",
+    "category": "Communicable Diseases",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/National_Strategic_Plan_HIV_2023_2030.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/National_Strategic_Plan_HIV_2023_2030.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-7",
+    "kind": "manual",
+    "title": "Provider-Initiated Testing & Counselling: Facilitator Manual",
+    "format": "pdf",
+    "category": "Health Promotion",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PITC_Facilitator_Manual.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PITC_Facilitator_Manual.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-8",
+    "kind": "manual",
+    "title": "Provider-Initiated Testing & Counselling: Participant Manual",
+    "format": "pdf",
+    "category": "Health Promotion",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PITC_Participant_Manual.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PITC_Participant_Manual.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-9",
+    "kind": "manual",
+    "title": "Guidelines for the Prevention of Vertical Transmission of HIV & Syphilis, Jamaica",
+    "format": "pdf",
+    "category": "Maternal & Child Health",
+    "url": "https://hstu.moh.gov.jm/wp-content/uploads/2023/07/Final-PMTCT-Manual.pdf",
+    "sourceUrl": "https://hstu.moh.gov.jm/wp-content/uploads/2023/07/Final-PMTCT-Manual.pdf",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "local-10",
+    "kind": "manual",
+    "title": "Paediatric and Adolescent HIV Guidance",
+    "format": "pdf",
+    "category": "Maternal & Child Health",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Paediatric_Adolescent_HIV_2021.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Paediatric_Adolescent_HIV_2021.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-11",
+    "kind": "manual",
+    "title": "Referral and Transfer of Patients Manual",
+    "format": "pdf",
+    "category": "Clinical Care & Hospital Services",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Patient_Referral_Transfer_Manual_2016.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Patient_Referral_Transfer_Manual_2016.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-12",
+    "kind": "manual",
+    "title": "PrEP Handbook",
+    "format": "pdf",
+    "category": "Communicable Diseases",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PrEP_Handbook_2023.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PrEP_Handbook_2023.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-13",
+    "kind": "manual",
+    "title": "PrEP Implementation Guide",
+    "format": "pdf",
+    "category": "Communicable Diseases",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PrEP_Implementation_Guide_2025.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PrEP_Implementation_Guide_2025.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-14",
+    "kind": "manual",
+    "title": "STI Case Management",
+    "format": "pdf",
+    "category": "Communicable Diseases",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/STI_Case_Management_2020.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/STI_Case_Management_2020.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-15",
+    "kind": "manual",
+    "title": "STI Syndromes Handbook — Repository Copy",
+    "format": "pdf",
+    "category": "Communicable Diseases",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/STI_Handbook_2026.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/STI_Handbook_2026.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-16",
+    "kind": "manual",
+    "title": "Staff Orders for the Public Service",
+    "format": "pdf",
+    "category": "Administration & Governance",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Staff_Orders_for_Public_Service.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Staff_Orders_for_Public_Service.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-17",
+    "kind": "manual",
+    "title": "Tuberculosis Guidelines",
+    "format": "pdf",
+    "category": "Communicable Diseases",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/TB_Guidelines_2021.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/TB_Guidelines_2021.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "local-18",
+    "kind": "manual",
+    "title": "TSIS2 User Guide",
+    "format": "pdf",
+    "category": "Health Information & Digital Systems",
+    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/TSIS2_User_Guide_2026.pdf",
+    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/TSIS2_User_Guide_2026.pdf",
+    "publisher": "Repository copy — issuing authority to verify"
+  },
+  {
+    "id": "mohw-extended-1",
+    "kind": "manual",
+    "title": "Expanded Programme on Immunization Field Guide for Health Workers, Vol. 1: Vaccine Administration and Programme Management",
+    "format": "pdf",
+    "category": "Immunisation",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2025/05/EPI-Field-Guide-For-Health-Workers-Volume-1-Vaccine-Administration-and-Programme-Management-Jan-2024.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "mohw-extended-2",
+    "kind": "manual",
+    "title": "Expanded Programme on Immunization Field Guide for Health Workers, Vol. 2: Cold Chain and Vaccine Logistics Management",
+    "format": "pdf",
+    "category": "Immunisation",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2024/10/EPI-Field-Guide-For-Health-Workers-Vol-2-Cold-Chain-and-Vaccine-Logistics-Management-Nov2023.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "mohw-extended-3",
+    "kind": "manual",
+    "title": "Expanded Programme on Immunization Field Guide for Health Workers, Vol. 3: Surveillance of ESAVIs and VPDs",
+    "format": "pdf",
+    "category": "Immunisation",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2025/05/Expanded-Programme-on-Immunization-Field-Guide-for-Health-Workers-Volume-3-Surveillance-of-ESAVIs-and-VPDs.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "mohw-extended-4",
+    "kind": "manual",
+    "title": "Protocol for the Nutritional Management of Non-Communicable Diseases in Jamaica",
+    "format": "pdf",
+    "category": "Nutrition & Dietetics",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Protocol-for-the-Nutritional-Management-of-Non-communicable-Diseases-in-Jamaica.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "mohw-extended-5",
+    "kind": "manual",
+    "title": "Postpartum Haemorrhage Management Protocol",
+    "format": "pdf",
+    "category": "Maternal & Child Health",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2021/08/MOHW-PPH-Management-Protocol-Final-for-circulation.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "mohw-extended-6",
+    "kind": "manual",
+    "title": "National Screening Guidelines for Priority Non-Communicable Diseases in Primary Health Care",
+    "format": "pdf",
+    "category": "Non-Communicable Diseases",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2021/03/National-Screening-Guidelines-for-Priority-Non-Communicable-Diseases-NCDs-in-Primary-Health-Care.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "mohw-extended-7",
+    "kind": "manual",
+    "title": "Management of Interpersonal Violence: Procedures for Healthcare Workers",
+    "format": "pdf",
+    "category": "Clinical Care & Hospital Services",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2022/12/Management-of-Interpersonal-Violence-Procedures-for-Healthcare-Workers-2022.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "mohw-extended-8",
+    "kind": "manual",
+    "title": "List of Vital, Essential and Necessary Drugs and Medical Sundries for Public Health Institutions",
+    "format": "pdf",
+    "category": "Pharmacy & Medicines",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2024/09/Ven-List-Book-2020.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-1",
+    "kind": "manual",
+    "title": "Guide for the Promotion of Healthy Eating in Workplaces",
+    "format": "pdf",
+    "category": "Nutrition & Dietetics",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/07/Guide-for-the-Promotion-of-Healthy-Eating-in-Workplaces.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-2",
+    "kind": "manual",
+    "title": "Interim Guidelines for Beverages in Schools",
+    "format": "pdf",
+    "category": "Nutrition & Dietetics",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/07/Interim-Guidelines-For-Beverages-In-Schools.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-3",
+    "kind": "manual",
+    "title": "Guidelines for the Importation of Human Remains into Jamaica",
+    "format": "pdf",
+    "category": "Clinical Care & Hospital Services",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/07/MOHW-Guidelines-for-the-importation-of-Human-Remains.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-4",
+    "kind": "manual",
+    "title": "Tool for Assessing the Nutrition Environment in Workplaces",
+    "format": "pdf",
+    "category": "Nutrition & Dietetics",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/07/Tool-for-Assessing-the-Nutrition-Environment-in-Workplaces.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-5",
+    "kind": "manual",
+    "title": "Infection Prevention and Control Guidelines for 2019-nCoV in Healthcare Settings",
+    "format": "pdf",
+    "category": "Infection Prevention & Control",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/IPC-Guidelines-for-COVID-19.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-6",
+    "kind": "manual",
+    "title": "SOP: Inspection of Healthcare Facilities and Nursing Homes",
+    "format": "pdf",
+    "category": "Environmental Health",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/SOP_Environmental-Health-InspectionsAssessments_HCF_NHs_2.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/technical-services-division/environment-health-unit/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-7",
+    "kind": "manual",
+    "title": "Environmental Health Guidance for Employers — COVID-19 Interim",
+    "format": "pdf",
+    "category": "Environmental Health",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/09/EH-Guidance-for-Employers-MOHWSep-2020.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/technical-services-division/environment-health-unit/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-8",
+    "kind": "manual",
+    "title": "Infection Prevention and Control Guidance for Public Establishments",
+    "format": "pdf",
+    "category": "Infection Prevention & Control",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/IPC-Guidance-for-Public-Establishments-_COVID-19-FINAL-.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-9",
+    "kind": "manual",
+    "title": "Guideline for the Management of Pregnancy During the COVID-19 Pandemic",
+    "format": "pdf",
+    "category": "Maternal & Child Health",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Guideline-for-the-Management-of-Pregnancy-During-the-COVID-19-Pandemic.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-10",
+    "kind": "manual",
+    "title": "MOHW Register of Guidelines, Manuals, Policies and Protocols — 2022",
+    "format": "pdf",
+    "category": "Administration & Governance",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2023/05/Register-Guidelines-Manual-Policies-and-Protocols-MOHW-2022.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/policy-procedure/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-11",
+    "kind": "manual",
+    "title": "Standard Operating Procedure for Writing an Exercise Prescription",
+    "format": "pdf",
+    "category": "Non-Communicable Diseases",
+    "url": "https://ncdip.moh.gov.jm/download/4297/",
+    "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-12",
+    "kind": "manual",
+    "title": "National Screening Guidelines for Priority NCDs in Primary Health Care — 2nd Edition",
+    "format": "pdf",
+    "category": "Non-Communicable Diseases",
+    "url": "https://ncdip.moh.gov.jm/download/4283/",
+    "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-13",
+    "kind": "manual",
+    "title": "National Screening Guidelines for Priority NCDs — Pocket Guide",
+    "format": "pdf",
+    "category": "Non-Communicable Diseases",
+    "url": "https://ncdip.moh.gov.jm/download/4288/",
+    "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-14",
+    "kind": "manual",
+    "title": "Physical Activity Bible — Ministry of Health & Wellness",
+    "format": "pdf",
+    "category": "Health Promotion",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/11/Physical-Activity-Bible.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/edu-resources/physical-activity-bible/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-15",
+    "kind": "manual",
+    "title": "Guidelines for the Conduct of Research on Human Subjects",
+    "format": "pdf",
+    "category": "Public Health Research",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2015/07/Guidelines-for-the-Conduct-of-Research.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/guidelines/guidelines-for-the-conduct-of-research-on-human-subjects/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-16",
+    "kind": "manual",
+    "title": "Short-Term Volunteer Health Services — Guidance (web)",
+    "format": "page",
+    "category": "Clinical Care & Hospital Services",
+    "url": "https://www.moh.gov.jm/guidelines/guidelines-for-short-term-volunteer-health-services/",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-17",
+    "kind": "manual",
+    "title": "National Health Research Agenda — Jamaica 2024–2028",
+    "format": "pdf",
+    "category": "Public Health Research",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2026/09/Health-Research-Priority-Setting-Methodology-and-Report-Sept-25_.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/data/national-health-research-agenda-jamaica-2024-2028/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-18",
+    "kind": "manual",
+    "title": "Nutrition at a Glance — Jamaica 2024",
+    "format": "pdf",
+    "category": "Nutrition & Dietetics",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2025/02/Nutrition-at-a-Glance-2024.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/data/nutrition-at-a-glance-2024/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-19",
+    "kind": "manual",
+    "title": "MOHW Physical Activity Resources and Guides",
+    "format": "page",
+    "category": "Health Promotion",
+    "url": "https://www.moh.gov.jm/physical-activity/",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-20",
+    "kind": "manual",
+    "title": "COVID-19 Resources and Protocols Archive",
+    "format": "page",
+    "category": "Communicable Diseases",
+    "url": "https://www.moh.gov.jm/coronavirus-disease-covid19/covid-19-resources-and-protocols/",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-21",
+    "kind": "manual",
+    "title": "MOHW Mental Health Unit Resources",
+    "format": "page",
+    "category": "Mental Health",
+    "url": "https://www.moh.gov.jm/mental-health-unit/",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "expanded-22",
+    "kind": "manual",
+    "title": "MOHW Environmental Health Unit Guidance",
+    "format": "page",
+    "category": "Environmental Health",
+    "url": "https://www.moh.gov.jm/technical-services-division/environment-health-unit/",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "mohw-dental-2020",
+    "kind": "manual",
+    "title": "Guidance to the Dental Team: COVID-19",
+    "format": "pdf",
+    "category": "Dental & Oral Health",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Oral-Health-Document-What-Members-of-the-Dental-Team-Need-to-Know-About-COVID-19.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/coronavirus-disease-covid19/covid-19-resources-and-protocols/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "mohw-me-operations-2009",
+    "kind": "manual",
+    "title": "Jamaica National HIV/STI Programme Monitoring & Evaluation System Operations Manual",
+    "format": "pdf",
+    "category": "Health Information & Digital Systems",
+    "url": "https://moh.gov.jm/wp-content/uploads/2015/07/Jamaica_NHP_ME_Operations_Manual_Aug_2009.pdf",
+    "sourceUrl": "https://moh.gov.jm/wp-content/uploads/2015/07/Jamaica_NHP_ME_Operations_Manual_Aug_2009.pdf",
+    "publisher": "Ministry of Health, Jamaica"
+  },
+  {
+    "id": "form-volunteer-2024",
+    "kind": "manual",
+    "title": "Professional Registration for Short-Term Volunteers — Form",
+    "format": "pdf",
+    "category": "Clinical Care & Hospital Services",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2024/06/PROFESSIONAL-REGISTRATION-FOR-SHORT-TERM-VOLUNTEERS-updated.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/guidelines/guidelines-for-short-term-volunteer-health-services/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "law-1",
+    "kind": "legislation",
+    "title": "The Public Health Act",
+    "format": "pdf",
+    "category": "Public Health",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/P/Public%20Health%20Act.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-public-health-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-2",
+    "kind": "legislation",
+    "title": "Public Health Act — Subsidiary Legislation",
+    "format": "page",
+    "category": "Public Health",
+    "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-public-health-act",
+    "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-public-health-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-3",
+    "kind": "legislation",
+    "title": "The Food and Drugs Act",
+    "format": "pdf",
+    "category": "Medicines & Pharmacy",
+    "url": "https://laws.moj.gov.jm/library/statute/the-food-and-drugs-act/download",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-food-and-drugs-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-4",
+    "kind": "legislation",
+    "title": "The Pharmacy Act",
+    "format": "pdf",
+    "category": "Medicines & Pharmacy",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/P/Pharmacy%20Act_1.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-pharmacy-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-5",
+    "kind": "legislation",
+    "title": "The Nurses and Midwives Act",
+    "format": "pdf",
+    "category": "Nursing & Midwifery",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/N/Nurses%20and%20Midwives%20Act_1.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-nurses-and-midwives-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-6",
+    "kind": "legislation",
+    "title": "Nurses and Midwives Act — Subsidiary Legislation",
+    "format": "page",
+    "category": "Nursing & Midwifery",
+    "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-nurses-and-midwives-act",
+    "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-nurses-and-midwives-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-7",
+    "kind": "legislation",
+    "title": "The Mental Health Act",
+    "format": "pdf",
+    "category": "Mental Health",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/M/Mental%20Health%20Act_1.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-mental-health-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-8",
+    "kind": "legislation",
+    "title": "Mental Health Act — Subsidiary Legislation",
+    "format": "page",
+    "category": "Mental Health",
+    "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-mental-health-act",
+    "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-mental-health-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-9",
+    "kind": "legislation",
+    "title": "The Data Protection Act, 2020",
+    "format": "pdf",
+    "category": "Health Information",
+    "url": "https://laws.moj.gov.jm/legislation/aop/2/7_2020-The%20Data%20Protection%20Act.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/act-of-parliament/7-2020-the-data-protection-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-10",
+    "kind": "legislation",
+    "title": "The Access to Information Act",
+    "format": "pdf",
+    "category": "Health Information",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/A/The%20Access%20to%20Information%20Act.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-access-to-information-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-11",
+    "kind": "legislation",
+    "title": "The Electronic Transactions Act",
+    "format": "pdf",
+    "category": "Health Information",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/E/The%20Electronic%20Transactions%20Act_update.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-electronic-transactions-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-12",
+    "kind": "legislation",
+    "title": "The Dental Act",
+    "format": "pdf",
+    "category": "Dental & Allied Professions",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/D/Dental%20Act.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-dental-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-13",
+    "kind": "legislation",
+    "title": "The National Health Services Act",
+    "format": "pdf",
+    "category": "Public Health",
+    "url": "https://laws.moj.gov.jm/library/statute/the-national-health-services-act/download",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-national-health-services-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-15",
+    "kind": "legislation",
+    "title": "The Dangerous Drugs Act",
+    "format": "pdf",
+    "category": "Medicines & Pharmacy",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/D/The%20Dangerous%20Drugs%20Act%20%282%29_0.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-dangerous-drugs-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-16",
+    "kind": "legislation",
+    "title": "Food and Drugs Regulations, 1975",
+    "format": "pdf",
+    "category": "Medicines & Pharmacy",
+    "url": "https://laws.moj.gov.jm/legislation/subsids/F/The%20Food%20and%20Drugs%20Act.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-food-and-drugs-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-17",
+    "kind": "legislation",
+    "title": "Public Health (Food Handling) Regulations, 1998",
+    "format": "pdf",
+    "category": "Public Health",
+    "url": "https://laws.moj.gov.jm/legislation/subsids/P/The%20Public%20Health%20Act_0.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-public-health-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-18",
+    "kind": "legislation",
+    "title": "The Child Care and Protection Act",
+    "format": "pdf",
+    "category": "Children & Safeguarding",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/C/Child%20Care%20and%20Protection%20Act_0.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-child-care-and-protection-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-19",
+    "kind": "legislation",
+    "title": "The Nursing Homes Registration Act",
+    "format": "pdf",
+    "category": "Institutional Care",
+    "url": "https://laws.moj.gov.jm/library/statute/the-nursing-homes-registration-act/download",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-nursing-homes-registration-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-20",
+    "kind": "legislation",
+    "title": "The Food Storage and Prevention of Infestation Act",
+    "format": "page",
+    "category": "Environmental Health",
+    "url": "https://laws.moj.gov.jm/library/statutes/revised",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statutes/revised",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-21",
+    "kind": "legislation",
+    "title": "The Pesticides Act",
+    "format": "pdf",
+    "category": "Environmental Health",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/P/Pesticides%20Act_1.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-pesticides-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-22",
+    "kind": "legislation",
+    "title": "The National Solid Waste Management Act",
+    "format": "pdf",
+    "category": "Environmental Health",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/N/National%20Solid%20Waste%20Management%20Act.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-national-solid-waste-management-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-23",
+    "kind": "legislation",
+    "title": "The Natural Resources Conservation Authority Act",
+    "format": "page",
+    "category": "Environmental Health",
+    "url": "https://laws.moj.gov.jm/library/statutes/revised",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statutes/revised",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-24",
+    "kind": "legislation",
+    "title": "The Opticians Act",
+    "format": "pdf",
+    "category": "Dental & Allied Professions",
+    "url": "https://laws.moj.gov.jm/library/statute/the-opticians-act/download",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-opticians-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-25",
+    "kind": "legislation",
+    "title": "The Professions Supplementary to Medicine Act",
+    "format": "pdf",
+    "category": "Dental & Allied Professions",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/P/Professions%20Supplementary%20to%20Medicine%20Act_1.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-professions-supplementary-to-medicine-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-26",
+    "kind": "legislation",
+    "title": "The Coroners Act",
+    "format": "pdf",
+    "category": "Death & Registration",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/C/Coroners%20Act.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-coroners-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-extra-25",
+    "kind": "legislation",
+    "title": "Dental Regulations, 1974",
+    "format": "pdf",
+    "category": "Dental & Allied Professions",
+    "url": "https://laws.moj.gov.jm/legislation/subsids/D/Dental%20Act%20LN%20409%20of%2074.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-dental-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-extra-26",
+    "kind": "legislation",
+    "title": "Pharmacy Regulations, 1975",
+    "format": "pdf",
+    "category": "Medicines & Pharmacy",
+    "url": "https://laws.moj.gov.jm/legislation/subsids/P/Pharmacy%20Act_0.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-pharmacy-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-extra-27",
+    "kind": "legislation",
+    "title": "Nursing Homes Registration Regulations, 1934",
+    "format": "pdf",
+    "category": "Institutional Care",
+    "url": "https://laws.moj.gov.jm/legislation/subsids/N/Nursing%20Homes%20Registration%20Act_0.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-nursing-homes-registration-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-extra-28",
+    "kind": "legislation",
+    "title": "The Quarantine Act",
+    "format": "pdf",
+    "category": "Public Health",
+    "url": "https://laws.moj.gov.jm/library/statute/the-quarantine-act/download",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-quarantine-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  },
+  {
+    "id": "law-extra-29",
+    "kind": "legislation",
+    "title": "The Medical Act",
+    "format": "pdf",
+    "category": "Medical Practice",
+    "url": "https://laws.moj.gov.jm/legislation/statutes/M/Medical%20Act_1.pdf",
+    "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-medical-act",
+    "publisher": "Ministry of Justice & Constitutional Affairs, Jamaica"
+  }
+]

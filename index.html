@@ -15,9 +15,12 @@
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="./enhance.css">
+<link rel="stylesheet" href="./viewer.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script>
 <script defer src="./data.js"></script>
 <script defer src="./catalog-extra.js"></script>
+<script defer src="./document-overrides.js"></script>
+<script defer src="./viewer.js"></script>
 <script defer src="./app-v2.js"></script>
 </head>
 <body>
@@ -88,6 +91,51 @@
 <a class="social-instagram" href="https://www.instagram.com/wrhagovjm" target="_blank" rel="noopener" aria-label="WRHA Instagram" title="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
 <a class="social-x" href="https://twitter.com/wrhagovjm" target="_blank" rel="noopener" aria-label="WRHA on X" title="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
 </div></div></footer>
-<dialog id="pdfDialog" class="pdf-modal"><div class="modal-header"><div class="modal-heading"><span class="eyebrow">DOCUMENT READER</span><h2 id="pdfTitle">Manual</h2><p id="pdfMeta"></p></div><button class="modal-close" id="closePdf" aria-label="Close PDF reader">✕</button></div><div class="pdf-tools"><label>Page <input id="pdfPage" type="number" min="1" value="1" aria-label="Go to PDF page"></label><button id="goPdfPage">Go</button><label>Zoom <select id="pdfZoom" aria-label="PDF zoom"><option value="auto">Auto</option><option value="page-width">Fit width</option><option value="100">100%</option><option value="125">125%</option><option value="150">150%</option></select></label><span class="viewer-hint">Controls depend on browser PDF support</span><a id="pdfSource" href="#" target="_blank" rel="noopener">Official source ↗</a><a id="pdfDownload" href="#" target="_blank" rel="noopener">Download / open PDF ↗</a></div><div class="pdf-frame-wrap"><iframe id="pdfFrame" title="Embedded PDF reader" loading="lazy"></iframe><div class="pdf-help">If the document does not appear, the official host may prevent embedding. Use <b>Official source</b> or <b>Download / open PDF</b> above.</div></div></dialog>
+<dialog id="pdfDialog" class="pdf-modal" aria-labelledby="pdfTitle">
+  <div class="modal-header">
+    <div class="modal-heading">
+      <span class="eyebrow">WRHA RESOURCE READER</span>
+      <h2 id="pdfTitle">Document</h2>
+      <p id="pdfMeta"></p>
+    </div>
+    <button class="modal-close" id="closePdf" type="button" aria-label="Close document viewer">✕</button>
+  </div>
+  <div class="pdf-tools" id="pdfToolbar">
+    <button id="pdfPrevious" class="viewer-tool" type="button" aria-label="Previous page" title="Previous page">‹</button>
+    <label>Page <input id="pdfPage" type="number" min="1" value="1" aria-label="PDF page number"> <span id="pdfTotal">/ —</span></label>
+    <button id="goPdfPage" class="viewer-tool" type="button">Go</button>
+    <button id="pdfNext" class="viewer-tool" type="button" aria-label="Next page" title="Next page">›</button>
+    <label>Zoom
+      <select id="pdfZoom" aria-label="PDF zoom">
+        <option value="auto">Fit page</option>
+        <option value="page-width">Fit width</option>
+        <option value="100">100%</option><option value="125">125%</option><option value="150">150%</option>
+      </select>
+    </label>
+    <label class="pdf-find">Find <input id="pdfSearch" type="search" placeholder="Search text..." aria-label="Find text in PDF"></label>
+    <button id="pdfFindButton" class="viewer-tool" type="button">Find</button>
+    <button id="pdfFullScreen" class="viewer-tool" type="button">Full screen ⛶</button>
+    <a id="pdfSource" href="#" target="_blank" rel="noopener">Publisher ↗</a>
+    <a id="pdfLegalAlt" href="https://lipj.gov.jm/" target="_blank" rel="noopener" hidden>Alternative legal portal ↗</a>
+    <a id="pdfDownload" href="#" target="_blank" rel="noopener">Download PDF</a>
+  </div>
+  <div class="pdf-frame-wrap" id="pdfFrameWrap">
+    <div id="pdfLoading" class="reader-loading" role="status" aria-live="polite">Preparing document…</div>
+    <div id="pdfCanvasScroll" class="reader-pages" hidden>
+      <div id="pdfPageSurface" class="reader-page-surface">
+        <canvas id="pdfCanvas" aria-label="PDF page"></canvas>
+        <div id="pdfTextLayer" class="textLayer" aria-hidden="false"></div>
+      </div>
+    </div>
+    <iframe id="pdfFrame" title="Browser PDF viewer — used when document server blocks PDF.js" loading="lazy" referrerpolicy="no-referrer" hidden></iframe>
+    <div id="pdfWebResource" class="reader-webresource" hidden>
+      <div class="reader-web-icon" aria-hidden="true">▤</div>
+      <h3>Official web resource</h3>
+      <p>This entry is a webpage or collection of links, not a verified downloadable PDF. We will not present it as a PDF or invent a download.</p>
+      <a id="pdfWebLink" class="btn btn-primary" href="#" target="_blank" rel="noopener">Open official webpage ↗</a>
+    </div>
+    <div id="pdfStatus" class="pdf-help" role="status" aria-live="polite">View and download the source document without losing your place in the hub.</div>
+  </div>
+</dialog>
 <dialog id="facilityDialog" class="small-modal"><div class="small-modal-inner"><button class="modal-close" id="closeFacility" aria-label="Close facility details">✕</button><span class="eyebrow">FACILITY DIRECTORY</span><h2 id="facilityTitle"></h2><div id="facilityDetails"></div></div></dialog>
 </body></html>
