@@ -1,0 +1,29 @@
+// WRHA Hub automated static integrity checks. Run: node audit.mjs
+import fs from 'node:fs';import vm from 'node:vm';import path from 'node:path';
+const read=n=>fs.readFileSync(path.resolve(n),'utf8');const errors=[];
+const requireCheck=(ok,message)=>{if(!ok)errors.push(message)};
+const html=read('index.html'),app=read('app-v2.js'),css=read('enhance.css');
+for(const script of ['app-v2.js','catalog-extra.js','data.js'])try{new vm.Script(read(script),{filename:script})}catch(err){errors.push(script+' syntax '+err.message)}
+const window={};vm.runInNewContext(read('data.js')+'\n'+read('catalog-extra.js'),{window}, {timeout:15000});
+const D=window.WRHA_DATA;
+const roleRows=D.roleGroups.flatMap(g=>g.roles.map(r=>({group:g.name,...r})));
+const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));
+for(const match of app.matchAll(/\$\('([^']+)'\)/g))requireCheck(ids.has(match[1]),'Missing DOM id: '+match[1]);
+for(const page of ['home','manuals','legislation','facilities','training','roles','about'])requireCheck(html.includes('data-page="'+page+'"'),'Missing '+page+' page');
+for(const page of ['manuals','legislation','facilities','training','roles'])requireCheck(html.includes('data-view="'+page+'"'),'Missing '+page+' nav');
+for(const file of ['wrha-logo.webp','styles.css','enhance.css','data.js','catalog-extra.js','app-v2.js'])requireCheck(fs.existsSync(file),'Missing asset '+file);
+requireCheck(D.legislation.length>=20,'Legislation catalogue unexpectedly small');
+requireCheck(roleRows.length>=150,'Job directory unexpectedly small');
+requireCheck(D.manuals.length>=50,'Manual catalogue unexpectedly small');
+requireCheck(Object.keys(D.rhaMap).length===14,'Not all parishes represented');
+const roleTitles=new Set();roleRows.forEach(r=>{const key=r.title.toLowerCase();requireCheck(!roleTitles.has(key),'Duplicate job '+r.title);roleTitles.add(key);requireCheck(r.summary&&r.setting&&r.collaborates,'Missing role detail '+r.title)});
+const lawIds=new Set();D.legislation.forEach(l=>{requireCheck(!!(l.title&&l.category&&l.url),'Incomplete law entry');requireCheck(!lawIds.has(l.id),'Duplicate law '+l.id);lawIds.add(l.id)});
+const manualIds=new Set();D.manuals.forEach(m=>{requireCheck(!!(m.title&&m.category&&m.url),'Incomplete manual');requireCheck(!manualIds.has(m.id),'Duplicate manual '+m.id);manualIds.add(m.id);requireCheck(/^https:\/\//.test(m.url),'Invalid URL '+m.title)});
+requireCheck(!/JASON\s*(?:PrEP|Bot)/i.test(html),'JASON UI must not be present');
+requireCheck(css.includes('.parish-badge'),'Missing map-badge design');
+requireCheck(app.includes('pdfjsLib'),'PDF-cover renderer missing');
+requireCheck(html.includes('fa-instagram')&&html.includes('fa-facebook-f'),'Branded social icons missing');
+requireCheck(html.includes('WRHA-NCD-Adherence-Counselling-Academy')&&html.includes('JASDIS-STUDY-HUB'),'Approved learning links missing');
+const report={manuals:D.manuals.length,legislation:D.legislation.length,roles:roleRows.length,roleGroups:D.roleGroups.length,facilityEntries:D.facilities.length,parishes:Object.keys(D.rhaMap).length,errors};
+console.log(JSON.stringify(report,null,2));
+if(errors.length)process.exitCode=1;else console.log('WRHA hub static integrity checks: PASS');
