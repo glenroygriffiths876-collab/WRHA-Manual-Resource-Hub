@@ -1,7 +1,7 @@
 name: Browser PDF viewer tests
 on:
   push:
-    branches: [fix-embedded-pdf-reader-20261112, fix-pdf-visible-roles-evidence-mohw-footer]
+    branches: [fix-embedded-pdf-reader-20261112, fix-pdf-visible-roles-evidence-mohw-footer, verified-roles-and-mofps-establishment]
     paths:
       - 'index.html'
       - 'viewer.js'
@@ -11,6 +11,9 @@ on:
       - 'assets/mohw-logo.png'
       - 'document-overrides.js'
       - 'app-v2.js'
+      - 'verified-role-public.js'
+      - 'establishment-resource.js'
+      - 'catalog-extra.js'
       - 'scripts/browser-smoke.mjs'
       - '.github/workflows/browser-reader-ci.yml'
   workflow_dispatch:
