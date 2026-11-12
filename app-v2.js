@@ -30,7 +30,15 @@ function isPdf(d){return d.format!=='page'&&(/\.pdf(?:\?|$)/i.test(d.url)||/\/do
 const coverCache=new Map(),coverWaiting=[],queued=new Set();let coverActive=0;
 if(window.pdfjsLib){pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';}
 const coverObserver=('IntersectionObserver' in window)?new IntersectionObserver(records=>{records.forEach(r=>{if(r.isIntersecting){coverObserver.unobserve(r.target);scheduleCover(r.target);}})},{rootMargin:'280px'}):null;
-function observeCovers(node){node.querySelectorAll('.doc-cover[data-pdf]').forEach(el=>{if(coverCache.has(el.dataset.pdf)){showCached(el);return;}if(coverObserver)coverObserver.observe(el);else scheduleCover(el);});}
+function observeCovers(node){node.querySelectorAll('.doc-cover[data-pdf]').forEach(el=>{
+ const fallback=()=>{if(coverCache.has(el.dataset.pdf)){showCached(el);return;}if(coverObserver)coverObserver.observe(el);else scheduleCover(el);};
+ const staticImg=el.querySelector('.static-cover');
+ if(!staticImg){fallback();return;}
+ const loaded=()=>{el.classList.add('has-preview');const canvas=el.querySelector('canvas');if(canvas)canvas.hidden=true;};
+ const missing=()=>{staticImg.remove();fallback();};
+ staticImg.addEventListener('load',loaded,{once:true});staticImg.addEventListener('error',missing,{once:true});
+ if(staticImg.complete){if(staticImg.naturalWidth)loaded();else missing();}
+ });}
 function showCached(el){const img=coverCache.get(el.dataset.pdf);if(!img)return;const canvas=el.querySelector('canvas');if(canvas){const bitmap=new Image();bitmap.onload=()=>{canvas.width=bitmap.width;canvas.height=bitmap.height;canvas.getContext('2d').drawImage(bitmap,0,0);canvas.hidden=false;el.classList.add('has-preview')};bitmap.src=img;}}
 function scheduleCover(el){const url=el.dataset.pdf;if(coverCache.has(url)){showCached(el);return;}if(!window.pdfjsLib||queued.has(url))return;queued.add(url);coverWaiting.push({el,url});flushCovers();}
 function flushCovers(){while(coverActive<2&&coverWaiting.length){const {el,url}=coverWaiting.shift();coverActive++;el.classList.add('loading');(async()=>{let task=null,doc=null;try{
@@ -47,7 +55,7 @@ function flushCovers(){while(coverActive<2&&coverWaiting.length){const {el,url}=
  })();}}
 function coverMarkup(d){const pdf=isPdf(d);const label=pdf?'FIRST-PAGE PREVIEW':'OFFICIAL SOURCE PAGE';
  const safeURL=pdf?esc(d.url):'';
- return '<div class="doc-cover '+(pdf?'':'not-previewable')+'" '+(pdf?'data-pdf="'+safeURL+'"':'')+'><div class="cover-placeholder"><span class="crest">♛</span><strong>'+esc(d.title)+'</strong><small>'+label+'</small></div>'+(pdf?'<canvas aria-hidden="true" hidden></canvas>':'')+'</div>';}
+ return '<div class="doc-cover '+(pdf?'':'not-previewable')+'" '+(pdf?'data-pdf="'+safeURL+'"':'')+'><div class="cover-placeholder"><span class="crest">♛</span><strong>'+esc(d.title)+'</strong><small>'+label+'</small></div>'+(pdf?'<img class="static-cover" loading="lazy" decoding="async" src="./covers/'+encodeURIComponent(d.id)+'.webp" alt="First page of '+esc(d.title)+'"><canvas aria-hidden="true" hidden></canvas>':'')+'</div>';}
 function docCard(d,type){const law=type==='law',pdf=isPdf(d),title=esc(d.title),href=esc(d.url);
  const mainButton=pdf?'<button type="button" class="read-btn" data-read="'+esc(type+':'+d.id)+'">Read PDF</button>':'<a class="read-btn" href="'+href+'" target="_blank" rel="noopener">Official resource ↗</a>';
  const secondary='<a class="download-btn" href="'+href+'" target="_blank" rel="noopener">'+(pdf?'PDF / Download ↗':'Visit source ↗')+'</a>';
