@@ -85,9 +85,9 @@
     "title": "Clinical Management of HIV",
     "format": "pdf",
     "category": "Communicable Diseases",
-    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Clinical_Management_2020.pdf",
-    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Clinical_Management_2020.pdf",
-    "publisher": "Repository copy — issuing authority to verify"
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2023/08/Clinical-Management-of-HIV-Disease-2020-Recommendations-Final-Justified_PDF.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
   },
   {
     "id": "local-4",
@@ -115,9 +115,9 @@
     "title": "National Strategic Plan for HIV 2023–2030",
     "format": "pdf",
     "category": "Communicable Diseases",
-    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/National_Strategic_Plan_HIV_2023_2030.pdf",
-    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/National_Strategic_Plan_HIV_2023_2030.pdf",
-    "publisher": "Repository copy — issuing authority to verify"
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2026/09/MOH-NSP_Final-1-1.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/data/2023-2030-national-strategic-plan-for-hiv/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
   },
   {
     "id": "local-7",
@@ -165,9 +165,9 @@
     "title": "Referral and Transfer of Patients Manual",
     "format": "pdf",
     "category": "Clinical Care & Hospital Services",
-    "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Patient_Referral_Transfer_Manual_2016.pdf",
-    "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Patient_Referral_Transfer_Manual_2016.pdf",
-    "publisher": "Repository copy — issuing authority to verify"
+    "url": "https://moh.gov.jm/wp-content/uploads/2016/11/Revised-MOH-Policy-and-Procedure-Manual-for-the-Referral-and-Transfer-of-Patients-22.09.16.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
   },
   {
     "id": "local-12",
@@ -577,6 +577,166 @@
     "category": "Clinical Care & Hospital Services",
     "url": "https://www.moh.gov.jm/wp-content/uploads/2024/06/PROFESSIONAL-REGISTRATION-FOR-SHORT-TERM-VOLUNTEERS-updated.pdf",
     "sourceUrl": "https://www.moh.gov.jm/guidelines/guidelines-for-short-term-volunteer-health-services/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "deep-2026-workplace-wellness-manual",
+    "kind": "manual",
+    "title": "Corporate Wellness Manual",
+    "format": "pdf",
+    "category": "Health Promotion",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Corporate-Wellness-Manual-Final-edition.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "deep-workplace-wellness-checklist",
+    "kind": "manual",
+    "title": "Workplace Wellness Coordinators Checklist",
+    "format": "pdf",
+    "category": "Health Promotion",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Final-Wellness-Coordinators-Checklist.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "deep-workplace-fitness-guide",
+    "kind": "manual",
+    "title": "MOHW Fitness Test Guide",
+    "format": "pdf",
+    "category": "Health Promotion",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/MOH-Wellness-Fitness-Guide-March-7-2022.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "deep-workplace-physical-activity",
+    "kind": "manual",
+    "title": "Physical Activity Guide & Toolkit for the Workplace",
+    "format": "pdf",
+    "category": "Health Promotion",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Physical-Activity-Guide-for-the-Workplace_compressed.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "deep-workplace-living-well-booklet",
+    "kind": "manual",
+    "title": "Living Well — Workplace Wellness Booklet",
+    "format": "pdf",
+    "category": "Health Promotion",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/MoHW_WELNESS-BOOKLET-2.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "deep-workplace-hiv-action-plan",
+    "kind": "manual",
+    "title": "HIV/AIDS Workplace Action Plan — Historical Draft",
+    "format": "pdf",
+    "category": "Administration & Governance",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Moh-Final-Draft-Workplace-Policy-October-2009-Read-Only.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "deep-2026-pharmwatch-form",
+    "kind": "manual",
+    "title": "PharmWatch Drug Monitoring and Adverse Reaction Reporting Form",
+    "format": "pdf",
+    "category": "Pharmacy & Medicines",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2026/02/PharmWatch-Drug-Monitoring-Form-Current-FRM-PMS-SRD-STRD-026-R1-1.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "deep-esavi-report-form",
+    "kind": "manual",
+    "title": "ESAVI Adverse Event Following Immunisation Reporting Form",
+    "format": "pdf",
+    "category": "Immunisation",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2021/09/Appendix-E_Annex-E-ESAVI-Form.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "deep-healthy-eating-workplace-guide",
+    "kind": "manual",
+    "title": "Healthy Eating Guide — Workplace",
+    "format": "pdf",
+    "category": "Nutrition & Dietetics",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Healthy-Eating-workplace0904.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "deep-nutrition-colorectal-care",
+    "kind": "manual",
+    "title": "Nutrition and Colorectal Cancer Care",
+    "format": "pdf",
+    "category": "Nutrition & Dietetics",
+    "url": "https://ncdip.moh.gov.jm/download/3520/",
+    "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+    "publisher": "MOHW National Non-Communicable Diseases Programme"
+  },
+  {
+    "id": "deep-asthma-management-form",
+    "kind": "manual",
+    "title": "Asthma Management Form",
+    "format": "pdf",
+    "category": "Non-Communicable Diseases",
+    "url": "https://ncdip.moh.gov.jm/download/4279/",
+    "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+    "publisher": "MOHW National Non-Communicable Diseases Programme"
+  },
+  {
+    "id": "deep-diabetes-control-checklist",
+    "kind": "manual",
+    "title": "Diabetes Control Checklist",
+    "format": "pdf",
+    "category": "Non-Communicable Diseases",
+    "url": "https://ncdip.moh.gov.jm/download/1324/",
+    "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+    "publisher": "MOHW National Non-Communicable Diseases Programme"
+  },
+  {
+    "id": "deep-peer-approval-checklist-2026",
+    "kind": "manual",
+    "title": "Peer Approval Instructions and Checklist",
+    "format": "pdf",
+    "category": "Administration & Governance",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2026/03/Peer-Approval-Instructions-and-Checklist.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "deep-vision-for-health-2030",
+    "kind": "manual",
+    "title": "Vision for Health 2019–2030 — Strategic Framework",
+    "format": "pdf",
+    "category": "Administration & Governance",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/policy-procedure/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "deep-old-interim-diabetes",
+    "kind": "manual",
+    "title": "Interim Guidelines for Clinical Management of Diabetes — Historical 2020",
+    "format": "pdf",
+    "category": "Non-Communicable Diseases",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/10/DIABETESGUIDELINES_Interim_final.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+    "publisher": "Ministry of Health & Wellness, Jamaica"
+  },
+  {
+    "id": "deep-old-interim-hypertension",
+    "kind": "manual",
+    "title": "Interim Guidelines for Clinical Management of Hypertension — Historical 2020",
+    "format": "pdf",
+    "category": "Non-Communicable Diseases",
+    "url": "https://www.moh.gov.jm/wp-content/uploads/2020/10/HYPERTENSIONGUIDELINES_Interim_final.pdf",
+    "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
     "publisher": "Ministry of Health & Wellness, Jamaica"
   },
   {

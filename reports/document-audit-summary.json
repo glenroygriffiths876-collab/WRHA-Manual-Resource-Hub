@@ -1,19 +1,96 @@
 {
-  "auditDateUTC": "2026-11-12T17:56:17.741556+00:00",
-  "records": 88,
+  "auditDateUTC": "2026-11-12T20:17:17.312168+00:00",
+  "records": 104,
   "states": {
-    "html_page": 5,
+    "http_error": 16,
     "tls_certificate_error": 30,
     "unsupported_host": 1,
-    "verified_pdf": 52
+    "verified_pdf": 57
   },
   "incorrectPdfEntries": [
+    {
+      "id": "official-2",
+      "title": "Guidelines for the Clinical Management of Type 2 Diabetes in Jamaica",
+      "status": "http_error",
+      "url": "https://ncdip.moh.gov.jm/download/4259/",
+      "http": 403
+    },
+    {
+      "id": "official-3",
+      "title": "Guidelines for the Clinical Management of Hypertension in Jamaica",
+      "status": "http_error",
+      "url": "https://ncdip.moh.gov.jm/download/4262/",
+      "http": 403
+    },
+    {
+      "id": "official-4",
+      "title": "Guidelines for the Clinical Management of Asthma in Jamaica — Pocket Guide",
+      "status": "http_error",
+      "url": "https://ncdip.moh.gov.jm/download/4291/",
+      "http": 403
+    },
+    {
+      "id": "official-5",
+      "title": "Guidelines for the Management of Gender-Based Violence in Health Care Settings",
+      "status": "http_error",
+      "url": "https://ncdip.moh.gov.jm/download/4243/",
+      "http": 403
+    },
+    {
+      "id": "official-6",
+      "title": "Guideline for the Management of Nicotine Use Disorders",
+      "status": "http_error",
+      "url": "https://ncdip.moh.gov.jm/download/4248/",
+      "http": 403
+    },
     {
       "id": "mofps-civil-establishment-2026",
       "title": "Civil Service Establishment (General) Order 2026",
       "status": "unsupported_host",
       "url": "https://www.mof.gov.jm/wp-content/uploads/Civil-Service-Establishment-General-Order-2026.pdf",
       "http": null
+    },
+    {
+      "id": "expanded-11",
+      "title": "Standard Operating Procedure for Writing an Exercise Prescription",
+      "status": "http_error",
+      "url": "https://ncdip.moh.gov.jm/download/4297/",
+      "http": 403
+    },
+    {
+      "id": "expanded-12",
+      "title": "National Screening Guidelines for Priority NCDs in Primary Health Care — 2nd Edition",
+      "status": "http_error",
+      "url": "https://ncdip.moh.gov.jm/download/4283/",
+      "http": 403
+    },
+    {
+      "id": "expanded-13",
+      "title": "National Screening Guidelines for Priority NCDs — Pocket Guide",
+      "status": "http_error",
+      "url": "https://ncdip.moh.gov.jm/download/4288/",
+      "http": 403
+    },
+    {
+      "id": "deep-nutrition-colorectal-care",
+      "title": "Nutrition and Colorectal Cancer Care",
+      "status": "http_error",
+      "url": "https://ncdip.moh.gov.jm/download/3520/",
+      "http": 403
+    },
+    {
+      "id": "deep-asthma-management-form",
+      "title": "Asthma Management Form",
+      "status": "http_error",
+      "url": "https://ncdip.moh.gov.jm/download/4279/",
+      "http": 403
+    },
+    {
+      "id": "deep-diabetes-control-checklist",
+      "title": "Diabetes Control Checklist",
+      "status": "http_error",
+      "url": "https://ncdip.moh.gov.jm/download/1324/",
+      "http": 403
     },
     {
       "id": "law-1",
@@ -191,25 +268,5 @@
       "http": null
     }
   ],
-  "webPagesWithPossiblePdfs": [
-    {
-      "id": "expanded-16",
-      "title": "Short-Term Volunteer Health Services — Guidance (web)",
-      "candidates": [
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2024/06/PROFESSIONAL-REGISTRATION-FOR-SHORT-TERM-VOLUNTEERS-updated.pdf",
-          "label": "Download the Short Term Volunteer Form",
-          "state": "verified_pdf",
-          "http": 200,
-          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2024/06/PROFESSIONAL-REGISTRATION-FOR-SHORT-TERM-VOLUNTEERS-updated.pdf",
-          "contentType": "application/pdf",
-          "pdfSignature": true,
-          "cors": "",
-          "xFrameOptions": "",
-          "frameAncestorsRestricted": false,
-          "byteCountHeader": "137646"
-        }
-      ]
-    }
-  ]
+  "webPagesWithPossiblePdfs": []
 }

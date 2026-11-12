@@ -1,15 +1,26 @@
 {
-  "auditDateUTC": "2026-11-12T17:56:17.741556+00:00",
+  "auditDateUTC": "2026-11-12T20:17:17.312168+00:00",
   "scope": "All publicly indexed manuals and legislation; remote responses from GitHub Actions",
-  "records": 88,
+  "records": 104,
   "summary": {
-    "html_page": 5,
+    "http_error": 16,
     "tls_certificate_error": 30,
     "unsupported_host": 1,
-    "verified_pdf": 52
+    "verified_pdf": 57
   },
   "declaredPdfWithoutVerifiedPdf": [
+    "official-2",
+    "official-3",
+    "official-4",
+    "official-5",
+    "official-6",
     "mofps-civil-establishment-2026",
+    "expanded-11",
+    "expanded-12",
+    "expanded-13",
+    "deep-nutrition-colorectal-care",
+    "deep-asthma-management-form",
+    "deep-diabetes-control-checklist",
     "law-1",
     "law-3",
     "law-4",
@@ -36,9 +47,7 @@
     "law-extra-28",
     "law-extra-29"
   ],
-  "webPagesWithDiscoveredPdf": [
-    "expanded-16"
-  ],
+  "webPagesWithDiscoveredPdf": [],
   "limitations": [
     "Verified PDF signature confirms reachable PDF content from audit runner, not CORS, browser iframe permission, legal permission to mirror or latest edition status.",
     "Network or transient failures may differ by user location.",
@@ -72,14 +81,14 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
       "result": {
-        "state": "verified_pdf",
-        "http": 200,
+        "state": "http_error",
+        "http": 403,
         "url": "https://ncdip.moh.gov.jm/download/4259/",
         "finalUrl": "https://ncdip.moh.gov.jm/download/4259/",
-        "contentType": "application/pdf",
-        "pdfSignature": true,
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
         "cors": "",
-        "xFrameOptions": "",
+        "xFrameOptions": "SAMEORIGIN",
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
@@ -92,14 +101,14 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
       "result": {
-        "state": "verified_pdf",
-        "http": 200,
+        "state": "http_error",
+        "http": 403,
         "url": "https://ncdip.moh.gov.jm/download/4262/",
         "finalUrl": "https://ncdip.moh.gov.jm/download/4262/",
-        "contentType": "application/pdf",
-        "pdfSignature": true,
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
         "cors": "",
-        "xFrameOptions": "",
+        "xFrameOptions": "SAMEORIGIN",
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
@@ -112,14 +121,14 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
       "result": {
-        "state": "verified_pdf",
-        "http": 200,
+        "state": "http_error",
+        "http": 403,
         "url": "https://ncdip.moh.gov.jm/download/4291/",
         "finalUrl": "https://ncdip.moh.gov.jm/download/4291/",
-        "contentType": "application/pdf",
-        "pdfSignature": true,
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
         "cors": "",
-        "xFrameOptions": "",
+        "xFrameOptions": "SAMEORIGIN",
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
@@ -132,14 +141,14 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
       "result": {
-        "state": "verified_pdf",
-        "http": 200,
+        "state": "http_error",
+        "http": 403,
         "url": "https://ncdip.moh.gov.jm/download/4243/",
         "finalUrl": "https://ncdip.moh.gov.jm/download/4243/",
-        "contentType": "application/pdf",
-        "pdfSignature": true,
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
         "cors": "",
-        "xFrameOptions": "",
+        "xFrameOptions": "SAMEORIGIN",
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
@@ -152,14 +161,14 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
       "result": {
-        "state": "verified_pdf",
-        "http": 200,
+        "state": "http_error",
+        "http": 403,
         "url": "https://ncdip.moh.gov.jm/download/4248/",
         "finalUrl": "https://ncdip.moh.gov.jm/download/4248/",
-        "contentType": "application/pdf",
-        "pdfSignature": true,
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
         "cors": "",
-        "xFrameOptions": "",
+        "xFrameOptions": "SAMEORIGIN",
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
@@ -210,18 +219,18 @@
       "kind": "manual",
       "title": "Clinical Management of HIV",
       "declaredFormat": "pdf",
-      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Clinical_Management_2020.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
       "result": {
         "state": "verified_pdf",
         "http": 200,
-        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Clinical_Management_2020.pdf",
-        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Clinical_Management_2020.pdf",
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2023/08/Clinical-Management-of-HIV-Disease-2020-Recommendations-Final-Justified_PDF.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2023/08/Clinical-Management-of-HIV-Disease-2020-Recommendations-Final-Justified_PDF.pdf",
         "contentType": "application/pdf",
         "pdfSignature": true,
-        "cors": "*",
+        "cors": "",
         "xFrameOptions": "",
         "frameAncestorsRestricted": false,
-        "byteCountHeader": "2464085"
+        "byteCountHeader": "2481920"
       },
       "discoveredCandidates": []
     },
@@ -270,15 +279,15 @@
       "kind": "manual",
       "title": "National Strategic Plan for HIV 2023–2030",
       "declaredFormat": "pdf",
-      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/National_Strategic_Plan_HIV_2023_2030.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/data/2023-2030-national-strategic-plan-for-hiv/",
       "result": {
         "state": "verified_pdf",
         "http": 200,
-        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/National_Strategic_Plan_HIV_2023_2030.pdf",
-        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/National_Strategic_Plan_HIV_2023_2030.pdf",
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2026/09/MOH-NSP_Final-1-1.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2026/09/MOH-NSP_Final-1-1.pdf",
         "contentType": "application/pdf",
         "pdfSignature": true,
-        "cors": "*",
+        "cors": "",
         "xFrameOptions": "",
         "frameAncestorsRestricted": false,
         "byteCountHeader": "4524064"
@@ -370,15 +379,15 @@
       "kind": "manual",
       "title": "Referral and Transfer of Patients Manual",
       "declaredFormat": "pdf",
-      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Patient_Referral_Transfer_Manual_2016.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
       "result": {
         "state": "verified_pdf",
         "http": 200,
-        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Patient_Referral_Transfer_Manual_2016.pdf",
-        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Patient_Referral_Transfer_Manual_2016.pdf",
+        "url": "https://moh.gov.jm/wp-content/uploads/2016/11/Revised-MOH-Policy-and-Procedure-Manual-for-the-Referral-and-Transfer-of-Patients-22.09.16.pdf",
+        "finalUrl": "https://moh.gov.jm/wp-content/uploads/2016/11/Revised-MOH-Policy-and-Procedure-Manual-for-the-Referral-and-Transfer-of-Patients-22.09.16.pdf",
         "contentType": "application/pdf",
         "pdfSignature": true,
-        "cors": "*",
+        "cors": "",
         "xFrameOptions": "",
         "frameAncestorsRestricted": false,
         "byteCountHeader": "3472226"
@@ -905,14 +914,14 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
       "result": {
-        "state": "verified_pdf",
-        "http": 200,
+        "state": "http_error",
+        "http": 403,
         "url": "https://ncdip.moh.gov.jm/download/4297/",
         "finalUrl": "https://ncdip.moh.gov.jm/download/4297/",
-        "contentType": "application/pdf",
-        "pdfSignature": true,
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
         "cors": "",
-        "xFrameOptions": "",
+        "xFrameOptions": "SAMEORIGIN",
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
@@ -925,14 +934,14 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
       "result": {
-        "state": "verified_pdf",
-        "http": 200,
+        "state": "http_error",
+        "http": 403,
         "url": "https://ncdip.moh.gov.jm/download/4283/",
         "finalUrl": "https://ncdip.moh.gov.jm/download/4283/",
-        "contentType": "application/pdf",
-        "pdfSignature": true,
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
         "cors": "",
-        "xFrameOptions": "",
+        "xFrameOptions": "SAMEORIGIN",
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
@@ -945,14 +954,14 @@
       "declaredFormat": "pdf",
       "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
       "result": {
-        "state": "verified_pdf",
-        "http": 200,
+        "state": "http_error",
+        "http": 403,
         "url": "https://ncdip.moh.gov.jm/download/4288/",
         "finalUrl": "https://ncdip.moh.gov.jm/download/4288/",
-        "contentType": "application/pdf",
-        "pdfSignature": true,
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
         "cors": "",
-        "xFrameOptions": "",
+        "xFrameOptions": "SAMEORIGIN",
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
@@ -1005,32 +1014,18 @@
       "declaredFormat": "page",
       "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
       "result": {
-        "state": "html_page",
-        "http": 200,
+        "state": "http_error",
+        "http": 403,
         "url": "https://www.moh.gov.jm/guidelines/guidelines-for-short-term-volunteer-health-services/",
         "finalUrl": "https://www.moh.gov.jm/guidelines/guidelines-for-short-term-volunteer-health-services/",
         "contentType": "text/html; charset=utf-8",
         "pdfSignature": false,
         "cors": "",
-        "xFrameOptions": "",
+        "xFrameOptions": "SAMEORIGIN",
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
-      "discoveredCandidates": [
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2024/06/PROFESSIONAL-REGISTRATION-FOR-SHORT-TERM-VOLUNTEERS-updated.pdf",
-          "label": "Download the Short Term Volunteer Form",
-          "state": "verified_pdf",
-          "http": 200,
-          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2024/06/PROFESSIONAL-REGISTRATION-FOR-SHORT-TERM-VOLUNTEERS-updated.pdf",
-          "contentType": "application/pdf",
-          "pdfSignature": true,
-          "cors": "",
-          "xFrameOptions": "",
-          "frameAncestorsRestricted": false,
-          "byteCountHeader": "137646"
-        }
-      ]
+      "discoveredCandidates": []
     },
     {
       "id": "expanded-17",
@@ -1079,14 +1074,14 @@
       "declaredFormat": "page",
       "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
       "result": {
-        "state": "html_page",
-        "http": 200,
+        "state": "http_error",
+        "http": 403,
         "url": "https://www.moh.gov.jm/physical-activity/",
         "finalUrl": "https://www.moh.gov.jm/physical-activity/",
         "contentType": "text/html; charset=utf-8",
         "pdfSignature": false,
         "cors": "",
-        "xFrameOptions": "",
+        "xFrameOptions": "SAMEORIGIN",
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
@@ -1099,115 +1094,18 @@
       "declaredFormat": "page",
       "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
       "result": {
-        "state": "html_page",
-        "http": 200,
+        "state": "http_error",
+        "http": 403,
         "url": "https://www.moh.gov.jm/coronavirus-disease-covid19/covid-19-resources-and-protocols/",
         "finalUrl": "https://www.moh.gov.jm/coronavirus-disease-covid19/covid-19-resources-and-protocols/",
         "contentType": "text/html; charset=utf-8",
         "pdfSignature": false,
         "cors": "",
-        "xFrameOptions": "",
+        "xFrameOptions": "SAMEORIGIN",
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
-      "discoveredCandidates": [
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2021/02/Interim-COVID-19-Vaccine-Plan.pdf",
-          "label": "Interim COVID-19 Vaccine Plan"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/2019nCoV-COVID-19-Clinical-Management-Guidelines-V2.pdf",
-          "label": "Clinical Management of Severe Acute Respiratory Infection when Novel Coronavirus (COVID-19) Infection is Suspected"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Isolation-Process-Flow.pdf",
-          "label": "Isolation Process Flow for COVID-19"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Keeping-Seniors-Healthy-March-2020.pdf",
-          "label": "Keeping Seniors Healthy during the COVID-19\nOutbreak"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/08/COVID19RISK_OBSERVER_FP-copy.pdf",
-          "label": "Know Your Risk During COVID-19"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Guidelines-on-the-Handling-of-Bodies-March-19-2020.pdf",
-          "label": "Guidelines for the Handling of Dead Bodies for Owners\n/ Operators of Funeral Home Establishments"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Wearing-Masks-Amended-Version.pdf",
-          "label": "Important Things to Know About Wearing a Mask"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/BPO-self-assessment-tool-revised-May-2020-V2.pdf",
-          "label": "COVID-19 SEZ BPO Daily Self-Assessment and Compliance\nReport"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Inspection-Tool-for-BPO-April-28-2020-V5.pdf",
-          "label": "Public Health Inspection Checklist for Business\nProcess Operations in light of COVID-19"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Environmental-Health-Guidelines-and-Procedures-for-GSS_BPO-April-28-2020.pdf",
-          "label": "Environmental Health Guidelines and Procedures for\nGlobal Services Sector (GSS) / Business Process Outsourcing (BPO) Revised Guidance for\nCO"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Disinfection-of-Public-Places-Guidelines-V1.pdf",
-          "label": "Environmental Health Guidelines for the Cleaning and\nDisinfection of Public Places (COVID-19)"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Checklist-for-Nursing-Homes-and-Health-Care-Institutions-_May-2020-.pdf",
-          "label": "Public Health Inspection Checklist for Healthcare\nInstitutions/ Nursing Homes/Infirmaries in light of COVID-19"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Environmental-Health-considerations-for-Health-Care-Institutions-_Nursing-Homes-Final-May-2020.pdf",
-          "label": "Environmental Cleaning and Sanitation Guidelines for\nHealth Care Institutions /Nursing Homes / Infirmaries  (COVID-19 and other infectious\nd"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Health-Care-Institutions_Self-Assessment-Tool-Draft-May-2020-.pdf",
-          "label": "COVID-19 Health Care Institutions/ Nursing Homes/\nInfirmaries Daily Self-Assessment and Compliance Report"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/SOP_Environmental-Health-InspectionsAssessments_HCF_NHs_2.pdf",
-          "label": "Standard Operating Procedures for the Inspection of\nHealthcare Facilities and Nursing Homes/Infirmaries"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Inspection-Checklist-for-Public-Facilities-and-Workplaces_COVID_19_edits.pdf",
-          "label": "Public Health Inspection Checklist for Workplaces,\nPublic Facilities /Spaces – COVID-19"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Self-Assessment-Checklist-for-Public-Facilities-and-Workplaces_COVID_19_edit.pdf",
-          "label": "Self-assessment Checklist for Workplaces, Public\nFacilities /Spaces – COVID-19"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/COVID-19-ENVIRONMENTAL-HEALTH-GUIDELINES-FOR-THE-HOSPITALITY-INDUSTRIY-1.pdf",
-          "label": "Environmental Health Interim Guidelines for the\nHospitality Industry: COVID-19"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/10/MOH_CORONAVIRUS_2020_b.pdf",
-          "label": "Interim Guidance for COVID-19 – Recommendations for\nInfection, Prevention And Control for Employers"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2022/01/2022_FINAL_CMO_MOHW-COVID-19-FINAL-Discharge-Protocol-from-COVID-Isolation-Facilities-V-8.3-Jan-11-2022.pdf",
-          "label": "Discharge\nProtocol from COVID Isolation Facilities"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2022/01/2022_FINAL_CMO_Managment-of-COVID19-exposure-in-a-health-setting-version-2-jan-12-2022-2-1.pdf",
-          "label": "Management of COVID-19 Exposure in a Health Setting"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/MOHW-Cruise-Ship-Requirements-Feb-28-2020.pdf",
-          "label": "Interim Requirements and Recommendations for Vessels\nRequesting Landing Privileges in Jamaica_1"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/10/COVID-19_SurveillanceProtocol_updated-Sept-15-2020_V19.pdf",
-          "label": "COVID-19 Surveillance Protocol"
-        },
-        {
-          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Oral-Health-Document-What-Members-of-the-Dental-Team-Need-to-Know-About-COVID-19.pdf",
-          "label": "Coronxiety the Big Thing? Guidance to the Dental\nTeam"
-        }
-      ]
+      "discoveredCandidates": []
     },
     {
       "id": "expanded-21",
@@ -1216,14 +1114,14 @@
       "declaredFormat": "page",
       "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
       "result": {
-        "state": "html_page",
-        "http": 200,
+        "state": "http_error",
+        "http": 403,
         "url": "https://www.moh.gov.jm/mental-health-unit/",
         "finalUrl": "https://www.moh.gov.jm/mental-health-unit/",
         "contentType": "text/html; charset=utf-8",
         "pdfSignature": false,
         "cors": "",
-        "xFrameOptions": "",
+        "xFrameOptions": "SAMEORIGIN",
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
@@ -1236,14 +1134,14 @@
       "declaredFormat": "page",
       "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
       "result": {
-        "state": "html_page",
-        "http": 200,
+        "state": "http_error",
+        "http": 403,
         "url": "https://www.moh.gov.jm/technical-services-division/environment-health-unit/",
         "finalUrl": "https://www.moh.gov.jm/technical-services-division/environment-health-unit/",
         "contentType": "text/html; charset=utf-8",
         "pdfSignature": false,
         "cors": "",
-        "xFrameOptions": "",
+        "xFrameOptions": "SAMEORIGIN",
         "frameAncestorsRestricted": false,
         "byteCountHeader": ""
       },
@@ -1306,6 +1204,326 @@
         "xFrameOptions": "",
         "frameAncestorsRestricted": false,
         "byteCountHeader": "137646"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-2026-workplace-wellness-manual",
+      "kind": "manual",
+      "title": "Corporate Wellness Manual",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Corporate-Wellness-Manual-Final-edition.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Corporate-Wellness-Manual-Final-edition.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "85271458"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-workplace-wellness-checklist",
+      "kind": "manual",
+      "title": "Workplace Wellness Coordinators Checklist",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Final-Wellness-Coordinators-Checklist.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Final-Wellness-Coordinators-Checklist.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "13142579"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-workplace-fitness-guide",
+      "kind": "manual",
+      "title": "MOHW Fitness Test Guide",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/MOH-Wellness-Fitness-Guide-March-7-2022.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2023/12/MOH-Wellness-Fitness-Guide-March-7-2022.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "8374273"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-workplace-physical-activity",
+      "kind": "manual",
+      "title": "Physical Activity Guide & Toolkit for the Workplace",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Physical-Activity-Guide-for-the-Workplace_compressed.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Physical-Activity-Guide-for-the-Workplace_compressed.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "27733018"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-workplace-living-well-booklet",
+      "kind": "manual",
+      "title": "Living Well — Workplace Wellness Booklet",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/MoHW_WELNESS-BOOKLET-2.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2023/12/MoHW_WELNESS-BOOKLET-2.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "2701580"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-workplace-hiv-action-plan",
+      "kind": "manual",
+      "title": "HIV/AIDS Workplace Action Plan — Historical Draft",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Moh-Final-Draft-Workplace-Policy-October-2009-Read-Only.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Moh-Final-Draft-Workplace-Policy-October-2009-Read-Only.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "1762930"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-2026-pharmwatch-form",
+      "kind": "manual",
+      "title": "PharmWatch Drug Monitoring and Adverse Reaction Reporting Form",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2026/02/PharmWatch-Drug-Monitoring-Form-Current-FRM-PMS-SRD-STRD-026-R1-1.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2026/02/PharmWatch-Drug-Monitoring-Form-Current-FRM-PMS-SRD-STRD-026-R1-1.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "383288"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-esavi-report-form",
+      "kind": "manual",
+      "title": "ESAVI Adverse Event Following Immunisation Reporting Form",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2021/09/Appendix-E_Annex-E-ESAVI-Form.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2021/09/Appendix-E_Annex-E-ESAVI-Form.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "477599"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-healthy-eating-workplace-guide",
+      "kind": "manual",
+      "title": "Healthy Eating Guide — Workplace",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Healthy-Eating-workplace0904.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Healthy-Eating-workplace0904.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "4421103"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-nutrition-colorectal-care",
+      "kind": "manual",
+      "title": "Nutrition and Colorectal Cancer Care",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "result": {
+        "state": "http_error",
+        "http": 403,
+        "url": "https://ncdip.moh.gov.jm/download/3520/",
+        "finalUrl": "https://ncdip.moh.gov.jm/download/3520/",
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
+        "cors": "",
+        "xFrameOptions": "SAMEORIGIN",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-asthma-management-form",
+      "kind": "manual",
+      "title": "Asthma Management Form",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "result": {
+        "state": "http_error",
+        "http": 403,
+        "url": "https://ncdip.moh.gov.jm/download/4279/",
+        "finalUrl": "https://ncdip.moh.gov.jm/download/4279/",
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
+        "cors": "",
+        "xFrameOptions": "SAMEORIGIN",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-diabetes-control-checklist",
+      "kind": "manual",
+      "title": "Diabetes Control Checklist",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "result": {
+        "state": "http_error",
+        "http": 403,
+        "url": "https://ncdip.moh.gov.jm/download/1324/",
+        "finalUrl": "https://ncdip.moh.gov.jm/download/1324/",
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
+        "cors": "",
+        "xFrameOptions": "SAMEORIGIN",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-peer-approval-checklist-2026",
+      "kind": "manual",
+      "title": "Peer Approval Instructions and Checklist",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2026/03/Peer-Approval-Instructions-and-Checklist.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2026/03/Peer-Approval-Instructions-and-Checklist.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "316099"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-vision-for-health-2030",
+      "kind": "manual",
+      "title": "Vision for Health 2019–2030 — Strategic Framework",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/policy-procedure/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "3145402"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-old-interim-diabetes",
+      "kind": "manual",
+      "title": "Interim Guidelines for Clinical Management of Diabetes — Historical 2020",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/10/DIABETESGUIDELINES_Interim_final.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/10/DIABETESGUIDELINES_Interim_final.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "1293799"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "deep-old-interim-hypertension",
+      "kind": "manual",
+      "title": "Interim Guidelines for Clinical Management of Hypertension — Historical 2020",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/10/HYPERTENSIONGUIDELINES_Interim_final.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/10/HYPERTENSIONGUIDELINES_Interim_final.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "828428"
       },
       "discoveredCandidates": []
     },
