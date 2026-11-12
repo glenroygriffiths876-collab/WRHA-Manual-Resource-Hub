@@ -1,0 +1,1746 @@
+{
+  "auditDateUTC": "2026-11-12T16:10:15.556417+00:00",
+  "scope": "All publicly indexed manuals and legislation; remote responses from GitHub Actions",
+  "records": 87,
+  "summary": {
+    "html_page": 5,
+    "network_error": 30,
+    "verified_pdf": 52
+  },
+  "declaredPdfWithoutVerifiedPdf": [
+    "law-1",
+    "law-3",
+    "law-4",
+    "law-5",
+    "law-7",
+    "law-9",
+    "law-10",
+    "law-11",
+    "law-12",
+    "law-13",
+    "law-15",
+    "law-16",
+    "law-17",
+    "law-18",
+    "law-19",
+    "law-21",
+    "law-22",
+    "law-24",
+    "law-25",
+    "law-26",
+    "law-extra-25",
+    "law-extra-26",
+    "law-extra-27",
+    "law-extra-28",
+    "law-extra-29"
+  ],
+  "webPagesWithDiscoveredPdf": [
+    "expanded-16",
+    "expanded-19",
+    "expanded-21",
+    "expanded-22"
+  ],
+  "limitations": [
+    "Verified PDF signature confirms reachable PDF content from audit runner, not CORS, browser iframe permission, legal permission to mirror or latest edition status.",
+    "Network or transient failures may differ by user location.",
+    "Generic indexes may contain multiple PDFs and require manual selection."
+  ],
+  "entries": [
+    {
+      "id": "official-1",
+      "kind": "manual",
+      "title": "National Surveillance Manual for Jamaica — July 2026",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/data/27598/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2026/08/National-Surveillance-Manual-for-Jamaica-July-2026.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2026/08/National-Surveillance-Manual-for-Jamaica-July-2026.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "10201191"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "official-2",
+      "kind": "manual",
+      "title": "Guidelines for the Clinical Management of Type 2 Diabetes in Jamaica",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://ncdip.moh.gov.jm/download/4259/",
+        "finalUrl": "https://ncdip.moh.gov.jm/download/4259/",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "official-3",
+      "kind": "manual",
+      "title": "Guidelines for the Clinical Management of Hypertension in Jamaica",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://ncdip.moh.gov.jm/download/4262/",
+        "finalUrl": "https://ncdip.moh.gov.jm/download/4262/",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "official-4",
+      "kind": "manual",
+      "title": "Guidelines for the Clinical Management of Asthma in Jamaica — Pocket Guide",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://ncdip.moh.gov.jm/download/4291/",
+        "finalUrl": "https://ncdip.moh.gov.jm/download/4291/",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "official-5",
+      "kind": "manual",
+      "title": "Guidelines for the Management of Gender-Based Violence in Health Care Settings",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://ncdip.moh.gov.jm/download/4243/",
+        "finalUrl": "https://ncdip.moh.gov.jm/download/4243/",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "official-6",
+      "kind": "manual",
+      "title": "Guideline for the Management of Nicotine Use Disorders",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://ncdip.moh.gov.jm/download/4248/",
+        "finalUrl": "https://ncdip.moh.gov.jm/download/4248/",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-1",
+      "kind": "manual",
+      "title": "Contact Investigator Field Guide",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/CI_Field_Guide_2025.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/CI_Field_Guide_2025.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/CI_Field_Guide_2025.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "5240855"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-2",
+      "kind": "manual",
+      "title": "DHIS2 User Manual",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/DHIS2_User_Manual_May_2026.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/DHIS2_User_Manual_May_2026.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/DHIS2_User_Manual_May_2026.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "5488116"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-3",
+      "kind": "manual",
+      "title": "Clinical Management of HIV",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Clinical_Management_2020.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Clinical_Management_2020.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Clinical_Management_2020.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "2464085"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-4",
+      "kind": "manual",
+      "title": "HIV Disclosure Protocol",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Disclosure_Protocol_2021.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Disclosure_Protocol_2021.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Disclosure_Protocol_2021.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "853570"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-5",
+      "kind": "manual",
+      "title": "Linkage, Retention & Recovery Protocol",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Linkage_Retention_Recovery_Protocol.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Linkage_Retention_Recovery_Protocol.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Linkage_Retention_Recovery_Protocol.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "4252510"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-6",
+      "kind": "manual",
+      "title": "National Strategic Plan for HIV 2023–2030",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/National_Strategic_Plan_HIV_2023_2030.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/National_Strategic_Plan_HIV_2023_2030.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/National_Strategic_Plan_HIV_2023_2030.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "4524064"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-7",
+      "kind": "manual",
+      "title": "Provider-Initiated Testing & Counselling: Facilitator Manual",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PITC_Facilitator_Manual.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PITC_Facilitator_Manual.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PITC_Facilitator_Manual.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "1102101"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-8",
+      "kind": "manual",
+      "title": "Provider-Initiated Testing & Counselling: Participant Manual",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PITC_Participant_Manual.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PITC_Participant_Manual.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PITC_Participant_Manual.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "11178059"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-9",
+      "kind": "manual",
+      "title": "Guidelines for the Prevention of Vertical Transmission of HIV & Syphilis, Jamaica",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://hstu.moh.gov.jm/wp-content/uploads/2023/07/Final-PMTCT-Manual.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://hstu.moh.gov.jm/wp-content/uploads/2023/07/Final-PMTCT-Manual.pdf",
+        "finalUrl": "https://hstu.moh.gov.jm/wp-content/uploads/2023/07/Final-PMTCT-Manual.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "2219506"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-10",
+      "kind": "manual",
+      "title": "Paediatric and Adolescent HIV Guidance",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Paediatric_Adolescent_HIV_2021.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Paediatric_Adolescent_HIV_2021.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Paediatric_Adolescent_HIV_2021.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "1351904"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-11",
+      "kind": "manual",
+      "title": "Referral and Transfer of Patients Manual",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Patient_Referral_Transfer_Manual_2016.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Patient_Referral_Transfer_Manual_2016.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Patient_Referral_Transfer_Manual_2016.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "3472226"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-12",
+      "kind": "manual",
+      "title": "PrEP Handbook",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PrEP_Handbook_2023.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PrEP_Handbook_2023.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PrEP_Handbook_2023.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "9300461"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-13",
+      "kind": "manual",
+      "title": "PrEP Implementation Guide",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PrEP_Implementation_Guide_2025.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PrEP_Implementation_Guide_2025.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PrEP_Implementation_Guide_2025.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "4010198"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-14",
+      "kind": "manual",
+      "title": "STI Case Management",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/STI_Case_Management_2020.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/STI_Case_Management_2020.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/STI_Case_Management_2020.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "3481787"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-15",
+      "kind": "manual",
+      "title": "STI Syndromes Handbook — Repository Copy",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/STI_Handbook_2026.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/STI_Handbook_2026.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/STI_Handbook_2026.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "1432942"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-16",
+      "kind": "manual",
+      "title": "Staff Orders for the Public Service",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Staff_Orders_for_Public_Service.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Staff_Orders_for_Public_Service.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Staff_Orders_for_Public_Service.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "369276"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-17",
+      "kind": "manual",
+      "title": "Tuberculosis Guidelines",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/TB_Guidelines_2021.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/TB_Guidelines_2021.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/TB_Guidelines_2021.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "3119945"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "local-18",
+      "kind": "manual",
+      "title": "TSIS2 User Guide",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/TSIS2_User_Guide_2026.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/TSIS2_User_Guide_2026.pdf",
+        "finalUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/TSIS2_User_Guide_2026.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "*",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "14916709"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "mohw-extended-1",
+      "kind": "manual",
+      "title": "Expanded Programme on Immunization Field Guide for Health Workers, Vol. 1: Vaccine Administration and Programme Management",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2025/05/EPI-Field-Guide-For-Health-Workers-Volume-1-Vaccine-Administration-and-Programme-Management-Jan-2024.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2025/05/EPI-Field-Guide-For-Health-Workers-Volume-1-Vaccine-Administration-and-Programme-Management-Jan-2024.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "20493591"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "mohw-extended-2",
+      "kind": "manual",
+      "title": "Expanded Programme on Immunization Field Guide for Health Workers, Vol. 2: Cold Chain and Vaccine Logistics Management",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2024/10/EPI-Field-Guide-For-Health-Workers-Vol-2-Cold-Chain-and-Vaccine-Logistics-Management-Nov2023.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2024/10/EPI-Field-Guide-For-Health-Workers-Vol-2-Cold-Chain-and-Vaccine-Logistics-Management-Nov2023.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "7999770"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "mohw-extended-3",
+      "kind": "manual",
+      "title": "Expanded Programme on Immunization Field Guide for Health Workers, Vol. 3: Surveillance of ESAVIs and VPDs",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2025/05/Expanded-Programme-on-Immunization-Field-Guide-for-Health-Workers-Volume-3-Surveillance-of-ESAVIs-and-VPDs.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2025/05/Expanded-Programme-on-Immunization-Field-Guide-for-Health-Workers-Volume-3-Surveillance-of-ESAVIs-and-VPDs.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "17924089"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "mohw-extended-4",
+      "kind": "manual",
+      "title": "Protocol for the Nutritional Management of Non-Communicable Diseases in Jamaica",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Protocol-for-the-Nutritional-Management-of-Non-communicable-Diseases-in-Jamaica.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Protocol-for-the-Nutritional-Management-of-Non-communicable-Diseases-in-Jamaica.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "5473456"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "mohw-extended-5",
+      "kind": "manual",
+      "title": "Postpartum Haemorrhage Management Protocol",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2021/08/MOHW-PPH-Management-Protocol-Final-for-circulation.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2021/08/MOHW-PPH-Management-Protocol-Final-for-circulation.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "1586087"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "mohw-extended-6",
+      "kind": "manual",
+      "title": "National Screening Guidelines for Priority Non-Communicable Diseases in Primary Health Care",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2021/03/National-Screening-Guidelines-for-Priority-Non-Communicable-Diseases-NCDs-in-Primary-Health-Care.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2021/03/National-Screening-Guidelines-for-Priority-Non-Communicable-Diseases-NCDs-in-Primary-Health-Care.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "2160514"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "mohw-extended-7",
+      "kind": "manual",
+      "title": "Management of Interpersonal Violence: Procedures for Healthcare Workers",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2022/12/Management-of-Interpersonal-Violence-Procedures-for-Healthcare-Workers-2022.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2022/12/Management-of-Interpersonal-Violence-Procedures-for-Healthcare-Workers-2022.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "2695228"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "mohw-extended-8",
+      "kind": "manual",
+      "title": "List of Vital, Essential and Necessary Drugs and Medical Sundries for Public Health Institutions",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2024/09/Ven-List-Book-2020.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2024/09/Ven-List-Book-2020.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "1346592"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-1",
+      "kind": "manual",
+      "title": "Guide for the Promotion of Healthy Eating in Workplaces",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/07/Guide-for-the-Promotion-of-Healthy-Eating-in-Workplaces.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/07/Guide-for-the-Promotion-of-Healthy-Eating-in-Workplaces.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "1701751"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-2",
+      "kind": "manual",
+      "title": "Interim Guidelines for Beverages in Schools",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/07/Interim-Guidelines-For-Beverages-In-Schools.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/07/Interim-Guidelines-For-Beverages-In-Schools.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "555732"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-3",
+      "kind": "manual",
+      "title": "Guidelines for the Importation of Human Remains into Jamaica",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/07/MOHW-Guidelines-for-the-importation-of-Human-Remains.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/07/MOHW-Guidelines-for-the-importation-of-Human-Remains.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "504840"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-4",
+      "kind": "manual",
+      "title": "Tool for Assessing the Nutrition Environment in Workplaces",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/07/Tool-for-Assessing-the-Nutrition-Environment-in-Workplaces.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/07/Tool-for-Assessing-the-Nutrition-Environment-in-Workplaces.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "661238"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-5",
+      "kind": "manual",
+      "title": "Infection Prevention and Control Guidelines for 2019-nCoV in Healthcare Settings",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/IPC-Guidelines-for-COVID-19.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/04/IPC-Guidelines-for-COVID-19.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "1072710"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-6",
+      "kind": "manual",
+      "title": "SOP: Inspection of Healthcare Facilities and Nursing Homes",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/technical-services-division/environment-health-unit/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/SOP_Environmental-Health-InspectionsAssessments_HCF_NHs_2.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/05/SOP_Environmental-Health-InspectionsAssessments_HCF_NHs_2.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "476094"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-7",
+      "kind": "manual",
+      "title": "Environmental Health Guidance for Employers — COVID-19 Interim",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/technical-services-division/environment-health-unit/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/09/EH-Guidance-for-Employers-MOHWSep-2020.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/09/EH-Guidance-for-Employers-MOHWSep-2020.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "1276086"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-8",
+      "kind": "manual",
+      "title": "Infection Prevention and Control Guidance for Public Establishments",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/IPC-Guidance-for-Public-Establishments-_COVID-19-FINAL-.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/05/IPC-Guidance-for-Public-Establishments-_COVID-19-FINAL-.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "307510"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-9",
+      "kind": "manual",
+      "title": "Guideline for the Management of Pregnancy During the COVID-19 Pandemic",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Guideline-for-the-Management-of-Pregnancy-During-the-COVID-19-Pandemic.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Guideline-for-the-Management-of-Pregnancy-During-the-COVID-19-Pandemic.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "1261196"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-10",
+      "kind": "manual",
+      "title": "MOHW Register of Guidelines, Manuals, Policies and Protocols — 2022",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/policy-procedure/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2023/05/Register-Guidelines-Manual-Policies-and-Protocols-MOHW-2022.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2023/05/Register-Guidelines-Manual-Policies-and-Protocols-MOHW-2022.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "531459"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-11",
+      "kind": "manual",
+      "title": "Standard Operating Procedure for Writing an Exercise Prescription",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://ncdip.moh.gov.jm/download/4297/",
+        "finalUrl": "https://ncdip.moh.gov.jm/download/4297/",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-12",
+      "kind": "manual",
+      "title": "National Screening Guidelines for Priority NCDs in Primary Health Care — 2nd Edition",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://ncdip.moh.gov.jm/download/4283/",
+        "finalUrl": "https://ncdip.moh.gov.jm/download/4283/",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-13",
+      "kind": "manual",
+      "title": "National Screening Guidelines for Priority NCDs — Pocket Guide",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://ncdip.moh.gov.jm/download/4288/",
+        "finalUrl": "https://ncdip.moh.gov.jm/download/4288/",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-14",
+      "kind": "manual",
+      "title": "Physical Activity Bible — Ministry of Health & Wellness",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/edu-resources/physical-activity-bible/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/11/Physical-Activity-Bible.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/11/Physical-Activity-Bible.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "4250847"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-15",
+      "kind": "manual",
+      "title": "Guidelines for the Conduct of Research on Human Subjects",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/guidelines/guidelines-for-the-conduct-of-research-on-human-subjects/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2015/07/Guidelines-for-the-Conduct-of-Research.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2015/07/Guidelines-for-the-Conduct-of-Research.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "162860"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-16",
+      "kind": "manual",
+      "title": "Short-Term Volunteer Health Services — Guidance (web)",
+      "declaredFormat": "page",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "html_page",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/guidelines/guidelines-for-short-term-volunteer-health-services/",
+        "finalUrl": "https://www.moh.gov.jm/guidelines/guidelines-for-short-term-volunteer-health-services/",
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": [
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+          "label": "Vision for Health  2019 – 2030",
+          "state": "verified_pdf",
+          "http": 200,
+          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+          "contentType": "application/pdf",
+          "pdfSignature": true,
+          "cors": "",
+          "xFrameOptions": "",
+          "frameAncestorsRestricted": false,
+          "byteCountHeader": "3145402"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2024/06/PROFESSIONAL-REGISTRATION-FOR-SHORT-TERM-VOLUNTEERS-updated.pdf",
+          "label": "Download the Short Term Volunteer Form",
+          "state": "verified_pdf",
+          "http": 200,
+          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2024/06/PROFESSIONAL-REGISTRATION-FOR-SHORT-TERM-VOLUNTEERS-updated.pdf",
+          "contentType": "application/pdf",
+          "pdfSignature": true,
+          "cors": "",
+          "xFrameOptions": "",
+          "frameAncestorsRestricted": false,
+          "byteCountHeader": "137646"
+        }
+      ]
+    },
+    {
+      "id": "expanded-17",
+      "kind": "manual",
+      "title": "National Health Research Agenda — Jamaica 2024–2028",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/data/national-health-research-agenda-jamaica-2024-2028/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2026/09/Health-Research-Priority-Setting-Methodology-and-Report-Sept-25_.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2026/09/Health-Research-Priority-Setting-Methodology-and-Report-Sept-25_.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "2514131"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-18",
+      "kind": "manual",
+      "title": "Nutrition at a Glance — Jamaica 2024",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/data/nutrition-at-a-glance-2024/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2025/02/Nutrition-at-a-Glance-2024.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2025/02/Nutrition-at-a-Glance-2024.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "8694645"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "expanded-19",
+      "kind": "manual",
+      "title": "MOHW Physical Activity Resources and Guides",
+      "declaredFormat": "page",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "html_page",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/physical-activity/",
+        "finalUrl": "https://www.moh.gov.jm/physical-activity/",
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": [
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+          "label": "Vision for Health  2019 – 2030",
+          "state": "verified_pdf",
+          "http": 200,
+          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+          "contentType": "application/pdf",
+          "pdfSignature": true,
+          "cors": "",
+          "xFrameOptions": "",
+          "frameAncestorsRestricted": false,
+          "byteCountHeader": "3145402"
+        }
+      ]
+    },
+    {
+      "id": "expanded-20",
+      "kind": "manual",
+      "title": "COVID-19 Resources and Protocols Archive",
+      "declaredFormat": "page",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "html_page",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/coronavirus-disease-covid19/covid-19-resources-and-protocols/",
+        "finalUrl": "https://www.moh.gov.jm/coronavirus-disease-covid19/covid-19-resources-and-protocols/",
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": [
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+          "label": "Vision for Health  2019 – 2030"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2021/02/Interim-COVID-19-Vaccine-Plan.pdf",
+          "label": "Interim COVID-19 Vaccine Plan"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/2019nCoV-COVID-19-Clinical-Management-Guidelines-V2.pdf",
+          "label": "Clinical Management of Severe Acute Respiratory Infection when Novel Coronavirus (COVID-19) Infection is Suspected"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Isolation-Process-Flow.pdf",
+          "label": "Isolation Process Flow for COVID-19"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Keeping-Seniors-Healthy-March-2020.pdf",
+          "label": "Keeping Seniors Healthy during the COVID-19\nOutbreak"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/08/COVID19RISK_OBSERVER_FP-copy.pdf",
+          "label": "Know Your Risk During COVID-19"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Guidelines-on-the-Handling-of-Bodies-March-19-2020.pdf",
+          "label": "Guidelines for the Handling of Dead Bodies for Owners\n/ Operators of Funeral Home Establishments"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Wearing-Masks-Amended-Version.pdf",
+          "label": "Important Things to Know About Wearing a Mask"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/BPO-self-assessment-tool-revised-May-2020-V2.pdf",
+          "label": "COVID-19 SEZ BPO Daily Self-Assessment and Compliance\nReport"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Inspection-Tool-for-BPO-April-28-2020-V5.pdf",
+          "label": "Public Health Inspection Checklist for Business\nProcess Operations in light of COVID-19"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Environmental-Health-Guidelines-and-Procedures-for-GSS_BPO-April-28-2020.pdf",
+          "label": "Environmental Health Guidelines and Procedures for\nGlobal Services Sector (GSS) / Business Process Outsourcing (BPO) Revised Guidance for\nCO"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Disinfection-of-Public-Places-Guidelines-V1.pdf",
+          "label": "Environmental Health Guidelines for the Cleaning and\nDisinfection of Public Places (COVID-19)"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Checklist-for-Nursing-Homes-and-Health-Care-Institutions-_May-2020-.pdf",
+          "label": "Public Health Inspection Checklist for Healthcare\nInstitutions/ Nursing Homes/Infirmaries in light of COVID-19"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Environmental-Health-considerations-for-Health-Care-Institutions-_Nursing-Homes-Final-May-2020.pdf",
+          "label": "Environmental Cleaning and Sanitation Guidelines for\nHealth Care Institutions /Nursing Homes / Infirmaries  (COVID-19 and other infectious\nd"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Health-Care-Institutions_Self-Assessment-Tool-Draft-May-2020-.pdf",
+          "label": "COVID-19 Health Care Institutions/ Nursing Homes/\nInfirmaries Daily Self-Assessment and Compliance Report"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/SOP_Environmental-Health-InspectionsAssessments_HCF_NHs_2.pdf",
+          "label": "Standard Operating Procedures for the Inspection of\nHealthcare Facilities and Nursing Homes/Infirmaries"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Inspection-Checklist-for-Public-Facilities-and-Workplaces_COVID_19_edits.pdf",
+          "label": "Public Health Inspection Checklist for Workplaces,\nPublic Facilities /Spaces – COVID-19"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/Self-Assessment-Checklist-for-Public-Facilities-and-Workplaces_COVID_19_edit.pdf",
+          "label": "Self-assessment Checklist for Workplaces, Public\nFacilities /Spaces – COVID-19"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/05/COVID-19-ENVIRONMENTAL-HEALTH-GUIDELINES-FOR-THE-HOSPITALITY-INDUSTRIY-1.pdf",
+          "label": "Environmental Health Interim Guidelines for the\nHospitality Industry: COVID-19"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/10/MOH_CORONAVIRUS_2020_b.pdf",
+          "label": "Interim Guidance for COVID-19 – Recommendations for\nInfection, Prevention And Control for Employers"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2022/01/2022_FINAL_CMO_MOHW-COVID-19-FINAL-Discharge-Protocol-from-COVID-Isolation-Facilities-V-8.3-Jan-11-2022.pdf",
+          "label": "Discharge\nProtocol from COVID Isolation Facilities"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2022/01/2022_FINAL_CMO_Managment-of-COVID19-exposure-in-a-health-setting-version-2-jan-12-2022-2-1.pdf",
+          "label": "Management of COVID-19 Exposure in a Health Setting"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/MOHW-Cruise-Ship-Requirements-Feb-28-2020.pdf",
+          "label": "Interim Requirements and Recommendations for Vessels\nRequesting Landing Privileges in Jamaica_1"
+        },
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2020/10/COVID-19_SurveillanceProtocol_updated-Sept-15-2020_V19.pdf",
+          "label": "COVID-19 Surveillance Protocol"
+        }
+      ]
+    },
+    {
+      "id": "expanded-21",
+      "kind": "manual",
+      "title": "MOHW Mental Health Unit Resources",
+      "declaredFormat": "page",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "html_page",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/mental-health-unit/",
+        "finalUrl": "https://www.moh.gov.jm/mental-health-unit/",
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": [
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+          "label": "Vision for Health  2019 – 2030",
+          "state": "verified_pdf",
+          "http": 200,
+          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+          "contentType": "application/pdf",
+          "pdfSignature": true,
+          "cors": "",
+          "xFrameOptions": "",
+          "frameAncestorsRestricted": false,
+          "byteCountHeader": "3145402"
+        }
+      ]
+    },
+    {
+      "id": "expanded-22",
+      "kind": "manual",
+      "title": "MOHW Environmental Health Unit Guidance",
+      "declaredFormat": "page",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "result": {
+        "state": "html_page",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/technical-services-division/environment-health-unit/",
+        "finalUrl": "https://www.moh.gov.jm/technical-services-division/environment-health-unit/",
+        "contentType": "text/html; charset=utf-8",
+        "pdfSignature": false,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": ""
+      },
+      "discoveredCandidates": [
+        {
+          "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+          "label": "Vision for Health  2019 – 2030",
+          "state": "verified_pdf",
+          "http": 200,
+          "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+          "contentType": "application/pdf",
+          "pdfSignature": true,
+          "cors": "",
+          "xFrameOptions": "",
+          "frameAncestorsRestricted": false,
+          "byteCountHeader": "3145402"
+        }
+      ]
+    },
+    {
+      "id": "mohw-dental-2020",
+      "kind": "manual",
+      "title": "Guidance to the Dental Team: COVID-19",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/coronavirus-disease-covid19/covid-19-resources-and-protocols/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Oral-Health-Document-What-Members-of-the-Dental-Team-Need-to-Know-About-COVID-19.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2020/04/Oral-Health-Document-What-Members-of-the-Dental-Team-Need-to-Know-About-COVID-19.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "1464380"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "mohw-me-operations-2009",
+      "kind": "manual",
+      "title": "Jamaica National HIV/STI Programme Monitoring & Evaluation System Operations Manual",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://moh.gov.jm/wp-content/uploads/2015/07/Jamaica_NHP_ME_Operations_Manual_Aug_2009.pdf",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://moh.gov.jm/wp-content/uploads/2015/07/Jamaica_NHP_ME_Operations_Manual_Aug_2009.pdf",
+        "finalUrl": "https://moh.gov.jm/wp-content/uploads/2015/07/Jamaica_NHP_ME_Operations_Manual_Aug_2009.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "6268677"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "form-volunteer-2024",
+      "kind": "manual",
+      "title": "Professional Registration for Short-Term Volunteers — Form",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://www.moh.gov.jm/guidelines/guidelines-for-short-term-volunteer-health-services/",
+      "result": {
+        "state": "verified_pdf",
+        "http": 200,
+        "url": "https://www.moh.gov.jm/wp-content/uploads/2024/06/PROFESSIONAL-REGISTRATION-FOR-SHORT-TERM-VOLUNTEERS-updated.pdf",
+        "finalUrl": "https://www.moh.gov.jm/wp-content/uploads/2024/06/PROFESSIONAL-REGISTRATION-FOR-SHORT-TERM-VOLUNTEERS-updated.pdf",
+        "contentType": "application/pdf",
+        "pdfSignature": true,
+        "cors": "",
+        "xFrameOptions": "",
+        "frameAncestorsRestricted": false,
+        "byteCountHeader": "137646"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-1",
+      "kind": "legislation",
+      "title": "The Public Health Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-public-health-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/P/Public%20Health%20Act.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/P/Public%20Health%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fai"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-2",
+      "kind": "legislation",
+      "title": "Public Health Act — Subsidiary Legislation",
+      "declaredFormat": "page",
+      "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-public-health-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-public-health-act",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/subsidiary-legislation/the-public-health-act (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-3",
+      "kind": "legislation",
+      "title": "The Food and Drugs Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-food-and-drugs-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/library/statute/the-food-and-drugs-act/download",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statute/the-food-and-drugs-act/download (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify fail"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-4",
+      "kind": "legislation",
+      "title": "The Pharmacy Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-pharmacy-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/P/Pharmacy%20Act_1.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/P/Pharmacy%20Act_1.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: "
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-5",
+      "kind": "legislation",
+      "title": "The Nurses and Midwives Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-nurses-and-midwives-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/N/Nurses%20and%20Midwives%20Act_1.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/N/Nurses%20and%20Midwives%20Act_1.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate "
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-6",
+      "kind": "legislation",
+      "title": "Nurses and Midwives Act — Subsidiary Legislation",
+      "declaredFormat": "page",
+      "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-nurses-and-midwives-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-nurses-and-midwives-act",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/subsidiary-legislation/the-nurses-and-midwives-act (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate "
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-7",
+      "kind": "legislation",
+      "title": "The Mental Health Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-mental-health-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/M/Mental%20Health%20Act_1.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/M/Mental%20Health%20Act_1.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify f"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-8",
+      "kind": "legislation",
+      "title": "Mental Health Act — Subsidiary Legislation",
+      "declaredFormat": "page",
+      "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-mental-health-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-mental-health-act",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/subsidiary-legislation/the-mental-health-act (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-9",
+      "kind": "legislation",
+      "title": "The Data Protection Act, 2020",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/act-of-parliament/7-2020-the-data-protection-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/aop/2/7_2020-The%20Data%20Protection%20Act.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/aop/2/7_2020-The%20Data%20Protection%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate "
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-10",
+      "kind": "legislation",
+      "title": "The Access to Information Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-access-to-information-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/A/The%20Access%20to%20Information%20Act.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/A/The%20Access%20to%20Information%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certif"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-11",
+      "kind": "legislation",
+      "title": "The Electronic Transactions Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-electronic-transactions-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/E/The%20Electronic%20Transactions%20Act_update.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/E/The%20Electronic%20Transactions%20Act_update.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED]"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-12",
+      "kind": "legislation",
+      "title": "The Dental Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-dental-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/D/Dental%20Act.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/D/Dental%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unab"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-13",
+      "kind": "legislation",
+      "title": "The National Health Services Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-national-health-services-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/library/statute/the-national-health-services-act/download",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statute/the-national-health-services-act/download (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate v"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-15",
+      "kind": "legislation",
+      "title": "The Dangerous Drugs Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-dangerous-drugs-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/D/The%20Dangerous%20Drugs%20Act%20%282%29_0.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/D/The%20Dangerous%20Drugs%20Act%20%282%29_0.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] ce"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-16",
+      "kind": "legislation",
+      "title": "Food and Drugs Regulations, 1975",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-food-and-drugs-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/subsids/F/The%20Food%20and%20Drugs%20Act.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/subsids/F/The%20Food%20and%20Drugs%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate ve"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-17",
+      "kind": "legislation",
+      "title": "Public Health (Food Handling) Regulations, 1998",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-public-health-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/subsids/P/The%20Public%20Health%20Act_0.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/subsids/P/The%20Public%20Health%20Act_0.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate ver"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-18",
+      "kind": "legislation",
+      "title": "The Child Care and Protection Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-child-care-and-protection-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/C/Child%20Care%20and%20Protection%20Act_0.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/C/Child%20Care%20and%20Protection%20Act_0.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] cert"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-19",
+      "kind": "legislation",
+      "title": "The Nursing Homes Registration Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-nursing-homes-registration-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/library/statute/the-nursing-homes-registration-act/download",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statute/the-nursing-homes-registration-act/download (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-20",
+      "kind": "legislation",
+      "title": "The Food Storage and Prevention of Infestation Act",
+      "declaredFormat": "page",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statutes/revised",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/library/statutes/revised",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statutes/revised (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-21",
+      "kind": "legislation",
+      "title": "The Pesticides Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-pesticides-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/P/Pesticides%20Act_1.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/P/Pesticides%20Act_1.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-22",
+      "kind": "legislation",
+      "title": "The National Solid Waste Management Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-national-solid-waste-management-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/N/National%20Solid%20Waste%20Management%20Act.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/N/National%20Solid%20Waste%20Management%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] "
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-23",
+      "kind": "legislation",
+      "title": "The Natural Resources Conservation Authority Act",
+      "declaredFormat": "page",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statutes/revised",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/library/statutes/revised",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statutes/revised (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-24",
+      "kind": "legislation",
+      "title": "The Opticians Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-opticians-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/library/statute/the-opticians-act/download",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statute/the-opticians-act/download (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: u"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-25",
+      "kind": "legislation",
+      "title": "The Professions Supplementary to Medicine Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-professions-supplementary-to-medicine-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/P/Professions%20Supplementary%20to%20Medicine%20Act_1.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/P/Professions%20Supplementary%20to%20Medicine%20Act_1.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-26",
+      "kind": "legislation",
+      "title": "The Coroners Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-coroners-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/C/Coroners%20Act.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/C/Coroners%20Act.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: un"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-extra-25",
+      "kind": "legislation",
+      "title": "Dental Regulations, 1974",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-dental-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/subsids/D/Dental%20Act%20LN%20409%20of%2074.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/subsids/D/Dental%20Act%20LN%20409%20of%2074.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-extra-26",
+      "kind": "legislation",
+      "title": "Pharmacy Regulations, 1975",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-pharmacy-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/subsids/P/Pharmacy%20Act_0.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/subsids/P/Pharmacy%20Act_0.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: u"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-extra-27",
+      "kind": "legislation",
+      "title": "Nursing Homes Registration Regulations, 1934",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-nursing-homes-registration-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/subsids/N/Nursing%20Homes%20Registration%20Act_0.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/subsids/N/Nursing%20Homes%20Registration%20Act_0.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certif"
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-extra-28",
+      "kind": "legislation",
+      "title": "The Quarantine Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-quarantine-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/library/statute/the-quarantine-act/download",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /library/statute/the-quarantine-act/download (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: "
+      },
+      "discoveredCandidates": []
+    },
+    {
+      "id": "law-extra-29",
+      "kind": "legislation",
+      "title": "The Medical Act",
+      "declaredFormat": "pdf",
+      "sourceUrl": "https://laws.moj.gov.jm/library/statute/the-medical-act",
+      "result": {
+        "state": "network_error",
+        "url": "https://laws.moj.gov.jm/legislation/statutes/M/Medical%20Act_1.pdf",
+        "error": "HTTPSConnectionPool(host='laws.moj.gov.jm', port=443): Max retries exceeded with url: /legislation/statutes/M/Medical%20Act_1.pdf (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: u"
+      },
+      "discoveredCandidates": []
+    }
+  ]
+}
