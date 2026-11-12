@@ -1,0 +1,39 @@
+/* WRHA installable app controls — WAPS-inspired, but consistent with the WRHA blue/green identity. */
+.hub-offline-banner{position:relative;z-index:90;min-height:36px;background:#fff4dd;border-bottom:1px solid #f0d390;color:#795522;text-align:center;padding:8px 18px;font-size:11px;font-weight:800;line-height:1.45}
+.hub-offline-banner[hidden]{display:none!important}
+.hub-right-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;pointer-events:auto}
+.hub-fab-install{background:linear-gradient(145deg,#0e9a62,#087949);border-color:#087949;color:#fff;box-shadow:0 11px 28px #08694535}
+.hub-fab-install:hover{background:linear-gradient(145deg,#0caa6a,#08784f);box-shadow:0 16px 35px #08694545}
+.hub-fab-install[hidden],#hubInstallNow[hidden],#hubInstallDialog[hidden]{display:none!important}
+.hub-install-dialog{width:min(640px,calc(100vw - 28px))}
+.hub-install-dialog .hub-dialog-header{gap:13px}
+.hub-install-logo{display:block;width:98px;height:65px;object-fit:contain;background:#fff;border-radius:8px;flex-shrink:0}
+.hub-install-preview{display:flex;align-items:center;gap:15px;padding:13px 15px;border:1px solid #dbe8f4;border-radius:17px;background:linear-gradient(120deg,#f9fdff,#eef7ff);margin:12px 0 19px}
+.hub-install-preview img{width:64px;height:64px;object-fit:contain;border-radius:13px;box-shadow:0 5px 17px #164a891b;background:#fff}
+.hub-install-preview strong{display:block;font-size:15px;color:#12416f}
+.hub-install-preview small{display:block;font-size:11px;color:#69839e}
+.hub-install-mini-label{margin-left:auto;padding:4px 10px;background:#e3f4e8;border:1px solid #c9e8d5;border-radius:999px;color:#136c49;font-weight:900;font-size:9px;letter-spacing:1px}
+.hub-install-steps{display:grid;gap:10px;margin:14px 0}
+.hub-install-step{display:flex;align-items:flex-start;gap:12px;background:#fff;border:1px solid #dce9f4;border-radius:14px;padding:13px 15px}
+.hub-install-step-num{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;background:#deefff;border-radius:11px;font-size:14px;font-weight:900;color:#0753a6}
+.hub-install-step strong{display:block;font-size:12px;color:#114476}
+.hub-install-step small{display:block;font-size:11px;line-height:1.6;color:#627f97;margin-top:3px}
+.hub-install-hint{font-size:11px;color:#527089;background:#f0f8fd;padding:11px 13px;border-radius:11px;margin:12px 0}
+.hub-install-caveat{font-size:11px;color:#677e94;border-top:1px solid #e1eaf4;padding-top:16px;margin-top:16px;line-height:1.75}
+.hub-install-now{background:#0b8e59;border:1px solid #0b8e59}
+.hub-install-now:hover{background:#06774a}
+@media(max-width:740px){
+ .hub-right-actions{gap:6px}
+ .hub-fab-install{width:46px;height:46px;min-height:46px;padding:0;border-radius:14px}
+ .hub-install-preview img{width:56px;height:56px}
+ .hub-install-logo{width:77px;height:54px}
+ .hub-install-dialog{max-height:min(90dvh,780px)}
+}
+@media(max-width:390px){
+ .hub-install-logo{width:65px;height:47px}
+ .hub-install-dialog .hub-dialog-header h2{font-size:18px}
+ .hub-install-preview{padding:9px;gap:9px}
+ .hub-install-mini-label{display:none}
+}
+@media print{.hub-offline-banner,.hub-fab-install,#hubInstallDialog{display:none!important}}
+@media(prefers-reduced-motion:reduce){.hub-fab-install{transition:none!important}}
