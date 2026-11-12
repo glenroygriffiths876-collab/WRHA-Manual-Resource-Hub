@@ -156,6 +156,49 @@ for(const g of D.roleGroups)for(const r of g.roles){
  if(!r.classification)r.classification=null;
  if(!r.documentedResponsibilities)r.documentedResponsibilities=null;
 }
+/* Detailed official job advertisements: responsibilities and qualifications taken from the
+ * linked advertisement, not inferred from a broad occupational category.
+ * These historical advertisements do not indicate a present vacancy.
+ */
+const advertDetails={
+ 'Health Records Clerk':{
+  url:'https://www.wrha.gov.jm/wp-content/uploads/2026/10/Advertisment-Health-Records-Clerk-SPGH-1-1.pdf',
+  documentedResponsibilities:'Collect and register patient demographic information, retrieve and file records, maintain the patient master index and appointment records, and protect medical-record confidentiality.',
+  qualifications:'Five CXC subjects including English Language and Mathematics; one year of relevant experience (as stated in this advertisement).',
+  reportingTo:'Health Records Administrator'
+ },
+ 'Registered General Nurse':{
+  url:'https://www.wrha.gov.jm/wp-content/uploads/2026/09/Advertisement-Registered-Nurse-WCAH.pdf',
+  documentedResponsibilities:'Develop nursing care plans, monitor vital signs, carry out prescribed treatments, recognise emergencies, educate patients and families, keep clinical records and support nursing students.',
+  qualifications:'Bachelor of Science in Nursing and Nursing Council of Jamaica registration (as stated in this advertisement).',
+  reportingTo:'Director of Nursing Services'
+ },
+ 'Counselling Psychologist':{
+  url:'https://www.wrha.gov.jm/wp-content/uploads/2026/09/Advertisment-Counselling-Psychologist.pdf',
+  documentedResponsibilities:'Provide individual and group counselling, formulate interventions, manage confidential mental-health records, collaborate with multidisciplinary professionals and arrange appropriate referrals.',
+  qualifications:'MSc in Counselling Psychology and three years of relevant experience (as stated in this advertisement).',
+  reportingTo:'Psychologist'
+ },
+ 'Public Relations Officer':{
+  url:'https://www.wrha.gov.jm/wp-content/uploads/2026/10/Advert-for-Public-Relations-Officer.pdf',
+  documentedResponsibilities:'Develop communication materials and social-media content, assist with public relations events, maintain stakeholder records, respond to public enquiries and support formal communications.',
+  qualifications:'Degree in communications or related discipline and three years relevant experience (as stated in this advertisement).',
+  reportingTo:'Manager, Public Relations'
+ }
+};
+for(const g of D.roleGroups)for(const role of g.roles){
+ const detail=advertDetails[role.title];
+ if(!detail||role.verification!=='source-backed-title')continue;
+ role.documentedResponsibilities=detail.documentedResponsibilities;
+ role.verifiedQualifications=detail.qualifications;
+ role.verifiedReportsTo=detail.reportingTo;
+ if(role.source.length){
+  role.source[0].url=detail.url;
+  role.source[0].kind='full-job-advertisement';
+  role.source[0].sourceTitle=role.title;
+ }
+}
+
 D.roleEvidenceSources=src;
 D.roleEvidenceUpdated='2026-11-12';
 D.roleEvidenceCounts={sourceBacked:D.roleGroups.reduce((n,g)=>n+g.roles.filter(r=>r.verification==='source-backed-title').length,0),total:D.roleGroups.reduce((n,g)=>n+g.roles.length,0)};
