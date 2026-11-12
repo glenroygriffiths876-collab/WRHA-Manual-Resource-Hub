@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="./enhance.css">
 <link rel="stylesheet" href="./viewer.css">
 <link rel="stylesheet" href="./roles-evidence.css">
+<link rel="stylesheet" href="./hub-utilities.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous"></script>
 <script defer src="./data.js"></script>
 <script defer src="./catalog-extra.js"></script>
@@ -25,6 +26,7 @@
 <script defer src="./verified-role-public.js"></script>
 <script defer src="./viewer.js"></script>
 <script defer src="./app-v2.js"></script>
+<script defer src="./hub-utilities.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -112,6 +114,52 @@
 <a class="social-instagram" href="https://www.instagram.com/wrhagovjm" target="_blank" rel="noopener" aria-label="WRHA Instagram" title="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
 <a class="social-x" href="https://twitter.com/wrhagovjm" target="_blank" rel="noopener" aria-label="WRHA on X" title="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
 </div><div class="mohw-partner-block"><span class="footer-social-label">NATIONAL HEALTH PARTNER</span><a class="mohw-logo-link" href="https://www.moh.gov.jm/" target="_blank" rel="noopener" aria-label="Visit Ministry of Health and Wellness Jamaica official website" title="Ministry of Health & Wellness, Jamaica"><img id="mohwPartnerLogo" src="./assets/mohw-logo.png" alt="Ministry of Health & Wellness, Jamaica official logo" loading="lazy"></a><span class="mohw-partner-caption">Official national health guidance and policies</span></div></div></footer>
+<!-- WAPS-inspired WRHA feedback, issue reporting and sharing utilities. -->
+<div class="hub-quick-actions" aria-label="WRHA Manual Hub support and sharing">
+  <div class="hub-support-actions">
+    <button id="hubFeedbackFab" class="hub-fab hub-fab-feedback" type="button" aria-haspopup="dialog" aria-controls="hubFeedbackDialog" title="Leave feedback about this page" aria-label="Leave feedback">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8A8.5 8.5 0 0 1 12.5 20a8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8A8.5 8.5 0 0 1 12.5 3h.5A8.5 8.5 0 0 1 21 11.5Z"/><path d="M8 10h9M8 13.5h6"/></svg><span>Feedback</span>
+    </button>
+    <button id="hubIssueFab" class="hub-fab hub-fab-issue" type="button" aria-haspopup="dialog" aria-controls="hubFeedbackDialog" title="Report a problem with the hub" aria-label="Report an issue">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2.6 20h18.8L12 3Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Report issue</span>
+    </button>
+  </div>
+  <button id="hubShareFab" class="hub-fab hub-fab-share" type="button" aria-haspopup="dialog" aria-controls="hubShareDialog" title="Share this hub by link or QR code" aria-label="Share the WRHA Manual and Resource Hub">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.6 6.8-4.2M8.6 13.4l6.8 4.2"/></svg><span>Share</span>
+  </button>
+</div>
+<dialog id="hubFeedbackDialog" class="hub-utility-dialog" aria-labelledby="hubFeedbackTitle">
+  <form id="hubFeedbackForm">
+    <div class="hub-dialog-header"><div class="hub-dialog-emblem" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16v12H9l-5 4V5Z"/><path d="M8 9h8M8 13h6"/></svg></div><div><span class="hub-eyebrow">WRHA RESOURCE HUB</span><h2 id="hubFeedbackTitle">Share feedback</h2></div><button class="hub-dialog-x" type="button" data-hub-close aria-label="Close feedback dialog">×</button></div>
+    <p id="hubFeedbackLead" class="hub-dialog-lead">Tell us what could be better.</p>
+    <p class="hub-context-pill">Page: <strong id="hubFeedbackScreen">Overview</strong></p>
+    <div class="hub-form-field"><label for="hubFeedbackType">What best describes this?</label><select id="hubFeedbackType" required></select></div>
+    <div class="hub-form-field"><label for="hubFeedbackMessage">Your message <span aria-hidden="true">*</span></label><textarea id="hubFeedbackMessage" rows="5" required maxlength="1200" placeholder="Describe your feedback or the issue you've noticed."></textarea><span class="hub-field-help">Please give enough detail to help us understand or reproduce the issue.</span></div>
+    <div class="hub-privacy-note"><strong>Privacy:</strong> Do not include patient names, medical records, passwords or confidential information. The page, browser and screen details will be added to help troubleshoot. WhatsApp shows your sending number to the recipient.</div>
+    <div class="hub-dialog-actions"><button id="hubSendFeedback" class="hub-primary-action" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.1-.2.2-.3.2-.7.1a9 9 0 0 1-2.5-1.5c-.7-.6-1.2-1.4-1.4-1.7-.2-.4 0-.6.2-.8l.5-.6.3-.5c.1-.2 0-.5 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5H8c-.3 0-.6.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2.1 3.4 5 4.6 2.9 1.1 2.9.7 3.4.7s1.7-.7 1.9-1.4c.2-.7.2-1.4.1-1.4-.1-.2-.3-.3-.5-.4ZM12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Z"/></svg>Continue to WhatsApp</button><button class="hub-secondary-action" type="button" data-hub-close>Cancel</button></div>
+    <div id="hubFeedbackResult" class="hub-sending-result" role="status" aria-live="polite" hidden>WhatsApp should open with your message. Please press <strong>Send</strong> there. If it does not open, <a id="hubWhatsAppFallback" href="#" target="_blank" rel="noopener noreferrer">open your WhatsApp draft here</a>.</div>
+  </form>
+</dialog>
+<dialog id="hubShareDialog" class="hub-utility-dialog hub-share-dialog" aria-labelledby="hubShareTitle">
+  <div class="hub-dialog-header"><div class="hub-dialog-emblem hub-share-emblem" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.6 6.8-4.2M8.6 13.4l6.8 4.2"/></svg></div><div><span class="hub-eyebrow">SHARE WRHA RESOURCES</span><h2 id="hubShareTitle">Share the hub</h2></div><button class="hub-dialog-x" type="button" data-hub-close aria-label="Close sharing dialog">×</button></div>
+  <div id="hubShareChoices">
+    <p class="hub-dialog-lead">Invite someone to explore the manual library, legislation, health centres, training and verified positions.</p>
+    <div class="hub-share-grid">
+      <button type="button" class="hub-share-tile" id="hubNativeShare"><span class="hub-tile-icon">↗</span><b>Share link</b><small>WhatsApp, Messages, email and more</small></button>
+      <button type="button" class="hub-share-tile" id="hubCopyLink"><span class="hub-tile-icon">⧉</span><b>Copy link</b><small>Copy the hub's home address</small></button>
+      <button type="button" class="hub-share-tile" id="hubShowQr"><span class="hub-tile-icon">▦</span><b>QR code</b><small>Let someone scan with their camera</small></button>
+    </div>
+  </div>
+  <div id="hubQrPanel" hidden>
+    <button type="button" class="hub-back-link" id="hubQrBack">← Share options</button>
+    <div class="hub-qr-identity"><img src="./wrha-logo.webp" alt="Western Regional Health Authority"><div><span class="hub-eyebrow">WRHA MANUAL & RESOURCE HUB</span><h3>Scan to open the hub</h3></div></div>
+    <div class="hub-qr-frame"><img id="hubQrImage" src="./assets/wrha-hub-share-qr.svg" alt="QR code for the official WRHA Manual and Resource Hub home page" loading="lazy"><p id="hubQrUnavailable" hidden>QR image unavailable. You can still copy and share the link below.</p></div>
+    <p class="hub-qr-help">Open the camera on another phone and point it at this code.</p>
+    <a id="hubDownloadQr" class="hub-qr-download" href="./assets/wrha-hub-share-qr.svg" download="WRHA_Manual_Resource_Hub_QR.svg">Download QR image ↓</a>
+  </div>
+  <div class="hub-share-link"><input id="hubShareUrl" type="text" readonly value="https://glenroygriffiths876-collab.github.io/WRHA-Manual-Resource-Hub/#home" aria-label="WRHA Hub share URL"><button id="hubCopyLinkInline" type="button">Copy</button></div>
+  <p id="hubShareStatus" class="hub-utility-status" role="status" aria-live="polite">Share the official hub link or show its QR code.</p>
+</dialog>
 <dialog id="pdfDialog" class="pdf-modal" aria-labelledby="pdfTitle">
   <div class="modal-header">
     <div class="modal-heading">
@@ -136,6 +184,7 @@
     <label class="pdf-find">Find <input id="pdfSearch" type="search" placeholder="Search text..." aria-label="Find text in PDF"></label>
     <button id="pdfFindButton" class="viewer-tool" type="button">Find</button>
     <button id="pdfFullScreen" class="viewer-tool" type="button">Full screen ⛶</button>
+    <button id="hubPdfReportIssue" class="viewer-tool hub-pdf-report" type="button" aria-haspopup="dialog" aria-controls="hubFeedbackDialog" title="Report a problem with this PDF">Report issue</button>
     <a id="pdfSource" href="#" target="_blank" rel="noopener">Publisher ↗</a>
     <a id="pdfLegalAlt" href="https://lipj.gov.jm/" target="_blank" rel="noopener" hidden>Alternative legal portal ↗</a>
     <a id="pdfDownload" href="#" target="_blank" rel="noopener">Download PDF</a>
