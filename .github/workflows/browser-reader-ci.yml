@@ -1,7 +1,7 @@
 name: Browser PDF reader, hub utilities and WRHA PWA installation tests
 on:
   push:
-    branches: [fix-embedded-pdf-reader-20261112, fix-pdf-visible-roles-evidence-mohw-footer, verified-roles-and-mofps-establishment, waps-style-feedback-issue-share, installable-wrha-hub-pwa]
+    branches: [fix-embedded-pdf-reader-20261112, fix-pdf-visible-roles-evidence-mohw-footer, verified-roles-and-mofps-establishment, waps-style-feedback-issue-share, installable-wrha-hub-pwa, deep-manual-and-rha-roles-audit-20261112]
     paths:
       - 'index.html'
       - 'viewer.js'
@@ -22,6 +22,10 @@ on:
       - 'verified-role-public.js'
       - 'establishment-resource.js'
       - 'catalog-extra.js'
+      - 'deep-manual-sources.js'
+      - 'deep-rha-job-evidence.js'
+      - 'srha-verified-positions.js'
+      - 'cross-region-role-consolidation.js'
       - 'scripts/browser-smoke.mjs'
       - '.github/workflows/browser-reader-ci.yml'
   workflow_dispatch:

@@ -1,0 +1,166 @@
+{
+  "checkedOn": "2026-11-12",
+  "baseline": 58,
+  "after": 74,
+  "newlyIncluded": [
+    {
+      "id": "deep-2026-workplace-wellness-manual",
+      "title": "Corporate Wellness Manual",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Corporate-Wellness-Manual-Final-edition.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "status": "Official public source — current edition not independently certified"
+    },
+    {
+      "id": "deep-workplace-wellness-checklist",
+      "title": "Workplace Wellness Coordinators Checklist",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Final-Wellness-Coordinators-Checklist.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "status": "Official public source — issue date not confirmed"
+    },
+    {
+      "id": "deep-workplace-fitness-guide",
+      "title": "MOHW Fitness Test Guide",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/MOH-Wellness-Fitness-Guide-March-7-2022.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "status": "Official 2022 guide; no newer edition confirmed"
+    },
+    {
+      "id": "deep-workplace-physical-activity",
+      "title": "Physical Activity Guide & Toolkit for the Workplace",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Physical-Activity-Guide-for-the-Workplace_compressed.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "status": "Official public source — edition review recommended"
+    },
+    {
+      "id": "deep-workplace-living-well-booklet",
+      "title": "Living Well — Workplace Wellness Booklet",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/MoHW_WELNESS-BOOKLET-2.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "status": "Official source — date/edition to verify"
+    },
+    {
+      "id": "deep-workplace-hiv-action-plan",
+      "title": "HIV/AIDS Workplace Action Plan — Historical Draft",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Moh-Final-Draft-Workplace-Policy-October-2009-Read-Only.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "status": "Historical draft — do not use as current policy"
+    },
+    {
+      "id": "deep-2026-pharmwatch-form",
+      "title": "PharmWatch Drug Monitoring and Adverse Reaction Reporting Form",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2026/02/PharmWatch-Drug-Monitoring-Form-Current-FRM-PMS-SRD-STRD-026-R1-1.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "status": "Official reporting form, revised May 2022"
+    },
+    {
+      "id": "deep-esavi-report-form",
+      "title": "ESAVI Adverse Event Following Immunisation Reporting Form",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2021/09/Appendix-E_Annex-E-ESAVI-Form.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "status": "Official published form; check latest form version"
+    },
+    {
+      "id": "deep-healthy-eating-workplace-guide",
+      "title": "Healthy Eating Guide — Workplace",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/12/Healthy-Eating-workplace0904.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/corporate-workplace-wellness/",
+      "status": "Public official PDF — date and edition not independently confirmed"
+    },
+    {
+      "id": "deep-nutrition-colorectal-care",
+      "title": "Nutrition and Colorectal Cancer Care",
+      "url": "https://ncdip.moh.gov.jm/download/3520/",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "status": "Official downloadable resource; latest version not certified"
+    },
+    {
+      "id": "deep-asthma-management-form",
+      "title": "Asthma Management Form",
+      "url": "https://ncdip.moh.gov.jm/download/4279/",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "status": "Published NCD form — edition requires review"
+    },
+    {
+      "id": "deep-diabetes-control-checklist",
+      "title": "Diabetes Control Checklist",
+      "url": "https://ncdip.moh.gov.jm/download/1324/",
+      "sourceUrl": "https://ncdip.moh.gov.jm/resources/",
+      "status": "Public clinical checklist; edition requires review"
+    },
+    {
+      "id": "deep-peer-approval-checklist-2026",
+      "title": "Peer Approval Instructions and Checklist",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2026/03/Peer-Approval-Instructions-and-Checklist.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "status": "2026 public instructions; verify when applying"
+    },
+    {
+      "id": "deep-vision-for-health-2030",
+      "title": "Vision for Health 2019–2030 — Strategic Framework",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2019/05/MOHW-Vision-for-Health-2030-Final.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/policy-procedure/",
+      "status": "Official 2019–2030 strategic document; confirm subsequent implementation amendments"
+    },
+    {
+      "id": "deep-old-interim-diabetes",
+      "title": "Interim Guidelines for Clinical Management of Diabetes — Historical 2020",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2020/10/DIABETESGUIDELINES_Interim_final.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "status": "HISTORICAL — superseded by 2024 guidelines"
+    },
+    {
+      "id": "deep-old-interim-hypertension",
+      "title": "Interim Guidelines for Clinical Management of Hypertension — Historical 2020",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2020/10/HYPERTENSIONGUIDELINES_Interim_final.pdf",
+      "sourceUrl": "https://www.moh.gov.jm/mp-resources/",
+      "status": "HISTORICAL — superseded by 2024 guidelines"
+    }
+  ],
+  "replacementOfficialPdfUrls": [
+    {
+      "id": "local-3",
+      "title": "Clinical Management of HIV",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2023/08/Clinical-Management-of-HIV-Disease-2020-Recommendations-Final-Justified_PDF.pdf",
+      "status": "Official 2020 edition; latest not independently certified"
+    },
+    {
+      "id": "local-6",
+      "title": "National Strategic Plan for HIV 2023–2030",
+      "url": "https://www.moh.gov.jm/wp-content/uploads/2026/09/MOH-NSP_Final-1-1.pdf",
+      "status": "Current publicly located MOHW upload; plan period 2023–2030"
+    },
+    {
+      "id": "local-11",
+      "title": "Referral and Transfer of Patients Manual",
+      "url": "https://moh.gov.jm/wp-content/uploads/2016/11/Revised-MOH-Policy-and-Procedure-Manual-for-the-Referral-and-Transfer-of-Patients-22.09.16.pdf",
+      "status": "Official 2016 edition; no newer confirmed"
+    }
+  ],
+  "historicalAndSuperseded": [
+    {
+      "id": "mohw-extended-6",
+      "title": "National Screening Guidelines for Priority Non-Communicable Diseases in Primary Health Care",
+      "status": "Superseded by the 2024 second edition"
+    },
+    {
+      "id": "deep-workplace-hiv-action-plan",
+      "title": "HIV/AIDS Workplace Action Plan — Historical Draft",
+      "status": "Historical draft — do not use as current policy"
+    },
+    {
+      "id": "deep-old-interim-diabetes",
+      "title": "Interim Guidelines for Clinical Management of Diabetes — Historical 2020",
+      "status": "HISTORICAL — superseded by 2024 guidelines"
+    },
+    {
+      "id": "deep-old-interim-hypertension",
+      "title": "Interim Guidelines for Clinical Management of Hypertension — Historical 2020",
+      "status": "HISTORICAL — superseded by 2024 guidelines"
+    }
+  ],
+  "discoveryInventory": "reports/mohw-deep-discovery.json — 160 candidate links from 15 publicly accessible MOHW/affiliated pages; not all candidates are manuals or latest versions.",
+  "pdfCaveat": "Some MOHW-hosted PDFs block cross-origin PDF.js or enforce browser downloads. Full in-page reading cannot be guaranteed without publisher permission; fallback exposes official PDF and source. Files tagged large are not auto-fetched into browser.",
+  "unconfirmedNewGuidelines": [
+    "Revised neonatal care and emergency obstetric care clinical manuals were announced February 2026, but public downloadable copies were not independently located; excluded."
+  ]
+}

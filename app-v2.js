@@ -143,7 +143,7 @@ const mofpsCount=roleRows.filter(r=>r.verificationTier==='C').length;
 $('roleGroup').innerHTML='<option value="">All professional categories</option>'+[...new Set(roleRows.map(r=>r.group))].sort().map(n=>'<option value="'+esc(n)+'">'+esc(n)+'</option>').join('');
 $('roleSummaryStrip').innerHTML='<div><strong>'+rhaCount+'</strong><span>RHA titles found in official documents</span></div>'+
  '<div><strong>'+mofpsCount+'</strong><span>MOHW central-government title/grade records</span></div>'+
- '<div><strong>0</strong><span>Unverified or speculative titles shown</span></div>';
+ '<div><strong>'+D.roleEvidenceCounts.regionEvidenceCount+'</strong><span>RHA documentary evidence records reviewed</span></div>';
 function verificationLabel(r){return r.verificationTier==='C'?'2026 Civil Service Order — Ministry post':'Official RHA title — document verified';}
 function verificationBadge(r){return '<span class="role-verified evidenced">'+esc(verificationLabel(r))+'</span>';}
 function makeSourceLink(r){
@@ -158,8 +158,9 @@ function openRole(r){
  const fields=[
  ['Exact published title',r.title],
  ['Classification',r.classification||'Not independently verified from the source'],
- ['Issuing authority',r.verificationTier==='C'?'Ministry of Health & Wellness — Central Civil Service':r.authority+' — Regional Health Authority'],
+ ['Verified issuing authorities',r.verificationTier==='C'?'Ministry of Health & Wellness — Central Civil Service':(r.authorities||[r.authority]).join(', ')+' — source-backed RHA records'],
  ['Evidence category',verificationLabel(r)],
+ ['Verified regions',r.verificationTier==='C'?'Not an RHA post':(r.authorities||[r.authority]).join(', ')],
  ['Job purpose and duties',r.documentedResponsibilities||'Not included in the verified source record. No generic functions have been invented.'],
  ['Qualifications',r.verifiedQualifications||'Not confirmed from the individual verified job document.'],
  ['Reporting relationship',r.verifiedReportsTo||'Not confirmed in the verified job document.']
@@ -168,7 +169,7 @@ function openRole(r){
  if(r.verificationTier==='C'){
   out+='<section class="role-proof-section"><h3>MOFPS Establishment evidence</h3><p>The linked 2026 PDF contains this exact Ministry position. '+(r.postIds?.length?'Published post number'+(r.postIds.length>1?'s':'')+': '+esc(r.postIds.join(', '))+'. ':'')+(r.sourcePage?'PDF page '+esc(r.sourcePage)+'. ':'')+'These are <strong>central-government</strong> establishment records; they do not establish an RHA post.</p></section>';
  }else{
-  out+='<section class="role-proof-section"><h3>RHA publication evidence</h3><p>An exact matching title was found in an official RHA vacancy notice, archive or qualification list. This does not establish that the post or vacancy remains current.</p></section>';
+  out+='<section class="role-proof-section"><h3>Cross-region RHA documentary coverage</h3><p>Original official sources confirm this exact title and classification in: <strong>'+esc((r.authorities||[r.authority]).join(', '))+'</strong>. This occupational cadre may be used in other regions, but an undocumented region is not claimed as verified. Individual RHA vacancy notices and qualification lists can have differing duties and entry qualifications. Historical recruitment evidence does not prove a currently funded post or an open vacancy.</p></section>';
  }
  out+='<section class="role-proof-section"><h3>Official documents</h3>'+makeSourceLink(r)+'</section>';
  out+='<p class="role-disclaimer">'+esc(r.warning||'Verify current employment arrangements directly with the relevant RHA or Ministry.')+'</p>';
@@ -177,11 +178,11 @@ function openRole(r){
 }
 function filterRoles(){
  const q=$('roleSearch').value.trim().toLowerCase(),grp=$('roleGroup').value,auth=$('roleAuthority').value,tier=$('roleVerification').value;
- const matches=roleRows.filter(r=>(!grp||r.group===grp)&&(!auth||r.authority===auth)&&(!tier||r.verificationTier===tier)&&(!q||[r.title,r.classification,r.group,r.authority,r.verificationLabel].join(' ').toLowerCase().includes(q)));
+ const matches=roleRows.filter(r=>(!grp||r.group===grp)&&(!auth||(r.authorities||[r.authority]).includes(auth))&&(!tier||r.verificationTier===tier)&&(!q||[r.title,r.classification,r.group,r.authority,r.verificationLabel,...(r.authorities||[])].join(' ').toLowerCase().includes(q)));
  $('roleCount').textContent=matches.length+' source-verified position records'+(q?' matching your search':'')+' · 0 speculative entries';
  $('rolesGrid').innerHTML=matches.slice(0,roleLimit).map(r=>{
   const id='verified-role-'+(roleRows.indexOf(r)+1);
-  return '<article class="role-card"><span>'+esc(r.icon)+' '+esc(r.group)+'</span><div class="role-card-heading">'+verificationBadge(r)+(r.classification?'<span class="role-grade">'+esc(r.classification)+'</span>':'')+'</div><h3>'+esc(r.title)+'</h3><p>'+esc(r.verificationTier==='C'?'MOHW central civil-service title, documented in the 2026 Establishment Order. Not an RHA post.':'Exact title appears in an official '+r.authority+' source. A historical advertisement is not a current vacancy.')+'</p><div class="role-detail"><b>Authority:</b> '+esc(r.authority)+' · <b>Evidence:</b> '+esc(r.verificationTier==='C'?'MOFPS Order':'RHA primary source')+'</div><button type="button" data-role-id="'+esc(id)+'" class="role-details-btn">View verified source & role ↗</button></article>';
+  return '<article class="role-card"><span>'+esc(r.icon)+' '+esc(r.group)+'</span><div class="role-card-heading">'+verificationBadge(r)+(r.classification?'<span class="role-grade">'+esc(r.classification)+'</span>':'')+'</div><h3>'+esc(r.title)+'</h3><p>'+esc(r.verificationTier==='C'?'MOHW central civil-service title, documented in the 2026 Establishment Order. Not an RHA post.':'Exact title appears in an official '+r.authority+' source. A historical advertisement is not a current vacancy.')+'</p><div class="role-detail"><b>Authority:</b> '+esc(r.authority)+' · <b>Evidence:</b> '+esc(r.verificationTier==='C'?'MOFPS Order':((r.source||[]).length+' original reference(s)'))+'</div><button type="button" data-role-id="'+esc(id)+'" class="role-details-btn">View verified source & role ↗</button></article>';
  }).join('')||'<div class="empty-state">No verified positions match the current filters.</div>';
  $('rolesGrid').querySelectorAll('[data-role-id]').forEach(button=>button.addEventListener('click',()=>openRole(roleById.get(button.dataset.roleId))));
  $('moreRoles').hidden=matches.length<=roleLimit;

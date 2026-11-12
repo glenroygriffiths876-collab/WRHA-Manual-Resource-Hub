@@ -64,8 +64,20 @@ try{
  assert((await page.locator('#rolesGrid').textContent()).includes('Public Health Inspector 1'));
  await page.locator('#rolesGrid [data-role-id]').first().click();
  await page.locator('#roleDialog[open]').waitFor();
- assert((await page.locator('#roleDetailBody').textContent()).includes('RHA publication evidence'),'Official RHA role source missing');
+ assert((await page.locator('#roleDetailBody').textContent()).includes('Cross-region RHA documentary coverage'),'Cross-region RHA role evidence missing');
  await page.locator('#closeRole').click();
+ await page.locator('#roleSearch').fill('Contact Investigator');
+ assert((await page.locator('#rolesGrid').textContent()).includes('Contact Investigator'),'New verified Contact Investigator cadre missing');
+ await page.locator('#roleSearch').fill('Community Peer Educator');
+ assert((await page.locator('#rolesGrid').textContent()).includes('Community Peer Educator'),'New peer educator cadre missing');
+ await page.locator('#rolesGrid [data-role-id]').first().click();
+ await page.locator('#roleDialog[open]').waitFor();
+ const peerSources=await page.locator('#roleDetailBody').textContent();
+ assert(peerSources.includes('SRHA')&&peerSources.includes('NERHA'),'Peer Educator source evidence must include two RHAs');
+ await page.locator('#closeRole').click();
+ await page.locator('#roleSearch').fill('Parish Nutritionist');
+ assert((await page.locator('#rolesGrid').textContent()).includes('Parish Nutritionist'),'Official parish nutritionist missing');
+ await page.locator('#roleSearch').fill('');
  // No unverified or related-title-only positions may appear anywhere in the public roles page.
  await page.locator('#roleSearch').fill('Dental Nurse');
  assert((await page.locator('#roleCount').textContent()).includes('0 source-verified'),'Unverified general Dental Nurse profile must not display');
@@ -84,6 +96,15 @@ try{
  await page.locator('#pdfDialog[open]').waitFor();
  assert((await page.locator('#pdfDownload').getAttribute('href')).endsWith('/Civil-Service-Establishment-General-Order-2026.pdf'),'MOFPS 2026 official PDF is not linked');
  await page.locator('#closePdf').click();
+ await page.locator('#manualSearch').fill('Corporate Wellness Manual');
+ await page.locator('#manualGrid [data-read="manual:deep-2026-workplace-wellness-manual"]').click();
+ await page.locator('#pdfDialog[open]').waitFor();
+ await page.locator('#pdfBlocked:not([hidden])').waitFor();
+ assert((await page.locator('#pdfBlocked').textContent()).includes('in-page reading restricted'),'Oversized external MOHW PDF must show real access panel, not blank viewer');
+ assert((await page.locator('#pdfDownload').getAttribute('href')).includes('Corporate-Wellness-Manual-Final-edition.pdf'));
+ assert(await page.locator('#pdfFrame').isHidden(),'Large publisher PDF must not auto-download through iframe');
+ await page.locator('#closePdf').click();
+ await page.locator('#manualSearch').fill('');
  assert(await page.locator('#mohwPartnerLogo').evaluate(img=>img.complete&&img.naturalWidth>100),'MOHW logo must actually load');
  // WAPS-like contextual feedback and issue reporting: WhatsApp draft, no automatic send.
  await page.evaluate(()=>{window.__hubWaCalls=[];window.open=(...args)=>{window.__hubWaCalls.push(args);return null;}});

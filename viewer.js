@@ -84,7 +84,7 @@ function restrictedFallback(url,reason){
 }
 async function loadPdf(d){
  const version=session,url=d.url;
- if(!window.pdfjsLib){restrictedFallback(url,'PDF.js is unavailable. Trying the browser’s in-page PDF viewer. If it remains blank, use the PDF source link.');return;}
+ if(!window.pdfjsLib){restrictedFallback(url,'PDF.js is not available in this browser. Open the original PDF using the separate publisher link.');return;}
  try{
   setStatus('Loading the original PDF into the WRHA reader…');
   task=window.pdfjsLib.getDocument({url,withCredentials:false,disableAutoFetch:false,disableStream:false});
@@ -139,6 +139,12 @@ function open(d){
   elements.web.querySelector('h3').textContent='Official web resource';elements.web.querySelector('p').textContent='This entry is a webpage or collection of links, not a verified downloadable PDF. We will not present it as a PDF or invent a download.';
   setMode('web');elements.webLink.href=d.url;setStatus('This record is an official webpage or index, not a verified PDF. No PDF download is shown.');
   updateControls();
+ }else if(d.fileSizeNote){
+   // Do not attempt to stream and render 25–85MB public files in the small modal:
+   // publisher may block cross-origin streaming or use attachment disposition.
+   // Show real first-page preview if one was previously generated and explicit
+   // access to the complete official PDF; preserve native reading for normal PDFs.
+   restrictedFallback(d.url,'This is a large external PDF ('+d.fileSizeNote+'). To avoid an unresponsive reader or automatic download, the original publisher PDF link is provided.');
  }else{setMode('loading');loadPdf(d);}
 }
 async function search(){

@@ -1,0 +1,46 @@
+name: Deep independent MOHW manual and SRHA role research
+on:
+  push:
+    branches: [deep-manual-and-rha-roles-audit-20261112]
+    paths:
+      - 'scripts/extract_srha_qualification_roles.py'
+      - 'scripts/discover_mohw_public_manuals.py'
+      - '.github/workflows/deep-research.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Install PDF and HTML parsers
+        run: python -m pip install -q requests beautifulsoup4 pymupdf
+      - name: Read entire 34-page SRHA official staffing qualifications schedule
+        id: srha
+        continue-on-error: true
+        run: python scripts/extract_srha_qualification_roles.py
+      - name: Scan 15 official MOHW and programme document directories
+        id: manuals
+        continue-on-error: true
+        run: python scripts/discover_mohw_public_manuals.py
+      - name: Publish evidence reports for manual inspection
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for f in reports/srha-qualification-candidates.json reports/mohw-deep-discovery.json; do
+            if test -s "$f"; then git add "$f"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m "Research MOHW manual sources and 34-page SRHA job-classification list"
+            for attempt in 1 2 3; do
+              git fetch origin "$GITHUB_REF_NAME"
+              git rebase "origin/$GITHUB_REF_NAME"
+              if git push origin "HEAD:$GITHUB_REF_NAME"; then exit 0; fi
+              sleep 3
+            done
+            exit 1
+          fi
