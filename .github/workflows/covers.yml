@@ -8,6 +8,7 @@ on:
       - 'scripts/export-covers.mjs'
       - 'scripts/generate_covers.py'
       - 'catalog-extra.js'
+      - 'document-overrides.js'
 permissions:
   contents: write
 concurrency:
