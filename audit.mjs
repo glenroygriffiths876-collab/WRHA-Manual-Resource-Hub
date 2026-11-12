@@ -3,8 +3,8 @@ import fs from 'node:fs';import vm from 'node:vm';import path from 'node:path';
 const read=n=>fs.readFileSync(path.resolve(n),'utf8');const errors=[];
 const requireCheck=(ok,message)=>{if(!ok)errors.push(message)};
 const html=read('index.html'),app=read('app-v2.js'),css=read('enhance.css');
-for(const script of ['app-v2.js','catalog-extra.js','data.js'])try{new vm.Script(read(script),{filename:script})}catch(err){errors.push(script+' syntax '+err.message)}
-const window={};vm.runInNewContext(read('data.js')+'\n'+read('catalog-extra.js'),{window}, {timeout:15000});
+for(const script of ['viewer.js','app-v2.js','document-overrides.js','catalog-extra.js','data.js'])try{new vm.Script(read(script),{filename:script})}catch(err){errors.push(script+' syntax '+err.message)}
+const window={};vm.runInNewContext(read('data.js')+'\n'+read('catalog-extra.js')+'\n'+read('document-overrides.js'),{window}, {timeout:15000});
 const D=window.WRHA_DATA;
 const roleRows=D.roleGroups.flatMap(g=>g.roles.map(r=>({group:g.name,...r})));
 const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));
@@ -15,6 +15,7 @@ for(const file of ['wrha-logo.webp','styles.css','enhance.css','data.js','catalo
 requireCheck(D.legislation.length>=20,'Legislation catalogue unexpectedly small');
 requireCheck(roleRows.length>=150,'Job directory unexpectedly small');
 requireCheck(D.manuals.length>=50,'Manual catalogue unexpectedly small');
+requireCheck(D.manuals.find(x=>x.id==='expanded-18')?.url.endsWith('/Nutrition-at-a-Glance-2024.pdf'),'Nutrition entry still points to MOHW webpage');
 requireCheck(Object.keys(D.rhaMap).length===14,'Not all parishes represented');
 const roleTitles=new Set();roleRows.forEach(r=>{const key=r.title.toLowerCase();requireCheck(!roleTitles.has(key),'Duplicate job '+r.title);roleTitles.add(key);requireCheck(r.summary&&r.setting&&r.collaborates,'Missing role detail '+r.title)});
 const lawIds=new Set();D.legislation.forEach(l=>{requireCheck(!!(l.title&&l.category&&l.url),'Incomplete law entry');requireCheck(!lawIds.has(l.id),'Duplicate law '+l.id);lawIds.add(l.id)});
