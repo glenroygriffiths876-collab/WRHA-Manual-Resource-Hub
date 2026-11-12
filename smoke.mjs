@@ -20,7 +20,7 @@ w.eval(fs.readFileSync('verified-role-public.js','utf8'));
 w.eval(fs.readFileSync('deep-rha-job-evidence.js','utf8'));
 w.eval(fs.readFileSync('srha-verified-positions.js','utf8'));
 w.eval(fs.readFileSync('cross-region-role-consolidation.js','utf8'));
-assert.equal(w.WRHA_DATA.manuals.length,66);
+assert.equal(w.WRHA_DATA.manuals.length,74);
 assert.equal(w.WRHA_DATA.roleEvidenceCounts.total,234);
 w.eval(fs.readFileSync('viewer.js','utf8'));
 w.eval(fs.readFileSync('app-v2.js','utf8'));
