@@ -1,0 +1,34 @@
+name: Embedded PDF reader regression tests
+on:
+  push:
+    branches: [fix-embedded-pdf-reader-20261112]
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'viewer.js'
+      - 'viewer.css'
+      - 'document-overrides.js'
+      - 'app-v2.js'
+      - 'smoke.mjs'
+      - 'audit.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check catalogue, corrected direct URLs, and JS syntax
+        run: node audit.mjs
+      - name: Install isolated browser DOM for interactions
+        run: npm install --no-save --no-audit --no-fund jsdom@24
+      - name: Run in-app PDF reader and existing navigation smoke tests
+        run: node smoke.mjs
+      - name: Check that no manual PDF button points to an HTML publication webpage
+        run: |
+          node scripts/export-document-index.mjs
+          node -e "const fs=require('fs');const a=JSON.parse(fs.readFileSync('reports/document-index.json'));const bad=a.filter(d=>d.format==='pdf' && !(/\\.pdf(?:[?#]|$)/i.test(d.url)||/\\/download\\/?(?:[?#]|$)/i.test(d.url)));if(bad.length){console.error(bad);process.exit(1)}console.log('All declared PDF paths have PDF-shaped URLs; full live response audit is separate.')"
