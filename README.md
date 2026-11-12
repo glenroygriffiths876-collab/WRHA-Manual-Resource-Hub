@@ -17,11 +17,28 @@ A responsive Western Regional Health Authority–branded knowledge-access platfo
 
 **Verification:** Node catalogue checks, jsdom interaction checks and a real Chromium test of the Nutrition PDF link, in-page document dialog, legal fallback, and smartphone layout passed on the feature branch. This does not guarantee every third-party browser can render every external document.
 
+## November 12, 2026: Restricted-PDF reader and evidence-based roles
+
+**PDF reading behaviour.** The NCDIP second-edition screening guideline (MOHW `/download/4283/`) is a valid PDF but the host does not provide cross-origin browser access. An iframe can also be blank or trigger an attachment download. The hub no longer automatically opens the iframe when PDF.js fails. Instead it shows the genuine stored first-page WebP preview, explanatory text, the official PDF link and the publisher page. **This is not complete in-hub reading**: that would require a source-approved embedding method or written permission for a locally hosted copy. Other PDFs continue opening in the enhanced PDF.js reader when the server permits it. Browsers control whether external original-PDF links download or open.
+
+**MOHW branding.** The actual Ministry of Health & Wellness logo supplied for the project is saved as `assets/mohw-logo.png` and displayed beneath the four WRHA social icons. The downloaded-from-site method was removed after the official website returned HTTP 403 to the automated runner. This is authentic user-supplied artwork, not an invented icon. Seek confirmation of institutional permission to use the logo in a formally endorsed publication.
+
+**Roles.** The old single count of 229 general functional overviews was misleading. The latest directory contains a **dynamic count of source-backed titles, related-title references and unverified general profiles**. The first evidence pass matched **81 exact RHA title references**, with classification and source links where published. The machine-readable audit is `reports/rha-role-evidence.json`. Sources:
+- WRHA vacancy archive: https://www.wrha.gov.jm/vacancy/ (pages 1–6, including archived 2026 advertisements)
+- SRHA regional office qualification listing: https://srha.gov.jm/pdf/HR/Positions-Qualifications.pdf
+- SRHA vacancy advertisements: https://srha.gov.jm/jobs.php
+- NERHA vacancies and recruitment notices: https://www.nerha.gov.jm/vacancies
+- MOFPS establishment publications: https://www.mof.gov.jm/documents/publications/
+
+**Verification limitations:** an old RHA job advert proves publication of that title at the time, not that a vacancy is currently open, its classification applies to all RHAs, or a civil-service establishment list proves a statutory RHA post. For most existing role descriptions, official responsibility and qualification text has **not** yet been transcribed from individual job descriptions. No SERHA primary vacancy/establishment source has been confirmed for this pass; its filter remains available for future verified records. Continue the research before treating the directory as a complete RHA establishment list.
+
+**Testing:** JS and DOM regression, accessible role-detail navigation, and a real Chromium test simulating blocked NCDIP network access (showing the nonblank preview and no automatic download). PDF viewer success is measured by actual rendered PDF.js output; blocked source cases are intentionally distinguished from rendered documents.
+
 ## Features
 - **Clinical & Public-Health Manuals:** 57 manually catalogued source-linked materials, including HIV/STI/TB, surveillance, NCD, nursing/maternal, immunisation, nutrition, environmental health, pharmacy, administration and additional programmes. Searchable, category-filterable PDF cover gallery and embedded document reader where technically permitted.
 - **Health Legislation:** 30 laws and regulations indexed by topic and type. Direct PDF versions are preferred where source-verified; some entries must link to official Ministry of Justice legal records or index pages.
 - **Health Centres:** 234 source-linked entries across 14 parishes. Region/parish/text search and clickable illustrated parish map. **This is not yet a complete or certified national facility directory.** The green markers represent the number of *catalogued* entries per parish, not verified facility coordinates.
-- **Roles & Functions:** 229 specific individual healthcare roles grouped into 14 professional/operational areas with core functions, work settings and typical collaborators. These are general educational descriptions, not official job descriptions or proof that every title is an authorised post.
+- **Roles & Functions:** individual healthcare roles grouped into 14 professional/operational areas with core functions, work settings and typical collaborators. These are general educational descriptions, not official job descriptions or proof that every title is an authorised post.
 - **Training:** WRHA NCD Adherence Counselling Academy and JASDIS Study Hub only.
 - **Institutional visuals:** WRHA source logo, enlarged/animated header and hero identity, responsive animations, social icons and WRHA/MOHW source links.
 
