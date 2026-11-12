@@ -26,7 +26,12 @@ def create(size,maskable=False):
     # Maskable icon safe zone: official artwork stays in the centre of the circle.
     maxw=int(size*(.66 if maskable else .83))
     maxh=int(size*(.53 if maskable else .67))
-    art=logo.copy();art.thumbnail((maxw,maxh),Image.Resampling.LANCZOS)
+    # PIL.thumbnail only SHRINKS images. The source logo is ~160px wide;
+    # upscale it deliberately so the symbol fills the app icon instead of
+    # appearing tiny in the centre. Do not distort its original proportions.
+    scale=min(maxw/logo.width,maxh/logo.height)
+    target=(max(1,round(logo.width*scale)),max(1,round(logo.height*scale)))
+    art=logo.resize(target,Image.Resampling.LANCZOS)
     x=(size-art.width)//2;y=(size-art.height)//2
     bg.alpha_composite(art,(x,y))
     return bg.convert("RGB")
