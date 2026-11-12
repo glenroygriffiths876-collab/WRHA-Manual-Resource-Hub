@@ -8,6 +8,7 @@ on:
     paths:
       - 'document-overrides.js'
       - 'catalog-extra.js'
+      - 'establishment-resource.js'
       - 'data.js'
       - 'scripts/audit_documents.py'
       - 'scripts/export-document-index.mjs'
