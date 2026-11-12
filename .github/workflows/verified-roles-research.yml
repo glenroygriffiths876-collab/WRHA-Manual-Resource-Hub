@@ -1,15 +1,5 @@
 name: Audit RHA posts and inspect MOFPS 2026 Order
 on:
-  push:
-    branches: [verified-roles-and-mofps-establishment]
-    paths:
-      - '.github/workflows/verified-roles-research.yml'
-      - 'scripts/verify_rha_titles.py'
-      - 'scripts/export-role-candidates.mjs'
-      - 'scripts/extract_mofps_2026.py'
-      - 'scripts/derive-mofps-positions.mjs'
-      - 'scripts/build-verified-public.mjs'
-      - 'role-evidence.js'
   workflow_dispatch:
 permissions:
   contents: write
