@@ -85,8 +85,60 @@ try{
  assert((await page.locator('#pdfDownload').getAttribute('href')).endsWith('/Civil-Service-Establishment-General-Order-2026.pdf'),'MOFPS 2026 official PDF is not linked');
  await page.locator('#closePdf').click();
  assert(await page.locator('#mohwPartnerLogo').evaluate(img=>img.complete&&img.naturalWidth>100),'MOHW logo must actually load');
+ // WAPS-like contextual feedback and issue reporting: WhatsApp draft, no automatic send.
+ await page.evaluate(()=>{window.__hubWaCalls=[];window.open=(...args)=>{window.__hubWaCalls.push(args);return null;}});
+ await page.locator('[data-view="manuals"]').click();
+ await page.locator('#hubFeedbackFab').click();
+ await page.locator('#hubFeedbackDialog[open]').waitFor();
+ await page.locator('#hubFeedbackMessage').fill('Suggestion: add a print filter.');
+ await page.locator('#hubSendFeedback').click();
+ const feedbackWa=await page.locator('#hubWhatsAppFallback').getAttribute('href');
+ assert(feedbackWa?.startsWith('https://wa.me/18765029756?text='),'WhatsApp recipient must be +1 876 502 9756');
+ const feedbackMsg=new URL(feedbackWa).searchParams.get('text');
+ assert(feedbackMsg.includes('PAGE FEEDBACK')&&feedbackMsg.includes('Manual Library')&&feedbackMsg.includes('print filter'),'Feedback or page context missing');
+ assert(feedbackMsg.includes('Screen size:')&&feedbackMsg.includes('Browser:')&&feedbackMsg.includes('Page:'),'WAPS-like diagnostics not included');
+ assert.equal(await page.locator('#hubFeedbackResult').isVisible(),true,'Must explain draft is not sent automatically');
+ await page.screenshot({path:'artifacts/wrha-feedback-dialog.png'});
+ await page.locator('#hubFeedbackDialog [data-hub-close]').first().click();
+ await page.locator('#hubIssueFab').click();
+ await page.locator('#hubFeedbackDialog[open]').waitFor();
+ await page.locator('#hubFeedbackType').selectOption('PDF not opening or downloading unexpectedly');
+ await page.locator('#hubFeedbackMessage').fill('National screening manual failed to render.');
+ await page.locator('#hubSendFeedback').click();
+ const issueLink=await page.locator('#hubWhatsAppFallback').getAttribute('href');
+ assert(new URL(issueLink).searchParams.get('text').includes('ISSUE REPORT'),'Issue must be distinguished from ordinary feedback');
+ assert((await page.evaluate(()=>window.__hubWaCalls)).length>=2,'WhatsApp drafts must be opened by user clicks');
+ await page.locator('#hubFeedbackDialog [data-hub-close]').first().click();
+ // WAPS Share: native share or copy, canonical home link, QR scan and download.
+ await page.locator('#hubShareFab').click();
+ await page.locator('#hubShareDialog[open]').waitFor();
+ assert.equal(await page.locator('#hubShareUrl').inputValue(),'https://glenroygriffiths876-collab.github.io/WRHA-Manual-Resource-Hub/#home');
+ await page.locator('#hubShowQr').click();
+ await page.locator('#hubQrPanel:not([hidden])').waitFor();
+ await page.locator('#hubQrImage').evaluate(async image=>{
+  if(!image.complete)await new Promise((resolve,reject)=>{image.addEventListener('load',resolve,{once:true});image.addEventListener('error',reject,{once:true})});
+  if(image.naturalWidth<10)throw Error('QR image is not visible');
+ });
+ assert((await page.locator('#hubDownloadQr').getAttribute('href'))==='./assets/wrha-hub-share-qr.svg');
+ await page.screenshot({path:'artifacts/wrha-share-qr.png'});
+ await page.locator('#hubQrBack').click();
+ await page.context().grantPermissions(['clipboard-read','clipboard-write'],{origin:'http://127.0.0.1:8765'});
+ await page.locator('#hubCopyLink').click();
+ await page.locator('#hubShareStatus').filter({hasText:/copied|highlighted/i}).waitFor({timeout:7000});
+ const copiedStatus=await page.locator('#hubShareStatus').textContent();
+ assert(copiedStatus.includes('copied')||copiedStatus.includes('highlighted'),'Copy link must provide user feedback');
+ await page.locator('#hubShareDialog [data-hub-close]').click();
  const phone=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1});
  await phone.goto('http://127.0.0.1:8765/',{waitUntil:'domcontentloaded'});
+ // Ensure mobile floating feedback/issue/share buttons are visible and do not overlap.
+ for(const selector of ['#hubFeedbackFab','#hubIssueFab','#hubShareFab'])assert(await phone.locator(selector).isVisible(),selector+' hidden on phone');
+ const bounds=await Promise.all(['#hubFeedbackFab','#hubIssueFab','#hubShareFab'].map(s=>phone.locator(s).boundingBox()));
+ assert(bounds.every(Boolean)&&bounds[0].x+bounds[0].width<=bounds[1].x+1&&bounds[1].x+bounds[1].width<bounds[2].x,'Mobile utility buttons overlap');
+ await phone.locator('#hubShareFab').click();
+ await phone.locator('#hubShowQr').click();
+ await phone.locator('#hubQrImage').evaluate(async image=>{if(!image.complete)await new Promise(resolve=>image.addEventListener('load',resolve,{once:true}));if(!image.naturalWidth)throw Error('Phone QR missing')});
+ await phone.screenshot({path:'artifacts/wrha-mobile-share.png'});
+ await phone.locator('#hubShareDialog [data-hub-close]').click();
  await phone.locator('#menuBtn').click();await phone.locator('[data-view="manuals"]').click();
  await phone.locator('#manualSearch').fill('Nutrition at a Glance');
  await phone.locator('[data-read="manual:expanded-18"]').click();
@@ -94,5 +146,5 @@ try{
  const overflow=await phone.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+2);
  assert(!overflow,'Mobile horizontal overflow detected');
  await phone.screenshot({path:'artifacts/mobile-document-reader.png',fullPage:false});
- console.log('CHROMIUM E2E PASS: manual/legislation reader, MOFPS PDF, only exact verified RHA/MOHW roles, role citations and mobile layout');
+ console.log('CHROMIUM E2E PASS: all existing hub sections + WhatsApp feedback/issue, canonical share link, local QR display, phone layout');
 }finally{await browser.close();server.close()}
