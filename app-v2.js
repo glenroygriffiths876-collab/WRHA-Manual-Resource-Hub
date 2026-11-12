@@ -153,6 +153,8 @@ function openRole(r){
  ['Evidence status',verifiedLabel(r)]];
  let content='<div class="role-info-rows">'+rows.map(([label,value])=>'<div class="role-info-row"><span>'+esc(label)+'</span><p>'+esc(value)+'</p></div>').join('')+'</div>';
  if(r.documentedResponsibilities)content+='<section class="role-proof-section"><h3>Responsibilities reflected in official advertisement</h3><p>'+esc(r.documentedResponsibilities)+'</p></section>';
+ if(r.verifiedQualifications)content+='<section class="role-proof-section"><h3>Qualifications cited in this advertisement</h3><p>'+esc(r.verifiedQualifications)+'</p></section>';
+ if(r.verifiedReportsTo)content+='<section class="role-proof-section"><h3>Reporting relationship cited in this advertisement</h3><p>'+esc(r.verifiedReportsTo)+'</p></section>';
  if(src.length){
  content+='<section class="role-proof-section"><h3>Primary RHA documentation</h3><p class="role-source-note">The classification below is associated with the exact source-listed title, not a universal grade for all RHAs.</p>';
  content+=src.map(e=>'<a class="role-source-link" href="'+esc(e.url)+'" target="_blank" rel="noopener"><strong>'+esc(e.authority)+'</strong> · '+esc(e.sourceTitle)+' '+(e.grade?'('+esc(e.grade)+')':'')+' <span>View original '+esc(e.kind==='qualification-list'?'qualification list':'recruitment source')+' ↗</span></a>').join('')+'</section>';
