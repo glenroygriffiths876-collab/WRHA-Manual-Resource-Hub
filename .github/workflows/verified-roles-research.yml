@@ -7,6 +7,8 @@ on:
       - 'scripts/verify_rha_titles.py'
       - 'scripts/export-role-candidates.mjs'
       - 'scripts/extract_mofps_2026.py'
+      - 'scripts/derive-mofps-positions.mjs'
+      - 'scripts/build-verified-public.mjs'
       - 'role-evidence.js'
   workflow_dispatch:
 permissions:
@@ -44,11 +46,15 @@ jobs:
                 "warning":"The PDF must be reviewed before reporting extracted MOFPS establishment posts."
               },indent=2)+'\n')
           PY
+      - name: Derive curated exact Ministry job titles with page and post numbers
+        run: node scripts/derive-mofps-positions.mjs
+      - name: Build the public catalogue from verified-only sources
+        run: node scripts/build-verified-public.mjs
       - name: Save verified title list and source reports
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reports/role-source-candidates.json reports/strict-role-source-audit.json reports/mofps-2026-establishment-evidence.json verified-roles.json
+          git add reports/role-source-candidates.json reports/strict-role-source-audit.json reports/mofps-2026-establishment-evidence.json reports/mofps-2026-verified-ministry-posts.json reports/public-role-reconciliation.json verified-roles.json verified-role-public.js
           if ! git diff --cached --quiet; then
             git commit -m "Audit individual official RHA titles and inspect MOFPS 2026 Establishment Order"
             for attempt in 1 2 3; do
