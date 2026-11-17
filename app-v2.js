@@ -50,7 +50,7 @@ function flushCovers(){while(coverActive<2&&coverWaiting.length){const {el,url}=
  const scale=Math.min(2,420/basic.width,540/basic.height);
  const vp=page.getViewport({scale});const off=document.createElement('canvas');off.width=Math.max(1,Math.round(vp.width));off.height=Math.max(1,Math.round(vp.height));
  await page.render({canvasContext:off.getContext('2d',{alpha:false}),viewport:vp}).promise;
- const image=off.toDataURL('image/jpeg',.85);coverCache.set(url,image);const record=[...allDocs,...laws].find(d=>d.url===url);if(record)availability?.mark(record,'verified');
+ const image=off.toDataURL('image/jpeg',.85);coverCache.set(url,image);const record=[...allDocs,...laws].find(d=>d.url===url);if(record)availability?.mark(record,'reachable');
  const targets=document.querySelectorAll('.doc-cover[data-pdf]');
  targets.forEach(n=>{if(n.dataset.pdf===url)showCached(n)});
  }catch(e){el.classList.add('not-previewable');el.title='Cover preview unavailable from this host; open the original document';}
