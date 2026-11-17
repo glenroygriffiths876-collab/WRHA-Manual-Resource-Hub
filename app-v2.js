@@ -49,7 +49,7 @@ function flushCovers(){while(coverActive<2&&coverWaiting.length){const {el,url}=
  const scale=Math.min(2,420/basic.width,540/basic.height);
  const vp=page.getViewport({scale});const off=document.createElement('canvas');off.width=Math.max(1,Math.round(vp.width));off.height=Math.max(1,Math.round(vp.height));
  await page.render({canvasContext:off.getContext('2d',{alpha:false}),viewport:vp}).promise;
- const image=off.toDataURL('image/jpeg',.85);coverCache.set(url,image);for(const d of [...allDocs,...laws])if(d.url===url)availability?.set(d,'ready');
+ const image=off.toDataURL('image/jpeg',.85);coverCache.set(url,image);for(const d of [...allDocs,...laws])if(d.url===url)availability?.set(d,'reachable');
  const targets=document.querySelectorAll('.doc-cover[data-pdf]');
  targets.forEach(n=>{if(n.dataset.pdf===url)showCached(n)});
  }catch(e){el.classList.add('not-previewable');el.title='Cover preview unavailable from this host; open the original document';}
@@ -64,7 +64,7 @@ function docCard(d,type){const law=type==='law',pdf=isPdf(d),title=esc(d.title),
  return '<article class="manual-card '+(law?'manual-legal':'')+'"><div class="manual-top">'+coverMarkup(d)+'<span class="manual-year">'+esc(d.year||d.type||'Resource')+'</span></div><div class="manual-body"><span class="category-label">'+esc(d.category)+'</span><h3>'+title+'</h3><p>'+esc(d.description||'A publicly linked guidance or reference resource.')+'</p><span class="manual-status">'+esc(d.status||'Confirm edition')+'</span><span class="wrha-access-label" data-access="'+esc(access)+'">'+esc(availability?.label(d)||'Check reader access')+'</span><div class="manual-actions">'+mainButton+secondary+'</div></div></article>';
 }
 function bindDocumentActions(node){node.querySelectorAll('[data-read]').forEach(btn=>btn.addEventListener('click',()=>{const [kind,id]=btn.dataset.read.split(':');openPdf((kind==='law'?laws:allDocs).find(d=>d.id===id))}));observeCovers(node)}
-function renderFeatured(){const ready=allDocs.filter(d=>isPdf(d)&&['ready','reachable'].includes(availability?.state(d)));const featured=accessOrder(ready.sort((a,b)=>(b.year||0)-(a.year||0))).slice(0,3);$('featured').innerHTML=featured.length?featured.map(d=>docCard(d,'manual')).join(''):'<div class="wrha-featured-placeholder"><i class="fa-solid fa-book-open" aria-hidden="true"></i><strong>Explore the full library</strong><p>Document access is being checked on this device.</p><button type="button" class="btn btn-primary" id="browseWhileChecking">Browse all manuals</button></div>';if(featured.length)bindDocumentActions($('featured'));else $('browseWhileChecking')?.addEventListener('click',()=>setView('manuals'));}renderFeatured();
+function renderFeatured(){const ready=allDocs.filter(d=>isPdf(d)&&availability?.state(d)==='ready');const featured=accessOrder(ready.sort((a,b)=>(b.year||0)-(a.year||0))).slice(0,3);$('featured').innerHTML=featured.length?featured.map(d=>docCard(d,'manual')).join(''):'<div class="wrha-featured-placeholder"><i class="fa-solid fa-book-open" aria-hidden="true"></i><strong>Explore the full library</strong><p>Document access is being checked on this device.</p><button type="button" class="btn btn-primary" id="browseWhileChecking">Browse all manuals</button></div>';if(featured.length)bindDocumentActions($('featured'));else $('browseWhileChecking')?.addEventListener('click',()=>setView('manuals'));}renderFeatured();
 
 let activeManCat='',manItems=[],activeLawCat='';
 const cats=[...new Set(allDocs.map(d=>d.category))].sort();
