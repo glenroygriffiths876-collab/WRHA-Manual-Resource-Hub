@@ -1,0 +1,39 @@
+/* WRHA landing — institutional identity, editorial typography, responsive motion. */
+[data-page="home"] .wrha-landing-hero{position:relative;display:grid;grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;isolation:isolate;overflow:hidden;padding:clamp(24px,4.5vw,58px) clamp(15px,4vw,52px);min-height:0;border:1px solid #247bb7;border-radius:clamp(19px,3vw,34px);background:radial-gradient(ellipse at 50% -15%,#197ab9 0%,transparent 58%),radial-gradient(ellipse at 90% 85%,#0879af 0%,transparent 43%),linear-gradient(135deg,#061d4a 1%,#084487 58%,#072b62 100%);box-shadow:0 24px 66px #0b396e2c;color:#fff}
+.wrha-hero-content{position:relative;z-index:2;width:100%;max-width:900px;display:flex;flex-direction:column;align-items:center;min-width:0;animation:wrha-rise .65s ease-out both}
+.wrha-home-kicker{display:flex;align-items:center;justify-content:center;gap:9px;font-weight:800;font-size:clamp(9px,1.3vw,13px);letter-spacing:.16em;line-height:1.5;color:#d8efff;text-wrap:balance}
+.wrha-home-kicker span{height:1px;width:clamp(10px,4vw,54px);background:#a5e6ff;flex:none}
+.wrha-hero-emblem{position:relative;width:min(100%,370px);margin:clamp(17px,3vw,32px) auto 14px;aspect-ratio:1.67;display:flex;align-items:center;justify-content:center}
+.wrha-emblem-disc{position:relative;width:100%;height:100%;display:grid;place-items:center;padding:clamp(13px,3vw,25px);border-radius:clamp(24px,4vw,39px);background:linear-gradient(140deg,#fff,#eff8ff);box-shadow:0 14px 40px #001b4a75,0 0 0 1px #ffffff80,0 0 45px #58cdff38;animation:wrha-logo-hover 5.5s ease-in-out infinite}
+.wrha-emblem-disc img{width:100%;height:100%;min-height:0;object-fit:contain;display:block;filter:drop-shadow(0 5px 6px #083e6a1c)}
+.wrha-emblem-ring{position:absolute;inset:-12px;border:1px solid #c1f0ff44;border-radius:44px;animation:wrha-ring-breathe 5.5s ease-in-out infinite;pointer-events:none}
+.wrha-hero-tag{font-size:clamp(9px,1.2vw,12px);font-weight:800;letter-spacing:.14em;color:#d7effe;margin-top:8px;line-height:1.5}
+[data-page="home"] .wrha-landing-hero h1{font-size:clamp(34px,5.4vw,74px);font-weight:800;line-height:1.07;letter-spacing:-.045em;margin:15px 0 14px;max-width:900px;text-wrap:balance;color:#fff}
+[data-page="home"] .wrha-landing-hero h1 em{font-style:normal;color:#b8f0ff;background:linear-gradient(100deg,#bceeff 0%,#fff 18%,#8cf6e5 35%,#8fe0ff 52%,#ffe099 70%,#fff 86%,#bceeff 100%);background-size:260% 100%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:wrha-letter-flow 6s linear infinite}
+[data-page="home"] .wrha-landing-hero p{font-size:clamp(14px,1.7vw,19px);line-height:1.6;max-width:600px;margin:0 auto;color:#e3f3ff;text-wrap:balance}
+[data-page="home"] .wrha-landing-hero .hero-buttons{justify-content:center;width:100%;gap:10px;margin-top:clamp(18px,3vw,30px)}
+[data-page="home"] .wrha-landing-hero .hero-buttons .btn{font-size:14px;min-height:50px;padding:13px 19px;max-width:100%;white-space:normal}
+.wrha-hero-motto{margin-top:24px;font-size:clamp(11px,1.3vw,14px);letter-spacing:.03em;color:#c8eaff;font-weight:600}
+.wrha-hero-orbit,.wrha-hero-glow,.wrha-hero-grid{pointer-events:none;position:absolute;z-index:-1}
+.wrha-hero-orbit{width:77%;aspect-ratio:1;border:1px solid #9fe3ff2a;border-radius:50%;box-shadow:0 0 0 36px #9fe3ff09,0 0 0 84px #9fe3ff08}
+.orbit-one{top:-36%;right:-37%;animation:wrha-orbit 14s ease-in-out infinite alternate}.orbit-two{bottom:-65%;left:-30%;animation:wrha-orbit 17s ease-in-out infinite alternate-reverse}
+.wrha-hero-glow{inset:0;background:radial-gradient(ellipse at 22% 30%,#41c2ff2b,transparent 38%),radial-gradient(ellipse at 78% 70%,#2de5d82a,transparent 34%);animation:wrha-light 9s ease-in-out infinite alternate}
+.wrha-hero-grid{inset:0;background-image:linear-gradient(#b5dfff0b 1px,transparent 1px),linear-gradient(90deg,#b5dfff0b 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(#000,transparent 85%)}
+[data-page="home"] .stats{margin:18px 0 35px;gap:12px}
+[data-page="home"] .stat{border-radius:18px;background:linear-gradient(155deg,#fff,#f4faff);box-shadow:0 8px 24px #1543710d}
+[data-page="home"] .quick-card{border-radius:19px;box-shadow:0 7px 24px #1539670b;position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s}
+[data-page="home"] .quick-card:hover{transform:translateY(-3px);box-shadow:0 13px 30px #113e7020}
+.wrha-access-label{display:block;align-self:flex-start;margin:7px 0 0;padding:4px 7px;border-radius:6px;font-size:10.5px;font-weight:750;background:#edf4fb;color:#325c85;line-height:1.35}
+.wrha-access-label[data-access="ready"]{background:#e6f6ef;color:#176346}
+.wrha-access-label[data-access="limited"]{background:#fff1e3;color:#8b4e10}
+.wrha-featured-placeholder{grid-column:1/-1;display:grid;justify-items:center;text-align:center;gap:10px;padding:28px 18px;border:1px dashed #bfd6ea;border-radius:18px;background:#fff;color:#174c84}
+.wrha-featured-placeholder i{font-size:26px}.wrha-featured-placeholder p{margin:0;color:#566f88;font-size:13px}
+@keyframes wrha-rise{from{transform:translateY(9px);opacity:0}to{transform:none;opacity:1}}
+@keyframes wrha-logo-hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes wrha-ring-breathe{0%,100%{transform:scale(1);opacity:.65}50%{transform:scale(1.025);opacity:1}}
+@keyframes wrha-letter-flow{from{background-position:0% 50%}to{background-position:260% 50%}}
+@keyframes wrha-orbit{from{transform:translate(0,0) scale(1)}to{transform:translate(-4%,6%) scale(1.1)}}
+@keyframes wrha-light{from{opacity:.55}to{opacity:1}}
+@media(max-width:620px){[data-page="home"] .wrha-landing-hero{padding:24px 14px 22px}.wrha-hero-emblem{width:min(83%,310px);margin:20px auto 12px;aspect-ratio:1.55}.wrha-emblem-disc{border-radius:25px;padding:12px}.wrha-emblem-ring{inset:-8px;border-radius:30px}[data-page="home"] .wrha-landing-hero h1{font-size:clamp(29px,8.5vw,45px);margin:12px 0}.wrha-hero-break{display:none}[data-page="home"] .wrha-landing-hero .hero-buttons{display:grid;grid-template-columns:minmax(0,1fr);max-width:320px;gap:8px}[data-page="home"] .wrha-landing-hero .hero-buttons .btn{min-height:44px;padding:9px 11px;font-size:13px}.wrha-hero-motto{margin-top:17px}[data-page="home"] .stat{padding:12px 9px;gap:8px;min-width:0}[data-page="home"] .stat-icon{min-width:32px;width:32px;height:38px;font-size:18px}[data-page="home"] .stat strong{font-size:20px}[data-page="home"] .stat small{font-size:10px;overflow-wrap:anywhere}[data-page="home"] .quick-grid{grid-template-columns:minmax(0,1fr)}[data-page="home"] .quick-card{min-height:80px;padding:14px}.wrha-access-label{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.wrha-hero-content,.wrha-emblem-disc,.wrha-emblem-ring,.wrha-hero-orbit,.wrha-hero-glow,[data-page="home"] .wrha-landing-hero h1 em{animation:none!important}.wrha-landing-hero h1 em{background-position:35% 50%}}
+@media(forced-colors:active){[data-page="home"] .wrha-landing-hero h1 em{-webkit-text-fill-color:CanvasText;background:none}}
