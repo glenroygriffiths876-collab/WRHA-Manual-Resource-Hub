@@ -102,15 +102,16 @@ async function loadOutline(ref,version){try{const nodes=await ref.getOutline();i
 
 function restrictedFallback(url,reason){
  if(!current)return;
+ if(!current.deviceCopy)window.WRHA_AVAILABILITY?.set(current,'limited');
  $('pdfRetry').disabled=!!current.deviceCopy;$('pdfRetryInline').hidden=!!current.deviceCopy;
  // A cross-origin browser iframe can remain blank or trigger Content-Disposition: attachment.
  // Never load one automatically. Only show a real first-page thumbnail where available.
  setMode('blocked');elements.blockedOpen.href=url;elements.blockedPublisher.href=current.sourceUrl||url;elements.blockedOpen.hidden=!!current.deviceCopy;elements.blockedPublisher.hidden=!!current.deviceCopy;
  const img=elements.blockedCover;
  img.alt='First page of '+(current.title||'the requested PDF');
- img.hidden=false;
- img.onerror=()=>{img.hidden=true;const label=img.closest('.reader-blocked-visual')?.querySelector('.reader-preview-label');if(label)label.textContent='First-page preview unavailable';};
- img.onload=()=>{const label=img.closest('.reader-blocked-visual')?.querySelector('.reader-preview-label');if(label)label.textContent='Verified first-page thumbnail — not the full PDF';};
+ img.hidden=false;$('pdfPreviewExplanation').hidden=true;
+ img.onerror=()=>{img.hidden=true;$('pdfPreviewExplanation').hidden=true;const label=img.closest('.reader-blocked-visual')?.querySelector('.reader-preview-label');if(label)label.textContent='First-page preview unavailable';};
+ img.onload=()=>{$('pdfPreviewExplanation').hidden=false;const label=img.closest('.reader-blocked-visual')?.querySelector('.reader-preview-label');if(label)label.textContent='Verified first-page thumbnail — not the full PDF';};
  if(current.deviceCopy){img.hidden=true;const label=img.closest('.reader-blocked-visual')?.querySelector('.reader-preview-label');if(label)label.textContent='Device copy preview unavailable';}else img.src='./covers/'+encodeURIComponent(current.id)+'.webp';
  setStatus(reason||'Full in-page reading is not available from this publisher. The cover preview and original PDF link are available.');
  updateControls();
@@ -129,13 +130,14 @@ async function loadPdf(d){
  const version=session,original=d.url;
  try{lib=await getLibrary()}catch(_){if(version===session)restrictedFallback(original,'The reader could not load. Retry or read a saved PDF on this device.');return}
  if(version!==session)return;
- const routes=window.WRHA_READER_SOURCES?.candidates(d)||[{url:original,label:'Original publisher PDF'}];
+ const primary=window.WRHA_READER_SOURCES?.candidates(d)||[{url:original,label:'Original publisher PDF'}];
+ const routes=primary.flatMap(route=>[{...route,stream:false},{...route,stream:true}]);
  let lastError;
  for(const route of routes){
    if(version!==session)return;
    try{
     setStatus('Opening '+route.label.toLowerCase()+' in the WRHA reader…');
-    const loading=lib.getDocument({url:route.url,withCredentials:false,isEvalSupported:false,enableXfa:false,disableAutoFetch:true,disableStream:true});
+    const loading=lib.getDocument({url:route.url,withCredentials:false,isEvalSupported:false,enableXfa:false,disableAutoFetch:!route.stream,disableStream:!route.stream,disableRange:!!route.stream});
     task=loading;const handle=await loading.promise;
     if(version!==session){try{await loading.destroy()}catch(_){}return}
     pdf=handle;pageCount=pdf.numPages;currentPage=clamp(restore());setMode('pdfjs');
@@ -143,9 +145,9 @@ async function loadPdf(d){
     elements.download.href=route.url;if(same)elements.download.setAttribute('download',pdfFileName(d));else elements.download.removeAttribute('download');
     elements.download.textContent='Download PDF ↓';elements.download.title='Download the PDF currently displayed.';
     if(route.label!=='Original publisher PDF')$('pdfMeta').textContent=[d.publisher,d.year,route.label].filter(Boolean).join(' · ');
-    elements.page.max=String(pageCount);updateControls();await render(currentPage);if(version===session)loadOutline(handle,version);return;
+    elements.page.max=String(pageCount);updateControls();const rendered=await render(currentPage);if(version!==session)return;if(rendered){if(!d.deviceCopy)window.WRHA_AVAILABILITY?.set(d,'ready');loadOutline(handle,version);return}throw Error('Initial page render failed');
    }catch(err){
-    if(version!==session)return;lastError=err;const failed=task;task=null;pdf=null;try{await failed?.destroy()}catch(_){}
+    if(version!==session)return;lastError=err;const failed=task;task=null;pdf=null;pageCount=0;book.replaceChildren();setMode('loading');try{await failed?.destroy()}catch(_){}
    }
  }
  if(version!==session)return;
