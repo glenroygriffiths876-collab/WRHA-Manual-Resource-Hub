@@ -150,3 +150,17 @@
 }
 #pdfDialog #pdfAudioStatus:not(:empty){flex:0 0 auto;padding:6px 10px;background:#e7f2ff;color:#174c84;max-height:52px;overflow:auto;font-weight:600}
 #pdfDialog.wrha-reader-contrast #pdfAudioStatus{background:#000!important;color:#fff!important}
+
+/* Unified source collections, inside the existing WRHA reader dialog. */
+#pdfDialog .reader-webresource{justify-content:flex-start;align-items:stretch;text-align:left;padding:clamp(14px,3vw,34px);gap:12px;overflow:auto}
+#pdfDialog .reader-webresource h3,#pdfDialog .reader-webresource>p{max-width:790px;width:100%;margin:0 auto}
+#pdfDialog .reader-web-icon{margin:0 auto 2px;width:48px;height:48px;font-size:24px}
+#pdfDialog .wrha-collection-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:10px;width:min(100%,790px);margin:0 auto}
+#pdfDialog .wrha-collection-card{display:flex;flex-direction:column;gap:6px;align-items:flex-start;text-align:left;min-width:0;overflow-wrap:anywhere;padding:14px;border:1px solid #c6daec;border-radius:11px;background:#fff;color:#174c84;cursor:pointer;font:inherit}
+#pdfDialog .wrha-collection-card strong{font-size:15px;line-height:1.35}
+#pdfDialog .wrha-collection-card span{font-size:13px;color:#0755a5;font-weight:700}
+#pdfDialog .wrha-collection-note{grid-column:1/-1;margin:0;padding:10px;background:#fff;border-left:3px solid #0755a5}
+#pdfDialog #pdfWebLink,#pdfDialog #pdfCollectionBack{align-self:center}
+#pdfDialog #pdfLocalOpen{margin:0 0 10px;max-width:100%;white-space:normal}
+#pdfDialog.wrha-reader-contrast :is(.reader-webresource,.wrha-collection-card,.wrha-collection-note,.wrha-collection-card span){background:#000!important;color:#fff!important}
+@media(max-width:620px){#pdfDialog #pdfReturnCollection{grid-column:1/-1;min-height:32px;padding:3px 6px}}
