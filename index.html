@@ -228,7 +228,6 @@
       <div class="wrha-tool-row"><button id="pdfReadAll" class="viewer-tool" type="button">Read continuously</button><button id="pdfPause" class="viewer-tool" type="button">Pause</button><button id="pdfStop" class="viewer-tool" type="button">Stop</button></div>
       <label class="wrha-wide-label">Voice <select id="pdfVoice"><option value="">Device default</option></select></label>
       <label>Speed <select id="pdfRate"><option value=".75">0.75×</option><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></label>
-      <p id="pdfAudioStatus" role="status" aria-live="polite"></p>
       <button id="pdfTranscriptToggle" class="viewer-tool" type="button" aria-expanded="false">Show page text</button><div id="pdfTranscript" tabindex="0" hidden></div>
       <div class="wrha-tool-row"><label><input id="pdfContrast" type="checkbox"> High contrast</label><label><input id="pdfMotion" type="checkbox"> Reduce motion</label></div>
       <label>Interface text <select id="pdfTextSize"><option value="normal">Normal</option><option value="large">Large</option><option value="xlarge">Extra large</option></select></label>
@@ -267,6 +266,7 @@
       <p>This entry is a webpage or collection of links, not a verified downloadable PDF. We will not present it as a PDF or invent a download.</p>
       <a id="pdfWebLink" class="btn btn-primary" href="#" target="_blank" rel="noopener">Open official webpage ↗</a>
     </div>
+    <p id="pdfAudioStatus" role="status" aria-live="polite"></p>
     <div id="pdfStatus" class="pdf-help" role="status" aria-live="polite">View and download the source document without losing your place in the hub.</div>
   </div>
 </dialog>
