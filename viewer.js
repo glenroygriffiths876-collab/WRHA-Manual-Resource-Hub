@@ -12,7 +12,7 @@ const elements={
  prev:$('pdfPrevious'),next:$('pdfNext'),find:$('pdfFindButton'),
  fullscreen:$('pdfFullScreen'),source:$('pdfSource'),download:$('pdfDownload'),legalAlt:$('pdfLegalAlt')
 };
-let current=null,pdf=null,task=null,currentPage=1,session=0,finding=false,mode='closed',pageCount=0;
+let current=null,pdf=null,task=null,currentPage=1,session=0,finding=false,mode='closed',pageCount=0,collectionTrail=[],ownedBlob=null;
 const pdfFileName=(d)=>((d.title||'document').replace(/[^a-z0-9\s_-]+/gi,'').trim().replace(/\s+/g,'_').slice(0,85)||'document')+'.pdf';
 function setStatus(message){elements.status.textContent=message;}
 const scroll=elements.scroller,book=elements.surface,tools=$('pdfTools'),synth=window.speechSynthesis;
@@ -20,8 +20,8 @@ const prefsKey='wrha-reader-prefs-v1';let prefs={sound:true,spread:true,rate:1,v
 try{prefs={...prefs,...JSON.parse(localStorage.getItem(prefsKey)||'{}')}}catch(_){}
 const save=()=>{try{localStorage.setItem(prefsKey,JSON.stringify(prefs))}catch(_){}};
 const persistKey=()=>current?'wrha-reader-page:'+new URL(current.url,location.href).href:'';
-function remember(){try{if(current&&pageCount&&book.querySelector('.reader-page-surface'))localStorage.setItem(persistKey(),String(currentPage))}catch(_){}}
-function restore(){try{return Number(localStorage.getItem(persistKey()))||1}catch(_){return 1}}
+function remember(){try{if(current&&!current.deviceCopy&&pageCount&&book.querySelector('.reader-page-surface'))localStorage.setItem(persistKey(),String(currentPage))}catch(_){}}
+function restore(){try{if(current?.deviceCopy)return 1;return Number(localStorage.getItem(persistKey()))||1}catch(_){return 1}}
 let libPromise,lib,renderEpoch=0,jobs=[],busy=false,reading=false,speechEpoch=0,settleSpeech=null,audio=null,paperBuffer=null,sound=prefs.sound!==false,outline=[],lastSearch='',lastMatch=0,resizeTimer,layoutKey='',suppressClick=0;
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const full=()=>document.fullscreenElement===modal||modal.classList.contains('wrha-reader-full');
@@ -71,9 +71,9 @@ function rustle(direction){
 
 function getLibrary(){if(!libPromise)libPromise=import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs').then(m=>{m.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs';return m}).catch(e=>{libPromise=null;throw e});return libPromise}
 function cancelJobs(){for(const j of jobs){try{j.cancel()}catch(_){}}jobs=[]}
-function setMode(value){mode=value;scroll.hidden=value!=='pdfjs';elements.frame.hidden=value!=='native';elements.web.hidden=value!=='web';elements.blocked.hidden=value!=='blocked';elements.loading.hidden=value!=='loading';$('pdfRetry').hidden=value!=='blocked';updateControls()}
+function setMode(value){mode=value;$('pdfRetry').disabled=!!current?.deviceCopy;scroll.hidden=value!=='pdfjs';elements.frame.hidden=value!=='native';elements.web.hidden=value!=='web';elements.blocked.hidden=value!=='blocked';elements.loading.hidden=value!=='loading';$('pdfRetry').hidden=value!=='blocked';updateControls()}
 function stopReading(message='Audio stopped.'){speechEpoch++;reading=false;const done=settleSpeech;settleSpeech=null;try{synth?.cancel()}catch(_){}done?.(false);$('pdfAudioStatus').textContent=message;updateAudioButtons()}
-function destroy(){remember();session++;renderEpoch++;cancelJobs();stopReading('');busy=false;clearTimeout(resizeTimer);const oldTask=task;task=null;pdf=null;if(oldTask)try{Promise.resolve(oldTask.destroy()).catch(()=>{})}catch(_){}current=null;pageCount=0;mode='closed';finding=false;lastSearch='';lastMatch=0;outline=[];elements.frame.src='about:blank';scroll.hidden=true;elements.web.hidden=true;elements.blocked.hidden=true;elements.loading.hidden=true;elements.blockedCover.removeAttribute('src');book.replaceChildren();$('pdfTranscript').textContent='';$('pdfTranscript').hidden=true;$('pdfTranscriptToggle').textContent='Show page text';$('pdfTranscriptToggle').setAttribute('aria-expanded','false');$('pdfOutline').replaceChildren(new Option('No bookmarks available',''));closeTools();layoutKey='';updateControls()}
+function destroy(){remember();session++;renderEpoch++;cancelJobs();stopReading('');busy=false;clearTimeout(resizeTimer);const oldTask=task;task=null;pdf=null;if(oldTask)try{Promise.resolve(oldTask.destroy()).catch(()=>{})}catch(_){}if(ownedBlob){URL.revokeObjectURL(ownedBlob);ownedBlob=null}current=null;pageCount=0;mode='closed';finding=false;lastSearch='';lastMatch=0;outline=[];elements.frame.src='about:blank';scroll.hidden=true;elements.web.hidden=true;elements.blocked.hidden=true;elements.loading.hidden=true;elements.blockedCover.removeAttribute('src');book.replaceChildren();$('pdfTranscript').textContent='';$('pdfTranscript').hidden=true;$('pdfTranscriptToggle').textContent='Show page text';$('pdfTranscriptToggle').setAttribute('aria-expanded','false');$('pdfOutline').replaceChildren(new Option('No bookmarks available',''));closeTools();layoutKey='';updateControls()}
 function updateAudioButtons(){const available=mode==='pdfjs'&&!!synth&&!!window.SpeechSynthesisUtterance;$('pdfListen').disabled=!available||busy&&!reading;$('pdfReadAll').disabled=!available||busy;$('pdfPause').disabled=!available||!reading;$('pdfStop').disabled=!available||!reading;$('pdfPause').textContent=synth?.paused?'Resume':'Pause';$('pdfListen').textContent=reading?'Stop':'Listen';$('pdfListen').title=reading?'Stop narration':'Listen to the visible page(s). More audio options are under Tools.';$('pdfListen').setAttribute('aria-label',reading?'Stop narration':'Listen to the current page')}
 function updateControls(){const advanced=mode==='pdfjs';const nums=targets();elements.page.value=String(currentPage);elements.total.textContent=pageCount?'/ '+pageCount:'/ —';$('pdfCount').textContent=pageCount?'Page '+currentPage+(nums.length===2?'–'+nums[1]:'')+' / '+pageCount:'Page —';elements.prev.disabled=!advanced||busy||currentPage<=1;elements.next.disabled=!advanced||busy||(nums.at(-1)>=pageCount);for(const e of [elements.page,elements.zoom,elements.search,$('goPdfPage'),$('pdfZoomIn'),$('pdfZoomOut'),$('pdfTranscriptToggle')])e.disabled=!advanced;elements.find.disabled=!advanced||finding;$('pdfLayout').disabled=!advanced||busy||!canSpread();$('pdfLayout').textContent=spread()?'One page':canSpread()?'Two pages':'Two pages (wide)';$('pdfLayout').setAttribute('aria-pressed',String(spread()));$('pdfOutline').disabled=!advanced||!outline.length;$('pdfPrint').disabled=!current||!advanced&&elements.download.hidden;updateAudioButtons()}
 function getText(content){return content.items.map(i=>(i.str||'')+(i.hasEOL?'\n':' ')).join('').trim()}
@@ -102,48 +102,63 @@ async function loadOutline(ref,version){try{const nodes=await ref.getOutline();i
 
 function restrictedFallback(url,reason){
  if(!current)return;
+ $('pdfRetry').disabled=!!current.deviceCopy;
  // A cross-origin browser iframe can remain blank or trigger Content-Disposition: attachment.
  // Never load one automatically. Only show a real first-page thumbnail where available.
- setMode('blocked');elements.blockedOpen.href=url;elements.blockedPublisher.href=current.sourceUrl||url;
+ setMode('blocked');elements.blockedOpen.href=url;elements.blockedPublisher.href=current.sourceUrl||url;elements.blockedOpen.hidden=!!current.deviceCopy;elements.blockedPublisher.hidden=!!current.deviceCopy;
  const img=elements.blockedCover;
  img.alt='First page of '+(current.title||'the requested PDF');
  img.hidden=false;
  img.onerror=()=>{img.hidden=true;const label=img.closest('.reader-blocked-visual')?.querySelector('.reader-preview-label');if(label)label.textContent='First-page preview unavailable';};
  img.onload=()=>{const label=img.closest('.reader-blocked-visual')?.querySelector('.reader-preview-label');if(label)label.textContent='Verified first-page thumbnail — not the full PDF';};
- img.src='./covers/'+encodeURIComponent(current.id)+'.webp';
+ if(current.deviceCopy){img.hidden=true;const label=img.closest('.reader-blocked-visual')?.querySelector('.reader-preview-label');if(label)label.textContent='Device copy preview unavailable';}else img.src='./covers/'+encodeURIComponent(current.id)+'.webp';
  setStatus(reason||'Full in-page reading is not available from this publisher. The cover preview and original PDF link are available.');
  updateControls();
 }
-async function loadPdf(d){
- const version=session,url=d.url;
- 
- try{
-  setStatus('Loading the original PDF into the WRHA reader…');
-  lib=await getLibrary();if(version!==session)return;
-  task=lib.getDocument({url,withCredentials:false,isEvalSupported:false,enableXfa:false,disableAutoFetch:true,disableStream:true});
-  const handle=await task.promise;
-  if(version!==session){try{handle.destroy()}catch{}return;}
-  pdf=handle;pageCount=pdf.numPages;setMode('pdfjs');if(!elements.download.hasAttribute('download')){elements.download.textContent='Download PDF ↓';elements.download.title='Download the PDF from its original source.'}currentPage=clamp(restore());
-  elements.page.max=String(pageCount);updateControls();await render(currentPage);if(version===session)loadOutline(handle,version);
- }catch(err){
-  if(version!==session)return;
-  const problem=String(err?.name||'')+' '+String(err?.message||err);
-  if(/InvalidPDFException|Invalid PDF structure|MissingPDFException|404|not a PDF/i.test(problem)){
-    setMode('web');elements.web.querySelector('h3').textContent='PDF not available';
-    elements.web.querySelector('p').textContent='This source did not provide a readable PDF. Use the publisher link or request a corrected official document link.';
-    elements.webLink.href=current.sourceUrl||url;elements.download.hidden=true;$('pdfOriginal').hidden=true;$('pdfPrint').hidden=true;
-    setStatus('A PDF could not be verified; no HTML webpage is being presented as a PDF.');return;
-  }
-  const reason=/cors|network|fetch|failed to/i.test(problem)?
-   'The publisher restricts cross-origin PDF access. We will not open a blank viewer or force an automatic download; use the original PDF link when ready.':
-   'This PDF could not be rendered in the WRHA reader. A first-page preview and original publisher PDF link are available.';
-  restrictedFallback(url,reason);
- }
+function showCollection(d){
+ const info=window.WRHA_READER_SOURCES?.collection(d.id),items=$('pdfCollectionItems');
+ items.replaceChildren();elements.web.querySelector('h3').textContent=d.title||'Official resource';
+ elements.web.querySelector('p').textContent=info?.intro||'This is an official web-based resource rather than a single PDF. The full source remains available from the publisher.';
+ if(info?.note){const note=document.createElement('p');note.className='wrha-collection-note';note.textContent=info.note;items.append(note)}
+ for(const id of info?.ids||[]){const entry=window.WRHA_READER_SOURCES?.get(id);if(!entry||entry.id===d.id)continue;const button=document.createElement('button');button.type='button';button.className='wrha-collection-card';const title=document.createElement('strong'),label=document.createElement('span');title.textContent=entry.title;label.textContent=entry.format==='page'?'Open collection ›':'Read PDF in hub ›';button.append(title,label);button.onclick=()=>{collectionTrail.push(d);open(entry,true)};items.append(button)}
+ elements.webLink.href=d.sourceUrl||d.url;elements.webLink.textContent='Official source ↗';
+ $('pdfCollectionBack').hidden=!collectionTrail.length;setMode('web');setStatus('');
 }
-
-function open(d){
+function backToCollection(){const previous=collectionTrail.pop();if(previous)open(previous,true)}
+async function loadPdf(d){
+ const version=session,original=d.url;
+ try{lib=await getLibrary()}catch(_){if(version===session)restrictedFallback(original,'The reader could not load. Retry or read a saved PDF on this device.');return}
+ if(version!==session)return;
+ const routes=window.WRHA_READER_SOURCES?.candidates(d)||[{url:original,label:'Original publisher PDF'}];
+ let lastError;
+ for(const route of routes){
+   if(version!==session)return;
+   try{
+    setStatus('Opening '+route.label.toLowerCase()+' in the WRHA reader…');
+    const loading=lib.getDocument({url:route.url,withCredentials:false,isEvalSupported:false,enableXfa:false,disableAutoFetch:true,disableStream:true});
+    task=loading;const handle=await loading.promise;
+    if(version!==session){try{await loading.destroy()}catch(_){}return}
+    pdf=handle;pageCount=pdf.numPages;currentPage=clamp(restore());setMode('pdfjs');
+    const same=new URL(route.url,location.href).origin===location.origin;
+    elements.download.href=route.url;if(same)elements.download.setAttribute('download',pdfFileName(d));else elements.download.removeAttribute('download');
+    elements.download.textContent='Download PDF ↓';elements.download.title='Download the PDF currently displayed.';
+    if(route.label!=='Original publisher PDF')$('pdfMeta').textContent=[d.publisher,d.year,route.label].filter(Boolean).join(' · ');
+    elements.page.max=String(pageCount);updateControls();await render(currentPage);if(version===session)loadOutline(handle,version);return;
+   }catch(err){
+    if(version!==session)return;lastError=err;const failed=task;task=null;pdf=null;try{await failed?.destroy()}catch(_){}
+   }
+ }
+ if(version!==session)return;
+ const message=String(lastError?.name||'')+' '+String(lastError?.message||lastError||'');
+ restrictedFallback(original,/InvalidPDFException|MissingPDFException|404|not a PDF/i.test(message)?'A readable PDF could not be verified at the source. You may retry or read a saved authorised copy in the hub.':'The original document could not be fetched by this browser. You may retry or read a saved authorised copy in the hub.');
+}
+function open(d,keepTrail=false){
  if(!d||!d.url)return;
+ if(!keepTrail)collectionTrail=[];
  destroy();session++;const version=session;
+ if(d.deviceCopy)ownedBlob=d.url;
+ $('pdfReturnCollection').hidden=!collectionTrail.length;
+ $('pdfCollectionItems').replaceChildren();
  current=d;currentPage=1;pageCount=0;elements.page.value='1';elements.page.removeAttribute('max');
  elements.zoom.value='auto';elements.search.value='';
  $('pdfTitle').textContent=d.title||'Document';
@@ -162,15 +177,20 @@ function open(d){
  }else{elements.download.removeAttribute('download');}
  if(!modal.open)modal.showModal();
  syncFull();measurePanel();unlockPaperAudio();$('closePdf').focus();
- if(!isPDF){
-  elements.web.querySelector('h3').textContent='Official web resource';elements.web.querySelector('p').textContent='This entry is a webpage or collection of links, not a verified downloadable PDF. We will not present it as a PDF or invent a download.';
-  setMode('web');elements.webLink.href=d.url;setStatus('This record is an official webpage or index, not a verified PDF. No PDF download is shown.');
-  updateControls();
- }else{setMode('loading');loadPdf(d);}
+ if(!isPDF)showCollection(d);else{setMode('loading');loadPdf(d);}
 }
 async function search(){if(!pdf||finding||busy)return;const q=elements.search.value.trim().toLocaleLowerCase();if(!q){setStatus('Type a word or phrase to search.');return}stopReading('');const version=session,ref=pdf;finding=true;updateControls();setStatus('Searching document text…');try{const start=q===lastSearch&&lastMatch?lastMatch+1:currentPage;for(let i=0;i<pageCount;i++){if(version!==session)return;const n=(start-1+i)%pageCount+1;const t=await pageText(n,ref);if(version!==session)return;if(t.toLocaleLowerCase().replace(/\s+/g,' ').includes(q.replace(/\s+/g,' '))){lastSearch=q;lastMatch=n;closeTools();await render(n,Math.sign(n-currentPage));if(version===session){setStatus('Found “'+q+'” on page '+n+' of '+pageCount+'.');scroll.focus()}return}}if(version===session)setStatus('No matching selectable text found. Scanned pages may not be searchable.')}catch(_){if(version===session)setStatus('Text search is unavailable.')}finally{if(version===session){finding=false;updateControls()}}}
+$('pdfReturnCollection').onclick=backToCollection;
+$('pdfCollectionBack').onclick=backToCollection;
+$('pdfLocalOpen').onclick=()=>{$('pdfLocalFile').value='';$('pdfLocalFile').click()};
+$('pdfLocalFile').onchange=async e=>{
+ const file=e.target.files?.[0],version=session;if(!file)return;if(file.size>150*1024*1024){setStatus('This device copy exceeds the 150 MB reader limit.');return}
+ try{if(!(await file.slice(0,1024).text()).includes('%PDF-')){setStatus('Select a valid PDF file.');return}if(version!==session)return;
+ const url=URL.createObjectURL(file);open({id:'device-copy',title:file.name,format:'pdf',url,publisher:'Device copy — not verified as an official edition',deviceCopy:true},true);
+ }catch(_){if(version===session)setStatus('The selected PDF could not be opened.')}
+};
 $('closePdf').addEventListener('click',()=>modal.close());
-modal.addEventListener('close',()=>{if(modal.open)return;if(document.fullscreenElement===modal)document.exitFullscreen?.().catch(()=>{});modal.classList.remove('wrha-reader-full');destroy();syncFull()});
+modal.addEventListener('close',()=>{if(modal.open)return;if(document.fullscreenElement===modal)document.exitFullscreen?.().catch(()=>{});modal.classList.remove('wrha-reader-full');collectionTrail=[];destroy();syncFull()});
 modal.addEventListener('cancel',e=>{if(tools.open){e.preventDefault();closeTools(true)}else if(full()){e.preventDefault();elements.fullscreen.click()}});
 modal.addEventListener('click',e=>{if(e.target===modal&&!full())modal.close();else if(tools.open&&!tools.contains(e.target)&&e.target!==$('pdfListen'))closeTools()});
 for(const type of ['pointerdown','keydown'])modal.addEventListener(type,unlockPaperAudio,{capture:true,passive:true});
@@ -181,7 +201,7 @@ const zoomSteps=['75','100','125','150','200','250'];function zoomBy(dir){const 
 $('pdfZoomIn').onclick=()=>zoomBy(1);$('pdfZoomOut').onclick=()=>zoomBy(-1);
 $('pdfSound').onclick=()=>{prefs.sound=!sound;save();syncPrefs();unlockPaperAudio()};
 $('pdfLayout').onclick=()=>{if(!pdf||!canSpread())return;prefs.spread=!prefs.spread;save();render(currentPage)};
-$('pdfToolsClose').onclick=()=>closeTools(true);$('pdfRetry').onclick=()=>{if(current){const d=current;open(d)}};
+$('pdfToolsClose').onclick=()=>closeTools(true);$('pdfRetry').onclick=()=>{if(current&&!current.deviceCopy){const d=current;open(d,true)}};
 elements.find.onclick=search;elements.search.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();search()}};
 $('pdfOutline').onchange=async()=>{const val=$('pdfOutline').value,ref=pdf,version=session;if(val===''||!ref)return;try{const dest=outline[Number(val)].dest,ary=typeof dest==='string'?await ref.getDestination(dest):dest;if(!ary)return;const i=typeof ary[0]==='number'?ary[0]:await ref.getPageIndex(ary[0]);if(version!==session)return;closeTools(true);navigate(i+1)}catch(_){if(version===session)setStatus('This bookmark could not be opened.')}};
 $('pdfVoice').onchange=e=>{prefs.voice=e.target.value;save()};$('pdfRate').onchange=e=>{prefs.rate=Number(e.target.value);save()};
