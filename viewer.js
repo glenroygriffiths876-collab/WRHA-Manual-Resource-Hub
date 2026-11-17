@@ -12,7 +12,7 @@ const elements={
  prev:$('pdfPrevious'),next:$('pdfNext'),find:$('pdfFindButton'),
  fullscreen:$('pdfFullScreen'),source:$('pdfSource'),download:$('pdfDownload'),legalAlt:$('pdfLegalAlt')
 };
-let current=null,pdf=null,task=null,currentPage=1,session=0,finding=false,mode='closed',pageCount=0,collectionTrail=[],ownedBlob=null;
+let current=null,pdf=null,task=null,currentPage=1,session=0,finding=false,mode='closed',pageCount=0,collectionTrail=[],ownedBlob=null,directFetch=null;
 const pdfFileName=(d)=>((d.title||'document').replace(/[^a-z0-9\s_-]+/gi,'').trim().replace(/\s+/g,'_').slice(0,85)||'document')+'.pdf';
 function setStatus(message){elements.status.textContent=message;}
 const scroll=elements.scroller,book=elements.surface,tools=$('pdfTools'),synth=window.speechSynthesis;
@@ -73,7 +73,7 @@ function getLibrary(){if(!libPromise)libPromise=import('https://cdnjs.cloudflare
 function cancelJobs(){for(const j of jobs){try{j.cancel()}catch(_){}}jobs=[]}
 function setMode(value){mode=value;$('pdfRetry').disabled=!!current?.deviceCopy;scroll.hidden=value!=='pdfjs';elements.frame.hidden=value!=='native';elements.web.hidden=value!=='web';elements.blocked.hidden=value!=='blocked';elements.loading.hidden=value!=='loading';$('pdfRetry').hidden=value!=='blocked';updateControls()}
 function stopReading(message='Audio stopped.'){speechEpoch++;reading=false;const done=settleSpeech;settleSpeech=null;try{synth?.cancel()}catch(_){}done?.(false);$('pdfAudioStatus').textContent=message;updateAudioButtons()}
-function destroy(){remember();session++;renderEpoch++;cancelJobs();stopReading('');busy=false;clearTimeout(resizeTimer);const oldTask=task;task=null;pdf=null;if(oldTask)try{Promise.resolve(oldTask.destroy()).catch(()=>{})}catch(_){}if(ownedBlob){URL.revokeObjectURL(ownedBlob);ownedBlob=null}current=null;pageCount=0;mode='closed';finding=false;lastSearch='';lastMatch=0;outline=[];elements.frame.src='about:blank';scroll.hidden=true;elements.web.hidden=true;elements.blocked.hidden=true;elements.loading.hidden=true;elements.blockedCover.removeAttribute('src');book.replaceChildren();$('pdfTranscript').textContent='';$('pdfTranscript').hidden=true;$('pdfTranscriptToggle').textContent='Show page text';$('pdfTranscriptToggle').setAttribute('aria-expanded','false');$('pdfOutline').replaceChildren(new Option('No bookmarks available',''));closeTools();layoutKey='';updateControls()}
+function destroy(){remember();session++;renderEpoch++;directFetch?.abort();directFetch=null;cancelJobs();stopReading('');busy=false;clearTimeout(resizeTimer);const oldTask=task;task=null;pdf=null;if(oldTask)try{Promise.resolve(oldTask.destroy()).catch(()=>{})}catch(_){}if(ownedBlob){URL.revokeObjectURL(ownedBlob);ownedBlob=null}current=null;pageCount=0;mode='closed';finding=false;lastSearch='';lastMatch=0;outline=[];elements.frame.src='about:blank';scroll.hidden=true;elements.web.hidden=true;elements.blocked.hidden=true;elements.loading.hidden=true;elements.blockedCover.removeAttribute('src');book.replaceChildren();$('pdfTranscript').textContent='';$('pdfTranscript').hidden=true;$('pdfTranscriptToggle').textContent='Show page text';$('pdfTranscriptToggle').setAttribute('aria-expanded','false');$('pdfOutline').replaceChildren(new Option('No bookmarks available',''));closeTools();layoutKey='';updateControls()}
 function updateAudioButtons(){const available=mode==='pdfjs'&&!!synth&&!!window.SpeechSynthesisUtterance;$('pdfListen').disabled=!available||busy&&!reading;$('pdfReadAll').disabled=!available||busy;$('pdfPause').disabled=!available||!reading;$('pdfStop').disabled=!available||!reading;$('pdfPause').textContent=synth?.paused?'Resume':'Pause';$('pdfListen').textContent=reading?'Stop':'Listen';$('pdfListen').title=reading?'Stop narration':'Listen to the visible page(s). More audio options are under Tools.';$('pdfListen').setAttribute('aria-label',reading?'Stop narration':'Listen to the current page')}
 function updateControls(){const advanced=mode==='pdfjs';const nums=targets();elements.page.value=String(currentPage);elements.total.textContent=pageCount?'/ '+pageCount:'/ —';$('pdfCount').textContent=pageCount?'Page '+currentPage+(nums.length===2?'–'+nums[1]:'')+' / '+pageCount:'Page —';elements.prev.disabled=!advanced||busy||currentPage<=1;elements.next.disabled=!advanced||busy||(nums.at(-1)>=pageCount);for(const e of [elements.page,elements.zoom,elements.search,$('goPdfPage'),$('pdfZoomIn'),$('pdfZoomOut'),$('pdfTranscriptToggle')])e.disabled=!advanced;elements.find.disabled=!advanced||finding;$('pdfLayout').disabled=!advanced||busy||!canSpread();$('pdfLayout').textContent=spread()?'One page':canSpread()?'Two pages':'Two pages (wide)';$('pdfLayout').setAttribute('aria-pressed',String(spread()));$('pdfOutline').disabled=!advanced||!outline.length;$('pdfPrint').disabled=!current||!advanced&&elements.download.hidden;updateAudioButtons()}
 function getText(content){return content.items.map(i=>(i.str||'')+(i.hasEOL?'\n':' ')).join('').trim()}
@@ -125,32 +125,43 @@ function showCollection(d){
  $('pdfCollectionBack').hidden=!collectionTrail.length;setMode('web');setStatus('');
 }
 function backToCollection(){const previous=collectionTrail.pop();if(previous)open(previous,true)}
-async function loadPdf(d){
- const version=session,original=d.url;
+/* Some public servers reject PDF.js range requests but permit an ordinary CORS GET.
+ * Try a bounded full transfer without range headers, then render the exact returned bytes.
+ * No credentials, no third-party proxy; CORS and real access restrictions still apply. */
+async function fetchPdfBytes(url,version){const abort=new AbortController();directFetch=abort;const timer=setTimeout(()=>abort.abort(),35000),max=150*1024*1024;let reader;
+try{const response=await fetch(url,{mode:'cors',credentials:'omit',signal:abort.signal});if(!response.ok)throw Error('HTTP '+response.status);const size=Number(response.headers.get('content-length'));if(size>max)throw Error('Document exceeds device reader limit');const chunks=[];let length=0;
+if(response.body){reader=response.body.getReader();while(true){if(session!==version)throw Error('Cancelled');const x=await reader.read();if(x.done)break;length+=x.value.byteLength;if(length>max)throw Error('Document exceeds device reader limit');chunks.push(x.value)}const data=new Uint8Array(length);let offset=0;for(const chunk of chunks){data.set(chunk,offset);offset+=chunk.byteLength}if(!new TextDecoder().decode(data.subarray(0,1024)).includes('%PDF-'))throw Error('Not a PDF');return data}
+const data=new Uint8Array(await response.arrayBuffer());if(data.length>max||!new TextDecoder().decode(data.subarray(0,1024)).includes('%PDF-'))throw Error('Not a supported PDF');return data
+}finally{clearTimeout(timer);abort.abort();try{await reader?.cancel()}catch(_){}if(directFetch===abort)directFetch=null}}
+async function loadPdf(d){const version=session,original=d.url;
  try{lib=await getLibrary()}catch(_){if(version===session)restrictedFallback(original,'The reader could not load. Retry or read a saved PDF on this device.');return}
  if(version!==session)return;
- const routes=window.WRHA_READER_SOURCES?.candidates(d)||[{url:original,label:'Original publisher PDF'}];
- let lastError;
+ const routes=window.WRHA_READER_SOURCES?.candidates(d)||[{url:original,label:'Original publisher PDF'}];let lastError;
  for(const route of routes){
+  for(const method of ['url','bytes']){
    if(version!==session)return;
    try{
-    setStatus('Opening '+route.label.toLowerCase()+' in the WRHA reader…');
-    const loading=lib.getDocument({url:route.url,withCredentials:false,isEvalSupported:false,enableXfa:false,disableAutoFetch:true,disableStream:true});
-    task=loading;const handle=await loading.promise;
+    setStatus(method==='bytes'?'Trying a direct document transfer…':'Opening '+route.label.toLowerCase()+' in the WRHA reader…');
+    const opts={isEvalSupported:false,enableXfa:false};
+    if(method==='url')Object.assign(opts,{url:route.url,withCredentials:false,disableAutoFetch:true,disableStream:true});
+    else opts.data=await fetchPdfBytes(route.url,version);
+    if(version!==session)return;
+    const loading=lib.getDocument(opts);task=loading;const handle=await loading.promise;
     if(version!==session){try{await loading.destroy()}catch(_){}return}
     pdf=handle;pageCount=pdf.numPages;currentPage=clamp(restore());setMode('pdfjs');
     const same=new URL(route.url,location.href).origin===location.origin;
     elements.download.href=route.url;if(same)elements.download.setAttribute('download',pdfFileName(d));else elements.download.removeAttribute('download');
     elements.download.textContent='Download PDF ↓';elements.download.title='Download the PDF currently displayed.';
     if(route.label!=='Original publisher PDF')$('pdfMeta').textContent=[d.publisher,d.year,route.label].filter(Boolean).join(' · ');
-    elements.page.max=String(pageCount);updateControls();await render(currentPage);if(version===session)loadOutline(handle,version);return;
-   }catch(err){
-    if(version!==session)return;lastError=err;const failed=task;task=null;pdf=null;try{await failed?.destroy()}catch(_){}
-   }
+    elements.page.max=String(pageCount);updateControls();const rendered=await render(currentPage);if(version!==session)return;if(rendered===false)throw Error('Page could not be rendered');
+    window.WRHA_READER_AVAIL?.mark(d,'verified');loadOutline(handle,version);return;
+   }catch(err){if(version!==session)return;lastError=err;const failed=task;task=null;pdf=null;try{await failed?.destroy()}catch(_){}if(version!==session)return;setMode('loading')}
+  }
  }
  if(version!==session)return;
+ window.WRHA_READER_AVAIL?.mark(d,'blocked');
  const message=String(lastError?.name||'')+' '+String(lastError?.message||lastError||'');
- restrictedFallback(original,/InvalidPDFException|MissingPDFException|404|not a PDF/i.test(message)?'A readable PDF could not be verified at the source. You may retry or read a saved authorised copy in the hub.':'The original document could not be fetched by this browser. You may retry or read a saved authorised copy in the hub.');
+ restrictedFallback(original,/InvalidPDFException|MissingPDFException|404|not a PDF/i.test(message)?'A readable PDF could not be verified at the source.':'This source could not be loaded using either in-app PDF method. You can retry or open the official source.');
 }
 function open(d,keepTrail=false){
  if(!d||!d.url)return;
