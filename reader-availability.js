@@ -11,7 +11,7 @@ function state(d){if(!isPdf(d))return 'collection';const r=record(d);if(r?.resul
 const ranks={verified:0,local:1,reachable:2,collection:3,unknown:4,blocked:5};
 const priority=d=>ranks[state(d)];
 const labels={verified:'Reader verified on this device',local:'Same-site PDF',reachable:'PDF source reachable · reader not yet tested',collection:'In-app resource collection',unknown:'Reader availability not yet checked',blocked:'May require official-source access'};
-function notify(d,result){if(!isPdf(d)||d.deviceCopy)return;const current=record(d);if(result==='reachable'&&current?.result==='verified')return;if(result==='blocked'&&current?.result==='verified')return;const old=state(d);cache[routeKey(d)]={result,at:Date.now()};try{localStorage.setItem(key,JSON.stringify(cache))}catch(_){}if(old!==state(d))window.dispatchEvent(new CustomEvent('wrha-reader-availability',{detail:{id:d.id,state:state(d)}}))}
+function notify(d,result){if(!isPdf(d)||d.deviceCopy)return;const current=record(d);if(result==='reachable'&&(current?.result==='verified'||current?.result==='blocked'||known.has(d.id)))return;if(result==='blocked'&&current?.result==='verified')return;const old=state(d);cache[routeKey(d)]={result,at:Date.now()};try{localStorage.setItem(key,JSON.stringify(cache))}catch(_){}if(old!==state(d))window.dispatchEvent(new CustomEvent('wrha-reader-availability',{detail:{id:d.id,state:state(d)}}))}
 function mark(d,result){if(!d||d.deviceCopy||!isPdf(d))return;if(result==='blocked'){if(navigator.onLine===false)return;delete cache[routeKey(d)]}notify(d,result)}
 let active=false,queue=[],checked=new Set(),running=0;
 async function check(d){const c=new AbortController(),timer=setTimeout(()=>c.abort(),8000);let reader;try{
