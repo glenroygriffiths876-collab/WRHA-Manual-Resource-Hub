@@ -108,6 +108,14 @@ window.addEventListener('offline',syncConnectivity);
 syncConnectivity();syncInstallButton();
 // GitHub Pages serves under /WRHA-Manual-Resource-Hub/; relative SW scope is intentional.
 if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1')){
+ // A replacement service worker is an application update. Return to the landing page.
+ let hadController=!!navigator.serviceWorker.controller,updateReloading=false;
+ navigator.serviceWorker.addEventListener('controllerchange',()=>{
+  if(!hadController){hadController=true;return}
+  if(updateReloading)return;updateReloading=true;
+  try{history.replaceState(null,'','#home');history.scrollRestoration='manual';localStorage.removeItem('wrha-last-release')}catch(_){}
+  location.reload();
+ });
  window.addEventListener('load',()=>{
   navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'})
    .then(reg=>reg.update().catch(()=>{}))
