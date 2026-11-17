@@ -66,8 +66,8 @@ function docCard(d,type){const law=type==='law',pdf=isPdf(d),title=esc(d.title),
  return '<article class="manual-card '+(law?'manual-legal':'')+'"><div class="manual-top">'+coverMarkup(d)+'<span class="manual-year">'+esc(d.year||d.type||'Resource')+'</span></div><div class="manual-body"><span class="category-label">'+esc(d.category)+'</span><h3>'+title+'</h3><p>'+esc(d.description||'A publicly linked guidance or reference resource.')+'</p><span class="manual-status">'+esc(d.status||'Confirm edition')+'</span>'+accessLabel+'<div class="manual-actions">'+mainButton+secondary+'</div></div></article>';
 }
 function bindDocumentActions(node){node.querySelectorAll('[data-read]').forEach(btn=>btn.addEventListener('click',()=>{const [kind,id]=btn.dataset.read.split(':');openPdf((kind==='law'?laws:allDocs).find(d=>d.id===id))}));observeCovers(node)}
-function renderFeatured(){const items=allDocs.filter(d=>isPdf(d)&&accessRank(d)<=1).sort((a,b)=>byAccess(a,b)||(b.year||0)-(a.year||0)||a.title.localeCompare(b.title)).slice(0,3);
- $('featuredReaderNote').textContent=items.length?'Verified on this device or hosted on the same website.':'Open the manual library to check document availability.';
+function renderFeatured(){const items=allDocs.filter(d=>isPdf(d)&&availability?.state(d)==='verified').sort((a,b)=>byAccess(a,b)||(b.year||0)-(a.year||0)||a.title.localeCompare(b.title)).slice(0,3);
+ $('featuredReaderNote').textContent=items.length?'First page successfully rendered on this device.':'Checking reader availability. You can browse the full library while this runs.';
  $('featured').innerHTML=items.length?items.map(d=>docCard(d,'manual')).join(''):'<button type="button" class="btn btn-primary" id="featuredBrowse">Browse the manual library ↗</button>';bindDocumentActions($('featured'));$('featuredBrowse')?.addEventListener('click',()=>setView('manuals'))}
 renderFeatured();
 
@@ -202,6 +202,6 @@ $('roleDialog').addEventListener('click',e=>{if(e.target===$('roleDialog'))$('ro
 filterRoles();
 
 /* Reset to the landing page once after each application release. */
-const release='2026-11-17-premium-2';let newRelease=true;try{newRelease=localStorage.getItem('wrha-home-release')!==release;localStorage.setItem('wrha-home-release',release)}catch(_){}
+const release='2026-11-17-premium-3';let newRelease=true;try{newRelease=localStorage.getItem('wrha-home-release')!==release;localStorage.setItem('wrha-home-release',release)}catch(_){}
 if(newRelease){try{history.scrollRestoration='manual'}catch(_){}setView('home',false);window.scrollTo(0,0)}else setView(location.hash.slice(1)||'home',false);
 })();
