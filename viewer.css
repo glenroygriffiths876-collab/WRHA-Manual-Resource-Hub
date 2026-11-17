@@ -136,3 +136,7 @@
  #pdfDialog .viewer-tool,#pdfDialog summary{min-height:36px}
  #pdfDialog .wrha-reader-panel{max-height:calc(100dvh - 110px)}
 }
+
+#pdfDialog .wrha-reader-panel{max-height:min(500px,var(--wrha-tools-space,62dvh));}
+#pdfDialog .wrha-reader-book:focus-visible,#pdfDialog .reader-pages:focus-visible{outline:3px solid #ffc928;outline-offset:-3px}
+#pdfDialog .reader-page-surface .textLayer span::selection{background:#2384f366}
