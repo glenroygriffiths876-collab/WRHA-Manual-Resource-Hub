@@ -3,14 +3,14 @@
  * feedback, and no MOHW/MOFPS-hosted PDFs. External documents need internet.
  */
 'use strict';
-const VERSION='wrha-public-shell-2026-11-17-unified-v1';
+const VERSION='wrha-public-shell-2026-11-17-landing-access-v1';
 const CORE=[
  './','./index.html',
  './styles.css','./enhance.css','./viewer.css','./roles-evidence.css',
  './hub-utilities.css','./pwa-install.css',
  './data.js','./catalog-extra.js','./document-overrides.js',
  './establishment-resource.js','./deep-manual-sources.js','./verified-role-public.js','./deep-rha-job-evidence.js','./srha-verified-positions.js','./cross-region-role-consolidation.js',
- './app-v2.js','./reader-sources.js','./viewer.js','./hub-utilities.js','./pwa-install.js',
+ './app-v2.js','./reader-sources.js','./reader-availability.js','./landing.css','./viewer.js','./hub-utilities.js','./pwa-install.js',
  './wrha-logo.webp','./jamaicaHigh.svg',
  './manifest.webmanifest',
  './assets/mohw-logo.png','./assets/wrha-hub-share-qr.svg',
