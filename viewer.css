@@ -140,3 +140,13 @@
 #pdfDialog .wrha-reader-panel{max-height:min(500px,var(--wrha-tools-space,62dvh));}
 #pdfDialog .wrha-reader-book:focus-visible,#pdfDialog .reader-pages:focus-visible{outline:3px solid #ffc928;outline-offset:-3px}
 #pdfDialog .reader-page-surface .textLayer span::selection{background:#2384f366}
+
+/* Phone: navigation row gets a wide page count; actions use three equal columns. */
+@media(max-width:620px){
+ #pdfDialog .pdf-tools{grid-template-columns:repeat(6,minmax(0,1fr))}
+ #pdfDialog #pdfPrevious,#pdfDialog #pdfNext{grid-column:span 1;min-width:0;padding:4px}
+ #pdfDialog #pdfCount{grid-column:span 4;white-space:normal}
+ #pdfDialog #pdfListen,#pdfDialog #pdfTools,#pdfDialog #pdfFullScreen{grid-column:span 2;min-width:0}
+}
+#pdfDialog #pdfAudioStatus:not(:empty){flex:0 0 auto;padding:6px 10px;background:#e7f2ff;color:#174c84;max-height:52px;overflow:auto;font-weight:600}
+#pdfDialog.wrha-reader-contrast #pdfAudioStatus{background:#000!important;color:#fff!important}
