@@ -32,3 +32,9 @@
 @media(max-width:620px){[data-page=home] .wrha-premium-hero{min-height:0;border-radius:20px;padding:26px 17px 25px}.wrha-premium-hero .wrha-hero-content{gap:12px}.wrha-hero-emblem{width:min(100%,330px);margin:5px 0}.wrha-emblem-plate{border-radius:19px;padding:16px}.wrha-premium-hero h1{font-size:clamp(32px,8.3vw,47px)}.wrha-premium-hero .hero-buttons .btn{flex:1 1 145px;padding:11px 10px;min-width:0;white-space:normal}.wrha-hero-kicker{letter-spacing:.08em;font-size:10px}.wrha-hero-label{letter-spacing:.16em}}
 @media(prefers-reduced-motion:reduce){.wrha-premium-hero *{animation:none!important;transition:none!important}}
 @media(forced-colors:active){.wrha-premium-hero h1 em{background:none;-webkit-text-fill-color:currentColor;color:CanvasText}}
+
+/* Extend the light sweep through the full title, while keeping a readable solid fallback. */
+@supports ((background-clip:text) or (-webkit-background-clip:text)){[data-page=home] .wrha-premium-hero h1{background:linear-gradient(105deg,#fff 0%,#f3fbff 22%,#a9e7ff 39%,#fff 55%,#c9fbef 76%,#fff 100%);background-size:260% 100%;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:wrhaTextFlow 8s linear infinite}}
+[data-page=home] .wrha-premium-hero .wrha-hero-emblem{width:min(100%,450px)}
+@media(max-width:620px){[data-page=home] .wrha-premium-hero .wrha-hero-emblem{width:min(100%,345px)}[data-page=home] .wrha-premium-hero .hero-buttons .btn{flex:1 1 100%;min-height:44px}}
+@media(forced-colors:active){[data-page=home] .wrha-premium-hero h1{background:none;-webkit-text-fill-color:CanvasText;color:CanvasText}}
