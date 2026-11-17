@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="./enhance.css">
-<link rel="stylesheet" href="./viewer.css">
+<link rel="stylesheet" href="./viewer.css?v=interactive-1">
 <link rel="stylesheet" href="./roles-evidence.css">
 <link rel="stylesheet" href="./hub-utilities.css">
 <link rel="stylesheet" href="./pwa-install.css">
@@ -36,7 +36,7 @@
 <script defer src="./deep-rha-job-evidence.js"></script>
 <script defer src="./srha-verified-positions.js"></script>
 <script defer src="./cross-region-role-consolidation.js"></script>
-<script defer src="./viewer.js"></script>
+<script defer src="./viewer.js?v=interactive-1"></script>
 <script defer src="./app-v2.js"></script>
 <script defer src="./hub-utilities.js"></script>
 <script defer src="./pwa-install.js"></script>
@@ -210,31 +210,41 @@
   </div>
   <div class="pdf-tools" id="pdfToolbar">
     <button id="pdfPrevious" class="viewer-tool" type="button" aria-label="Previous page" title="Previous page">‹</button>
-    <label>Page <input id="pdfPage" type="number" min="1" value="1" aria-label="PDF page number"> <span id="pdfTotal">/ —</span></label>
-    <button id="goPdfPage" class="viewer-tool" type="button">Go</button>
+    <span id="pdfCount" class="wrha-reader-count" aria-live="polite">Page —</span>
     <button id="pdfNext" class="viewer-tool" type="button" aria-label="Next page" title="Next page">›</button>
-    <label>Zoom
-      <select id="pdfZoom" aria-label="PDF zoom">
-        <option value="auto">Fit page</option>
-        <option value="page-width">Fit width</option>
-        <option value="100">100%</option><option value="125">125%</option><option value="150">150%</option>
-      </select>
-    </label>
-    <label class="pdf-find">Find <input id="pdfSearch" type="search" placeholder="Search text..." aria-label="Find text in PDF"></label>
-    <button id="pdfFindButton" class="viewer-tool" type="button">Find</button>
-    <button id="pdfFullScreen" class="viewer-tool" type="button">Full screen ⛶</button>
-    <button id="hubPdfReportIssue" class="viewer-tool hub-pdf-report" type="button" aria-haspopup="dialog" aria-controls="hubFeedbackDialog" title="Report a problem with this PDF">Report issue</button>
-    <a id="pdfSource" href="#" target="_blank" rel="noopener">Publisher ↗</a>
-    <a id="pdfLegalAlt" href="https://lipj.gov.jm/" target="_blank" rel="noopener" hidden>Alternative legal portal ↗</a>
-    <a id="pdfDownload" href="#" target="_blank" rel="noopener">Download PDF</a>
+    <button id="pdfListen" class="viewer-tool" type="button" aria-label="Listen to the current page">Listen</button>
+    <details id="pdfTools"><summary>Tools</summary>
+      <div class="wrha-reader-panel">
+      <div class="wrha-reader-panel-head"><strong>Reading tools</strong><button id="pdfToolsClose" type="button" class="viewer-tool" aria-label="Close tools">✕</button></div>
+      <div class="wrha-reader-toolgroup"><span class="wrha-tool-label">Navigation &amp; view</span>
+      <div class="wrha-tool-row"><label>Page <input id="pdfPage" type="number" min="1" value="1" aria-label="PDF page number"> <span id="pdfTotal">/ —</span></label><button id="goPdfPage" class="viewer-tool" type="button">Go</button></div>
+      <div class="wrha-tool-row"><label>Zoom <select id="pdfZoom" aria-label="PDF zoom"><option value="auto">Fit page</option><option value="page-width">Fit width</option><option value="75">75% of fit</option><option value="100">100% of fit</option><option value="125">125% of fit</option><option value="150">150% of fit</option><option value="200">200% of fit</option><option value="250">250% of fit</option></select></label><button id="pdfZoomOut" class="viewer-tool" type="button" aria-label="Zoom out">−</button><button id="pdfZoomIn" class="viewer-tool" type="button" aria-label="Zoom in">+</button></div>
+      <div class="wrha-tool-row"><button id="pdfLayout" class="viewer-tool" type="button" aria-pressed="false">Two pages</button><button id="pdfSound" class="viewer-tool" type="button" aria-pressed="true">Sound on</button></div>
+      <div class="wrha-tool-row"><label class="pdf-find">Find <input id="pdfSearch" type="search" placeholder="Search text…" aria-label="Find text in PDF"></label><button id="pdfFindButton" class="viewer-tool" type="button">Find next</button></div>
+      <label class="wrha-wide-label">Chapters <select id="pdfOutline" aria-label="PDF bookmarks"><option value="">No bookmarks available</option></select></label>
+      <button id="pdfRetry" class="viewer-tool" type="button" hidden>Retry embedded reader</button>
+      </div>
+      <div class="wrha-reader-toolgroup"><span class="wrha-tool-label">Listen &amp; accessibility</span>
+      <div class="wrha-tool-row"><button id="pdfReadAll" class="viewer-tool" type="button">Read continuously</button><button id="pdfPause" class="viewer-tool" type="button">Pause</button><button id="pdfStop" class="viewer-tool" type="button">Stop</button></div>
+      <label class="wrha-wide-label">Voice <select id="pdfVoice"><option value="">Device default</option></select></label>
+      <label>Speed <select id="pdfRate"><option value=".75">0.75×</option><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></label>
+      <p id="pdfAudioStatus" role="status" aria-live="polite"></p>
+      <button id="pdfTranscriptToggle" class="viewer-tool" type="button" aria-expanded="false">Show page text</button><div id="pdfTranscript" tabindex="0" hidden></div>
+      <div class="wrha-tool-row"><label><input id="pdfContrast" type="checkbox"> High contrast</label><label><input id="pdfMotion" type="checkbox"> Reduce motion</label></div>
+      <label>Interface text <select id="pdfTextSize"><option value="normal">Normal</option><option value="large">Large</option><option value="xlarge">Extra large</option></select></label>
+      </div>
+      <div class="wrha-reader-toolgroup"><span class="wrha-tool-label">Document &amp; support</span>
+      <div class="wrha-tool-row"><a id="pdfDownload" href="#" target="_blank" rel="noopener">Download PDF</a><a id="pdfOriginal" href="#" target="_blank" rel="noopener">Open original PDF ↗</a><button id="pdfPrint" class="viewer-tool" type="button">Print PDF</button></div>
+      <div class="wrha-tool-row"><a id="pdfSource" href="#" target="_blank" rel="noopener">Publisher ↗</a><a id="pdfLegalAlt" href="https://lipj.gov.jm/" target="_blank" rel="noopener" hidden>Alternative legal portal ↗</a><button id="hubPdfReportIssue" class="viewer-tool hub-pdf-report" type="button" aria-haspopup="dialog" aria-controls="hubFeedbackDialog" title="Report a problem with this PDF">Report issue</button></div>
+      </div>
+      </div>
+    </details>
+    <button id="pdfFullScreen" class="viewer-tool" type="button" aria-pressed="false">Full screen</button>
   </div>
   <div class="pdf-frame-wrap" id="pdfFrameWrap">
     <div id="pdfLoading" class="reader-loading" role="status" aria-live="polite">Preparing document…</div>
-    <div id="pdfCanvasScroll" class="reader-pages" hidden>
-      <div id="pdfPageSurface" class="reader-page-surface">
-        <canvas id="pdfCanvas" aria-label="PDF page"></canvas>
-        <div id="pdfTextLayer" class="textLayer" aria-hidden="false"></div>
-      </div>
+    <div id="pdfCanvasScroll" class="reader-pages" tabindex="0" aria-label="PDF reading area; use left and right arrows to turn pages" hidden>
+      <div id="pdfPageSurface" class="wrha-reader-book" aria-label="Document pages"></div>
     </div>
     <iframe id="pdfFrame" title="Browser PDF viewer — used when document server blocks PDF.js" loading="lazy" referrerpolicy="no-referrer" hidden></iframe>
     <div id="pdfBlocked" class="reader-blocked" hidden role="region" aria-label="External PDF preview and access options">
