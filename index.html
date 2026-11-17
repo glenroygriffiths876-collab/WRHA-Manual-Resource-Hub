@@ -22,7 +22,8 @@
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="./enhance.css">
-<link rel="stylesheet" href="./viewer.css?v=unified-1">
+<link rel="stylesheet" href="./viewer.css?v=landing-reader-2">
+<link rel="stylesheet" href="./landing-premium.css?v=1">
 <link rel="stylesheet" href="./roles-evidence.css">
 <link rel="stylesheet" href="./hub-utilities.css">
 <link rel="stylesheet" href="./pwa-install.css">
@@ -36,9 +37,10 @@
 <script defer src="./deep-rha-job-evidence.js"></script>
 <script defer src="./srha-verified-positions.js"></script>
 <script defer src="./cross-region-role-consolidation.js"></script>
-<script defer src="./reader-sources.js?v=unified-1"></script>
-<script defer src="./viewer.js?v=unified-1"></script>
-<script defer src="./app-v2.js"></script>
+<script defer src="./reader-sources.js?v=landing-reader-2"></script>
+<script defer src="./reader-availability.js?v=1"></script>
+<script defer src="./viewer.js?v=landing-reader-2"></script>
+<script defer src="./app-v2.js?v=landing-reader-2"></script>
 <script defer src="./hub-utilities.js"></script>
 <script defer src="./pwa-install.js"></script>
 </head>
@@ -69,11 +71,23 @@
 <main id="main" class="content" tabindex="-1">
 <div class="governance-banner"><span>ⓘ</span> Development preview · Directory coverage and document versions are being verified. Institutional publication approval is not represented.</div>
 <section data-page="home" class="page active">
- <div class="hero"><div class="hero-glow"></div><div class="hero-text"><div class="eyebrow light">WESTERN REGIONAL HEALTH AUTHORITY <span>·</span> DIGITAL RESOURCE LIBRARY</div><h1>Knowledge that strengthens <em>healthcare.</em></h1><p>One central place for official clinical manuals, public-health protocols, health-centre information and professional learning across Jamaica.</p><div class="hero-buttons"><button class="btn btn-white" data-go="manuals">Explore the library <span>↗</span></button><button class="btn btn-outline-white" data-go="facilities">Find a health centre <span>⌖</span></button></div></div><div class="hero-side"><img class="hero-logo" src="./wrha-logo.webp" alt="Western Regional Health Authority"><p>Healthy Families Living in<br><strong>Healthy Communities</strong></p></div></div>
+ <div class="hero wrha-premium-hero">
+  <div class="wrha-aurora" aria-hidden="true"></div>
+  <div class="wrha-orbit wrha-orbit-one" aria-hidden="true"></div><div class="wrha-orbit wrha-orbit-two" aria-hidden="true"></div>
+  <div class="wrha-hero-content">
+   <div class="wrha-hero-kicker"><span class="wrha-kicker-dot" aria-hidden="true"></span> WESTERN REGIONAL HEALTH AUTHORITY</div>
+   <div class="wrha-hero-emblem"><div class="wrha-emblem-halo" aria-hidden="true"></div><div class="wrha-emblem-plate"><img src="./wrha-logo.webp" alt="Western Regional Health Authority official logo" width="360" height="200" fetchpriority="high"></div></div>
+   <div class="wrha-hero-label">MANUAL &amp; RESOURCE HUB</div>
+   <h1>Knowledge that strengthens <em>healthcare.</em></h1>
+   <p class="wrha-hero-description">Your gateway to trusted clinical guidance, public health resources, legislation and professional learning.</p>
+   <div class="hero-buttons"><button class="btn btn-white" data-go="manuals">Explore the library <span aria-hidden="true">↗</span></button><button class="btn btn-outline-white" data-go="facilities">Find a health centre <span aria-hidden="true">⌖</span></button></div>
+   <div class="wrha-hero-motto">Healthy Families Living in <strong>Healthy Communities</strong></div>
+  </div>
+ </div>
  <div class="stats" id="stats"></div>
  <div class="section-title"><div><span class="eyebrow">QUICK ACCESS</span><h2>Where would you like to begin?</h2><p>Find the information you need with fewer clicks.</p></div></div>
  <div class="quick-grid"><button class="quick-card" data-go="manuals"><span class="quick-icon blue">▤</span><span><b>Clinical & Public Health Manuals</b><small>Guidelines, field guides, policies and protocols</small></span><span class="quick-arrow">↗</span></button><button class="quick-card" data-go="legislation"><span class="quick-icon rose">⚖</span><span><b>Health Legislation</b><small>Jamaican Acts, regulations and legal instruments</small></span><span class="quick-arrow">↗</span></button><button class="quick-card" data-go="facilities"><span class="quick-icon cyan">⌖</span><span><b>Jamaica Health-Centre Directory</b><small>Explore by parish and regional health authority</small></span><span class="quick-arrow">↗</span></button><button class="quick-card" data-go="training"><span class="quick-icon violet">▣</span><span><b>Training & Learning</b><small>Access our two selected learning platforms</small></span><span class="quick-arrow">↗</span></button><button class="quick-card" data-go="roles"><span class="quick-icon rose">♧</span><span><b>Departments & Roles</b><small>Understand the functions behind healthcare</small></span><span class="quick-arrow">↗</span></button></div>
- <div class="section-title compact"><div><span class="eyebrow">OFFICIAL GUIDANCE</span><h2>Featured resources</h2></div><button class="text-link" data-go="manuals">View full library ↗</button></div><div id="featured" class="manual-grid"></div>
+ <div class="section-title compact"><div><span class="eyebrow">OFFICIAL GUIDANCE</span><h2>Start reading</h2><p id="featuredReaderNote">Resources that are most likely to open in the interactive reader.</p></div><button class="text-link" data-go="manuals">View full library ↗</button></div><div id="featured" class="manual-grid"></div>
  <div class="home-note"><div class="note-icon">✓</div><div><strong>National guidance. Regional access.</strong><p>MOHW remains the issuing authority for national clinical publications. This hub helps professionals find and read them in one convenient place.</p></div><a href="https://www.moh.gov.jm/publications/" target="_blank" rel="noopener">MOHW publications ↗</a></div>
 </section>
 <section data-page="manuals" class="page">
@@ -255,9 +269,9 @@
   </div>
   <div class="reader-blocked-details">
     <span class="eyebrow">DOCUMENT ACCESS</span>
-    <h3>Full PDF temporarily unavailable in the reader</h3>
+    <h3>This document needs another access method</h3>
     <p>The complete PDF could not be loaded from the publisher in this browser. If available, a first-page preview appears here; it is not the entire document.</p>
-    <p><strong>This image is only a preview, not the complete manual.</strong> Use the official PDF link if you need to read every page. The publisher may open it or download it depending on your browser.</p>
+    <p>The hub tried both available reading methods. If the publisher does not permit browser access, the official PDF link remains available. This resource will be placed below available documents on this device.</p>
     <div class="reader-blocked-actions"><a id="pdfBlockedOpen" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Open official PDF ↗</a><a id="pdfBlockedPublisher" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Publisher page ↗</a></div>
     <button id="pdfRetryInline" class="btn btn-primary" type="button">Try again in the reader</button> <button id="pdfLocalOpen" class="btn btn-secondary" type="button">Read a saved PDF on this device</button><input id="pdfLocalFile" type="file" accept="application/pdf,.pdf" hidden><p class="reader-permission-note">If you have an authorised copy saved on your device, you can read it here without uploading it. It will be labelled as a device copy, not a verified official edition.</p>
   </div>
