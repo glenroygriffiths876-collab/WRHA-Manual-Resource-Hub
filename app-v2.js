@@ -15,13 +15,14 @@ const dcount=D.roleGroups.reduce((sum,g)=>sum+g.roles.length,0);
 const stats=[['▤',allDocs.length,'Source-linked resources'],['⚖',laws.length,'Legislation records'],['⌖',D.facilities.length,'Facility entries (partial)'],['♧',dcount,'Role/function profiles']];
 $('stats').innerHTML=stats.map(x=>'<div class="stat"><span class="stat-icon">'+x[0]+'</span><div><strong>'+x[1]+'</strong><small>'+esc(x[2])+'</small></div></div>').join('');
 function setView(name,scroll=true){
- current=pgs.includes(name)?name:'home';
+ const previous=current;current=pgs.includes(name)?name:'home';
  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.dataset.page===current));
  document.querySelectorAll('.nav-button').forEach(btn=>{let selected=btn.dataset.view===current;btn.classList.toggle('active',selected);if(selected)btn.setAttribute('aria-current','page');else btn.removeAttribute('aria-current');});
  $('sidebar').classList.remove('open');$('menuBtn').setAttribute('aria-expanded','false');
  if(location.hash!=='#'+current)history.replaceState(null,'','#'+current);
  if(scroll)window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
- if(current==='manuals'||current==='legislation')availability?.start();else availability?.pause();
+ if(current!==previous){if(current==='manuals')filterManuals();else if(current==='legislation')filterLaws();else if(current==='home')renderFeatured()}
+ if(current==='manuals'||current==='legislation')availability?.start();else availability?.pause();if(current==='home')availability?.verifyFeatured();flushCovers();
 }
 document.querySelectorAll('[data-view]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();setView(a.dataset.view)}));
 document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=>setView(a.dataset.go)));
@@ -32,19 +33,19 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('sidebar').classL
 function isPdf(d){return d.format!=='page'&&(/\.pdf(?:\?|$)/i.test(d.url)||/\/download\//i.test(d.url)||d.format==='pdf')}
 const coverCache=new Map(),coverWaiting=[],queued=new Set(),failedCovers=new Set();let coverActive=0,lastOpened=null;
 if(window.pdfjsLib){pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';}
-const coverObserver=('IntersectionObserver' in window)?new IntersectionObserver(records=>{records.forEach(r=>{if(r.isIntersecting){coverObserver.unobserve(r.target);scheduleCover(r.target);}})},{rootMargin:'280px'}):null;
-function observeCovers(node){node.querySelectorAll('.doc-cover[data-pdf]').forEach(el=>{
+const coverObserver=('IntersectionObserver' in window)?new IntersectionObserver(records=>{records.forEach(r=>{if(r.isIntersecting&&r.target.isConnected){coverObserver.unobserve(r.target);scheduleCover(r.target);}})},{rootMargin:'280px'}):null;
+function observeCovers(node){node.querySelectorAll('.doc-cover[data-pdf]').forEach(el=>{if(el.dataset.coverObserved)return;el.dataset.coverObserved='1';
  const fallback=()=>{if(coverCache.has(el.dataset.pdf)){showCached(el);return;}if(coverObserver)coverObserver.observe(el);else scheduleCover(el);};
  const staticImg=el.querySelector('.static-cover');
  if(!staticImg){fallback();return;}
- const loaded=()=>{el.classList.add('has-preview');const canvas=el.querySelector('canvas');if(canvas)canvas.hidden=true;const record=[...allDocs,...laws].find(d=>d.url===el.dataset.pdf);if(staticImg.naturalWidth<600&&availability?.state(record||{})!=='blocked'&&!navigator.connection?.saveData)fallback();};
+ const loaded=()=>{el.classList.add('has-preview');const canvas=el.querySelector('canvas');if(canvas&&!el.dataset.paintVersion)canvas.hidden=true;const record=[...allDocs,...laws].find(d=>d.url===el.dataset.pdf);if(staticImg.naturalWidth<600&&availability?.state(record||{})!=='blocked'&&!navigator.connection?.saveData)fallback();};
  const missing=()=>{staticImg.remove();fallback();};
  staticImg.addEventListener('load',loaded,{once:true});staticImg.addEventListener('error',missing,{once:true});
  if(staticImg.complete){if(staticImg.naturalWidth)loaded();else missing();}
  });}
-function showCached(el){const img=coverCache.get(el.dataset.pdf);if(!img)return;const canvas=el.querySelector('canvas');if(canvas){const bitmap=new Image();bitmap.onload=()=>{if(!el.isConnected)return;canvas.width=bitmap.width;canvas.height=bitmap.height;canvas.getContext('2d').drawImage(bitmap,0,0);const old=el.querySelector('.static-cover');if(old)old.hidden=true;canvas.hidden=false;el.classList.add('has-preview')};bitmap.src=img;}}
-function scheduleCover(el){const url=el.dataset.pdf;if(coverCache.has(url)){showCached(el);return;}if(!window.pdfjsLib||queued.has(url)||failedCovers.has(url))return;queued.add(url);coverWaiting.push({el,url});flushCovers();}
-function flushCovers(){while(coverActive<2&&coverWaiting.length){const {el,url}=coverWaiting.shift();coverActive++;el.classList.add('loading');(async()=>{let task=null,doc=null;try{
+function showCached(el){const img=coverCache.get(el.dataset.pdf);if(!img||el.dataset.paintVersion)return;const canvas=el.querySelector('canvas');if(canvas){const bitmap=new Image();bitmap.onload=()=>{if(!el.isConnected||el.dataset.paintVersion)return;el.dataset.paintVersion='1';canvas.width=bitmap.width;canvas.height=bitmap.height;canvas.getContext('2d').drawImage(bitmap,0,0);const old=el.querySelector('.static-cover');if(old)old.hidden=true;canvas.hidden=false;el.classList.add('has-preview')};bitmap.src=img;}}
+function scheduleCover(el){if(!el.isConnected)return;const url=el.dataset.pdf;if(coverCache.has(url)){showCached(el);return;}if(!window.pdfjsLib||queued.has(url)||failedCovers.has(url))return;queued.add(url);coverWaiting.push({el,url});flushCovers();}
+function flushCovers(){if($('pdfDialog')?.open)return;while(coverActive<1&&coverWaiting.length){const {el,url}=coverWaiting.shift();if(!el.isConnected||!el.closest('.page.active')){queued.delete(url);const visible=[...document.querySelectorAll('.page.active .doc-cover[data-pdf]')].find(x=>x.dataset.pdf===url);if(visible)scheduleCover(visible);else if(el.isConnected){delete el.dataset.coverObserved;observeCovers(el.closest('.manual-card'))}continue}coverActive++;el.classList.add('loading');(async()=>{let task=null,doc=null;try{
  task=pdfjsLib.getDocument({url,withCredentials:false,disableAutoFetch:true,disableStream:true,isEvalSupported:false,enableXfa:false});
  doc=await task.promise;const page=await doc.getPage(1);const basic=page.getViewport({scale:1});
  const scale=Math.min(3,900/basic.width,1200/basic.height);
@@ -60,9 +61,9 @@ function coverMarkup(d){const pdf=isPdf(d);const label=pdf?'FIRST-PAGE PREVIEW':
  const safeURL=pdf?esc(d.url):'';
  return '<div class="doc-cover '+(pdf?'':'not-previewable')+'" '+(pdf?'data-pdf="'+safeURL+'"':'')+'><div class="cover-placeholder"><span class="crest">♛</span><strong>'+esc(d.title)+'</strong><small>'+label+'</small></div>'+(pdf?'<img class="static-cover" loading="lazy" decoding="async" src="./covers/'+encodeURIComponent(d.id)+'.webp" alt="First page of '+esc(d.title)+'"><canvas aria-hidden="true" hidden></canvas>':'')+'</div>';}
 function docCard(d,type){const law=type==='law',pdf=isPdf(d),title=esc(d.title),href=esc(d.url),key=esc(type+':'+d.id);
- const state=availability?.state(d)||'unknown';const accessLabel='<span class="reader-availability-label" data-state="'+esc(state)+'">'+esc(availability?.label(d)||'Reader availability not yet checked')+'</span>';
+ const state=availability?.state(d)||'unknown';const accessLabel='<span class="reader-availability-label" data-state="'+esc(state)+'" title="'+esc(availability?.label(d)||'Reader availability not yet checked')+'">'+esc(shortAccess(state))+'</span>';
  const secondary='<a class="download-btn" '+(pdf?'data-download="'+key+'" download="'+esc(pdfName(d))+'" ':'')+'href="'+href+'" target="_blank" rel="noopener" aria-label="'+(pdf?'Download PDF: ':'Open official source: ')+title+'" title="'+(pdf?'Download PDF; source restrictions may require opening the official file':'Open the publisher website')+'">'+(pdf?'Download PDF ↓':'Official source ↗')+'</a>';
- return '<article class="manual-card manual-tappable '+(law?'manual-legal':'')+'"><div class="manual-top">'+coverMarkup(d)+'<span class="manual-year">'+esc(d.year||d.type||'Resource')+'</span></div><div class="manual-body"><span class="category-label">'+esc(d.category)+'</span><h3><button type="button" class="manual-open-title" data-read="'+key+'" aria-haspopup="dialog" aria-label="Open '+title+' in resource reader">'+title+'</button></h3><p>'+esc(d.description||'A publicly linked guidance or reference resource.')+'</p><span class="manual-status">'+esc(d.status||'Confirm edition')+'</span>'+accessLabel+'<div class="manual-actions">'+secondary+'</div><span class="manual-download-status" aria-live="polite" hidden></span></div></article>';
+ return '<article class="manual-card manual-tappable '+(law?'manual-legal':'')+'" data-doc-key="'+key+'"><div class="manual-top">'+coverMarkup(d)+'<span class="manual-year">'+esc(d.year||d.type||'Resource')+'</span></div><div class="manual-body"><span class="category-label">'+esc(d.category)+'</span><h3><button type="button" class="manual-open-title" data-read="'+key+'" aria-haspopup="dialog" aria-label="Open '+title+' in resource reader">'+title+'</button></h3><p>'+esc(d.description||'A publicly linked guidance or reference resource.')+'</p><span class="manual-status">'+esc(d.status||'Confirm edition')+'</span>'+accessLabel+'<div class="manual-actions">'+secondary+'</div><span class="manual-download-status" aria-live="polite" hidden></span></div></article>';
 }
 function pdfName(d){return (String(d.title||'WRHA document').replace(/[\\/:*?"<>|]/g,'-').trim().slice(0,120)||'WRHA document')+'.pdf'}
 function resolveDoc(value){const i=value.indexOf(':'),kind=value.slice(0,i),id=value.slice(i+1);return (kind==='law'?laws:allDocs).find(d=>d.id===id)}
@@ -95,47 +96,65 @@ function bindDocumentActions(node){
  node.querySelectorAll('[data-download]').forEach(link=>link.addEventListener('click',e=>downloadFromCard(e,link,resolveDoc(link.dataset.download))));
  observeCovers(node)
 }
-function renderFeatured(){const items=allDocs.filter(d=>isPdf(d)&&availability?.state(d)==='verified').sort((a,b)=>byAccess(a,b)||(b.year||0)-(a.year||0)||a.title.localeCompare(b.title)).slice(0,3);
- $('featuredReaderNote').textContent=items.length?'First page successfully rendered on this device.':'Checking reader availability. You can browse the full library while this runs.';
- $('featured').innerHTML=items.length?items.map(d=>docCard(d,'manual')).join(''):'<button type="button" class="btn btn-primary" id="featuredBrowse">Browse the manual library ↗</button>';bindDocumentActions($('featured'));$('featuredBrowse')?.addEventListener('click',()=>setView('manuals'))}
+// Availability events never reorder the grid or replace its children.
+const accessLabels={verified:'Reader verified',local:'Same-site PDF',reachable:'Source reachable',collection:'Online collection',unknown:'Not yet checked',blocked:'Access limited'};
+function shortAccess(state){return accessLabels[state]||accessLabels.unknown}
+function updateCardStatus(card){const d=resolveDoc(card.dataset.docKey||'');if(!d)return;const label=card.querySelector('.reader-availability-label');if(!label)return;const state=availability?.state(d)||'unknown';if(label.dataset.state===state)return;label.dataset.state=state;label.textContent=shortAccess(state);label.title=availability?.label(d)||'Reader availability not yet checked'}
+function refreshStatusLabels(id){for(const card of document.querySelectorAll('.manual-card[data-doc-key]')){const d=resolveDoc(card.dataset.docKey);if(!id||d?.id===id||d?.url===id)updateCardStatus(card)}}
+// Reuse mounted cards, their loaded covers, focus, and active download controls.
+function renderDocumentGrid(root,items,type){const desired=items.map(d=>type+':'+d.id),wanted=new Set(desired),old=new Map();
+ for(const el of [...root.children]){if(el.dataset.docKey&&wanted.has(el.dataset.docKey)){old.set(el.dataset.docKey,el)}else{coverObserver?.unobserve(el.querySelector?.('.doc-cover[data-pdf]')||el);el.remove()}}
+ let cursor=root.firstElementChild;
+ for(let i=0;i<items.length;i++){const key=desired[i];let card=old.get(key),created=false;
+  if(!card){const template=document.createElement('template');template.innerHTML=docCard(items[i],type).trim();card=template.content.firstElementChild;created=true}
+  if(card!==cursor)root.insertBefore(card,cursor);cursor=card.nextElementSibling;
+  if(created)bindDocumentActions(card);else updateCardStatus(card);
+ }
+}
+function renderFeatured(){const items=allDocs.filter(d=>isPdf(d)&&availability?.state(d)==='verified').sort((a,b)=>byAccess(a,b)||(b.year||0)-(a.year||0)||a.title.localeCompare(b.title)).slice(0,3),root=$('featured');
+ $('featuredReaderNote').textContent=items.length?'First page successfully rendered on this device.':'Browse the library; verified recommendations are refreshed when you return Home.';
+ if(items.length)renderDocumentGrid(root,items,'manual');else if(!$('featuredBrowse')){root.innerHTML='<button type="button" class="btn btn-primary" id="featuredBrowse">Browse the manual library ↗</button>';$('featuredBrowse').addEventListener('click',()=>setView('manuals'))}}
 renderFeatured();
 
-let activeManCat='',manItems=[],activeLawCat='';
+let activeManCat='',manItems=[],lawItems=[],activeLawCat='';
 const cats=[...new Set(allDocs.map(d=>d.category))].sort();
 $('manualCategory').innerHTML='<option value="">All programme areas</option>'+cats.map(c=>'<option value="'+esc(c)+'">'+esc(c)+'</option>').join('');
 function addPills(anchorId,list,onPick){const anchor=$(anchorId);const p=document.createElement('div');p.className='filter-pills';p.setAttribute('aria-label','Popular category filters');p.innerHTML=['All',...list].map(c=>'<button type="button" data-pill="'+esc(c)+'">'+esc(c)+'</button>').join('');const bar=anchor.closest('.toolbar');bar.parentNode.insertBefore(p,bar.nextSibling);p.querySelectorAll('[data-pill]').forEach(b=>b.addEventListener('click',()=>onPick(b.dataset.pill==='All'?'':b.dataset.pill)));return p;}
 const manPills=addPills('manualSearch',['Communicable Diseases','Non-Communicable Diseases','Environmental Health','Maternal & Child Health','Immunisation','Nutrition & Dietetics','Administration & Governance'],cat=>{$('manualCategory').value=cat;manualLimit=18;filterManuals();});
 function syncPills(container,category){container.querySelectorAll('button').forEach(b=>b.classList.toggle('active',(b.dataset.pill==='All'?'':b.dataset.pill)===category))}
-function filterManuals(){
+function filterManuals(reorder=true){
  const q=$('manualSearch').value.trim().toLowerCase(),cat=$('manualCategory').value,sort=$('manualSort').value;
- manItems=allDocs.filter(m=>(!cat||m.category===cat)&&(!q||[m.title,m.category,m.description,m.publisher,m.year].join(' ').toLowerCase().includes(q)));
+ if(reorder){manItems=allDocs.filter(m=>(!cat||m.category===cat)&&(!q||[m.title,m.category,m.description,m.publisher,m.year].join(' ').toLowerCase().includes(q)));
  if(sort==='alpha')manItems.sort((a,b)=>a.title.localeCompare(b.title));else if(sort==='newest')manItems.sort((a,b)=>(b.year||0)-(a.year||0));else manItems.sort((a,b)=>(b.year||0)-(a.year||0)||a.title.localeCompare(b.title));
- manItems.sort(byAccess);
+ manItems.sort(byAccess);}
  $('manualCount').textContent=manItems.length+' source-linked manuals and resources · readable first';
  $('manualEmpty').hidden=manItems.length!==0;
- $('manualGrid').innerHTML=manItems.slice(0,manualLimit).map(d=>docCard(d,'manual')).join('');
+ renderDocumentGrid($('manualGrid'),manItems.slice(0,manualLimit),'manual');
  $('moreManuals').hidden=manItems.length<=manualLimit;
- syncPills(manPills,cat);bindDocumentActions($('manualGrid'));
+ syncPills(manPills,cat);
 }
 $('manualSearch').addEventListener('input',()=>{manualLimit=18;filterManuals()});
 ['manualCategory','manualSort'].forEach(x=>$(x).addEventListener('change',()=>{manualLimit=18;filterManuals()}));
 $('clearManuals').addEventListener('click',()=>{$('manualSearch').value='';$('manualCategory').value='';$('manualSort').value='featured';manualLimit=18;filterManuals()});
-$('moreManuals').addEventListener('click',()=>{manualLimit+=18;filterManuals()});filterManuals();
+$('moreManuals').addEventListener('click',()=>{manualLimit+=18;filterManuals(false)});$('refreshManualOrder').addEventListener('click',()=>filterManuals());
 const lawCats=[...new Set(laws.map(x=>x.category))].sort();
 $('lawCategory').innerHTML='<option value="">All legal areas</option>'+lawCats.map(c=>'<option>'+esc(c)+'</option>').join('');
 const lawPills=addPills('lawSearch',['Public Health','Nursing & Midwifery','Medicines & Pharmacy','Mental Health','Health Information','Environmental Health'],cat=>{$('lawCategory').value=cat;lawLimit=18;filterLaws()});
-function filterLaws(){const q=$('lawSearch').value.trim().toLowerCase(),cat=$('lawCategory').value,type=$('lawType').value;
- const list=laws.filter(l=>(!cat||l.category===cat)&&(!type||l.type===type)&&(!q||[l.title,l.category,l.type].join(' ').toLowerCase().includes(q))).sort(byAccess);
+function filterLaws(reorder=true){const q=$('lawSearch').value.trim().toLowerCase(),cat=$('lawCategory').value,type=$('lawType').value;
+ if(reorder)lawItems=laws.filter(l=>(!cat||l.category===cat)&&(!type||l.type===type)&&(!q||[l.title,l.category,l.type].join(' ').toLowerCase().includes(q))) .sort(byAccess);const list=lawItems;
  $('lawCount').textContent=list.length+' legislation records';
- $('lawEmpty').hidden=list.length!==0;$('lawGrid').innerHTML=list.slice(0,lawLimit).map(l=>docCard(l,'law')).join('');document.querySelector('#moreLawsHolder')?.remove();
- if(list.length>lawLimit){const b=document.createElement('button');b.id='moreLaws';b.className='btn btn-primary';b.textContent='Show more legislation ↓';b.addEventListener('click',()=>{lawLimit+=18;filterLaws()});const holder=document.createElement('div');holder.id='moreLawsHolder';holder.className='load-more-holder';holder.append(b);$('lawGrid').after(holder);}
- syncPills(lawPills,cat);bindDocumentActions($('lawGrid'));
+ $('lawEmpty').hidden=list.length!==0;renderDocumentGrid($('lawGrid'),list.slice(0,lawLimit),'law');$('moreLaws').hidden=list.length<=lawLimit;
+ syncPills(lawPills,cat);
 }
 ['lawSearch','lawCategory','lawType'].forEach(x=>$(x).addEventListener(x==='lawSearch'?'input':'change',()=>{lawLimit=18;filterLaws()}));
-$('clearLaws').addEventListener('click',()=>{$('lawSearch').value='';$('lawCategory').value='';$('lawType').value='';lawLimit=18;filterLaws()});filterLaws();
+$('clearLaws').addEventListener('click',()=>{$('lawSearch').value='';$('lawCategory').value='';$('lawType').value='';lawLimit=18;filterLaws()});$('moreLaws').addEventListener('click',()=>{lawLimit+=18;filterLaws(false)});$('refreshLawOrder').addEventListener('click',()=>filterLaws());
 
-let accessRefresh;window.addEventListener('wrha-reader-availability',()=>{clearTimeout(accessRefresh);accessRefresh=setTimeout(()=>{if($('pdfDialog')?.open)return;renderFeatured();if(current==='manuals')filterManuals();if(current==='legislation')filterLaws()},250)});$('pdfDialog')?.addEventListener('close',()=>{const key=lastOpened;renderFeatured();if(current==='manuals')filterManuals();if(current==='legislation')filterLaws();if(key){const scope=current==='manuals'?$('manualGrid'):current==='legislation'?$('lawGrid'):$('featured');const target=[...(scope?.querySelectorAll('[data-read]')||[])].find(x=>x.dataset.read===key);target?.focus({preventScroll:true})}lastOpened=null});
-function openPdf(d){if(!d)return;if(window.WRHA_DocViewer){window.WRHA_DocViewer.open(d);return;}if(isPdf(d))window.open(d.url,'_blank','noopener');else window.open(d.sourceUrl||d.url,'_blank','noopener');}
+// Coalesce status changes into one paint; never re-sort an active reading list.
+let statusFrame=0;const pendingStatus=new Set();
+window.addEventListener('wrha-reader-availability',e=>{if(e.detail?.id)pendingStatus.add(e.detail.id);if(statusFrame)return;statusFrame=requestAnimationFrame(()=>{statusFrame=0;const changed=[...pendingStatus];pendingStatus.clear();if(changed.length)changed.forEach(refreshStatusLabels);else refreshStatusLabels()})});
+$('pdfDialog')?.addEventListener('close',()=>{const key=lastOpened;refreshStatusLabels();if(key){const scope=current==='manuals'?$('manualGrid'):current==='legislation'?$('lawGrid'):$('featured');const target=[...(scope?.querySelectorAll('[data-read]')||[])].find(x=>x.dataset.read===key);target?.focus({preventScroll:true})}lastOpened=null;if(current==='manuals'||current==='legislation')availability?.start();flushCovers()});
+
+function openPdf(d){if(!d)return;if(window.WRHA_DocViewer){availability?.pause();window.WRHA_DocViewer.open(d);return;}if(isPdf(d))window.open(d.url,'_blank','noopener');else window.open(d.sourceUrl||d.url,'_blank','noopener');}
 
 const parishes=Object.keys(D.rhaMap).sort();
 $('parishFilter').innerHTML='<option value="">All 14 parishes</option>'+parishes.map(p=>'<option value="'+esc(p)+'">'+esc(p)+'</option>').join('');
@@ -231,6 +250,6 @@ $('roleDialog').addEventListener('click',e=>{if(e.target===$('roleDialog'))$('ro
 filterRoles();
 
 /* Reset to the landing page once after each application release. */
-const release='2026-11-17-deep-audit-1';let newRelease=true;try{newRelease=localStorage.getItem('wrha-home-release')!==release;localStorage.setItem('wrha-home-release',release)}catch(_){}
+const release='2026-11-17-stable-catalogue-1';let newRelease=true;try{newRelease=localStorage.getItem('wrha-home-release')!==release;localStorage.setItem('wrha-home-release',release)}catch(_){}
 if(newRelease){try{history.scrollRestoration='manual'}catch(_){}setView('home',false);window.scrollTo(0,0)}else setView(location.hash.slice(1)||'home',false);
 })();
