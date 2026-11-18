@@ -65,7 +65,7 @@ function localRoute(d){const entry=window.WRHA_LIBRARY_MANIFEST?.[d.id];if(!entr
  if(!/^documents\/library\/[a-zA-Z0-9_-]+\.pdf$/.test(entry.path))return null;
  return {url:new URL('./'+entry.path,location.href).href,label:'WRHA prepared copy · '+entry.edition,pages:entry.pages,localLibrary:true,legalAlternate:!!entry.legalAlternate};
 }
-function stableRoutes(d){if(d.deviceCopy)return previous.readerCandidates(d);const local=localRoute(d),pinned=jasdis[d.id];const prior=previous.readerCandidates(d);
+function stableRoutes(d){if(d.deviceCopy)return previous.readerCandidates(d);const local=localRoute(d),registered=jasdis[d.id],pinned=registered&&d.url==='https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/'+registered.url.split('/').at(-1)?registered:null;const prior=previous.readerCandidates(d);
  if(d.format==='office')return local?[local]:[];
  const direct=prior.filter(r=>!r.legalAlternate),alts=prior.filter(r=>r.legalAlternate);
  const unavailableJustice=/^https:\/\/laws\.moj\.gov\.jm\//i.test(d.url);
