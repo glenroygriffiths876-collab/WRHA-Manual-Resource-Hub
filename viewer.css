@@ -199,3 +199,6 @@
 #pdfDialog .wrha-image-pane{flex:1;min-height:0;overflow:auto;background:#173653;display:flex;align-items:flex-start;justify-content:center;padding:10px}
 #pdfDialog .wrha-image-pane img{display:block;width:auto;max-width:100%;height:auto;max-height:100%;object-fit:contain;background:#fff}
 #pdfDialog .wrha-image-pane[hidden]{display:none!important}
+
+#pdfDialog .wrha-legal-edition{flex:none;display:flex;align-items:center;justify-content:space-between;gap:6px 12px;flex-wrap:wrap;background:#fff6e7;color:#795016;border-bottom:1px solid #eed7ae;padding:7px 12px;font-size:12px;line-height:1.35;overflow-wrap:anywhere}
+#pdfDialog .wrha-legal-edition[hidden]{display:none!important}#pdfDialog .wrha-legal-edition a{color:inherit;font-weight:700;text-decoration:underline}
