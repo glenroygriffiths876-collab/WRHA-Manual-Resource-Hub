@@ -107,7 +107,7 @@ async function loadOutline(ref,version){try{const nodes=await ref.getOutline();i
 function restrictedFallback(url,reason){if(!current)return;
  busy=false;pageCount=0;initialPaint=false;book.replaceChildren();clearTimeout(embedTimer);elements.frame.src='about:blank';embedRoutes=[];
  window.WRHA_READER_AVAIL?.mark(current,'blocked');setMode('blocked');
- $('pdfRetryInline').hidden=!!current.deviceCopy;setStatus(current.format==='office'?'This Word publication needs a prepared PDF copy before it can be displayed.':'The document bytes could not be retrieved. No publisher webpage has been opened.');
+ $('pdfRetryInline').hidden=true;setStatus(current.format==='office'?'This Word publication needs a prepared PDF copy before it can be displayed.':'No validated copy could be retrieved.');
 }
 function showCollection(d){
  const info=window.WRHA_READER_SOURCES?.collection(d.id),items=$('pdfCollectionItems'),source=window.WRHA_READER_SOURCES;
