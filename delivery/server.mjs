@@ -9,12 +9,14 @@ import {join} from 'node:path';
 import {once} from 'node:events';
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const sandbox={window:{},URL}; 
-for(const path of ['data.js','catalog-extra.js','document-overrides.js','establishment-resource.js','deep-manual-sources.js','reader-sources.js','catalog-deep-audit-20261117.js','legal-source-routes.js'])runInNewContext(readFileSync(join(ROOT,path),'utf8'),sandbox,{filename:path,timeout:3000});
+for(const path of ['data.js','catalog-extra.js','document-overrides.js','establishment-resource.js','deep-manual-sources.js','reader-sources.js','catalog-deep-audit-20261117.js','legal-source-routes.js','stable-document-routes.js'])runInNewContext(readFileSync(join(ROOT,path),'utf8'),sandbox,{filename:path,timeout:3000});
 const D=sandbox.window.WRHA_DATA,docs=[...D.manuals,...D.legislation];
-const approvedHosts=new Set(['www.moh.gov.jm','moh.gov.jm','ncdip.moh.gov.jm','hstu.moh.gov.jm','dashboard.moh.gov.jm','www.mof.gov.jm','mof.gov.jm','moey.gov.jm','www.moey.gov.jm','new.moa.gov.jm','www.nhf.org.jm','nhf.org.jm','www.caribpesticides.net','caribpesticides.net','laws.moj.gov.jm','www.fspid.gov.jm','fspid.gov.jm','jcpd.gov.jm','www.jcpd.gov.jm','japarliament.gov.jm','www.japarliament.gov.jm','extranet.who.int','jeijamaica.gov.jm']);
+const approvedHosts=new Set(['www.moh.gov.jm','moh.gov.jm','ncdip.moh.gov.jm','hstu.moh.gov.jm','dashboard.moh.gov.jm','www.mof.gov.jm','mof.gov.jm','moey.gov.jm','www.moey.gov.jm','new.moa.gov.jm','www.nhf.org.jm','nhf.org.jm','www.caribpesticides.net','caribpesticides.net','laws.moj.gov.jm','www.fspid.gov.jm','fspid.gov.jm','jcpd.gov.jm','www.jcpd.gov.jm','japarliament.gov.jm','www.japarliament.gov.jm','extranet.who.int','jeijamaica.gov.jm','www.jamaicatradeportal.gov.jm','jamaicatradeportal.gov.jm','cac.gov.jm','www.cac.gov.jm','dentalcouncilofjamaica.org','www.dentalcouncilofjamaica.org','dcj.gov.jm','www.dcj.gov.jm','www.srha.gov.jm','srha.gov.jm','jamaicamedicalcouncil.org','www.jamaicamedicalcouncil.org']);
 const catalogue=new Map();
 function safeURL(value){const u=new URL(value);if(u.protocol!=='https:'||u.username||u.password||u.port||u.hash||!approvedHosts.has(u.hostname))throw Error('Destination not approved');return u}
-for(const doc of docs){if(doc.format==='page'||!doc.id)continue;try{const u=safeURL(doc.url);if(u.search)continue;catalogue.set(doc.id,{url:u.href,type:doc.format==='image'?'image':'pdf'})}catch(_){}}
+for(const doc of docs){if(doc.format==='page'||doc.format==='office'||!doc.id)continue;try{const u=safeURL(doc.url);if(!u.search)catalogue.set(doc.id,{url:u.href,type:doc.format==='image'?'image':'pdf'})}catch(_){}
+ for(const [i,route] of (doc.alternateLegalSources||[]).entries()){try{const u=safeURL(route.url);catalogue.set(doc.id+'/'+i,{url:u.href,type:'pdf'})}catch(_){}}
+}
 const origins=new Set(['https://glenroygriffiths876-collab.github.io']);
 for(const origin of (process.env.WRHA_ALLOWED_ORIGINS||'').split(',').filter(Boolean)){const u=new URL(origin.trim());if(u.protocol==='https:'&&u.origin===origin.trim())origins.add(u.origin)}
 const MAX=150*1024*1024,MAX_ACTIVE=4;let active=0,windowStart=Date.now(),requests=0;
@@ -55,9 +57,9 @@ const server=http.createServer(async(req,res)=>{
  if(req.method!=='GET')return json(res,405,{error:'GET only'});
  const path=new URL(req.url,'http://localhost');
  if(path.pathname==='/health')return json(res,200,{service:'WRHA public publication delivery',catalogue:catalogue.size,storage:'none',status:'ready'});
- const match=/^\/(document|check)\/([a-zA-Z0-9_-]+)$/.exec(path.pathname);
+ const match=/^\/(document|check)\/([a-zA-Z0-9_-]+)(?:\/(\d{1,2}))?$/.exec(path.pathname);
  if(!match||path.search)return json(res,404,{error:'Unknown catalogue route'});
- const doc=catalogue.get(match[2]);if(!doc)return json(res,404,{error:'Document not in approved catalogue'});
+ const doc=catalogue.get(match[2]+(match[3]!==undefined?'/'+match[3]:''));if(!doc)return json(res,404,{error:'Document not in approved catalogue'});
  if(Date.now()-windowStart>=60000){windowStart=Date.now();requests=0}
  if(active>=MAX_ACTIVE||requests>=60){res.setHeader('Retry-After','15');return json(res,429,{error:'Document service busy; retry shortly'})}
  active++;requests++;
