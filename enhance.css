@@ -57,3 +57,14 @@ html{scroll-padding-top:120px}body{background:linear-gradient(130deg,#f6faff,#f2
 .manual-grid .doc-cover{contain:layout paint}
 .wrha-result-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:5px 12px;flex-shrink:0}
 @media(max-width:620px){.wrha-result-actions{gap:5px 9px;max-width:100%}.result-heading{flex-wrap:wrap}.wrha-result-actions .clear-btn{min-height:36px}}
+
+/* A designed reference cover is visibly distinct from a publisher cover. */
+.doc-cover .static-cover{visibility:hidden}
+.doc-cover.has-preview .static-cover:not([hidden]){visibility:visible}
+.doc-cover .reference-cover{background:linear-gradient(155deg,#fff 0%,#edf6ff 48%,#d4e7f8 100%);border-left:5px solid #17568f;padding:12px 8px;gap:5px;justify-content:space-between}
+.doc-cover .reference-cover::before{display:none}
+.reference-cover-brand{font-size:8px;font-weight:800;letter-spacing:.08em;color:#185991}
+.reference-cover-symbol{font-size:27px;color:#2875a6;line-height:1}
+.doc-cover .reference-cover strong{font-size:clamp(9px,1.3vw,14px);line-height:1.24;color:#123d68;-webkit-line-clamp:7}
+.reference-cover-publisher,.reference-cover-year{font-size:8px;line-height:1.25;color:#426282}
+.doc-cover .reference-cover small{font-size:7px;letter-spacing:.045em;color:#446b8e}
