@@ -103,33 +103,11 @@ async function read(all){if(!pdf||busy||!synth||!window.SpeechSynthesisUtterance
 async function loadOutline(ref,version){try{const nodes=await ref.getOutline();if(session!==version||ref!==pdf)return;outline=[];function collect(list,depth=0){for(const x of list||[]){if(x.dest)outline.push({title:'  '.repeat(Math.min(depth,5))+(x.title||'Chapter'),dest:x.dest});collect(x.items,depth+1)}}collect(nodes);const el=$('pdfOutline');el.replaceChildren(new Option(outline.length?'Select a chapter':'No bookmarks available',''));outline.forEach((x,i)=>el.add(new Option(x.title,String(i))));updateControls()}catch(_){}}
 
 // Only public, existing catalogue URLs are eligible for remote embedding.
-function publicEmbedURL(d,url){if(d?.deviceCopy||!d?.url)return null;
- const listed=[...(window.WRHA_DATA?.manuals||[]),...(window.WRHA_DATA?.legislation||[])].some(x=>x.id===d.id&&x.url===d.url);
- if(!listed)return null;
- try{const u=new URL(url,location.href);if(u.protocol!=='https:'||u.username||u.password||u.search||u.hash)return null;return u.href}catch(_){return null}
-}
-function embeddedOptions(d,url){const safe=publicEmbedURL(d,url);if(!safe)return [];
- // Google previews cannot establish that the actual publication was retrieved.
- // Only attempt a native browser viewer for an explicit PDF on a supporting device.
- const mobile=matchMedia('(pointer: coarse)').matches||/Android|iPhone|iPad/i.test(navigator.userAgent||'');
- if(mobile||navigator.pdfViewerEnabled!==true||!/\.pdf$/i.test(new URL(safe).pathname))return [];
- return [{kind:'native',url:safe+'#view=FitH',label:'Browser PDF viewer'}];
-}
-function openEmbedded(index=0){if(!current||!embedRoutes.length)return;clearTimeout(embedTimer);const version=session,token=++embedToken;embedIndex=index%embedRoutes.length;const route=embedRoutes[embedIndex];const active=()=>version===session&&token===embedToken&&mode==='native';
- setMode('native');$('pdfEmbeddedMode').textContent='Opening '+route.label+'…';$('pdfAlternateEmbed').hidden=embedRoutes.length<2;$('pdfRetryEmbed').hidden=true;setStatus('');
- // Never redirect the parent or intentionally start a download. Browser-native PDF
- // plugins may themselves refuse sandboxed embedding; the alternate viewer remains available.
- elements.frame.setAttribute('sandbox','allow-scripts allow-same-origin');
- elements.frame.title='Official document — '+route.label;
- elements.frame.onload=()=>{if(!active())return;clearTimeout(embedTimer);$('pdfEmbeddedMode').textContent=route.label;$('pdfRetryEmbed').hidden=false;setStatus('')};
- elements.frame.onerror=()=>{if(!active())return;clearTimeout(embedTimer);if(embedIndex===0&&embedRoutes.length>1)openEmbedded(1);else{$('pdfEmbeddedMode').textContent='Embedded viewer unavailable';$('pdfRetryEmbed').hidden=false;setStatus('You can switch viewers or use Download PDF under Tools.')}};
- embedTimer=setTimeout(()=>{if(!active())return;$('pdfRetryEmbed').hidden=false;if(embedIndex===0&&embedRoutes.length>1)openEmbedded(1);else{$('pdfEmbeddedMode').textContent=route.label;setStatus('If the document does not appear, switch viewers or use Download PDF under Tools.')}},18000);
- elements.frame.src=route.url;
-}
+// A PDF URL is not proof of a PDF response. Never use a cross-origin iframe.
 function restrictedFallback(url,reason){if(!current)return;
- busy=false;pageCount=0;initialPaint=false;book.replaceChildren();embedRoutes=embeddedOptions(current,url);
- if(embedRoutes.length){window.WRHA_READER_AVAIL?.mark(current,'fallback');openEmbedded(0);return}
- window.WRHA_READER_AVAIL?.mark(current,'blocked');setMode('blocked');$('pdfRetryInline').hidden=!!current.deviceCopy;setStatus(current.deviceCopy?'The selected file could not be opened. Choose another PDF in Tools.':'This source could not be loaded. Retry or use Download PDF in Tools.');
+ busy=false;pageCount=0;initialPaint=false;book.replaceChildren();clearTimeout(embedTimer);elements.frame.src='about:blank';embedRoutes=[];
+ window.WRHA_READER_AVAIL?.mark(current,'blocked');setMode('blocked');
+ $('pdfRetryInline').hidden=!!current.deviceCopy;setStatus(current.format==='office'?'This Word publication needs a prepared PDF copy before it can be displayed.':'The document bytes could not be retrieved. No publisher webpage has been opened.');
 }
 function showCollection(d){
  const info=window.WRHA_READER_SOURCES?.collection(d.id),items=$('pdfCollectionItems'),source=window.WRHA_READER_SOURCES;
@@ -155,8 +133,8 @@ async function loadPdf(d){const version=session,original=d.url;
  if(version!==session)return;
  const routes=window.WRHA_READER_SOURCES?.readerCandidates(d)||[{url:original,label:'Original publisher document'}];let lastError;
  for(const route of routes){
-  const downloadEndpoint=/ncdip\.moh\.gov\.jm\/download\//i.test(route.url)||route.legalAlternate||!!d.alternateLegalSources?.length;
-  for(const method of route.delivery?['stream']:(downloadEndpoint?['stream','bytes']:['url','stream','bytes'])){
+  const downloadEndpoint=/ncdip\.moh\.gov\.jm\/download\//i.test(route.url)||route.legalAlternate||!!d.alternateLegalSources?.length||route.jasdis;
+  for(const method of route.delivery?['stream']:(route.localLibrary?['url','bytes']:downloadEndpoint?['bytes','stream']:['url','stream','bytes'])){
    if(version!==session)return;
    try{
     setStatus(method==='bytes'?'Trying a direct document transfer…':'Opening '+route.label.toLowerCase()+' in the WRHA reader…');
@@ -203,12 +181,13 @@ function open(d,keepTrail=false){
  if(isLaw)elements.legalAlt.href='https://lipj.gov.jm/library';elements.source.textContent='Publisher / official source ↗';
  const direct=window.WRHA_READER_SOURCES?.directUrl(d)||d.url;elements.download.href=direct;elements.download.removeAttribute('title');$('pdfOriginal').href=direct;
  let sameOrigin=false;try{sameOrigin=new URL(d.url,location.href).origin===location.origin}catch{}
- const isImage=d.format==='image';const isPDF=d.format!=='page'&&!isImage&&(/\.pdf(?:[?#]|$)/i.test(d.url)||/\/download\/?(?:[?#]|$)/i.test(d.url)||d.format==='pdf');
+ const isImage=d.format==='image';const isPDF=d.format==='office'||d.format!=='page'&&!isImage&&(/\.pdf(?:[?#]|$)/i.test(d.url)||/\/download\/?(?:[?#]|$)/i.test(d.url)||d.format==='pdf');
  elements.download.hidden=!isPDF&&!isImage;$('pdfOriginal').hidden=(!isPDF&&!isImage)||!!d.deviceCopy;$('pdfPrint').hidden=!isPDF;
  if(isPDF){
   if(sameOrigin){elements.download.setAttribute('download',pdfFileName(d));elements.download.textContent='Download PDF ↓';}
   else{elements.download.removeAttribute('download');elements.download.textContent='Open / download PDF ↗';elements.download.title='The publisher controls whether your browser opens or downloads this PDF.';}
  }else{elements.download.removeAttribute('download');if(isImage)elements.download.textContent='Download image ↓';}
+ if(d.format==='office'&&!window.WRHA_READER_SOURCES?.localRoute?.(d)){elements.download.hidden=true;$('pdfPrint').hidden=true;}
  if(!modal.open)modal.showModal();
  syncFull();measurePanel();unlockPaperAudio();$('closePdf').focus();
  if(isImage)loadImage(d);else if(!isPDF)showCollection(d);else{setMode('loading');loadPdf(d);}
@@ -235,7 +214,7 @@ const zoomSteps=['75','100','125','150','200','250'];function zoomBy(dir){const 
 $('pdfZoomIn').onclick=()=>zoomBy(1);$('pdfZoomOut').onclick=()=>zoomBy(-1);
 $('pdfSound').onclick=()=>{prefs.sound=!sound;save();syncPrefs();unlockPaperAudio()};
 $('pdfLayout').onclick=()=>{if(!pdf||!canSpread())return;prefs.spread=!prefs.spread;save();render(currentPage)};
-$('pdfToolsClose').onclick=()=>closeTools(true);$('pdfRetry').onclick=()=>{if(current&&!current.deviceCopy){const d=current;open(d,true)}};$('pdfRetryInline').onclick=$('pdfRetry').onclick;$('pdfAlternateEmbed').onclick=()=>openEmbedded(embedIndex+1);$('pdfRetryEmbed').onclick=()=>openEmbedded(embedIndex);
+$('pdfToolsClose').onclick=()=>closeTools(true);$('pdfRetry').onclick=()=>{if(current&&!current.deviceCopy){const d=current;open(d,true)}};$('pdfRetryInline').onclick=$('pdfRetry').onclick;$('pdfAlternateEmbed').onclick=null;$('pdfRetryEmbed').onclick=null;
 elements.find.onclick=search;elements.search.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();search()}};
 $('pdfOutline').onchange=async()=>{const val=$('pdfOutline').value,ref=pdf,version=session;if(val===''||!ref)return;try{const dest=outline[Number(val)].dest,ary=typeof dest==='string'?await ref.getDestination(dest):dest;if(!ary)return;const i=typeof ary[0]==='number'?ary[0]:await ref.getPageIndex(ary[0]);if(version!==session)return;closeTools(true);navigate(i+1)}catch(_){if(version===session)setStatus('This bookmark could not be opened.')}};
 $('pdfVoice').onchange=e=>{prefs.voice=e.target.value;save()};$('pdfRate').onchange=e=>{prefs.rate=Number(e.target.value);save()};
