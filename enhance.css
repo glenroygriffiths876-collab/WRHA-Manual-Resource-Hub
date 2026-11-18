@@ -46,3 +46,14 @@ html{scroll-padding-top:120px}body{background:linear-gradient(130deg,#f6faff,#f2
 .manual-tappable .doc-cover img,.manual-tappable .doc-cover canvas{image-rendering:auto;object-fit:contain}
 @media(max-width:590px){.manual-tappable .manual-actions a{font-size:11px;min-height:40px;padding:7px 5px}}
 @media(prefers-reduced-motion:reduce){.manual-card.manual-tappable{transition:none!important;animation:none!important}}
+
+/* Stationary catalogue: background availability never replays entrances.
+   Cover replacement occurs inside a fixed image box. Keep status labels at a fixed height. */
+.page .manual-grid .manual-card{animation:none!important;animation-delay:0!important;transition:border-color .18s,box-shadow .18s}
+.page .manual-grid .manual-card:hover{transform:none!important}
+.page:is([data-page="manuals"],[data-page="legislation"]){animation:none!important}
+.manual-grid .reader-availability-label{display:block;min-height:1.5em;max-height:1.5em;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.manual-grid .doc-cover.loading::after{animation:none!important;display:none!important}
+.manual-grid .doc-cover{contain:layout paint}
+.wrha-result-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:5px 12px;flex-shrink:0}
+@media(max-width:620px){.wrha-result-actions{gap:5px 9px;max-width:100%}.result-heading{flex-wrap:wrap}.wrha-result-actions .clear-btn{min-height:36px}}
