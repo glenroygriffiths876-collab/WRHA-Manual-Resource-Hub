@@ -2019,5 +2019,27 @@ window.WRHA_LIBRARY_MANIFEST=Object.freeze({
     "permissionRef": "documents/publication-authorization.json",
     "verifiedOn": "2026-11-17",
     "legalAlternate": false
+  },
+  "audit-law-factories": {
+    "recordUrl": "https://laws.moj.gov.jm/library/statute/the-factories-act/download",
+    "path": "documents/library/audit-law-factories.pdf",
+    "edition": "Jamaica Trade Portal; revised Factories Act including 2009 amendments; verify subsequent changes",
+    "sha256": "15c7ec1b2b3a26ee1717ee1dcc7077426c1761850e129941e746c33a55b0d598",
+    "pages": 28,
+    "legalAlternate": true,
+    "sourceUrl": "https://www.frontend.jamaicatradeportal.gov.jm/upload/files/Legal_1540413013.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
+  },
+  "law-extra-29": {
+    "recordUrl": "https://laws.moj.gov.jm/legislation/statutes/M/Medical%20Act_1.pdf",
+    "path": "documents/library/law-extra-29.pdf",
+    "edition": "Medical Council of Jamaica; revised pages authorized through 2012; verify subsequent amendments",
+    "sha256": "e98c5ec7a95cf122e55511f5310df34f55485252c59ea28dec4542fa2f3e5711",
+    "pages": 19,
+    "legalAlternate": true,
+    "sourceUrl": "https://medicalcouncilja.com/wp-content/uploads/2024/07/Medical-Act_1.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
   }
 });

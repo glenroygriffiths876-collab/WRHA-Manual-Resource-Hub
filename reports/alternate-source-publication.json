@@ -1,16 +1,17 @@
 {
-  "manifestCount": 157,
+  "manifestCount": 160,
   "results": [
     {
-      "id": "audit-law-precursor",
-      "pages": 29,
-      "bytes": 449933,
-      "source": "https://www.jamaicatradeportal.gov.jm/upload/files/Legal_1559236380.pdf"
+      "id": "audit-law-factories",
+      "pages": 28,
+      "bytes": 2208525,
+      "source": "https://www.frontend.jamaicatradeportal.gov.jm/upload/files/Legal_1540413013.pdf"
     },
     {
-      "id": "audit-law-factories",
-      "source": "https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/31021/JAM31021%202009.pdf",
-      "error": "HTTP Error 403: Forbidden"
+      "id": "law-extra-29",
+      "pages": 19,
+      "bytes": 916346,
+      "source": "https://medicalcouncilja.com/wp-content/uploads/2024/07/Medical-Act_1.pdf"
     }
   ]
 }
