@@ -112,7 +112,8 @@ function embeddedOptions(d,url){const safe=publicEmbedURL(d,url);if(!safe)return
  // Native PDF support varies on phones. Google receives only the public catalogue URL.
  const mobile=matchMedia('(pointer: coarse)').matches||/Android|iPhone|iPad/i.test(navigator.userAgent||'');
  const direct=/\.pdf$/i.test(new URL(safe).pathname);
- return navigator.pdfViewerEnabled===true&&!mobile&&direct?[native,hosted]:[hosted,native];
+ const chromium=/Chrome|Chromium|Edg|OPR|SamsungBrowser/i.test(navigator.userAgent||'');
+ return navigator.pdfViewerEnabled===true&&!mobile&&!chromium&&direct?[native,hosted]:[hosted,native];
 }
 function openEmbedded(index=0){if(!current||!embedRoutes.length)return;clearTimeout(embedTimer);const version=session,token=++embedToken;embedIndex=index%embedRoutes.length;const route=embedRoutes[embedIndex];const active=()=>version===session&&token===embedToken&&mode==='native';
  setMode('native');$('pdfEmbeddedMode').textContent='Opening '+route.label+'…';$('pdfAlternateEmbed').hidden=embedRoutes.length<2;$('pdfRetryEmbed').hidden=true;setStatus('');
@@ -143,7 +144,7 @@ function backToCollection(){const previous=collectionTrail.pop();if(previous)ope
 /* Some public servers reject PDF.js range requests but permit an ordinary CORS GET.
  * Try a bounded full transfer without range headers, then render the exact returned bytes.
  * No credentials, no third-party proxy; CORS and real access restrictions still apply. */
-async function fetchPdfBytes(url,version){const abort=new AbortController();directFetch=abort;const timer=setTimeout(()=>abort.abort(),35000),max=150*1024*1024;let reader;
+async function fetchPdfBytes(url,version){const abort=new AbortController();directFetch=abort;const timer=setTimeout(()=>abort.abort(),current?.fileSizeNote?35000:18000),max=150*1024*1024;let reader;
 try{const response=await fetch(url,{mode:'cors',credentials:'omit',signal:abort.signal});if(!response.ok)throw Error('HTTP '+response.status);const size=Number(response.headers.get('content-length'));if(size>max)throw Error('Document exceeds device reader limit');const chunks=[];let length=0;
 if(response.body){reader=response.body.getReader();while(true){if(session!==version)throw Error('Cancelled');const x=await reader.read();if(x.done)break;length+=x.value.byteLength;if(length>max)throw Error('Document exceeds device reader limit');chunks.push(x.value)}const data=new Uint8Array(length);let offset=0;for(const chunk of chunks){data.set(chunk,offset);offset+=chunk.byteLength}if(!new TextDecoder().decode(data.subarray(0,1024)).includes('%PDF-'))throw Error('Not a PDF');return data}
 const data=new Uint8Array(await response.arrayBuffer());if(data.length>max||!new TextDecoder().decode(data.subarray(0,1024)).includes('%PDF-'))throw Error('Not a supported PDF');return data
