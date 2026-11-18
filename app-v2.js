@@ -250,6 +250,6 @@ $('roleDialog').addEventListener('click',e=>{if(e.target===$('roleDialog'))$('ro
 filterRoles();
 
 /* Reset to the landing page once after each application release. */
-const release='2026-11-17-stable-catalogue-1';let newRelease=true;try{newRelease=localStorage.getItem('wrha-home-release')!==release;localStorage.setItem('wrha-home-release',release)}catch(_){}
+const release='2026-11-17-automatic-embed-1';let newRelease=true;try{newRelease=localStorage.getItem('wrha-home-release')!==release;localStorage.setItem('wrha-home-release',release)}catch(_){}
 if(newRelease){try{history.scrollRestoration='manual'}catch(_){}setView('home',false);window.scrollTo(0,0)}else setView(location.hash.slice(1)||'home',false);
 })();
