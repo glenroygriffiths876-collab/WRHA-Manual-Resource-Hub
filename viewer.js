@@ -121,24 +121,25 @@ function openEmbedded(index=0){if(!current||!embedRoutes.length)return;clearTime
  // plugins may themselves refuse sandboxed embedding; the alternate viewer remains available.
  elements.frame.setAttribute('sandbox','allow-scripts allow-same-origin');
  elements.frame.title='Official document — '+route.label;
- elements.frame.onload=()=>{if(!active())return;clearTimeout(embedTimer);$('pdfEmbeddedMode').textContent=route.label;$('pdfRetryEmbed').hidden=false;setStatus('If the document does not appear, select Switch viewer. Interactive narration and page-turn effects require the WRHA reader.')};
+ elements.frame.onload=()=>{if(!active())return;clearTimeout(embedTimer);$('pdfEmbeddedMode').textContent=route.label;$('pdfRetryEmbed').hidden=false;setStatus('')};
  elements.frame.onerror=()=>{if(!active())return;clearTimeout(embedTimer);if(embedIndex===0&&embedRoutes.length>1)openEmbedded(1);else{$('pdfEmbeddedMode').textContent='Embedded viewer unavailable';$('pdfRetryEmbed').hidden=false;setStatus('You can switch viewers or use Download PDF under Tools.')}};
  embedTimer=setTimeout(()=>{if(!active())return;$('pdfRetryEmbed').hidden=false;if(embedIndex===0&&embedRoutes.length>1)openEmbedded(1);else{$('pdfEmbeddedMode').textContent=route.label;setStatus('If the document does not appear, switch viewers or use Download PDF under Tools.')}},18000);
  elements.frame.src=route.url;
 }
 function restrictedFallback(url,reason){if(!current)return;
  busy=false;pageCount=0;initialPaint=false;book.replaceChildren();embedRoutes=embeddedOptions(current,url);
- if(embedRoutes.length){openEmbedded(0);return}
- setMode('blocked');$('pdfRetryInline').hidden=!!current.deviceCopy;setStatus(current.deviceCopy?'The selected file could not be opened. Choose another PDF in Tools.':'This source could not be loaded. Retry or use Download PDF in Tools.');
+ if(embedRoutes.length){window.WRHA_READER_AVAIL?.mark(current,'fallback');openEmbedded(0);return}
+ window.WRHA_READER_AVAIL?.mark(current,'blocked');setMode('blocked');$('pdfRetryInline').hidden=!!current.deviceCopy;setStatus(current.deviceCopy?'The selected file could not be opened. Choose another PDF in Tools.':'This source could not be loaded. Retry or use Download PDF in Tools.');
 }
 function showCollection(d){
- const info=window.WRHA_READER_SOURCES?.collection(d.id),items=$('pdfCollectionItems');
+ const info=window.WRHA_READER_SOURCES?.collection(d.id),items=$('pdfCollectionItems'),source=window.WRHA_READER_SOURCES;
  items.replaceChildren();elements.web.querySelector('h3').textContent=d.title||'Official resource';
- elements.web.querySelector('p').textContent=info?.intro||'This is an official web-based resource rather than a single PDF. The full source remains available from the publisher.';
- if(info?.note){const note=document.createElement('p');note.className='wrha-collection-note';note.textContent=info.note;items.append(note)}
- for(const id of info?.ids||[]){const entry=window.WRHA_READER_SOURCES?.get(id);if(!entry||entry.id===d.id)continue;const button=document.createElement('button');button.type='button';button.className='wrha-collection-card';const title=document.createElement('strong'),label=document.createElement('span');title.textContent=entry.title;label.textContent=entry.format==='page'?'Open collection ›':'Read PDF in hub ›';button.append(title,label);button.onclick=()=>{collectionTrail.push(d);open(entry,true)};items.append(button)}
- elements.webLink.href=d.sourceUrl||d.url;elements.webLink.textContent='Official source ↗';
- $('pdfCollectionBack').hidden=!collectionTrail.length;setMode('web');setStatus('');
+ elements.web.querySelector('p').textContent=info?.intro||'This official source is a web resource rather than a downloadable PDF.';
+ const entries=[...new Set(info?.ids||[])].map(id=>source?.get(id)).filter(entry=>entry&&entry.id!==d.id).sort((a,b)=>(window.WRHA_READER_AVAIL?.priority(a)??0)-(window.WRHA_READER_AVAIL?.priority(b)??0));
+ elements.webLink.href=d.sourceUrl||d.url;elements.webLink.textContent='Official source ↗';$('pdfCollectionBack').hidden=!collectionTrail.length;setMode('web');setStatus('');
+ if(entries.length&&window.WRHA_RESOURCE_CARDS){window.WRHA_RESOURCE_CARDS.mount(items,entries,entry=>{if(!entry)return;collectionTrail.push(d);open(entry,true)})}
+ if(info?.note){const note=document.createElement('p');note.className='wrha-collection-note';note.textContent=info.note;items.prepend(note)}
+ if(!entries.length){const note=document.createElement('p');note.className='wrha-collection-note';note.textContent='This is a web resource; the publisher has not supplied an individual PDF for this entry.';items.append(note)}
 }
 function backToCollection(){const previous=collectionTrail.pop();if(previous)open(previous,true)}
 /* Some public servers reject PDF.js range requests but permit an ordinary CORS GET.
@@ -154,15 +155,16 @@ async function loadPdf(d){const version=session,original=d.url;
  if(version!==session)return;
  const routes=window.WRHA_READER_SOURCES?.candidates(d)||[{url:original,label:'Original publisher PDF'}];let lastError;
  for(const route of routes){
-  for(const method of ['url','bytes']){
+  for(const method of ['url','stream','bytes']){
    if(version!==session)return;
    try{
     setStatus(method==='bytes'?'Trying a direct document transfer…':'Opening '+route.label.toLowerCase()+' in the WRHA reader…');
     const opts={isEvalSupported:false,enableXfa:false};
     if(method==='url')Object.assign(opts,{url:route.url,withCredentials:false,disableAutoFetch:true,disableStream:true});
+    else if(method==='stream')Object.assign(opts,{url:route.url,withCredentials:false,disableRange:true,disableAutoFetch:false,disableStream:false});
     else opts.data=await fetchPdfBytes(route.url,version);
     if(version!==session)return;
-    const loading=lib.getDocument(opts);task=loading;let timer;let handle;try{handle=await Promise.race([loading.promise,new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('PDF loading timed out')),d.fileSizeNote?30000:15000)})])}finally{clearTimeout(timer)}
+    const loading=lib.getDocument(opts);task=loading;let timer;let handle;try{handle=await Promise.race([loading.promise,new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('PDF loading timed out')),d.fileSizeNote?45000:15000)})])}finally{clearTimeout(timer)}
     if(version!==session){try{await loading.destroy()}catch(_){}return}
     pdf=handle;pageCount=pdf.numPages;currentPage=clamp(restore());initialPaint=true;setMode('pdfjs');
     const same=new URL(route.url,location.href).origin===location.origin;
@@ -175,7 +177,6 @@ async function loadPdf(d){const version=session,original=d.url;
   }
  }
  if(version!==session)return;
- window.WRHA_READER_AVAIL?.mark(d,'blocked');
  const message=String(lastError?.name||'')+' '+String(lastError?.message||lastError||'');
  restrictedFallback(original,/InvalidPDFException|MissingPDFException|404|not a PDF/i.test(message)?'A readable PDF could not be verified at the source.':'This source could not be loaded using either in-app PDF method. You can retry or open the official source.');
 }
