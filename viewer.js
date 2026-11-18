@@ -103,33 +103,12 @@ async function read(all){if(!pdf||busy||!synth||!window.SpeechSynthesisUtterance
 async function loadOutline(ref,version){try{const nodes=await ref.getOutline();if(session!==version||ref!==pdf)return;outline=[];function collect(list,depth=0){for(const x of list||[]){if(x.dest)outline.push({title:'  '.repeat(Math.min(depth,5))+(x.title||'Chapter'),dest:x.dest});collect(x.items,depth+1)}}collect(nodes);const el=$('pdfOutline');el.replaceChildren(new Option(outline.length?'Select a chapter':'No bookmarks available',''));outline.forEach((x,i)=>el.add(new Option(x.title,String(i))));updateControls()}catch(_){}}
 
 // Only public, existing catalogue URLs are eligible for remote embedding.
-function publicEmbedURL(d,url){if(d?.deviceCopy||!d?.url)return null;
- const listed=[...(window.WRHA_DATA?.manuals||[]),...(window.WRHA_DATA?.legislation||[])].some(x=>x.id===d.id&&x.url===d.url);
- if(!listed)return null;
- try{const u=new URL(url,location.href);if(u.protocol!=='https:'||u.username||u.password||u.search||u.hash)return null;return u.href}catch(_){return null}
-}
-function embeddedOptions(d,url){const safe=publicEmbedURL(d,url);if(!safe)return [];
- // Google previews cannot establish that the actual publication was retrieved.
- // Only attempt a native browser viewer for an explicit PDF on a supporting device.
- const mobile=matchMedia('(pointer: coarse)').matches||/Android|iPhone|iPad/i.test(navigator.userAgent||'');
- if(mobile||navigator.pdfViewerEnabled!==true||!/\.pdf$/i.test(new URL(safe).pathname))return [];
- return [{kind:'native',url:safe+'#view=FitH',label:'Browser PDF viewer'}];
-}
-function openEmbedded(index=0){if(!current||!embedRoutes.length)return;clearTimeout(embedTimer);const version=session,token=++embedToken;embedIndex=index%embedRoutes.length;const route=embedRoutes[embedIndex];const active=()=>version===session&&token===embedToken&&mode==='native';
- setMode('native');$('pdfEmbeddedMode').textContent='Opening '+route.label+'…';$('pdfAlternateEmbed').hidden=embedRoutes.length<2;$('pdfRetryEmbed').hidden=true;setStatus('');
- // Never redirect the parent or intentionally start a download. Browser-native PDF
- // plugins may themselves refuse sandboxed embedding; the alternate viewer remains available.
- elements.frame.setAttribute('sandbox','allow-scripts allow-same-origin');
- elements.frame.title='Official document — '+route.label;
- elements.frame.onload=()=>{if(!active())return;clearTimeout(embedTimer);$('pdfEmbeddedMode').textContent=route.label;$('pdfRetryEmbed').hidden=false;setStatus('')};
- elements.frame.onerror=()=>{if(!active())return;clearTimeout(embedTimer);if(embedIndex===0&&embedRoutes.length>1)openEmbedded(1);else{$('pdfEmbeddedMode').textContent='Embedded viewer unavailable';$('pdfRetryEmbed').hidden=false;setStatus('You can switch viewers or use Download PDF under Tools.')}};
- embedTimer=setTimeout(()=>{if(!active())return;$('pdfRetryEmbed').hidden=false;if(embedIndex===0&&embedRoutes.length>1)openEmbedded(1);else{$('pdfEmbeddedMode').textContent=route.label;setStatus('If the document does not appear, switch viewers or use Download PDF under Tools.')}},18000);
- elements.frame.src=route.url;
-}
+function openEmbedded(){/* Unvalidated external HTML is never embedded as a publication. */}
 function restrictedFallback(url,reason){if(!current)return;
- busy=false;pageCount=0;initialPaint=false;book.replaceChildren();embedRoutes=embeddedOptions(current,url);
- if(embedRoutes.length){window.WRHA_READER_AVAIL?.mark(current,'fallback');openEmbedded(0);return}
- window.WRHA_READER_AVAIL?.mark(current,'blocked');setMode('blocked');$('pdfRetryInline').hidden=!!current.deviceCopy;setStatus(current.deviceCopy?'The selected file could not be opened. Choose another PDF in Tools.':'This source could not be loaded. Retry or use Download PDF in Tools.');
+ busy=false;pageCount=0;initialPaint=false;book.replaceChildren();elements.frame.src='about:blank';elements.frame.hidden=true;
+ if(!current.deviceCopy)window.WRHA_READER_AVAIL?.mark(current,'blocked');
+ $('pdfMissingMessage').textContent=current.format==='office'?'The original Office file needs a verified PDF reading copy.':'A readable copy could not be retrieved.';
+ setMode('blocked');$('pdfRetryInline').hidden=true;setStatus('');
 }
 function showCollection(d){
  const info=window.WRHA_READER_SOURCES?.collection(d.id),items=$('pdfCollectionItems'),source=window.WRHA_READER_SOURCES;
@@ -156,7 +135,7 @@ async function loadPdf(d){const version=session,original=d.url;
  const routes=window.WRHA_READER_SOURCES?.readerCandidates(d)||[{url:original,label:'Original publisher document'}];let lastError;
  for(const route of routes){
   const downloadEndpoint=/ncdip\.moh\.gov\.jm\/download\//i.test(route.url)||route.legalAlternate||!!d.alternateLegalSources?.length;
-  for(const method of route.delivery?['stream']:(downloadEndpoint?['stream','bytes']:['url','stream','bytes'])){
+  for(const method of route.hostedFile?['url','stream']:route.delivery?['stream']:(downloadEndpoint?['stream','bytes']:['url','stream','bytes'])){
    if(version!==session)return;
    try{
     setStatus(method==='bytes'?'Trying a direct document transfer…':'Opening '+route.label.toLowerCase()+' in the WRHA reader…');
@@ -171,10 +150,10 @@ async function loadPdf(d){const version=session,original=d.url;
     const same=new URL(route.url,location.href).origin===location.origin;
     elements.download.href=route.url;if(same)elements.download.setAttribute('download',pdfFileName(d));else elements.download.removeAttribute('download');
     elements.download.textContent='Download PDF ↓';elements.download.title='Download the PDF currently displayed.';
-    $('pdfMeta').textContent=[d.publisher,d.year,d.status,route.label!=='Original publisher document'?route.label:null].filter(Boolean).join(' · ');if(route.legalAlternate){$('pdfOriginal').href=route.url;elements.download.title='Download this alternate legal edition; check amendments.';legalEdition('Alternate publication: '+route.label);}else legalEdition(d.id==='audit-law-domestic-violence'?'2004-amended copy. Read with the Domestic Violence (Amendment) Act, 2023.':'');
+    $('pdfMeta').textContent=[d.publisher,d.year,d.status,route.label!=='Original publisher document'?route.label:null].filter(Boolean).join(' · ');$('pdfOriginal').href=route.url;if(route.legalAlternate){elements.download.title='Download this alternate legal edition; check amendments.';legalEdition('Alternate publication: '+route.label);}else legalEdition(d.id==='audit-law-domestic-violence'?'2004-amended copy. Read with the Domestic Violence (Amendment) Act, 2023.':'');
     elements.page.max=String(pageCount);updateControls();let rendered=await render(currentPage);if(version!==session)return;if(rendered===false&&currentPage!==1)rendered=await render(1);if(version!==session)return;initialPaint=false;if(rendered!==true)throw Error('Page could not be rendered');
     window.WRHA_READER_AVAIL?.mark(d,'verified');window.WRHA_READER_SOURCES?.rememberLegalRoute?.(d,route);loadOutline(handle,version);redraw();return;
-   }catch(err){if(version!==session)return;lastError=err;initialPaint=false;activeLegalAlternate=false;legalEdition();const failed=task;task=null;pdf=null;try{await failed?.destroy()}catch(_){}if(version!==session)return;setMode('loading');if(/MissingPDFException|HTTP (?:403|404)|Unexpected server response \((?:403|404)\)|Alternate publication page count changed/i.test(String(err?.name)+' '+String(err?.message)))break}
+   }catch(err){if(version!==session)return;lastError=err;initialPaint=false;activeLegalAlternate=false;legalEdition();const failed=task;task=null;pdf=null;try{await failed?.destroy()}catch(_){}if(version!==session)return;setMode('loading');if(/InvalidPDFException|Not a PDF|MissingPDFException|HTTP (?:403|404)|Unexpected server response \((?:403|404)\)|Alternate publication page count changed/i.test(String(err?.name)+' '+String(err?.message)))break}
   }
  }
  if(version!==session)return;
@@ -201,17 +180,17 @@ function open(d,keepTrail=false){
  const isLaw=(window.WRHA_DATA?.legislation||[]).some(l=>l.id===d.id);
  elements.legalAlt.hidden=!isLaw;
  if(isLaw)elements.legalAlt.href='https://lipj.gov.jm/library';elements.source.textContent='Publisher / official source ↗';
- const direct=window.WRHA_READER_SOURCES?.directUrl(d)||d.url;elements.download.href=direct;elements.download.removeAttribute('title');$('pdfOriginal').href=direct;
+ const direct=window.WRHA_READER_SOURCES?.primaryDownload?.(d)||window.WRHA_READER_SOURCES?.directUrl(d)||d.url;elements.download.href=direct;elements.download.removeAttribute('title');$('pdfOriginal').href=direct;
  let sameOrigin=false;try{sameOrigin=new URL(d.url,location.href).origin===location.origin}catch{}
- const isImage=d.format==='image';const isPDF=d.format!=='page'&&!isImage&&(/\.pdf(?:[?#]|$)/i.test(d.url)||/\/download\/?(?:[?#]|$)/i.test(d.url)||d.format==='pdf');
- elements.download.hidden=!isPDF&&!isImage;$('pdfOriginal').hidden=(!isPDF&&!isImage)||!!d.deviceCopy;$('pdfPrint').hidden=!isPDF;
+ const isImage=d.format==='image';const isOffice=d.format==='office';const isPDF=d.format!=='page'&&!isImage&&!isOffice&&(/\.pdf(?:[?#]|$)/i.test(d.url)||/\/download\/?(?:[?#]|$)/i.test(d.url)||d.format==='pdf');
+ elements.download.hidden=!isPDF&&!isImage&&!isOffice;$('pdfOriginal').hidden=(!isPDF&&!isImage&&!isOffice)||!!d.deviceCopy;$('pdfPrint').hidden=!isPDF;
  if(isPDF){
   if(sameOrigin){elements.download.setAttribute('download',pdfFileName(d));elements.download.textContent='Download PDF ↓';}
   else{elements.download.removeAttribute('download');elements.download.textContent='Open / download PDF ↗';elements.download.title='The publisher controls whether your browser opens or downloads this PDF.';}
- }else{elements.download.removeAttribute('download');if(isImage)elements.download.textContent='Download image ↓';}
+ }else{elements.download.removeAttribute('download');if(isImage)elements.download.textContent='Download image ↓';else if(isOffice)elements.download.textContent='Download original document ↓';}
  if(!modal.open)modal.showModal();
  syncFull();measurePanel();unlockPaperAudio();$('closePdf').focus();
- if(isImage)loadImage(d);else if(!isPDF)showCollection(d);else{setMode('loading');loadPdf(d);}
+ if(isImage)loadImage(d);else if(d.format==='office'){restrictedFallback(d.url,'Office conversion required');}else if(!isPDF)showCollection(d);else{setMode('loading');loadPdf(d);}
 }
 async function search(){if(!pdf||finding||busy)return;const q=elements.search.value.trim().toLocaleLowerCase();if(!q){setStatus('Type a word or phrase to search.');return}stopReading('');const version=session,ref=pdf;finding=true;updateControls();setStatus('Searching document text…');try{const start=q===lastSearch&&lastMatch?lastMatch+1:currentPage;for(let i=0;i<pageCount;i++){if(version!==session)return;const n=(start-1+i)%pageCount+1;const t=await pageText(n,ref);if(version!==session)return;if(t.toLocaleLowerCase().replace(/\s+/g,' ').includes(q.replace(/\s+/g,' '))){lastSearch=q;lastMatch=n;closeTools();await render(n,Math.sign(n-currentPage));if(version===session){setStatus('Found “'+q+'” on page '+n+' of '+pageCount+'.');scroll.focus()}return}}if(version===session)setStatus('No matching selectable text found. Scanned pages may not be searchable.')}catch(_){if(version===session)setStatus('Text search is unavailable.')}finally{if(version===session){finding=false;updateControls()}}}
 $('pdfReturnCollection').onclick=backToCollection;
