@@ -62,9 +62,9 @@ function flushCovers(){if($('pdfDialog')?.open&&$('pdfWebResource')?.hidden)retu
  })();}}
 function coverMarkup(d){const pdf=isPdf(d),image=d.format==='image',office=d.format==='office',label=pdf||image||office?'WRHA REFERENCE COVER':'RESOURCE COLLECTION';
  const pub=d.publisher||'Public health resource';const year=d.year?'<span class="reference-cover-year">'+esc(d.year)+'</span>':'';
- const safeURL=pdf?esc(d.url):'',local='./covers/'+encodeURIComponent(d.id)+'.webp';
+ const localRoute=window.WRHA_READER_SOURCES?.localRoute?.(d);const safeURL=pdf?esc(localRoute?.url||d.url):'',local='./covers/'+encodeURIComponent(d.id)+'.webp';
  let remote='';try{const x=new URL(d.coverUrl||'');if(x.protocol==='https:'&&/(^|\.)moh\.gov\.jm$/i.test(x.hostname))remote=x.href}catch(_){}
- if(image)remote=window.WRHA_READER_SOURCES?.directUrl(d)||d.url;
+ if(image&&!localRoute)remote=window.WRHA_READER_SOURCES?.directUrl(d)||d.url;if(localRoute)remote='';
  const art='<div class="cover-placeholder reference-cover"><span class="reference-cover-brand">WRHA · RESOURCE HUB</span><span class="reference-cover-symbol" aria-hidden="true">'+(pdf||image||office?'▤':'▥')+'</span><strong>'+esc(d.title)+'</strong><span class="reference-cover-publisher">'+esc(pub)+'</span>'+year+'<small>'+label+'</small></div>';
  return '<div class="doc-cover '+(pdf||image?'':'not-previewable')+'" '+(pdf?'data-pdf="'+safeURL+'"':image?'data-image-cover="1"':'')+'>'+art+(pdf||image?'<img class="static-cover" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="'+esc(remote||local)+'" '+(remote?'data-alternate="'+esc(local)+'" ':'')+'alt="Cover preview: '+esc(d.title)+'"><canvas aria-hidden="true" hidden></canvas>':'')+'</div>';}
 function docCard(d,type){const law=type==='law',pdf=isPdf(d),image=d.format==='image',office=d.format==='office',title=esc(d.title),href=esc(window.WRHA_READER_SOURCES?.directUrl(d)||d.url),key=esc(type+':'+d.id);
@@ -77,7 +77,7 @@ function resolveDoc(value){const i=value.indexOf(':'),kind=value.slice(0,i),id=v
 async function downloadFromCard(e,link,d){
  if(!d)return;
  const state=availability?.state(d);
- const allRoutes=window.WRHA_READER_SOURCES?.readerCandidates(d)||[{url:d.url}];const routes=allRoutes.filter(r=>!r.legalAlternate);
+ const allRoutes=window.WRHA_READER_SOURCES?.readerCandidates(d)||[{url:d.url}];const routes=allRoutes.filter(r=>r.localLibrary||!r.legalAlternate);
  link.href=window.WRHA_READER_SOURCES?.directUrl(d)||d.url;
  const same=routes.find(r=>{try{return new URL(r.url,location.href).origin===location.origin}catch(_){return false}});
  if(same){link.href=same.url;return}

@@ -3,7 +3,7 @@
  * feedback, and no MOHW/MOFPS-hosted PDFs. External documents need internet.
  */
 'use strict';
-const VERSION='wrha-public-shell-2026-11-17-local-library-4';
+const VERSION='wrha-public-shell-2026-11-17-local-library-5';
 const CORE=[
  './','./index.html',
  './styles.css','./enhance.css','./viewer.css','./landing-premium.css','./roles-evidence.css',

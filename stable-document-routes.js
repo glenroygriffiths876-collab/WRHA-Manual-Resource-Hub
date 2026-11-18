@@ -78,5 +78,5 @@ function stableRoutes(d){if(d.deviceCopy)return previous.readerCandidates(d);con
  return list.filter((r,i)=>list.findIndex(x=>x.url===r.url)===i);
 }
 function candidates(d){return stableRoutes(d).filter(r=>!r.delivery)}
-window.WRHA_READER_SOURCES=Object.freeze({...previous,candidates,readerCandidates:stableRoutes,localRoute});
+window.WRHA_READER_SOURCES=Object.freeze({...previous,candidates,readerCandidates:stableRoutes,localRoute,directUrl:d=>localRoute(d)?.url||previous.directUrl(d)});
 })();
