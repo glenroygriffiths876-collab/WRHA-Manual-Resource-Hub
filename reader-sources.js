@@ -43,6 +43,14 @@ const collections={
  'law-8':{intro:'Official subsidiary legislation record. A standalone PDF of these subsidiary instruments has not yet been verified. The principal Act is a separate document.',ids:['law-7']},
  'law-20':{intro:'Official record for the principal Act, concerning food storage and infestation prevention. A direct PDF of the principal Act has not yet been verified. The regulations are a distinct legal instrument.',ids:['law-food-storage-regs']},
 };
+// The publisher's WordPress download-manager links include a public tmstv parameter.
+// Preserve the catalogue's stable ID and URL for reading-position and cache keys.
+patch('deep-nutrition-colorectal-care',{format:'image',status:'Official public education image — source confirmed'});
+function directUrl(doc){
+ try{const url=new URL(doc.url,typeof location==='undefined'?'https://glenroygriffiths876-collab.github.io/WRHA-Manual-Resource-Hub/':location.href);
+ if(url.hostname==='ncdip.moh.gov.jm'&&/^\/download\/\d+\/?$/.test(url.pathname))url.searchParams.set('tmstv',String(Math.floor(Date.now()/1000)));
+ return url.href;}catch(_){return doc.url}
+}
 const approved=Object.freeze({
  // Example only (not enabled): 'record-id': {original:'https://publisher.example/exact.pdf',
  // url:'./authorised-documents/record-id.pdf', permissionRef:'written approval reference',
@@ -53,8 +61,20 @@ function candidates(doc){
  if(entry&&entry.original===doc.url&&entry.permissionRef&&entry.reviewedOn&&entry.edition){
    try{const u=new URL(entry.url,location.href);if(u.protocol==='https:'||u.origin===location.origin)list.push({url:u.href,label:'Authorised hosted copy · '+entry.edition})}catch(_){}
  }
- list.push({url:doc.url,label:'Original publisher PDF'});
+ list.push({url:directUrl(doc),label:'Original publisher document'});
  return list.filter((x,i)=>list.findIndex(y=>y.url===x.url)===i);
 }
-window.WRHA_READER_SOURCES=Object.freeze({get:find,collection:id=>collections[id]||null,candidates});
+function deliveryUrl(doc){
+ if(doc.deviceCopy||doc.format==='page'||!find(doc.id)||find(doc.id).url!==doc.url)return null;
+ try{const base=new URL(window.WRHA_DELIVERY_ORIGIN||'');
+ if(base.protocol!=='https:'||base.pathname!=='/'||base.search||base.hash||base.username||base.password)return null;
+ const source=new URL(doc.url);if(source.hostname==='glenroygriffiths876-collab.github.io')return null;
+ return new URL('/document/'+encodeURIComponent(doc.id),base).href;}catch(_){return null}
+}
+function readerCandidates(doc){
+ const direct=candidates(doc),delivery=deliveryUrl(doc);if(!delivery)return direct;
+ const route={url:delivery,label:'Publisher document via WRHA delivery',delivery:true};
+ return /ncdip\.moh\.gov\.jm\/download\//i.test(doc.url)||['unconfirmed','fallback','blocked'].includes(window.WRHA_READER_AVAIL?.state(doc))?[...direct.filter(x=>x.label.startsWith('Authorised')),route,...direct.filter(x=>!x.label.startsWith('Authorised'))]:[...direct,route];
+}
+window.WRHA_READER_SOURCES=Object.freeze({get:find,collection:id=>collections[id]||null,candidates,directUrl,readerCandidates,deliveryUrl});
 })();
