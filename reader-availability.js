@@ -7,19 +7,19 @@ let cache={};try{cache=JSON.parse(localStorage.getItem(key)||'{}')||{}}catch(_){
 const isPdf=d=>d?.format!=='page'&&(/\.pdf(?:[?#]|$)|\/download(?:\/|$)/i.test(d?.url||'')||d?.format==='pdf');
 const routeKey=d=>d.url,local=d=>{try{return new URL(d.url,location.href).origin===location.origin}catch(_){return false}};
 function record(d){const r=cache[routeKey(d)];return r&&Date.now()-r.at<ttl?r:null}
-function state(d){if(!isPdf(d))return 'collection';const r=record(d);if(r?.result==='verified')return 'verified';if(r?.result==='blocked')return 'blocked';if(r?.result==='reachable')return 'reachable';if(known.has(d.id))return 'blocked';if(local(d))return 'local';return 'unknown'}
-const ranks={verified:0,local:1,reachable:2,unknown:3,collection:4,blocked:5};
+function state(d){if(!isPdf(d))return 'collection';const r=record(d);if(r?.result==='verified')return 'verified';if(r?.result==='blocked')return r.confirmed?'blocked':'unconfirmed';if(r?.result==='fallback')return 'fallback';if(r?.result==='unconfirmed')return 'unconfirmed';if(r?.result==='reachable')return 'reachable';if(known.has(d.id))return 'unconfirmed';if(local(d))return 'local';return 'unknown'}
+const ranks={verified:0,local:1,reachable:2,unknown:3,collection:4,fallback:5,unconfirmed:6,blocked:7};
 const priority=d=>ranks[state(d)];
-const labels={verified:'Reader verified on this device',local:'Same-site PDF',reachable:'PDF source reachable · reader not yet tested',collection:'In-app resource collection',unknown:'Reader availability not yet checked',blocked:'May require official-source access'};
-function notify(d,result){if(!isPdf(d)||d.deviceCopy)return;const current=record(d);if(result==='reachable'&&(current?.result==='verified'||current?.result==='blocked'||known.has(d.id)))return;if(result==='blocked'&&current?.result==='verified')return;const old=state(d);cache[routeKey(d)]={result,at:Date.now()};try{localStorage.setItem(key,JSON.stringify(cache))}catch(_){}if(old!==state(d))window.dispatchEvent(new CustomEvent('wrha-reader-availability',{detail:{id:d.id,state:state(d)}}))}
-function mark(d,result){if(!d||d.deviceCopy||!isPdf(d))return;if(result==='blocked'){if(navigator.onLine===false)return;delete cache[routeKey(d)]}notify(d,result)}
+const labels={verified:'Reader verified on this device',local:'Same-site PDF',reachable:'PDF source reachable · reader not yet tested',collection:'In-app resource collection',unknown:'Reader availability not yet checked',blocked:'Document could not be loaded',fallback:'An embedded viewer is available as an attempt; rendering not verified',unconfirmed:'Direct PDF access is not yet verified; tap to open'};
+function notify(d,result,confirmed=false){if(!isPdf(d)||d.deviceCopy)return;const current=record(d);if(result==='reachable'&&(current?.result==='verified'||current?.result==='fallback'||current?.confirmed))return;if(result==='unconfirmed'&&current?.result)return;const old=state(d);cache[routeKey(d)]={result,confirmed,at:Date.now()};try{localStorage.setItem(key,JSON.stringify(cache))}catch(_){}if(old!==state(d))window.dispatchEvent(new CustomEvent('wrha-reader-availability',{detail:{id:d.id,state:state(d)}}))}
+function mark(d,result){if(!d||d.deviceCopy||!isPdf(d))return;if(result==='blocked'&&navigator.onLine===false)return;notify(d,result,result==='blocked')}
 let active=false,queue=[],checked=new Set(),running=0,verifying=false,verifiedAttempts=0,libPromise=null;
 async function probe(url,range){const c=new AbortController(),timer=setTimeout(()=>c.abort(),8000);let reader;try{
 const r=await fetch(url,{method:'GET',mode:'cors',credentials:'omit',headers:range?{Range:'bytes=0-1023'}:{},signal:c.signal,cache:'no-store'});
 if(!r.ok||!r.body)return false;
 reader=r.body.getReader();let bytes=new Uint8Array(0);while(bytes.length<1024){const x=await reader.read();if(x.done)break;const y=x.value.subarray(0,1024-bytes.length),n=new Uint8Array(bytes.length+y.length);n.set(bytes);n.set(y,bytes.length);bytes=n;if(bytes.length>=8&&new TextDecoder().decode(bytes).includes('%PDF-'))return true}return false;
 }catch(_){return false}finally{clearTimeout(timer);try{reader?.cancel().catch(()=>{})}catch(_){}c.abort()}}
-async function check(d){const paths=window.WRHA_READER_SOURCES?.candidates(d)||[{url:d.url}];for(const route of paths){if(await probe(route.url,true)||await probe(route.url,false)){notify(d,'reachable');return}}if(navigator.onLine!==false)notify(d,'blocked')}
+async function check(d){const paths=window.WRHA_READER_SOURCES?.candidates(d)||[{url:d.url}];for(const route of paths){if(await probe(route.url,true)||await probe(route.url,false)){notify(d,'reachable');return}}if(navigator.onLine!==false)notify(d,'unconfirmed')}
 
 const testedFeatured=new Set();
 async function verifyFeatured(){
