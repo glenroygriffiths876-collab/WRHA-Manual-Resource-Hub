@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="./enhance.css?v=stable-catalogue-1">
-<link rel="stylesheet" href="./viewer.css?v=landing-reader-2">
+<link rel="stylesheet" href="./viewer.css?v=automatic-embed-1">
 <link rel="stylesheet" href="./landing-premium.css?v=3">
 <link rel="stylesheet" href="./roles-evidence.css">
 <link rel="stylesheet" href="./hub-utilities.css">
@@ -40,8 +40,8 @@
 <script defer src="./reader-sources.js?v=landing-reader-2"></script>
 <script src="./catalog-deep-audit-20261117.js?v=1" defer></script>
   <script defer src="./reader-availability.js?v=stable-catalogue-1"></script>
-<script defer src="./viewer.js?v=hd-cards-1"></script>
-<script defer src="./app-v2.js?v=stable-catalogue-1"></script>
+<script defer src="./viewer.js?v=automatic-embed-1"></script>
+<script defer src="./app-v2.js?v=automatic-embed-1"></script>
 <script defer src="./hub-utilities.js"></script>
 <script defer src="./pwa-install.js?v=landing-reader-3"></script>
 </head>
@@ -238,7 +238,7 @@
       <div class="wrha-tool-row"><button id="pdfLayout" class="viewer-tool" type="button" aria-pressed="false">Two pages</button><button id="pdfSound" class="viewer-tool" type="button" aria-pressed="true">Sound on</button></div>
       <div class="wrha-tool-row"><label class="pdf-find">Find <input id="pdfSearch" type="search" placeholder="Search text…" aria-label="Find text in PDF"></label><button id="pdfFindButton" class="viewer-tool" type="button">Find next</button></div>
       <label class="wrha-wide-label">Chapters <select id="pdfOutline" aria-label="PDF bookmarks"><option value="">No bookmarks available</option></select></label>
-      <button id="pdfRetry" class="viewer-tool" type="button" hidden>Retry embedded reader</button>
+      <button id="pdfRetry" class="viewer-tool" type="button" hidden>Retry interactive reader</button>
       </div>
       <div class="wrha-reader-toolgroup"><span class="wrha-tool-label">Listen &amp; accessibility</span>
       <div class="wrha-tool-row"><button id="pdfReadAll" class="viewer-tool" type="button">Read continuously</button><button id="pdfPause" class="viewer-tool" type="button">Pause</button><button id="pdfStop" class="viewer-tool" type="button">Stop</button></div>
@@ -249,7 +249,7 @@
       <label>Interface text <select id="pdfTextSize"><option value="normal">Normal</option><option value="large">Large</option><option value="xlarge">Extra large</option></select></label>
       </div>
       <div class="wrha-reader-toolgroup"><span class="wrha-tool-label">Document &amp; support</span>
-      <div class="wrha-tool-row"><a id="pdfDownload" href="#" target="_blank" rel="noopener">Download PDF</a><a id="pdfOriginal" href="#" target="_blank" rel="noopener">Open original PDF ↗</a><button id="pdfPrint" class="viewer-tool" type="button">Print PDF</button></div>
+      <div class="wrha-tool-row"><a id="pdfDownload" href="#" target="_blank" rel="noopener">Download PDF</a><a id="pdfOriginal" href="#" target="_blank" rel="noopener">Open original PDF ↗</a><button id="pdfPrint" class="viewer-tool" type="button">Print PDF</button></div><div class="wrha-tool-row"><button id="pdfLocalOpen" type="button" class="viewer-tool">Read a saved PDF</button><input id="pdfLocalFile" type="file" accept="application/pdf,.pdf" hidden></div>
       <div class="wrha-tool-row"><a id="pdfSource" href="#" target="_blank" rel="noopener">Publisher ↗</a><a id="pdfLegalAlt" href="https://lipj.gov.jm/" target="_blank" rel="noopener" hidden>Alternative legal portal ↗</a><button id="hubPdfReportIssue" class="viewer-tool hub-pdf-report" type="button" aria-haspopup="dialog" aria-controls="hubFeedbackDialog" title="Report a problem with this PDF">Report issue</button></div>
       </div>
       </div>
@@ -262,21 +262,11 @@
     <div id="pdfCanvasScroll" class="reader-pages" tabindex="0" aria-label="PDF reading area; use left and right arrows to turn pages" hidden>
       <div id="pdfPageSurface" class="wrha-reader-book" aria-label="Document pages"></div>
     </div>
-    <iframe id="pdfFrame" title="Browser PDF viewer — used when document server blocks PDF.js" loading="lazy" referrerpolicy="no-referrer" hidden></iframe>
-    <div id="pdfBlocked" class="reader-blocked" hidden role="region" aria-label="External PDF preview and access options">
-  <div class="reader-blocked-visual">
-    <img id="pdfBlockedCover" src="" alt="First-page thumbnail of the requested PDF" loading="eager">
-    <span class="reader-preview-label">Verified first-page thumbnail</span>
-  </div>
-  <div class="reader-blocked-details">
-    <span class="eyebrow">DOCUMENT ACCESS</span>
-    <h3>This document needs another access method</h3>
-    <p>The complete PDF could not be loaded from the publisher in this browser. If available, a first-page preview appears here; it is not the entire document.</p>
-    <p>The hub tried both available reading methods. If the publisher does not permit browser access, the official PDF link remains available. This resource will be placed below available documents on this device.</p>
-    <div class="reader-blocked-actions"><a id="pdfBlockedOpen" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Open official PDF ↗</a><a id="pdfBlockedPublisher" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Publisher page ↗</a></div>
-    <button id="pdfRetryInline" class="btn btn-primary" type="button">Try again in the reader</button> <button id="pdfLocalOpen" class="btn btn-secondary" type="button">Read a saved PDF on this device</button><input id="pdfLocalFile" type="file" accept="application/pdf,.pdf" hidden><p class="reader-permission-note">If you have an authorised copy saved on your device, you can read it here without uploading it. It will be labelled as a device copy, not a verified official edition.</p>
-  </div>
-</div>
+    <div id="pdfEmbeddedBar" class="wrha-embedded-bar" hidden><span id="pdfEmbeddedMode" role="status">Embedded document</span><button type="button" id="pdfAlternateEmbed" class="viewer-tool" hidden>Switch viewer</button><button type="button" id="pdfRetryEmbed" class="viewer-tool" hidden>Reload viewer</button></div>
+    <iframe id="pdfFrame" title="Embedded official document" loading="eager" referrerpolicy="no-referrer" hidden></iframe>
+    <div id="pdfBlocked" class="wrha-embed-unavailable" hidden role="status">
+      <p>Document temporarily unavailable.</p><button id="pdfRetryInline" class="viewer-tool" type="button">Retry</button>
+    </div>
 <div id="pdfWebResource" class="reader-webresource" hidden>
       <div class="reader-web-icon" aria-hidden="true">▤</div>
       <h3>Official web resource</h3>
