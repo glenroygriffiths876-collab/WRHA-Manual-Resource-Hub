@@ -1974,5 +1974,27 @@ window.WRHA_LIBRARY_MANIFEST=Object.freeze({
     "sourceUrl": "https://www.pca.gov.jm/pdf_folder/labelling_standards.pdf",
     "permissionRef": "documents/publication-authorization.json",
     "verifiedOn": "2026-11-17"
+  },
+  "law-20": {
+    "recordUrl": "https://www.fspid.gov.jm/FSPI_Act.pdf",
+    "path": "documents/library/law-20.pdf",
+    "edition": "Jamaica Trade Portal; original 1958 Act; read with 2019 amendments",
+    "sha256": "043a6f83744af5ccf45be6f913765ef11e897d8ba8374c4881b1d44f694cc448",
+    "pages": 6,
+    "legalAlternate": true,
+    "sourceUrl": "https://jamaicatradeportal.gov.jm/upload/files/Legal_1549912055.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
+  },
+  "audit-law-precursor-regs": {
+    "recordUrl": "https://laws.moj.gov.jm/legislation/subsids/P/The%20Precursor%20Chemicals%20Act.pdf",
+    "path": "documents/library/audit-law-precursor-regs.pdf",
+    "edition": "Jamaica Trade Portal; 2013 Regulations (L.N. 269A/2013), revised pages 2017; verify any other subsidiary instruments",
+    "sha256": "6890f3af92d71c585062e9e34a4c5e04e4c93bda3a145868c76fe173c89af05f",
+    "pages": 28,
+    "legalAlternate": true,
+    "sourceUrl": "https://jamaicatradeportal.gov.jm/upload/files/Legal_1562945374.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
   }
 });
