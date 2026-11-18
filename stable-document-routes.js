@@ -77,6 +77,8 @@ function stableRoutes(d){if(d.deviceCopy)return previous.readerCandidates(d);con
  const list=[...(local?[local]:[]),...(pinned?[{url:pinned.url,label:'JASDIS repository PDF · pinned edition',jasdis:true}]:[]),...routed];
  return list.filter((r,i)=>list.findIndex(x=>x.url===r.url)===i);
 }
-function candidates(d){return stableRoutes(d).filter(r=>!r.delivery)}
-window.WRHA_READER_SOURCES=Object.freeze({...previous,candidates,readerCandidates:stableRoutes,localRoute,directUrl:d=>localRoute(d)?.url||previous.directUrl(d)});
+function recoveryCandidates(d){return stableRoutes(d).filter(r=>!r.delivery)}
+function localCandidates(d){if(d.deviceCopy)return previous.readerCandidates(d);const route=localRoute(d);return route?[route]:[]}
+function localCollection(d){if(d.format!=='page'||localRoute(d))return false;return !!previous.collection(d.id)?.ids?.some(id=>{const entry=previous.get(id);return entry&&localRoute(entry)})}
+window.WRHA_READER_SOURCES=Object.freeze({...previous,candidates:localCandidates,readerCandidates:localCandidates,recoveryCandidates,localRoute,localCollection,directUrl:d=>localRoute(d)?.url||(d.deviceCopy?d.url:null)});
 })();

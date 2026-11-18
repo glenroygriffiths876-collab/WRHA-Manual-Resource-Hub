@@ -113,8 +113,8 @@ function showCollection(d){
  const info=window.WRHA_READER_SOURCES?.collection(d.id),items=$('pdfCollectionItems'),source=window.WRHA_READER_SOURCES;
  items.replaceChildren();elements.web.querySelector('h3').textContent=d.title||'Official resource';
  elements.web.querySelector('p').textContent=info?.intro||'This official source is a web resource rather than a downloadable PDF.';
- const entries=[...new Set(info?.ids||[])].map(id=>source?.get(id)).filter(entry=>entry&&entry.id!==d.id).sort((a,b)=>(window.WRHA_READER_AVAIL?.priority(a)??0)-(window.WRHA_READER_AVAIL?.priority(b)??0));
- elements.webLink.href=d.sourceUrl||d.url;elements.webLink.textContent='Official source ↗';$('pdfCollectionBack').hidden=!collectionTrail.length;setMode('web');setStatus('');
+ const entries=[...new Set(info?.ids||[])].map(id=>source?.get(id)).filter(entry=>entry&&entry.id!==d.id&&source?.localRoute?.(entry)).sort((a,b)=>(window.WRHA_READER_AVAIL?.priority(a)??0)-(window.WRHA_READER_AVAIL?.priority(b)??0));
+ elements.webLink.hidden=true;elements.webLink.removeAttribute('href');$('pdfCollectionBack').hidden=!collectionTrail.length;setMode('web');setStatus('');
  if(entries.length&&window.WRHA_RESOURCE_CARDS){window.WRHA_RESOURCE_CARDS.mount(items,entries,entry=>{if(!entry)return;collectionTrail.push(d);open(entry,true)})}
  if(info?.note){const note=document.createElement('p');note.className='wrha-collection-note';note.textContent=info.note;items.prepend(note)}
  if(!entries.length){const note=document.createElement('p');note.className='wrha-collection-note';note.textContent='This is a web resource; the publisher has not supplied an individual PDF for this entry.';items.append(note)}
@@ -165,7 +165,7 @@ function loadImage(d){const version=session,img=$('pdfSourceImage'),origin=windo
  setMode('loading');attempt();
 }
 function open(d,keepTrail=false){
- if(!d||!d.url)return;
+ if(!d||!d.url||(!d.deviceCopy&&!window.WRHA_READER_SOURCES?.localRoute?.(d)&&!window.WRHA_READER_SOURCES?.localCollection?.(d)))return;
  if(!keepTrail)collectionTrail=[];
  destroy();session++;const version=session;
  if(d.deviceCopy)ownedBlob=d.url;

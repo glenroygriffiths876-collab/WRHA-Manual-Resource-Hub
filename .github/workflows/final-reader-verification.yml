@@ -1,4 +1,4 @@
-name: Recover remaining files and verify production reader
+name: Verify local-only production reader
 on:
   push:
     branches: [main]

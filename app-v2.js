@@ -8,6 +8,8 @@ const esc=x=>String(x==null?'':x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;'
 const pgs=['home','manuals','legislation','facilities','training','roles','about'];
 if(!D){document.querySelector('.governance-banner').textContent='Resource data could not load. Reload to try again.';return;}
 const allDocs=D.manuals||[],laws=D.legislation||[],availability=window.WRHA_READER_AVAIL;
+const localCopy=d=>window.WRHA_READER_SOURCES?.localRoute?.(d);const readerReady=d=>!!(localCopy(d)||window.WRHA_READER_SOURCES?.localCollection?.(d));
+function showRecovery(anchorId,records){const anchor=document.getElementById(anchorId);let panel=anchor.parentElement.querySelector('[data-local-recovery]');if(!panel){panel=document.createElement('details');panel.dataset.localRecovery='1';panel.className='local-recovery-register';anchor.parentElement.append(panel)}const missing=records.filter(d=>!readerReady(d));panel.hidden=!missing.length;panel.replaceChildren();if(!missing.length)return;const summary=document.createElement('summary');summary.textContent=missing.length+' catalogue records awaiting a locally hosted copy';const list=document.createElement('ul');for(const d of missing){const li=document.createElement('li');li.textContent=d.title+' — '+(d.format==='page'?'source/index record':'original document required');list.append(li)}panel.append(summary,list)}
 const accessRank=d=>availability?.priority(d)??4;
 const byAccess=(a,b)=>accessRank(a)-accessRank(b);
 let current='home',manualLimit=18,lawLimit=18,facLimit=36,roleLimit=36,activeCombined=false;
@@ -70,7 +72,7 @@ function coverMarkup(d){const pdf=isPdf(d),image=d.format==='image',office=d.for
 function docCard(d,type){const law=type==='law',pdf=isPdf(d),image=d.format==='image',office=d.format==='office',title=esc(d.title),href=esc(window.WRHA_READER_SOURCES?.directUrl(d)||d.url),key=esc(type+':'+d.id);
  const state=availability?.state(d)||'unknown';const accessLabel='<span class="reader-availability-label" data-state="'+esc(state)+'" title="'+esc(availability?.label(d)||'Reader availability not yet checked')+'">'+esc(shortAccess(state))+'</span>';
  const secondary='<a class="download-btn" '+(pdf?'data-download="'+key+'" download="'+esc(pdfName(d))+'" ':'')+'href="'+href+'" target="_blank" rel="noopener" aria-label="'+(pdf?'Download PDF: ':image?'Download image: ':'Open official source: ')+title+'" title="'+(pdf?'Download PDF; source restrictions may require opening the official file':'Open the publisher website')+'">'+(pdf?'Download PDF ↓':image?'Download image ↓':office?'Download Word ↓':'Official source ↗')+'</a>';
- return '<article class="manual-card manual-tappable '+(law?'manual-legal':'')+'" data-doc-key="'+key+'"><div class="manual-top">'+coverMarkup(d)+'<span class="manual-year">'+esc(d.year||d.type||'Resource')+'</span></div><div class="manual-body"><span class="category-label">'+esc(d.category)+'</span><h3><button type="button" class="manual-open-title" data-read="'+key+'" aria-haspopup="dialog" aria-label="Open '+title+' in resource reader">'+title+'</button></h3><p>'+esc(d.description||'A publicly linked guidance or reference resource.')+'</p><span class="manual-status">'+esc(d.status||'Confirm edition')+'</span>'+accessLabel+'<div class="manual-actions">'+secondary+'</div><span class="manual-download-status" aria-live="polite" hidden></span></div></article>';
+ return '<article class="manual-card manual-tappable '+(law?'manual-legal':'')+'" data-doc-key="'+key+'"><div class="manual-top">'+coverMarkup(d)+'<span class="manual-year">'+esc(d.year||d.type||'Resource')+'</span></div><div class="manual-body"><span class="category-label">'+esc(d.category)+'</span><h3><button type="button" class="manual-open-title" data-read="'+key+'" aria-haspopup="dialog" aria-label="Open '+title+' in resource reader">'+title+'</button></h3><p>'+esc(d.description||'A publicly linked guidance or reference resource.')+'</p><span class="manual-status">'+esc(d.status||'Confirm edition')+'</span>'+accessLabel+'<div class="manual-actions">'+(localCopy(d)?secondary:'<span>Local document collection</span>')+'</div><span class="manual-download-status" aria-live="polite" hidden></span></div></article>';
 }
 function pdfName(d){return (String(d.title||'WRHA document').replace(/[\\/:*?"<>|]/g,'-').trim().slice(0,120)||'WRHA document')+'.pdf'}
 function resolveDoc(value){const i=value.indexOf(':'),kind=value.slice(0,i),id=value.slice(i+1);return (kind==='law'?laws:allDocs).find(d=>d.id===id)}
@@ -119,8 +121,8 @@ function renderDocumentGrid(root,items,type,onOpen){const typeOf=d=>typeof type=
   if(created)bindDocumentActions(card,onOpen);else updateCardStatus(card);
  }
 }
-window.WRHA_RESOURCE_CARDS=Object.freeze({mount(root,entries,onOpen){renderDocumentGrid(root,entries,d=>laws.some(x=>x.id===d.id)?'law':'manual',onOpen);observeCovers(root);flushCovers()},refresh:refreshStatusLabels});
-function renderFeatured(){const items=allDocs.filter(d=>isPdf(d)&&availability?.state(d)==='verified').sort((a,b)=>byAccess(a,b)||(b.year||0)-(a.year||0)||a.title.localeCompare(b.title)).slice(0,3),root=$('featured');
+window.WRHA_RESOURCE_CARDS=Object.freeze({mount(root,entries,onOpen){renderDocumentGrid(root,entries.filter(readerReady),d=>laws.some(x=>x.id===d.id)?'law':'manual',onOpen);observeCovers(root);flushCovers()},refresh:refreshStatusLabels});
+function renderFeatured(){const items=allDocs.filter(d=>localCopy(d)&&availability?.state(d)==='verified').sort((a,b)=>byAccess(a,b)||(b.year||0)-(a.year||0)||a.title.localeCompare(b.title)).slice(0,3),root=$('featured');
  $('featuredReaderNote').textContent=items.length?'First page successfully rendered on this device.':'Browse the library; verified recommendations are refreshed when you return Home.';
  if(items.length)renderDocumentGrid(root,items,'manual');else if(!$('featuredBrowse')){root.innerHTML='<button type="button" class="btn btn-primary" id="featuredBrowse">Browse the manual library ↗</button>';$('featuredBrowse').addEventListener('click',()=>setView('manuals'))}}
 renderFeatured();
@@ -136,10 +138,10 @@ function filterManuals(reorder=true){
  if(reorder){manItems=allDocs.filter(m=>(!cat||m.category===cat)&&(!q||[m.title,m.category,m.description,m.publisher,m.year].join(' ').toLowerCase().includes(q)));
  if(sort==='alpha')manItems.sort((a,b)=>a.title.localeCompare(b.title));else if(sort==='newest')manItems.sort((a,b)=>(b.year||0)-(a.year||0));else manItems.sort((a,b)=>(b.year||0)-(a.year||0)||a.title.localeCompare(b.title));
  manItems.sort(byAccess);}
- $('manualCount').textContent=manItems.length+' source-linked manuals and resources · readable first';
+ const ready=manItems.filter(readerReady);$('manualCount').textContent=ready.length+' locally accessible resources · '+manItems.length+' catalogue records';
  $('manualEmpty').hidden=manItems.length!==0;
- renderDocumentGrid($('manualGrid'),manItems.slice(0,manualLimit),'manual');
- $('moreManuals').hidden=manItems.length<=manualLimit;
+ renderDocumentGrid($('manualGrid'),ready.slice(0,manualLimit),'manual');showRecovery('manualGrid',manItems);
+ $('moreManuals').hidden=ready.length<=manualLimit;
  syncPills(manPills,cat);
 }
 $('manualSearch').addEventListener('input',()=>{manualLimit=18;filterManuals()});
@@ -150,9 +152,9 @@ const lawCats=[...new Set(laws.map(x=>x.category))].sort();
 $('lawCategory').innerHTML='<option value="">All legal areas</option>'+lawCats.map(c=>'<option>'+esc(c)+'</option>').join('');
 const lawPills=addPills('lawSearch',['Public Health','Nursing & Midwifery','Medicines & Pharmacy','Mental Health','Health Information','Environmental Health'],cat=>{$('lawCategory').value=cat;lawLimit=18;filterLaws()});
 function filterLaws(reorder=true){const q=$('lawSearch').value.trim().toLowerCase(),cat=$('lawCategory').value,type=$('lawType').value;
- if(reorder)lawItems=laws.filter(l=>(!cat||l.category===cat)&&(!type||l.type===type)&&(!q||[l.title,l.category,l.type].join(' ').toLowerCase().includes(q))) .sort(byAccess);const list=lawItems;
- $('lawCount').textContent=list.length+' legislation records';
- $('lawEmpty').hidden=list.length!==0;renderDocumentGrid($('lawGrid'),list.slice(0,lawLimit),'law');$('moreLaws').hidden=list.length<=lawLimit;
+ if(reorder)lawItems=laws.filter(l=>(!cat||l.category===cat)&&(!type||l.type===type)&&(!q||[l.title,l.category,l.type].join(' ').toLowerCase().includes(q))) .sort(byAccess);const list=lawItems.filter(readerReady);
+ $('lawCount').textContent=list.length+' locally accessible legislation records · '+lawItems.length+' catalogue records';
+ $('lawEmpty').hidden=lawItems.length!==0;renderDocumentGrid($('lawGrid'),list.slice(0,lawLimit),'law');showRecovery('lawGrid',lawItems);$('moreLaws').hidden=list.length<=lawLimit;
  syncPills(lawPills,cat);
 }
 ['lawSearch','lawCategory','lawType'].forEach(x=>$(x).addEventListener(x==='lawSearch'?'input':'change',()=>{lawLimit=18;filterLaws()}));
@@ -163,7 +165,7 @@ let statusFrame=0;
 window.addEventListener('wrha-reader-availability',()=>{if(statusFrame)return;statusFrame=requestAnimationFrame(()=>{statusFrame=0;refreshStatusLabels()})});
 $('pdfDialog')?.addEventListener('close',()=>{const key=lastOpened;refreshStatusLabels();if(key){const scope=current==='manuals'?$('manualGrid'):current==='legislation'?$('lawGrid'):$('featured');const target=[...(scope?.querySelectorAll('[data-read]')||[])].find(x=>x.dataset.read===key);target?.focus({preventScroll:true})}lastOpened=null;if(current==='manuals'||current==='legislation')availability?.start();flushCovers()});
 
-function openPdf(d){if(!d)return;if(window.WRHA_DocViewer){availability?.pause();window.WRHA_DocViewer.open(d);return;}if(isPdf(d))window.open(d.url,'_blank','noopener');else window.open(d.sourceUrl||d.url,'_blank','noopener');}
+function openPdf(d){if(!d||!readerReady(d))return;if(window.WRHA_DocViewer){availability?.pause();window.WRHA_DocViewer.open(d)}}
 
 const parishes=Object.keys(D.rhaMap).sort();
 $('parishFilter').innerHTML='<option value="">All 14 parishes</option>'+parishes.map(p=>'<option value="'+esc(p)+'">'+esc(p)+'</option>').join('');

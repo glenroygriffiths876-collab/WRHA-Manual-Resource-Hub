@@ -22,6 +22,7 @@ w.eval(fs.readFileSync('srha-verified-positions.js','utf8'));
 w.eval(fs.readFileSync('cross-region-role-consolidation.js','utf8'));
 assert.equal(w.WRHA_DATA.manuals.length,74);
 assert.equal(w.WRHA_DATA.roleEvidenceCounts.total,234);
+for(const file of ['delivery-config.js','reader-sources.js','catalog-deep-audit-20261117.js','legal-source-routes.js','document-library-manifest.js','stable-document-routes.js'])w.eval(fs.readFileSync(file,'utf8'));
 w.eval(fs.readFileSync('viewer.js','utf8'));
 w.eval(fs.readFileSync('app-v2.js','utf8'));
 w.eval(fs.readFileSync('hub-utilities.js','utf8'));

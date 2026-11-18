@@ -20,11 +20,11 @@ try{
  const ctx=await browser.newContext({viewport:{width:1280,height:900},serviceWorkers:'block'});
  const p=await ctx.newPage();await p.goto(base+'?liveaudit='+Date.now(),{waitUntil:'domcontentloaded'});
  await p.waitForFunction(()=>window.WRHA_DATA&&window.WRHA_DocViewer&&window.WRHA_LIBRARY_MANIFEST);
- const all=await p.evaluate(()=>[...window.WRHA_DATA.manuals.map(d=>({id:d.id,title:d.title,kind:'manual',format:d.format})),...window.WRHA_DATA.legislation.map(d=>({id:d.id,title:d.title,kind:'law',format:d.format}))]);
+ const all=await p.evaluate(()=>[...window.WRHA_DATA.manuals.map(d=>({id:d.id,title:d.title,kind:'manual',format:d.format,collectionReady:!!window.WRHA_READER_SOURCES?.localCollection?.(d)})),...window.WRHA_DATA.legislation.map(d=>({id:d.id,title:d.title,kind:'law',format:d.format,collectionReady:!!window.WRHA_READER_SOURCES?.localCollection?.(d)}))]);
  await ctx.close();
  const work=all.filter(d=>manifest[d.id]);
- const unresolved=all.filter(d=>!manifest[d.id]&&d.format!=='page');
- const collections=all.filter(d=>!manifest[d.id]&&d.format==='page');
+ const unresolved=all.filter(d=>!manifest[d.id]&&!d.collectionReady);
+ const collections=all.filter(d=>!manifest[d.id]&&d.collectionReady);
  const first=work.find(d=>d.id==='audit-peer-signature');
  const todo=[...(first?[first]:[]),...work.filter(d=>d!==first),...collections].filter((_,i)=>i%shards===shard);
  async function check(d,viewport,extra=false){
@@ -36,6 +36,7 @@ try{
   try{
    await p.goto(base+'?liveaudit='+Date.now(),{waitUntil:'domcontentloaded'});
    await p.waitForFunction(()=>window.WRHA_DocViewer&&window.WRHA_LIBRARY_MANIFEST);
+   if(await p.locator('#menuBtn').isVisible())await p.locator('#menuBtn').click();
    await p.locator('[data-view="'+(d.kind==='law'?'legislation':'manuals')+'"]').first().click();
    await p.locator(d.kind==='law'?'#lawSearch':'#manualSearch').fill(d.title);
    const card=p.locator('[data-read="'+d.kind+':'+d.id+'"]').first();await card.click();
@@ -57,8 +58,8 @@ try{
     await p.waitForFunction(()=>document.querySelector('#pdfPageSurface .reader-page-surface')?.getAttribute('aria-label')!=='Page 1');
     rec.checks.next=true;
    }
-   const tools=p.locator('#pdfTools');await tools.locator('summary').click();
-   const go=async n=>{await p.locator('#pdfPage').fill(String(n));await p.locator('#goPdfPage').click();await p.waitForFunction(n=>Array.from(document.querySelectorAll('#pdfPageSurface .reader-page-surface')).some(x=>x.getAttribute('aria-label')==='Page '+n),n);};
+   const tools=p.locator('#pdfTools');const openTools=async()=>{if(!await tools.evaluate(e=>e.open))await tools.locator('summary').click()};await openTools();
+   const go=async n=>{await openTools();await p.locator('#pdfPage').fill(String(n));await p.locator('#goPdfPage').click();await p.waitForFunction(n=>Array.from(document.querySelectorAll('#pdfPageSurface .reader-page-surface')).some(x=>x.getAttribute('aria-label')==='Page '+n),n);};
    if(m.pages>2){await go(Math.ceil(m.pages/2));rec.checks.middle=true;}
    await go(m.pages);rec.checks.last=true;
    const download=await p.locator('#pdfDownload').getAttribute('href');
@@ -68,13 +69,13 @@ try{
    const hash=crypto.createHash('sha256').update(await response.body()).digest('hex');
    if(hash!==m.sha256)throw Error('Download checksum mismatch');
    rec.checks.download=true;
-   await p.locator('#pdfZoom').selectOption('125');rec.checks.zoomControl=true;
+   await openTools();await p.locator('#pdfZoom').selectOption('125');rec.checks.zoomControl=true;
    if(extra){await p.locator('#pdfSound').click();if(await p.locator('#pdfSound').getAttribute('aria-pressed')!=='false')throw Error('Sound toggle failed');await p.locator('#pdfSound').click();rec.checks.soundToggle=true;}
    await p.locator('#pdfToolsClose').click();
    await p.locator('#pdfFullScreen').click();
    await p.waitForFunction(()=>document.querySelector('#pdfFullScreen').getAttribute('aria-pressed')==='true');
    rec.checks.fullscreen=true;await p.locator('#pdfFullScreen').click();
-   if(extra){await p.locator('#pdfTools summary').click();await p.locator('#pdfTranscriptToggle').click();rec.checks.transcriptControl=true;await p.locator('#pdfToolsClose').click();await p.screenshot({path:'artifacts/live-reader/'+d.id+'-'+viewport.width+'.png'});}
+   if(extra){await openTools();await p.locator('#pdfTranscriptToggle').click();rec.checks.transcriptControl=true;await p.locator('#pdfToolsClose').click();await p.screenshot({path:'artifacts/live-reader/'+d.id+'-'+viewport.width+'.png'});}
    await p.locator('#closePdf').click();await p.locator('#pdfDialog[open]').waitFor({state:'detached'});rec.checks.close=true;
    rec.state='passed';
   }catch(e){rec.state='failed';rec.errors.push(String(e.message).slice(0,700));try{await p.screenshot({path:'artifacts/live-reader/fail-'+d.id+'-'+viewport.width+'.png'});}catch{}}

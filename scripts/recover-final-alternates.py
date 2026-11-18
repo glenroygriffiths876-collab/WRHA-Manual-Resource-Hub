@@ -24,7 +24,8 @@ sources={
 'law-20':[('https://jamaicatradeportal.gov.jm/upload/files/Legal_1549912055.pdf',None,'Jamaica Trade Portal; original 1958 Act; read with 2019 amendments')],
 'audit-law-precursor':[('https://www.jamaicatradeportal.gov.jm/upload/files/Legal_1559236380.pdf',29,'Jamaica Trade Portal; revised Act pages authorized 2006; verify amendments')],
 'audit-law-precursor-regs':[('https://jamaicatradeportal.gov.jm/upload/files/Legal_1562945374.pdf',28,'Jamaica Trade Portal; 2013 Regulations (L.N. 269A/2013), revised pages 2017; verify any other subsidiary instruments')],
-'audit-law-factories':[('https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/31021/JAM31021%202009.pdf',None,'ILO NATLEX; revised Factories Act including 2009 amendments; verify subsequent changes')]
+'audit-law-factories':[('https://www.frontend.jamaicatradeportal.gov.jm/upload/files/Legal_1540413013.pdf',None,'Jamaica Trade Portal; revised Factories Act including 2009 amendments; verify subsequent changes'),('https://jamaicatradeportal.gov.jm/upload/files/Legal_1540413013.pdf',None,'Jamaica Trade Portal; revised Factories Act including 2009 amendments; verify subsequent changes')],
+'law-extra-29':[('https://medicalcouncilja.com/wp-content/uploads/2024/07/Medical-Act_1.pdf',19,'Medical Council of Jamaica; revised pages authorized through 2012; verify subsequent amendments')]
 }
 # Do not substitute a single regulation for an entire subsidiary-legislation compilation.
 results=[]
