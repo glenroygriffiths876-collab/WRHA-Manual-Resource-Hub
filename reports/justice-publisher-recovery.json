@@ -1,0 +1,316 @@
+{
+  "manifestCountBefore": 161,
+  "remaining": 31,
+  "retrieved": [],
+  "unresolved": [
+    {
+      "id": "law-2",
+      "title": "Public Health Act \u2014 Subsidiary Legislation",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-public-health-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "law-5",
+      "title": "The Nurses and Midwives Act",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/statutes/N/Nurses%20and%20Midwives%20Act_1.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/statute/the-nurses-and-midwives-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "law-6",
+      "title": "Nurses and Midwives Act \u2014 Subsidiary Legislation",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/subsids/N/Nurses%20and%20Midwives%20Act_0.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-nurses-and-midwives-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "law-7",
+      "title": "The Mental Health Act",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/statutes/M/Mental%20Health%20Act_1.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/statute/the-mental-health-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "law-8",
+      "title": "Mental Health Act \u2014 Subsidiary Legislation",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/subsids/M/The%20Mental%20Health%20Act_0.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-mental-health-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "law-17",
+      "title": "Public Health Act \u2014 Subsidiary Legislation (PDF compilation)",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/subsids/P/The%20Public%20Health%20Act_0.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-public-health-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "law-19",
+      "title": "The Nursing Homes Registration Act",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/library/statute/the-nursing-homes-registration-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "law-24",
+      "title": "The Opticians Act",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/library/statute/the-opticians-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "law-25",
+      "title": "The Professions Supplementary to Medicine Act",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/statutes/P/Professions%20Supplementary%20to%20Medicine%20Act_1.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/statute/the-professions-supplementary-to-medicine-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "law-26",
+      "title": "The Coroners Act",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/statutes/C/Coroners%20Act.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/statute/the-coroners-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "law-extra-26",
+      "title": "Pharmacy Regulations, 1975",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/subsids/P/Pharmacy%20Act_0.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-pharmacy-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "law-extra-27",
+      "title": "Nursing Homes Registration Regulations, 1934",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/subsids/N/Nursing%20Homes%20Registration%20Act_0.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-nursing-homes-registration-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "law-extra-28",
+      "title": "The Quarantine Act",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/library/statute/the-quarantine-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "audit-law-family-planning",
+      "title": "National Family Planning Act",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/library/statute/the-national-family-planning-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "audit-law-ncda",
+      "title": "National Council on Drug Abuse Act",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/statutes/N/National%20Council%20on%20Drug%20Abuse%20Act_0.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/statute/the-national-council-on-drug-abuse-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "audit-law-venereal",
+      "title": "Venereal Disease Act",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/library/statute/the-venereal-disease-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "audit-law-births-deaths-regs",
+      "title": "Registration (Births and Deaths) Act \u2014 Subsidiary Legislation",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/subsids/R/Registration%20%28Births%20and%20Deaths%29%20Act_0.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-registration-births-and-deaths-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "audit-law-university-hospital",
+      "title": "University Hospital Act",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/statutes/U/University%20Hospital%20Act_1.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/statute/the-university-hospital-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "audit-law-poor-relief-regs",
+      "title": "Poor Relief Act \u2014 Subsidiary Legislation",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/subsids/P/Poor%20Relief%20Act_0.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-poor-relief-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "audit-law-dangerous-regs",
+      "title": "Dangerous Drugs Act \u2014 Subsidiary Legislation",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/subsids/D/The%20Dangerous%20Drugs%20Act.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-dangerous-drugs-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "audit-law-cremation-regs",
+      "title": "Cremation Regulations, 1960",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/subsids/C/The%20Cremation%20Act%20%28sub%20leg%29.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-cremation-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "audit-law-litter-regs",
+      "title": "Litter Act \u2014 Subsidiary Legislation",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/subsids/L/Litter%20Act.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/subsidiary-legislation/the-litter-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "audit-law-poor-relief",
+      "title": "Poor Relief Act",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/library/statute/the-poor-relief-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    },
+    {
+      "id": "audit-law-cremation",
+      "title": "Cremation Act",
+      "attempts": [
+        {
+          "url": "https://laws.moj.gov.jm/legislation/statutes/C/The%20Cremation%20Act.pdf",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        },
+        {
+          "url": "https://laws.moj.gov.jm/library/statute/the-cremation-act/download",
+          "error": "HTTP Error 503: Service Temporarily Unavailable"
+        }
+      ]
+    }
+  ],
+  "manifestCount": 161
+}

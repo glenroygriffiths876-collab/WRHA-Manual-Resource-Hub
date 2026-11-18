@@ -1,17 +1,11 @@
 {
-  "manifestCount": 160,
+  "manifestCount": 161,
   "results": [
     {
-      "id": "audit-law-factories",
-      "pages": 28,
-      "bytes": 2208525,
-      "source": "https://www.frontend.jamaicatradeportal.gov.jm/upload/files/Legal_1540413013.pdf"
-    },
-    {
-      "id": "law-extra-29",
-      "pages": 19,
-      "bytes": 916346,
-      "source": "https://medicalcouncilja.com/wp-content/uploads/2024/07/Medical-Act_1.pdf"
+      "id": "audit-law-births-deaths",
+      "pages": 53,
+      "bytes": 1257144,
+      "source": "https://ecc.gov.jm/www/wp-content/uploads/2026/09/The-Registration-of-Births-Deaths-Act-1881_compressed.pdf"
     }
   ]
 }

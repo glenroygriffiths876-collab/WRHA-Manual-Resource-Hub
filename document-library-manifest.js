@@ -2041,5 +2041,16 @@ window.WRHA_LIBRARY_MANIFEST=Object.freeze({
     "sourceUrl": "https://medicalcouncilja.com/wp-content/uploads/2024/07/Medical-Act_1.pdf",
     "permissionRef": "documents/publication-authorization.json",
     "verifiedOn": "2026-11-17"
+  },
+  "audit-law-births-deaths": {
+    "recordUrl": "https://laws.moj.gov.jm/library/statute/the-registration-births-and-deaths-act/download",
+    "path": "documents/library/audit-law-births-deaths.pdf",
+    "edition": "Early Childhood Commission; historical revised Act download; check subsequent amendments and commencement",
+    "sha256": "99fa40ecc5361d53f16e25c7c5302294a19a593bb50ae32bf8e41b6cc5866d45",
+    "pages": 53,
+    "legalAlternate": true,
+    "sourceUrl": "https://ecc.gov.jm/www/wp-content/uploads/2026/09/The-Registration-of-Births-Deaths-Act-1881_compressed.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
   }
 });
