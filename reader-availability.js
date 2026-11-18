@@ -23,7 +23,7 @@ async function check(d){const paths=window.WRHA_READER_SOURCES?.candidates(d)||[
 
 const testedFeatured=new Set();
 async function verifyFeatured(){
- if(verifying||navigator.onLine===false||navigator.connection?.saveData||verifiedAttempts>=8)return;
+ if(verifying||navigator.onLine===false||navigator.connection?.saveData||verifiedAttempts>=8||document.querySelector('#pdfDialog')?.open||document.querySelector('.page.active')?.dataset.page!=='home')return;
  const manuals=D?.manuals||[];if(manuals.filter(d=>state(d)==='verified').length>=3)return;
  const options=manuals.filter(d=>isPdf(d)&&!d.fileSizeNote&&!testedFeatured.has(d.url)&&['local','reachable'].includes(state(d))).sort((a,b)=>priority(a)-priority(b)||(b.year||0)-(a.year||0));
  const d=options[0];if(!d)return;verifying=true;testedFeatured.add(d.url);verifiedAttempts++;
@@ -40,7 +40,7 @@ async function verifyFeatured(){
   }
  }catch(_){}finally{verifying=false;setTimeout(verifyFeatured,450)}
 }
-function pump(){while(active&&running<2&&queue.length){const d=queue.shift();if(checked.has(d.url))continue;checked.add(d.url);running++;check(d).finally(()=>{running--;verifyFeatured();setTimeout(pump,120)})}}
+function pump(){while(active&&running<1&&queue.length){const d=queue.shift();if(checked.has(d.url))continue;checked.add(d.url);running++;check(d).finally(()=>{running--;setTimeout(pump,120)})}}
 function start(){if(active||navigator.onLine===false||navigator.connection?.saveData)return;active=true;queue=all.filter(d=>isPdf(d)&&!record(d)&&!checked.has(d.url));pump()}
 function pause(){active=false}
 window.WRHA_READER_AVAIL=Object.freeze({state,priority,label:d=>labels[state(d)],mark,start,pause,verifyFeatured});
