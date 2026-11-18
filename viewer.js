@@ -173,7 +173,7 @@ async function loadPdf(d){const version=session,original=d.url;
     if(route.label!=='Original publisher PDF')$('pdfMeta').textContent=[d.publisher,d.year,route.label].filter(Boolean).join(' · ');
     elements.page.max=String(pageCount);updateControls();const rendered=await render(currentPage);if(version!==session)return;initialPaint=false;if(rendered===false)throw Error('Page could not be rendered');
     window.WRHA_READER_AVAIL?.mark(d,'verified');loadOutline(handle,version);redraw();return;
-   }catch(err){if(version!==session)return;lastError=err;initialPaint=false;const failed=task;task=null;pdf=null;try{await failed?.destroy()}catch(_){}if(version!==session)return;setMode('loading');if(method==='url'&&/Failed to fetch|NetworkError|CORS|fetching PDF|MissingPDFException|404|403/i.test(String(err?.name)+' '+String(err?.message)))break}
+   }catch(err){if(version!==session)return;lastError=err;initialPaint=false;const failed=task;task=null;pdf=null;try{await failed?.destroy()}catch(_){}if(version!==session)return;setMode('loading');if(/MissingPDFException|HTTP (?:403|404)|Unexpected server response \((?:403|404)\)/i.test(String(err?.name)+' '+String(err?.message)))break}
   }
  }
  if(version!==session)return;
