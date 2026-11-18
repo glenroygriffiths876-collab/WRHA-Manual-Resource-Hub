@@ -1996,5 +1996,28 @@ window.WRHA_LIBRARY_MANIFEST=Object.freeze({
     "sourceUrl": "https://jamaicatradeportal.gov.jm/upload/files/Legal_1562945374.pdf",
     "permissionRef": "documents/publication-authorization.json",
     "verifiedOn": "2026-11-17"
+  },
+  "audit-law-precursor": {
+    "recordUrl": "https://laws.moj.gov.jm/library/statute/the-precursor-chemicals-act/download",
+    "path": "documents/library/audit-law-precursor.pdf",
+    "edition": "Jamaica Trade Portal; revised Act pages authorized 2006; verify amendments",
+    "sha256": "1e6618ae46192ed993b37810684dda385977fcae02865bdf942474ad7868c72c",
+    "pages": 29,
+    "legalAlternate": true,
+    "sourceUrl": "https://www.jamaicatradeportal.gov.jm/upload/files/Legal_1559236380.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
+  },
+  "audit-patients-charter": {
+    "recordUrl": "https://www.moh.gov.jm/charter-of-patients-rights/",
+    "path": "documents/library/audit-patients-charter.pdf",
+    "edition": "Authorized reading copy of complete official web Charter; sourced 17 November 2026",
+    "sha256": "e96c39b3b5a8d922e2a5a7927bf365ea35926606516ff1f78ffc6fa03bb7f3ce",
+    "pages": 2,
+    "sourceUrl": "https://www.moh.gov.jm/charter-of-patients-rights/",
+    "sourceSha256": "586e346c73ead875b65424c2e62f08443f1bb8bbe60d1697ff0c43636a167ba1",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17",
+    "legalAlternate": false
   }
 });

@@ -1,22 +1,11 @@
 {
-  "manifestCount": 156,
+  "manifestCount": 157,
   "results": [
     {
-      "id": "law-20",
-      "pages": 6,
-      "bytes": 80215,
-      "source": "https://jamaicatradeportal.gov.jm/upload/files/Legal_1549912055.pdf"
-    },
-    {
       "id": "audit-law-precursor",
-      "source": "https://www.jamaicatradeportal.gov.jm/upload/files/Legal_1559236380.pdf",
-      "error": "Unconfirmed exact title; manual review required"
-    },
-    {
-      "id": "audit-law-precursor-regs",
-      "pages": 28,
-      "bytes": 730084,
-      "source": "https://jamaicatradeportal.gov.jm/upload/files/Legal_1562945374.pdf"
+      "pages": 29,
+      "bytes": 449933,
+      "source": "https://www.jamaicatradeportal.gov.jm/upload/files/Legal_1559236380.pdf"
     },
     {
       "id": "audit-law-factories",
