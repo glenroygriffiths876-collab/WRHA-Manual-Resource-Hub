@@ -30,7 +30,7 @@ $('menuBtn').addEventListener('click',()=>{const open=$('sidebar').classList.tog
 addEventListener('hashchange',()=>setView(location.hash.slice(1),false));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('sidebar').classList.remove('open');$('menuBtn').setAttribute('aria-expanded','false')}});
 
-function isPdf(d){return d.format!=='page'&&d.format!=='image'&&(/\.pdf(?:\?|$)/i.test(d.url)||/\/download\//i.test(d.url)||d.format==='pdf')}
+function isPdf(d){return d.format!=='page'&&d.format!=='image'&&d.format!=='office'&&(/\.pdf(?:\?|$)/i.test(d.url)||/\/download\//i.test(d.url)||d.format==='pdf')}
 const coverCache=new Map(),coverWaiting=[],queued=new Set(),failedCovers=new Set();let coverActive=0,lastOpened=null;
 const coverVisible=el=>!!el?.isConnected&&($('pdfDialog')?.open?!!el.closest('#pdfWebResource:not([hidden])'):!!el.closest('.page.active'));
 const visibleCovers=()=>[...document.querySelectorAll('.doc-cover[data-pdf]')].filter(coverVisible);
@@ -48,7 +48,7 @@ function observeCovers(node){node.querySelectorAll('.doc-cover[data-pdf],.doc-co
 function showCached(el){const img=coverCache.get(el.dataset.pdf);if(!img||el.dataset.paintVersion)return;const canvas=el.querySelector('canvas');if(canvas){const bitmap=new Image();bitmap.onload=()=>{if(!el.isConnected||el.dataset.paintVersion)return;el.dataset.paintVersion='1';canvas.width=bitmap.width;canvas.height=bitmap.height;canvas.getContext('2d').drawImage(bitmap,0,0);const old=el.querySelector('.static-cover');if(old)old.hidden=true;canvas.hidden=false;el.classList.add('has-preview')};bitmap.src=img;}}
 function scheduleCover(el){if(!el.isConnected)return;if(!coverVisible(el)){delete el.dataset.coverObserved;return}const url=el.dataset.pdf;if(coverCache.has(url)){showCached(el);return;}if(!window.pdfjsLib||queued.has(url)||failedCovers.has(url))return;queued.add(url);coverWaiting.push({el,url});flushCovers();}
 function flushCovers(){if($('pdfDialog')?.open&&$('pdfWebResource')?.hidden)return;while(coverActive<1&&coverWaiting.length){const {el,url}=coverWaiting.shift();if(!coverVisible(el)){queued.delete(url);const visible=visibleCovers().find(x=>x.dataset.pdf===url);if(visible)scheduleCover(visible);else if(el.isConnected)delete el.dataset.coverObserved;continue}coverActive++;el.classList.add('loading');(async()=>{let task=null,doc=null;try{
- const sourceRecord=[...allDocs,...laws].find(d=>d.url===url);const sourceURL=sourceRecord?(window.WRHA_READER_SOURCES?.directUrl(sourceRecord)||url):url;
+ const sourceRecord=[...allDocs,...laws].find(d=>d.url===url);const sourceURL=sourceRecord?(window.WRHA_READER_SOURCES?.primaryDownload?.(sourceRecord)||window.WRHA_READER_SOURCES?.directUrl(sourceRecord)||url):url;
  task=pdfjsLib.getDocument({url:sourceURL,withCredentials:false,disableAutoFetch:true,disableStream:true,isEvalSupported:false,enableXfa:false});
  let timer;try{doc=await Promise.race([task.promise,new Promise((_,reject)=>timer=setTimeout(()=>reject(Error('Cover timeout')),12000))])}finally{clearTimeout(timer)}const page=await doc.getPage(1);const basic=page.getViewport({scale:1});
  const scale=Math.min(3,900/basic.width,1200/basic.height);
@@ -62,14 +62,14 @@ function flushCovers(){if($('pdfDialog')?.open&&$('pdfWebResource')?.hidden)retu
  })();}}
 function coverMarkup(d){const pdf=isPdf(d),image=d.format==='image',label=pdf||image?'WRHA REFERENCE COVER':'RESOURCE COLLECTION';
  const pub=d.publisher||'Public health resource';const year=d.year?'<span class="reference-cover-year">'+esc(d.year)+'</span>':'';
- const safeURL=pdf?esc(d.url):'',local='./covers/'+encodeURIComponent(d.id)+'.webp';
+ const safeURL=pdf?esc(d.url):'',local=/^\.\/covers\/[a-zA-Z0-9_-]+\.(?:svg|webp)$/.test(d.coverPath||'')?d.coverPath:'./covers/'+encodeURIComponent(d.id)+'.webp';
  let remote='';try{const x=new URL(d.coverUrl||'');if(x.protocol==='https:'&&/(^|\.)moh\.gov\.jm$/i.test(x.hostname))remote=x.href}catch(_){}
  if(image)remote=window.WRHA_READER_SOURCES?.directUrl(d)||d.url;
  const art='<div class="cover-placeholder reference-cover"><span class="reference-cover-brand">WRHA · RESOURCE HUB</span><span class="reference-cover-symbol" aria-hidden="true">'+(pdf||image?'▤':'▥')+'</span><strong>'+esc(d.title)+'</strong><span class="reference-cover-publisher">'+esc(pub)+'</span>'+year+'<small>'+label+'</small></div>';
  return '<div class="doc-cover '+(pdf||image?'':'not-previewable')+'" '+(pdf?'data-pdf="'+safeURL+'"':image?'data-image-cover="1"':'')+'>'+art+(pdf||image?'<img class="static-cover" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="'+esc(remote||local)+'" '+(remote?'data-alternate="'+esc(local)+'" ':'')+'alt="Cover preview: '+esc(d.title)+'"><canvas aria-hidden="true" hidden></canvas>':'')+'</div>';}
-function docCard(d,type){const law=type==='law',pdf=isPdf(d),image=d.format==='image',title=esc(d.title),href=esc(window.WRHA_READER_SOURCES?.directUrl(d)||d.url),key=esc(type+':'+d.id);
+function docCard(d,type){const law=type==='law',pdf=isPdf(d),image=d.format==='image',office=d.format==='office',title=esc(d.title),href=esc(window.WRHA_READER_SOURCES?.primaryDownload?.(d)||window.WRHA_READER_SOURCES?.directUrl(d)||d.url),key=esc(type+':'+d.id);
  const state=availability?.state(d)||'unknown';const accessLabel='<span class="reader-availability-label" data-state="'+esc(state)+'" title="'+esc(availability?.label(d)||'Reader availability not yet checked')+'">'+esc(shortAccess(state))+'</span>';
- const secondary='<a class="download-btn" '+(pdf?'data-download="'+key+'" download="'+esc(pdfName(d))+'" ':'')+'href="'+href+'" target="_blank" rel="noopener" aria-label="'+(pdf?'Download PDF: ':image?'Download image: ':'Open official source: ')+title+'" title="'+(pdf?'Download PDF; source restrictions may require opening the official file':'Open the publisher website')+'">'+(pdf?'Download PDF ↓':image?'Download image ↓':'Official source ↗')+'</a>';
+ const secondary='<a class="download-btn" '+(pdf?'data-download="'+key+'" download="'+esc(pdfName(d))+'" ':'')+'href="'+href+'" target="_blank" rel="noopener" aria-label="'+(pdf?'Download PDF: ':image?'Download image: ':office?'Download original file: ':'Open official source: ')+title+'" title="'+(pdf?'Download PDF; source restrictions may require opening the official file':'Open the publisher website')+'">'+(pdf?'Download PDF ↓':image?'Download image ↓':office?'Download document ↓':'Official source ↗')+'</a>';
  return '<article class="manual-card manual-tappable '+(law?'manual-legal':'')+'" data-doc-key="'+key+'"><div class="manual-top">'+coverMarkup(d)+'<span class="manual-year">'+esc(d.year||d.type||'Resource')+'</span></div><div class="manual-body"><span class="category-label">'+esc(d.category)+'</span><h3><button type="button" class="manual-open-title" data-read="'+key+'" aria-haspopup="dialog" aria-label="Open '+title+' in resource reader">'+title+'</button></h3><p>'+esc(d.description||'A publicly linked guidance or reference resource.')+'</p><span class="manual-status">'+esc(d.status||'Confirm edition')+'</span>'+accessLabel+'<div class="manual-actions">'+secondary+'</div><span class="manual-download-status" aria-live="polite" hidden></span></div></article>';
 }
 function pdfName(d){return (String(d.title||'WRHA document').replace(/[\\/:*?"<>|]/g,'-').trim().slice(0,120)||'WRHA document')+'.pdf'}
@@ -78,7 +78,7 @@ async function downloadFromCard(e,link,d){
  if(!d)return;
  const state=availability?.state(d);
  const routes=(window.WRHA_READER_SOURCES?.readerCandidates(d)||[{url:d.url}]).filter(r=>!r.legalAlternate);
- link.href=window.WRHA_READER_SOURCES?.directUrl(d)||d.url;
+ link.href=window.WRHA_READER_SOURCES?.primaryDownload?.(d)||window.WRHA_READER_SOURCES?.directUrl(d)||d.url;
  const same=routes.find(r=>{try{return new URL(r.url,location.href).origin===location.origin}catch(_){return false}});
  if(same){link.href=same.url;return}
  if(link.dataset.nativeDownload==='1')return; // Publisher controls cross-origin download behaviour.
@@ -105,7 +105,7 @@ function bindDocumentActions(node,onOpen){
  observeCovers(node)
 }
 // Availability events never reorder the grid or replace its children.
-const accessLabels={verified:'Interactive PDF',local:'PDF document',reachable:'PDF document',collection:'Resource collection',image:'Image resource',unknown:'PDF document',blocked:'PDF document',fallback:'PDF document',unconfirmed:'PDF document'};
+const accessLabels={verified:'Interactive PDF',local:'PDF document',reachable:'PDF document',collection:'Resource collection',office:'Word document',image:'Image resource',unknown:'PDF document',blocked:'PDF document',fallback:'PDF document',unconfirmed:'PDF document'};
 function shortAccess(state){return accessLabels[state]||accessLabels.unknown}
 function updateCardStatus(card){const d=resolveDoc(card.dataset.docKey||'');if(!d)return;const label=card.querySelector('.reader-availability-label');if(!label)return;const state=availability?.state(d)||'unknown';if(label.dataset.state===state)return;label.dataset.state=state;label.textContent=shortAccess(state);label.title=availability?.label(d)||'Reader availability not yet checked'}
 function refreshStatusLabels(id){for(const card of document.querySelectorAll('.manual-card[data-doc-key]')){const d=resolveDoc(card.dataset.docKey);if(!id||d?.id===id||d?.url===id)updateCardStatus(card)}}
@@ -259,6 +259,6 @@ $('roleDialog').addEventListener('click',e=>{if(e.target===$('roleDialog'))$('ro
 filterRoles();
 
 /* Reset to the landing page once after each application release. */
-const release='2026-11-17-legal-sources-2';let newRelease=true;try{newRelease=localStorage.getItem('wrha-home-release')!==release;localStorage.setItem('wrha-home-release',release)}catch(_){}
+const release='2026-11-17-hosted-library-1';let newRelease=true;try{newRelease=localStorage.getItem('wrha-home-release')!==release;localStorage.setItem('wrha-home-release',release)}catch(_){}
 if(newRelease){try{history.scrollRestoration='manual'}catch(_){}setView('home',false);window.scrollTo(0,0)}else setView(location.hash.slice(1)||'home',false);
 })();
