@@ -28,3 +28,21 @@ html{scroll-padding-top:120px}body{background:linear-gradient(130deg,#f6faff,#f2
 .doc-cover .static-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;z-index:4;border-radius:3px}
 .doc-cover.has-preview .cover-placeholder{display:none}
 .doc-cover.has-preview canvas:not([hidden]){position:relative;z-index:3}
+
+/* One semantic keyboard-accessible title button extends to the entire card.
+   The independent download link stays above it; no nested interactive controls. */
+.manual-card.manual-tappable{position:relative;isolation:isolate;cursor:pointer}
+.manual-tappable .manual-body,.manual-tappable .manual-body h3,.manual-tappable .manual-open-title{position:static}
+.manual-tappable .manual-open-title{font:inherit;color:inherit;letter-spacing:inherit;text-align:left;line-height:inherit;border:0;background:transparent;display:block;width:100%;padding:0;cursor:pointer}
+.manual-tappable .manual-open-title::after{content:"";position:absolute;inset:0;z-index:5;border-radius:inherit}
+.manual-tappable .manual-open-title:focus-visible{outline:0}
+.manual-tappable .manual-open-title:focus-visible::after{outline:3px solid #0755a5;outline-offset:-4px;border-radius:17px}
+.manual-tappable:hover .manual-open-title{text-decoration:underline;text-underline-offset:3px;color:#0755a5}
+.manual-tappable .manual-actions{margin-top:auto;padding-top:13px}
+.manual-tappable .manual-actions a{position:relative;z-index:6;min-height:42px;width:100%;font-size:12px;background:#f2f8ff;font-weight:800;cursor:pointer}
+.manual-tappable .manual-actions a:focus-visible{outline:3px solid #0755a5;outline-offset:2px}
+.manual-tappable .manual-download-status{font-size:11px;color:#5c6d80;line-height:1.4;margin-top:6px;position:relative;z-index:6}
+.manual-tappable .doc-cover [hidden],.manual-tappable .manual-download-status[hidden]{display:none!important}
+.manual-tappable .doc-cover img,.manual-tappable .doc-cover canvas{image-rendering:auto;object-fit:contain}
+@media(max-width:590px){.manual-tappable .manual-actions a{font-size:11px;min-height:40px;padding:7px 5px}}
+@media(prefers-reduced-motion:reduce){.manual-card.manual-tappable{transition:none!important;animation:none!important}}
