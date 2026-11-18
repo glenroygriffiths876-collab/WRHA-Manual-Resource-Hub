@@ -5,7 +5,8 @@
     "gitBlob": "af11edb22f5506564f761db4b7cc41e147dbfcfb",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/CI_Field_Guide_2025.pdf"
   },
   {
     "id": "local-2",
@@ -13,7 +14,8 @@
     "gitBlob": "a3db3779038eeaa25d11bb297803e8d61aa9f1ca",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/DHIS2_User_Manual_May_2026.pdf"
   },
   {
     "id": "local-4",
@@ -21,7 +23,8 @@
     "gitBlob": "5f08e112dcd81346b1efc7a2ec5c835ae264813f",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/HIV_Disclosure_Protocol_2021.pdf"
   },
   {
     "id": "local-5",
@@ -29,7 +32,8 @@
     "gitBlob": "d910643aa82b1a7598c67d249accacaf019f480c",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Linkage_Retention_Recovery_Protocol.pdf"
   },
   {
     "id": "local-7",
@@ -37,7 +41,8 @@
     "gitBlob": "4e595a3c5de24110283668db61f7fade217eec32",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PITC_Facilitator_Manual.pdf"
   },
   {
     "id": "local-8",
@@ -45,7 +50,8 @@
     "gitBlob": "4b8891b13f6b17902ec25d522adc71248ade878c",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PITC_Participant_Manual.pdf"
   },
   {
     "id": "local-10",
@@ -53,7 +59,8 @@
     "gitBlob": "84d927a28b7b18122f4889d907304468adda5317",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Paediatric_Adolescent_HIV_2021.pdf"
   },
   {
     "id": "local-12",
@@ -61,7 +68,8 @@
     "gitBlob": "da9ffd31f40a93ad6ced3d9ee847e7394706c4d1",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PrEP_Handbook_2023.pdf"
   },
   {
     "id": "local-13",
@@ -69,7 +77,8 @@
     "gitBlob": "95af175339d91be3a12af9995086c1c4d04eb2fd",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/PrEP_Implementation_Guide_2025.pdf"
   },
   {
     "id": "local-14",
@@ -77,7 +86,8 @@
     "gitBlob": "5cb8498e78b80b9d3347e131f3ca4504ec8c0cef",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/STI_Case_Management_2020.pdf"
   },
   {
     "id": "local-15",
@@ -85,7 +95,8 @@
     "gitBlob": "11139928228f3111689d239ffc3b144caf7802f0",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/STI_Handbook_2026.pdf"
   },
   {
     "id": "local-16",
@@ -93,7 +104,8 @@
     "gitBlob": "e23636c88bf7136532dadee2cde26d59a48a48f0",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/Staff_Orders_for_Public_Service.pdf"
   },
   {
     "id": "local-17",
@@ -101,7 +113,8 @@
     "gitBlob": "37826eb37bc808bd5900441fa54e04d374f6bbd8",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/TB_Guidelines_2021.pdf"
   },
   {
     "id": "local-18",
@@ -109,6 +122,7 @@
     "gitBlob": "67e0a0352775a95d883c72d87e9d9d25d7ef085d",
     "edition": "Existing JASDIS publication",
     "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
-    "publish": false
+    "publish": false,
+    "recordUrl": "https://glenroygriffiths876-collab.github.io/National-HIV-STI-TB-Programme-Staff-Resource-Centre/TSIS2_User_Guide_2026.pdf"
   }
 ]
