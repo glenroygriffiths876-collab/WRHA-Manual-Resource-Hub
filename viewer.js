@@ -153,7 +153,7 @@ async function loadPdf(d){const version=session,original=d.url;
  if(version!==session)return;
  const routes=window.WRHA_READER_SOURCES?.readerCandidates(d)||[{url:original,label:'Original publisher document'}];let lastError;
  for(const route of routes){
-  const downloadEndpoint=/ncdip\.moh\.gov\.jm\/download\//i.test(route.url);
+  const downloadEndpoint=/ncdip\.moh\.gov\.jm\/download\//i.test(route.url)||route.legalAlternate;
   for(const method of route.delivery?['stream']:(downloadEndpoint?['stream','bytes']:['url','stream','bytes'])){
    if(version!==session)return;
    try{
@@ -165,14 +165,14 @@ async function loadPdf(d){const version=session,original=d.url;
     if(version!==session)return;
     const loading=lib.getDocument(opts);task=loading;let timer;let handle;try{handle=await Promise.race([loading.promise,new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('PDF loading timed out')),route.delivery?110000:d.fileSizeNote?45000:20000)})])}finally{clearTimeout(timer)}
     if(version!==session){try{await loading.destroy()}catch(_){}return}
-    pdf=handle;pageCount=pdf.numPages;currentPage=clamp(restore());initialPaint=true;setMode('pdfjs');
+    pdf=handle;pageCount=pdf.numPages;if(route.pages&&pageCount!==route.pages)throw Error('Alternate publication page count changed');currentPage=route.legalAlternate?1:clamp(restore());initialPaint=true;setMode('pdfjs');
     const same=new URL(route.url,location.href).origin===location.origin;
     elements.download.href=route.url;if(same)elements.download.setAttribute('download',pdfFileName(d));else elements.download.removeAttribute('download');
     elements.download.textContent='Download PDF ↓';elements.download.title='Download the PDF currently displayed.';
-    if(route.label!=='Original publisher document')$('pdfMeta').textContent=[d.publisher,d.year,route.label].filter(Boolean).join(' · ');
+    $('pdfMeta').textContent=[d.publisher,d.year,d.status,route.label!=='Original publisher document'?route.label:null].filter(Boolean).join(' · ');if(route.legalAlternate){$('pdfOriginal').href=route.url;elements.download.title='Download this alternate legal edition; check amendments.';}
     elements.page.max=String(pageCount);updateControls();let rendered=await render(currentPage);if(version!==session)return;if(rendered===false&&currentPage!==1)rendered=await render(1);if(version!==session)return;initialPaint=false;if(rendered!==true)throw Error('Page could not be rendered');
     window.WRHA_READER_AVAIL?.mark(d,'verified');loadOutline(handle,version);redraw();return;
-   }catch(err){if(version!==session)return;lastError=err;initialPaint=false;const failed=task;task=null;pdf=null;try{await failed?.destroy()}catch(_){}if(version!==session)return;setMode('loading');if(/MissingPDFException|HTTP (?:403|404)|Unexpected server response \((?:403|404)\)/i.test(String(err?.name)+' '+String(err?.message)))break}
+   }catch(err){if(version!==session)return;lastError=err;initialPaint=false;const failed=task;task=null;pdf=null;try{await failed?.destroy()}catch(_){}if(version!==session)return;setMode('loading');if(/MissingPDFException|HTTP (?:403|404)|Unexpected server response \((?:403|404)\)|Alternate publication page count changed/i.test(String(err?.name)+' '+String(err?.message)))break}
   }
  }
  if(version!==session)return;
@@ -198,7 +198,7 @@ function open(d,keepTrail=false){
  const source=d.sourceUrl||d.url;elements.source.href=source;elements.source.hidden=!!d.deviceCopy;
  const isLaw=(window.WRHA_DATA?.legislation||[]).some(l=>l.id===d.id);
  elements.legalAlt.hidden=!isLaw;
- if(isLaw)elements.legalAlt.href='https://lipj.gov.jm/';elements.source.textContent='Publisher / official source ↗';
+ if(isLaw)elements.legalAlt.href='https://lipj.gov.jm/library';elements.source.textContent='Publisher / official source ↗';
  const direct=window.WRHA_READER_SOURCES?.directUrl(d)||d.url;elements.download.href=direct;elements.download.removeAttribute('title');$('pdfOriginal').href=direct;
  let sameOrigin=false;try{sameOrigin=new URL(d.url,location.href).origin===location.origin}catch{}
  const isImage=d.format==='image';const isPDF=d.format!=='page'&&!isImage&&(/\.pdf(?:[?#]|$)/i.test(d.url)||/\/download\/?(?:[?#]|$)/i.test(d.url)||d.format==='pdf');
