@@ -1,0 +1,62 @@
+{
+  "mode": "convert",
+  "manifestCount": 146,
+  "publishedThisRun": 2,
+  "unresolvedThisRun": 0,
+  "records": [
+    {
+      "id": "deep-nutrition-colorectal-care",
+      "title": "Nutrition and Colorectal Cancer Care",
+      "format": "image",
+      "kind": "manual",
+      "attempts": [
+        {
+          "url": "https://ncdip.moh.gov.jm/download/3520/?tmstv=1794971094",
+          "resolvedUrl": "https://ncdip.moh.gov.jm/download/3520/?tmstv=1794971094",
+          "bytes": 2079289,
+          "sha256": "74fda0a34f29a2580951b10482bf3f43f91a6e8e5e2231ed102b2eaa3dda0ff7",
+          "cors": null,
+          "type": "image/png",
+          "alternate": false,
+          "state": "image_candidate_requires_conversion",
+          "recoveredFile": "deep-nutrition-colorectal-care.png"
+        }
+      ],
+      "state": "image_candidate_requires_conversion",
+      "published": true,
+      "pages": 1,
+      "source": "https://ncdip.moh.gov.jm/download/3520/?tmstv=1794971094",
+      "bytes": 167543,
+      "pdfTitle": "deep-nutrition-colorectal-care",
+      "firstPagesText": "",
+      "conversionReviewPending": true
+    },
+    {
+      "id": "audit-community-private-reg",
+      "title": "Standards & Regulation \u2014 Community and Private Health Facilities Guidelines",
+      "format": "office",
+      "kind": "manual",
+      "attempts": [
+        {
+          "url": "https://moh.gov.jm/wp-content/uploads/2015/07/Guidelines-for-Community-and-Private-Health-Facilities.doc",
+          "resolvedUrl": "https://moh.gov.jm/wp-content/uploads/2015/07/Guidelines-for-Community-and-Private-Health-Facilities.doc",
+          "bytes": 117760,
+          "sha256": "a57725c50d67d7c20c3fec88df6cf4ec5eec85a757c6d2403c36f33d99a7af97",
+          "cors": null,
+          "type": "application/msword",
+          "alternate": false,
+          "state": "office_candidate_requires_conversion",
+          "recoveredFile": "audit-community-private-reg.doc"
+        }
+      ],
+      "state": "office_candidate_requires_conversion",
+      "published": true,
+      "pages": 11,
+      "source": "https://moh.gov.jm/wp-content/uploads/2015/07/Guidelines-for-Community-and-Private-Health-Facilities.doc",
+      "bytes": 228493,
+      "pdfTitle": "X",
+      "firstPagesText": "X\nMinistry of Health\nGuidelines\nFor\nStandards and Regulation Division\nCommunity and Private Health Facilities\nSupplementary to\nGuidelines for Community and Private\nHealth Facilities\nSTANDARDS AND REGULATION DIVISION\n2-4 King Street, Kingston, Jamaica, West Indies\n1\n GUIDELINES FOR COMMUNITY AND PRIVATE\nHEALTH FACILITIES\nUnless otherwise stated, these guidelines apply to all types of facilities, namely:\n\uf0b7\nHome for Senior Citizens\n\uf0b7\nNursing Home/Infirmary\n\uf0b7\nAdult Day Care\n\uf0b7\nPsychiatric Nursing Homes\n\uf0b7\nHomes of Charitable Organizations\n\uf0b7\nConvalescent Homes\nDEFINITIONS\nHome for Senior Citizens\nAny facility where the operator provides boarding with or without food service for two or more \nadults who are not related by blood or marriage.\nNursing Home/Infirmary\nA care facility providing basic nursing services in addition to domiciliary and custodial care. \nThe operator has a satisfactory agreement with a physician for medical coverage.\nAdult Day care:\nA non-residential facility offering social activities during the day, for senior citizens and the \nmentally challenged.\nAmbulatory Resident:\nA resident who is able to move from place to place either unaided or by use of ambulatory \ndevices; ",
+      "conversionReviewPending": true
+    }
+  ]
+}

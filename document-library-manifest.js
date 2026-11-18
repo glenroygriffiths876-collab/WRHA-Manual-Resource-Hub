@@ -1860,5 +1860,31 @@ window.WRHA_LIBRARY_MANIFEST=Object.freeze({
     "verifiedOn": "2026-11-17",
     "originalPath": null,
     "sourceSha256": "cc15bd1a7b72de286ae364d9ec57b33b3adc0800cf359ea80976031ab5d32142"
+  },
+  "deep-nutrition-colorectal-care": {
+    "recordUrl": "https://ncdip.moh.gov.jm/download/3520/",
+    "path": "documents/library/deep-nutrition-colorectal-care.pdf",
+    "edition": "Converted from official PNG; formatting review pending",
+    "sha256": "a3f77ba1705265281ad9347dfd740556d4f5d0d5baf3a7413dc5a07ec871b002",
+    "pages": 1,
+    "legalAlternate": false,
+    "sourceUrl": "https://ncdip.moh.gov.jm/download/3520/?tmstv=1794971094",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17",
+    "originalPath": "documents/originals/deep-nutrition-colorectal-care.png",
+    "sourceSha256": "74fda0a34f29a2580951b10482bf3f43f91a6e8e5e2231ed102b2eaa3dda0ff7"
+  },
+  "audit-community-private-reg": {
+    "recordUrl": "https://moh.gov.jm/wp-content/uploads/2015/07/Guidelines-for-Community-and-Private-Health-Facilities.doc",
+    "path": "documents/library/audit-community-private-reg.pdf",
+    "edition": "Converted from official DOC; formatting review pending",
+    "sha256": "0bb143a19bb0aacd08a302a402b4770b4bbeda89760dfe8df317aeba7ad6d81c",
+    "pages": 11,
+    "legalAlternate": false,
+    "sourceUrl": "https://moh.gov.jm/wp-content/uploads/2015/07/Guidelines-for-Community-and-Private-Health-Facilities.doc",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17",
+    "originalPath": "documents/originals/audit-community-private-reg.doc",
+    "sourceSha256": "a57725c50d67d7c20c3fec88df6cf4ec5eec85a757c6d2403c36f33d99a7af97"
   }
 });
