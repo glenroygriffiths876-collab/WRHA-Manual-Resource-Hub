@@ -1,0 +1,35 @@
+{
+  "results": [
+    {
+      "id": "law-9",
+      "pages": 118,
+      "sha256": "323901a22a822c9f86926c83639d1bd8daa58f51a4097e6fe4a7175270eea59d",
+      "source": "https://www.japarliament.gov.jm/attachments/article/341/The%20Data%20Protection%20Act,%202020%20No.%207.pdf"
+    },
+    {
+      "id": "audit-law-domestic-amendment",
+      "pages": 6,
+      "sha256": "6395dc66cdeaab773cba1d224e3c0cab02229f41d5d49b55d97686cda12fee91",
+      "source": "https://japarliament.gov.jm/attachments/article/339/The-Domestic-Violence---Amendment--Act--2023-No.-20---_.pdf"
+    },
+    {
+      "id": "audit-law-disaster",
+      "pages": 48,
+      "sha256": "dc623a942f410f2fd45cc0d0f75e3dea8f6895045ecc72b7d95c03df999cd986",
+      "source": "https://japarliament.gov.jm/attachments/341_The%20Disater%20and%20Preparedness%20and%20Emergency%20Management%20Act%2C%202015%20No.1.pdf"
+    },
+    {
+      "id": "audit-law-sexual-offences",
+      "pages": 42,
+      "sha256": "57943ea1ae7e94883179827132f24cabaf8e6d8495458dcc9c14b5cad685229d",
+      "source": "https://www.japarliament.gov.jm/attachments/341_The%20Sexual%20Offences%20Act,%202009.pdf"
+    },
+    {
+      "id": "law-18",
+      "pages": 84,
+      "sha256": "c993d05b5a45d8516caff6622c6fe2b8851938e3a6965f5f80fe6e65a961aed9",
+      "source": "https://japarliament.gov.jm/attachments/339_Child%20Care%20and%20Protection%20Act.pdf"
+    }
+  ],
+  "sourceTerms": "https://japarliament.gov.jm/index.php?Itemid=13&id=51&option=com_content&view=article"
+}
