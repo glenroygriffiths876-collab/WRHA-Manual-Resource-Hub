@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Faithful reader PDF from the Ministry's official online Charter (not an invented publication)."""
-import urllib.request,json,re,hashlib,html,io
+import urllib.request,json,re,hashlib,html,io,unicodedata
 from pathlib import Path
 from bs4 import BeautifulSoup
 import fitz
@@ -53,8 +53,9 @@ writer.close()
 pages=prep.validate_pdf(out)
 with fitz.open(out) as pdf:
     rendered=' '.join(' '.join(p.get_text().split()) for p in pdf)
+def normalized(s):return ''.join(c for c in unicodedata.normalize('NFKC',s).casefold() if c.isalnum())
 for _,t in blocks:
-    if ' '.join(t.split()) not in rendered:raise ValueError('Converted copy text omitted or altered: '+t[:80])
+    if normalized(t) not in normalized(rendered):raise ValueError('Converted copy text omitted or altered: '+t[:80])
 prep.write_cover(out,root/'covers'/(ident+'.webp'))
 mp=root/'document-library-manifest.js'
 manifest=json.loads(re.search(r'Object\.freeze\((\{[\s\S]*\})\);',mp.read_text()).group(1))

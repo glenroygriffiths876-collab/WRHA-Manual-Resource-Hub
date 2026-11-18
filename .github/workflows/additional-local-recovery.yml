@@ -1,4 +1,4 @@
-name: Additional exact-source legal and charter recovery
+name: Additional validated legal and Charter recovery
 on:
   push:
     branches: [main]

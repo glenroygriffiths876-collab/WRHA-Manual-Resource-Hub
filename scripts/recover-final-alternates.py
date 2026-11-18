@@ -22,7 +22,7 @@ sources={
 'audit-law-pesticides-residue':[('https://www.pca.gov.jm/tpac_pesticides_act.pdf',None,'Pesticides Control Authority; 2017 instrument; check gazette and commencement')],
 'audit-pca-labelling':[('https://www.pca.gov.jm/pdf_folder/labelling_standards.pdf',None,'Pesticides Control Authority; labelling reference')],
 'law-20':[('https://jamaicatradeportal.gov.jm/upload/files/Legal_1549912055.pdf',None,'Jamaica Trade Portal; original 1958 Act; read with 2019 amendments')],
-'audit-law-precursor':[('https://www.jamaicatradeportal.gov.jm/upload/files/Legal_1559236380.pdf',None,'Jamaica Trade Portal; revised Act pages authorized 2006; verify amendments')],
+'audit-law-precursor':[('https://www.jamaicatradeportal.gov.jm/upload/files/Legal_1559236380.pdf',29,'Jamaica Trade Portal; revised Act pages authorized 2006; verify amendments')],
 'audit-law-precursor-regs':[('https://jamaicatradeportal.gov.jm/upload/files/Legal_1562945374.pdf',28,'Jamaica Trade Portal; 2013 Regulations (L.N. 269A/2013), revised pages 2017; verify any other subsidiary instruments')],
 'audit-law-factories':[('https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/31021/JAM31021%202009.pdf',None,'ILO NATLEX; revised Factories Act including 2009 amendments; verify subsequent changes')]
 }
