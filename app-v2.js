@@ -60,12 +60,12 @@ function flushCovers(){if($('pdfDialog')?.open&&$('pdfWebResource')?.hidden)retu
  }catch(e){failedCovers.add(url);if(!el.classList.contains('has-preview')){el.classList.add('not-previewable');el.title='Cover preview unavailable from this host; select the document to try the reader';}}
  finally{el.classList.remove('loading');queued.delete(url);coverActive--;if(task)try{await task.destroy()}catch{}flushCovers()}
  })();}}
-function coverMarkup(d){const pdf=isPdf(d),image=d.format==='image',label=pdf||image?'WRHA REFERENCE COVER':'RESOURCE COLLECTION';
+function coverMarkup(d){const pdf=isPdf(d),image=d.format==='image',office=d.format==='office',label=pdf||image||office?'WRHA REFERENCE COVER':'RESOURCE COLLECTION';
  const pub=d.publisher||'Public health resource';const year=d.year?'<span class="reference-cover-year">'+esc(d.year)+'</span>':'';
  const safeURL=pdf?esc(d.url):'',local='./covers/'+encodeURIComponent(d.id)+'.webp';
  let remote='';try{const x=new URL(d.coverUrl||'');if(x.protocol==='https:'&&/(^|\.)moh\.gov\.jm$/i.test(x.hostname))remote=x.href}catch(_){}
  if(image)remote=window.WRHA_READER_SOURCES?.directUrl(d)||d.url;
- const art='<div class="cover-placeholder reference-cover"><span class="reference-cover-brand">WRHA · RESOURCE HUB</span><span class="reference-cover-symbol" aria-hidden="true">'+(pdf||image?'▤':'▥')+'</span><strong>'+esc(d.title)+'</strong><span class="reference-cover-publisher">'+esc(pub)+'</span>'+year+'<small>'+label+'</small></div>';
+ const art='<div class="cover-placeholder reference-cover"><span class="reference-cover-brand">WRHA · RESOURCE HUB</span><span class="reference-cover-symbol" aria-hidden="true">'+(pdf||image||office?'▤':'▥')+'</span><strong>'+esc(d.title)+'</strong><span class="reference-cover-publisher">'+esc(pub)+'</span>'+year+'<small>'+label+'</small></div>';
  return '<div class="doc-cover '+(pdf||image?'':'not-previewable')+'" '+(pdf?'data-pdf="'+safeURL+'"':image?'data-image-cover="1"':'')+'>'+art+(pdf||image?'<img class="static-cover" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="'+esc(remote||local)+'" '+(remote?'data-alternate="'+esc(local)+'" ':'')+'alt="Cover preview: '+esc(d.title)+'"><canvas aria-hidden="true" hidden></canvas>':'')+'</div>';}
 function docCard(d,type){const law=type==='law',pdf=isPdf(d),image=d.format==='image',office=d.format==='office',title=esc(d.title),href=esc(window.WRHA_READER_SOURCES?.directUrl(d)||d.url),key=esc(type+':'+d.id);
  const state=availability?.state(d)||'unknown';const accessLabel='<span class="reader-availability-label" data-state="'+esc(state)+'" title="'+esc(availability?.label(d)||'Reader availability not yet checked')+'">'+esc(shortAccess(state))+'</span>';
@@ -105,7 +105,7 @@ function bindDocumentActions(node,onOpen){
  observeCovers(node)
 }
 // Availability events never reorder the grid or replace its children.
-const accessLabels={verified:'Interactive PDF',local:'PDF document',reachable:'PDF document',collection:'Resource collection',image:'Image resource',unknown:'PDF document',blocked:'PDF document',fallback:'PDF document',unconfirmed:'PDF document'};
+const accessLabels={verified:'Interactive PDF',local:'PDF document',reachable:'PDF document',collection:'Resource collection',image:'Image resource',office:'Word document',unknown:'PDF document',blocked:'PDF document',fallback:'PDF document',unconfirmed:'PDF document'};
 function shortAccess(state){return accessLabels[state]||accessLabels.unknown}
 function updateCardStatus(card){const d=resolveDoc(card.dataset.docKey||'');if(!d)return;const label=card.querySelector('.reader-availability-label');if(!label)return;const state=availability?.state(d)||'unknown';if(label.dataset.state===state)return;label.dataset.state=state;label.textContent=shortAccess(state);label.title=availability?.label(d)||'Reader availability not yet checked'}
 function refreshStatusLabels(id){for(const card of document.querySelectorAll('.manual-card[data-doc-key]')){const d=resolveDoc(card.dataset.docKey);if(!id||d?.id===id||d?.url===id)updateCardStatus(card)}}
