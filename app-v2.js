@@ -30,7 +30,7 @@ $('menuBtn').addEventListener('click',()=>{const open=$('sidebar').classList.tog
 addEventListener('hashchange',()=>setView(location.hash.slice(1),false));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('sidebar').classList.remove('open');$('menuBtn').setAttribute('aria-expanded','false')}});
 
-function isPdf(d){return d.format==='office'&&!!window.WRHA_READER_SOURCES?.localRoute?.(d)||d.format!=='page'&&d.format!=='image'&&d.format!=='office'&&(/\.pdf(?:\?|$)/i.test(d.url)||/\/download\//i.test(d.url)||d.format==='pdf')}
+function isPdf(d){return !!window.WRHA_READER_SOURCES?.localRoute?.(d)||d.format!=='page'&&d.format!=='image'&&d.format!=='office'&&(/\.pdf(?:\?|$)/i.test(d.url)||/\/download\//i.test(d.url)||d.format==='pdf')}
 const coverCache=new Map(),coverWaiting=[],queued=new Set(),failedCovers=new Set();let coverActive=0,lastOpened=null;
 const coverVisible=el=>!!el?.isConnected&&($('pdfDialog')?.open?!!el.closest('#pdfWebResource:not([hidden])'):!!el.closest('.page.active'));
 const visibleCovers=()=>[...document.querySelectorAll('.doc-cover[data-pdf]')].filter(coverVisible);

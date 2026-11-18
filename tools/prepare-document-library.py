@@ -82,7 +82,7 @@ def main():
                     report['sourceChecks'].append({'id':row['id'],'pages':pages,'status':'verified'})
                 except Exception as ex: report['sourceChecks'].append({'id':row['id'],'status':'failed','reason':str(ex)[:250]})
     if args.publish_approved:
-        manifest={}
+        manifest=json.loads(re.search(r'Object\.freeze\((\{[\s\S]*\})\);',MANIFEST.read_text()).group(1))
         with tempfile.TemporaryDirectory() as td:
             temp=Path(td)
             (ROOT/'documents'/'library').mkdir(parents=True,exist_ok=True)

@@ -181,7 +181,7 @@ function open(d,keepTrail=false){
  if(isLaw)elements.legalAlt.href='https://lipj.gov.jm/library';elements.source.textContent='Publisher / official source ↗';
  const direct=window.WRHA_READER_SOURCES?.directUrl(d)||d.url;elements.download.href=direct;elements.download.removeAttribute('title');$('pdfOriginal').href=direct;
  let sameOrigin=false;try{sameOrigin=new URL(d.url,location.href).origin===location.origin}catch{}
- const isImage=d.format==='image';const isPDF=d.format==='office'||d.format!=='page'&&!isImage&&(/\.pdf(?:[?#]|$)/i.test(d.url)||/\/download\/?(?:[?#]|$)/i.test(d.url)||d.format==='pdf');
+ const localPDF=!!window.WRHA_READER_SOURCES?.localRoute?.(d);const isImage=d.format==='image'&&!localPDF;const isPDF=localPDF||d.format==='office'||d.format!=='page'&&!isImage&&(/\.pdf(?:[?#]|$)/i.test(d.url)||/\/download\/?(?:[?#]|$)/i.test(d.url)||d.format==='pdf');
  elements.download.hidden=!isPDF&&!isImage;$('pdfOriginal').hidden=(!isPDF&&!isImage)||!!d.deviceCopy;$('pdfPrint').hidden=!isPDF;
  if(isPDF){
   if(sameOrigin){elements.download.setAttribute('download',pdfFileName(d));elements.download.textContent='Download PDF ↓';}

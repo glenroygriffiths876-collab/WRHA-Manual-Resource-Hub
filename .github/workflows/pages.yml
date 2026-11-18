@@ -52,6 +52,7 @@ jobs:
           cp -r assets/app-icons _site/assets/app-icons
           find covers -maxdepth 1 -name '*.webp' -type f -exec cp {} _site/covers/ \;
           if test -d documents/library; then mkdir -p _site/documents; cp -r documents/library _site/documents/library; fi
+          if test -d documents/originals; then mkdir -p _site/documents; cp -r documents/originals _site/documents/originals; fi
           touch _site/.nojekyll
           test -f _site/verified-role-public.js
           test -s _site/deep-manual-sources.js
