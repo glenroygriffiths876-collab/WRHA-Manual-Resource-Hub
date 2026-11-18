@@ -77,7 +77,7 @@ function resolveDoc(value){const i=value.indexOf(':'),kind=value.slice(0,i),id=v
 async function downloadFromCard(e,link,d){
  if(!d)return;
  const state=availability?.state(d);
- const routes=window.WRHA_READER_SOURCES?.readerCandidates(d)||[{url:d.url}];
+ const routes=(window.WRHA_READER_SOURCES?.readerCandidates(d)||[{url:d.url}]).filter(r=>!r.legalAlternate);
  link.href=window.WRHA_READER_SOURCES?.directUrl(d)||d.url;
  const same=routes.find(r=>{try{return new URL(r.url,location.href).origin===location.origin}catch(_){return false}});
  if(same){link.href=same.url;return}
@@ -259,6 +259,6 @@ $('roleDialog').addEventListener('click',e=>{if(e.target===$('roleDialog'))$('ro
 filterRoles();
 
 /* Reset to the landing page once after each application release. */
-const release='2026-11-17-legal-sources-1';let newRelease=true;try{newRelease=localStorage.getItem('wrha-home-release')!==release;localStorage.setItem('wrha-home-release',release)}catch(_){}
+const release='2026-11-17-legal-sources-2';let newRelease=true;try{newRelease=localStorage.getItem('wrha-home-release')!==release;localStorage.setItem('wrha-home-release',release)}catch(_){}
 if(newRelease){try{history.scrollRestoration='manual'}catch(_){}setView('home',false);window.scrollTo(0,0)}else setView(location.hash.slice(1)||'home',false);
 })();
