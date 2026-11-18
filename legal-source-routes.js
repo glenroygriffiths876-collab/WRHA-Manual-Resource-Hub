@@ -112,6 +112,7 @@ const patches={
 };
 for(const law of D.legislation){if(patches[law.id]){const original=law.url;Object.assign(law,patches[law.id]);law.sourceUrl=law.sourceUrl||original;delete law.resourceKind;}if(alt[law.id])law.alternateLegalSources=alt[law.id].map(([url,label,pages])=>({url,label,pages:pages||null,legalAlternate:true}));}
 function candidates(doc){const routes=prior.candidates(doc);const extra=(D.legislation.find(x=>x.id===doc.id&&x.url===doc.url)?.alternateLegalSources||[]);return [...routes,...extra].filter((x,i,a)=>a.findIndex(y=>y.url===x.url)===i);}
-function readerCandidates(doc){const base=prior.readerCandidates(doc);const extra=(D.legislation.find(x=>x.id===doc.id&&x.url===doc.url)?.alternateLegalSources||[]);return [...base,...extra].filter((x,i,a)=>a.findIndex(y=>y.url===x.url)===i);}
-window.WRHA_READER_SOURCES=Object.freeze({...prior,candidates,readerCandidates});
+function readerCandidates(doc){const base=prior.readerCandidates(doc);const extra=(D.legislation.find(x=>x.id===doc.id&&x.url===doc.url)?.alternateLegalSources||[]);const all=[...base,...extra].filter((x,i,a)=>a.findIndex(y=>y.url===x.url)===i);return all;}
+function rememberLegalRoute(doc,route){/* Keep original edition first on every new open. No alternate silently promoted. */}
+window.WRHA_READER_SOURCES=Object.freeze({...prior,candidates,readerCandidates,rememberLegalRoute});
 })();
