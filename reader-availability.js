@@ -2,7 +2,7 @@
  * Probes fetch a tiny PDF header where supported, never upload or proxy documents.
  * A failed browser fetch is not proof of a permanent publisher restriction. */
 (()=>{'use strict';
-const D=window.WRHA_DATA,all=[...(D?.manuals||[]),...(D?.legislation||[])],key='wrha-reader-availability-2026-11-v2',ttl=7*86400000,known=new Set(['mofps-civil-establishment-2026']);
+const D=window.WRHA_DATA,all=[...(D?.manuals||[]),...(D?.legislation||[])],key='wrha-reader-availability-2026-11-v3',ttl=7*86400000,known=new Set(['mofps-civil-establishment-2026']);
 let cache={};try{const previous=JSON.parse(localStorage.getItem('wrha-reader-availability-2026-11-v1')||'{}')||{};cache=JSON.parse(localStorage.getItem(key)||'null')||Object.fromEntries(Object.entries(previous).filter(([,r])=>r?.result==='verified'));}catch(_){}
 const isPdf=d=>d?.format!=='page'&&d?.format!=='image'&&(/\.pdf(?:[?#]|$)|\/download(?:\/|$)/i.test(d?.url||'')||d?.format==='pdf');
 const routeKey=d=>d.url,local=d=>{try{return new URL(d.url,location.href).origin===location.origin}catch(_){return false}};
