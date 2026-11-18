@@ -25,7 +25,8 @@ sources={
 'audit-law-precursor':[('https://www.jamaicatradeportal.gov.jm/upload/files/Legal_1559236380.pdf',29,'Jamaica Trade Portal; revised Act pages authorized 2006; verify amendments')],
 'audit-law-precursor-regs':[('https://jamaicatradeportal.gov.jm/upload/files/Legal_1562945374.pdf',28,'Jamaica Trade Portal; 2013 Regulations (L.N. 269A/2013), revised pages 2017; verify any other subsidiary instruments')],
 'audit-law-factories':[('https://www.frontend.jamaicatradeportal.gov.jm/upload/files/Legal_1540413013.pdf',None,'Jamaica Trade Portal; revised Factories Act including 2009 amendments; verify subsequent changes'),('https://jamaicatradeportal.gov.jm/upload/files/Legal_1540413013.pdf',None,'Jamaica Trade Portal; revised Factories Act including 2009 amendments; verify subsequent changes')],
-'law-extra-29':[('https://medicalcouncilja.com/wp-content/uploads/2024/07/Medical-Act_1.pdf',19,'Medical Council of Jamaica; revised pages authorized through 2012; verify subsequent amendments')]
+'law-extra-29':[('https://medicalcouncilja.com/wp-content/uploads/2024/07/Medical-Act_1.pdf',19,'Medical Council of Jamaica; revised pages authorized through 2012; verify subsequent amendments')],
+'audit-law-births-deaths':[('https://ecc.gov.jm/www/wp-content/uploads/2026/09/The-Registration-of-Births-Deaths-Act-1881_compressed.pdf',53,'Early Childhood Commission; historical revised Act download; check subsequent amendments and commencement')]
 }
 # Do not substitute a single regulation for an entire subsidiary-legislation compilation.
 results=[]

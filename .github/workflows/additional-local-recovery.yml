@@ -1,4 +1,4 @@
-name: Recover Medical and Factories Acts from confirmed alternate sources
+name: Recover Registration Act from Early Childhood Commission
 on:
   push:
     branches: [main]
@@ -20,9 +20,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install pymupdf pillow beautifulsoup4
+      - run: python -m pip install pymupdf pillow beautifulsoup4 cryptography certifi
       - run: node scripts/check-public-document-build.mjs .
       - run: python scripts/recover-final-alternates.py
+      - run: node scripts/check-public-document-build.mjs .
+      - name: Retrieve remaining official Justice files with validated certificate chain only
+        run: python scripts/recover-justice-publisher.py
       - run: node scripts/check-public-document-build.mjs .
       - name: Commit validated files and redeploy
         env:
@@ -30,7 +33,7 @@ jobs:
         run: |
           git config user.name 'WRHA document recovery'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add documents/library/ document-library-manifest.js covers/ reports/alternate-source-publication.json
+          git add documents/library/ document-library-manifest.js covers/ reports/alternate-source-publication.json reports/justice-publisher-recovery.json
           if ! git diff --cached --quiet; then
             git commit -m 'Store additional exact legal sources and verified charter reading copy'
             git push origin HEAD:main
