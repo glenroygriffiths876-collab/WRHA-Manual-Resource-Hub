@@ -176,3 +176,22 @@
 #pdfDialog .wrha-embed-unavailable[hidden],#pdfDialog .wrha-embedded-bar[hidden]{display:none!important}
 #pdfDialog.wrha-reader-contrast .wrha-embedded-bar{background:#000;color:#fff}
 @media(max-width:620px){#pdfDialog.wrha-native-mode .pdf-tools #pdfFullScreen{width:auto}#pdfDialog .wrha-embedded-bar{padding:5px 7px;gap:5px}}
+
+/* Collection shelves use the same book cards as the primary catalogue. */
+#pdfDialog #pdfCollectionItems{width:100%;max-width:1120px;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
+#pdfDialog #pdfCollectionItems .manual-card{position:relative;min-width:0;animation:none!important;transform:none!important;text-align:left;color:#183e65;}
+#pdfDialog #pdfCollectionItems .manual-top{height:clamp(165px,23vw,255px);min-height:0;padding:10px}
+#pdfDialog #pdfCollectionItems .doc-cover{height:100%;width:min(100%,180px);min-height:0}
+#pdfDialog #pdfCollectionItems .manual-body{padding:12px;min-height:0}
+#pdfDialog #pdfCollectionItems .manual-body h3{width:100%;max-width:none;min-height:0;margin:6px 0;font-size:14px;color:#143867;line-height:1.4}
+#pdfDialog #pdfCollectionItems .manual-body p{margin:0 0 8px;font-size:11px;line-height:1.5;max-width:none}
+#pdfDialog #pdfCollectionItems .manual-actions{margin-top:auto}
+#pdfDialog #pdfCollectionItems .manual-actions a{min-height:40px}
+#pdfDialog #pdfCollectionItems .manual-open-title{color:inherit}
+#pdfDialog #pdfCollectionItems .wrha-collection-note{grid-column:1/-1;margin:0}
+#pdfDialog #pdfCollectionItems .manual-open-title::after{z-index:5}
+#pdfDialog #pdfCollectionItems .manual-actions a{z-index:6}
+#pdfDialog.wrha-reader-contrast #pdfCollectionItems .manual-card{background:#000;color:#fff;border-color:#fff}
+#pdfDialog.wrha-reader-contrast #pdfCollectionItems .manual-body h3,#pdfDialog.wrha-reader-contrast #pdfCollectionItems .manual-body p{color:#fff}
+@media(max-width:760px){#pdfDialog #pdfCollectionItems{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
+@media(max-width:360px){#pdfDialog #pdfCollectionItems{grid-template-columns:1fr}}
