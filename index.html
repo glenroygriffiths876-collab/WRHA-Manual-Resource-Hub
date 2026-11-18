@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-<link rel="stylesheet" href="./enhance.css?v=hd-cards-1">
+<link rel="stylesheet" href="./enhance.css?v=stable-catalogue-1">
 <link rel="stylesheet" href="./viewer.css?v=landing-reader-2">
 <link rel="stylesheet" href="./landing-premium.css?v=3">
 <link rel="stylesheet" href="./roles-evidence.css">
@@ -39,9 +39,9 @@
 <script defer src="./cross-region-role-consolidation.js"></script>
 <script defer src="./reader-sources.js?v=landing-reader-2"></script>
 <script src="./catalog-deep-audit-20261117.js?v=1" defer></script>
-  <script defer src="./reader-availability.js?v=2"></script>
+  <script defer src="./reader-availability.js?v=stable-catalogue-1"></script>
 <script defer src="./viewer.js?v=hd-cards-1"></script>
-<script defer src="./app-v2.js?v=deep-audit-1"></script>
+<script defer src="./app-v2.js?v=stable-catalogue-1"></script>
 <script defer src="./hub-utilities.js"></script>
 <script defer src="./pwa-install.js?v=landing-reader-3"></script>
 </head>
@@ -95,15 +95,15 @@
  <div class="page-heading"><div><span class="eyebrow">KNOWLEDGE LIBRARY</span><h1>Manuals, guidelines <em>& protocols</em></h1><p>Browse publicly available MOHW guidelines, manuals and protocols spanning the full health system. PDF cards display their actual first page where browser access permits.</p></div><span class="page-icon">▤</span></div>
  <div class="content-note"><strong>Document-status notice:</strong> Official-source verification is not the same as confirmation that an edition is the latest. Historical repository PDFs remain available but must be checked before clinical use.</div>
  <div class="toolbar"><label class="search-box"><span>⌕</span><input id="manualSearch" type="search" autocomplete="off" placeholder="Search title, topic or category..." aria-label="Search manuals"></label><select id="manualCategory" aria-label="Filter by category"><option value="">All categories</option></select><select id="manualSort" aria-label="Sort manuals"><option value="featured">Recommended first</option><option value="newest">Newest year</option><option value="alpha">A to Z</option></select></div>
- <div class="result-heading"><b id="manualCount"></b><button class="clear-btn" id="clearManuals">Clear filters</button></div><div id="manualGrid" class="manual-grid"></div><div class="load-more-holder"><button id="moreManuals" class="btn btn-primary" hidden>Show more resources ↓</button></div><div class="empty-state" id="manualEmpty" hidden>No matching manuals. Try a different title or category.</div>
+ <div class="result-heading"><b id="manualCount"></b><div class="wrha-result-actions"><button type="button" class="clear-btn" id="refreshManualOrder" title="Apply the latest document availability without reloading the page">Refresh order</button><button class="clear-btn" id="clearManuals">Clear filters</button></div></div><div id="manualGrid" class="manual-grid"></div><div class="load-more-holder"><button id="moreManuals" class="btn btn-primary" hidden>Show more resources ↓</button></div><div class="empty-state" id="manualEmpty" hidden>No matching manuals. Try a different title or category.</div>
  <div class="footer-note">Can't find a guideline? <a href="https://www.moh.gov.jm/mp-resources/" target="_blank" rel="noopener">Browse the MOHW medical-professional resource library ↗</a> or <a href="https://ncdip.moh.gov.jm/resources/" target="_blank" rel="noopener">MOHW NCD resources ↗</a>.</div>
 </section>
 <section data-page="legislation" class="page">
 <div class="page-heading"><div><span class="eyebrow">LAWS OF JAMAICA</span><h1>Health <em>Legislation</em></h1><p>Search Jamaican health-related Acts, regulations and subsidiary legislation using authoritative government sources.</p></div><span class="page-icon">⚖</span></div>
 <div class="content-note"><strong>Legal accuracy notice:</strong> The Ministry of Justice advises that online reproductions are informational and may not include all amendments. Confirm commencement and current consolidated text with the official legal publisher before relying on a law.</div>
 <div class="toolbar"><label class="search-box"><span>⌕</span><input id="lawSearch" type="search" placeholder="Search an Act, regulation or topic..." aria-label="Search health laws"></label><select id="lawCategory" aria-label="Filter legislation category"><option value="">All legal areas</option></select><select id="lawType" aria-label="Filter type"><option value="">All instrument types</option><option>Act</option><option>Regulations</option></select></div>
-<div class="result-heading"><b id="lawCount"></b><button class="clear-btn" id="clearLaws">Clear filters</button></div>
-<div class="manual-grid" id="lawGrid"></div><div class="empty-state" id="lawEmpty" hidden>No legislation matched these filters.</div>
+<div class="result-heading"><b id="lawCount"></b><div class="wrha-result-actions"><button type="button" class="clear-btn" id="refreshLawOrder" title="Apply the latest document availability without reloading the page">Refresh order</button><button class="clear-btn" id="clearLaws">Clear filters</button></div></div>
+<div class="manual-grid" id="lawGrid"></div><div class="load-more-holder"><button type="button" id="moreLaws" class="btn btn-primary" hidden>Show more legislation ↓</button></div><div class="empty-state" id="lawEmpty" hidden>No legislation matched these filters.</div>
 <div class="footer-note">Official legal libraries: <a href="https://laws.moj.gov.jm/" target="_blank" rel="noopener">Laws of Jamaica</a> · <a href="https://lipj.gov.jm/" target="_blank" rel="noopener">Legal Information Portal of Jamaica</a> · <a href="https://www.moh.gov.jm/standards-and-regulation-division/legislative-framework/" target="_blank" rel="noopener">MOHW legislative framework</a></div>
 </section>
 <section data-page="facilities" class="page">
