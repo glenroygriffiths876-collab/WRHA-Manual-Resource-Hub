@@ -5,12 +5,18 @@ on:
     paths:
       - '.github/workflows/final-reader-verification.yml'
   workflow_dispatch:
+    inputs:
+      recover_again:
+        description: Retry alternate source recovery before browser test
+        type: boolean
+        default: false
 permissions:
   contents: write
   actions: write
 jobs:
   recovery:
-    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' && inputs.recover_again
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
@@ -38,7 +44,12 @@ jobs:
           fi
   live-reader:
     needs: recovery
-    runs-on: ubuntu-latest
+    if: ${{ always() && (needs.recovery.result == 'success' || needs.recovery.result == 'skipped') }}
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
@@ -50,9 +61,12 @@ jobs:
       - run: npm install --no-save --no-audit --no-fund playwright@1.56.1
       - run: npx playwright install --with-deps chromium
       - run: node scripts/live-reader-exhaustive.mjs
+        env:
+          SHARD_INDEX: ${{ matrix.shard }}
+          SHARD_COUNT: '4'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: live-reader-resource-by-resource
+          name: live-reader-resource-by-resource-${{ matrix.shard }}
           path: artifacts/
           if-no-files-found: warn

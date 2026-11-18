@@ -5,7 +5,7 @@ const base='https://glenroygriffiths876-collab.github.io/WRHA-Manual-Resource-Hu
 const manifest=JSON.parse(fs.readFileSync('document-library-manifest.js','utf8').match(/Object\.freeze\((\{[\s\S]*\})\);/)[1]);
 const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
 fs.mkdirSync('artifacts/live-reader',{recursive:true});
-const results=[];
+const results=[];const shard=Number(process.env.SHARD_INDEX||0),shards=Number(process.env.SHARD_COUNT||1);
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 let seed;
 try{
@@ -26,7 +26,7 @@ try{
  const unresolved=all.filter(d=>!manifest[d.id]&&d.format!=='page');
  const collections=all.filter(d=>!manifest[d.id]&&d.format==='page');
  const first=work.find(d=>d.id==='audit-peer-signature');
- const todo=[...(first?[first]:[]),...work.filter(d=>d!==first),...collections];
+ const todo=[...(first?[first]:[]),...work.filter(d=>d!==first),...collections].filter((_,i)=>i%shards===shard);
  async function check(d,viewport,extra=false){
   const ctx=await browser.newContext({viewport,serviceWorkers:'block',acceptDownloads:true});
   // Only block publisher hosts for local PDFs; allow the application and PDF.js runtime.
@@ -82,12 +82,12 @@ try{
   return rec;
  }
  let index=0;
- await Promise.all(Array.from({length:4},async()=>{while(index<todo.length){const d=todo[index++];const rec=await check(d,{width:1280,height:900},d.id==='audit-peer-signature');results.push(rec);console.log(JSON.stringify(rec));}}));
- for(const d of unresolved)results.push({...d,state:'unresolved_no_local_file'});
- for(const width of [390,768,1440])if(first){const rec=await check(first,{width,height:width===390?844:900},true);results.push(rec);console.log(JSON.stringify(rec));}
+ await Promise.all(Array.from({length:2},async()=>{while(index<todo.length){const d=todo[index++];const rec=await check(d,{width:1280,height:900},d.id==='audit-peer-signature');results.push(rec);console.log(JSON.stringify(rec));}}));
+ if(shard===0)for(const d of unresolved)results.push({...d,state:'unresolved_no_local_file'});
+ for(const width of [390,768,1440])if(first&&shard===0){const rec=await check(first,{width,height:width===390?844:900},true);results.push(rec);console.log(JSON.stringify(rec));}
  const primary=results.filter(r=>r.viewport===1280||!r.viewport);
  const counts=primary.reduce((o,r)=>(o[r.state]=(o[r.state]||0)+1,o),{});
- const report={production:base,expectedLocalFiles:Object.keys(manifest).length,totalCatalogue:all.length,counts,results};
+ const report={shard,shards,production:base,expectedLocalFiles:Object.keys(manifest).length,totalCatalogue:all.length,counts,results};
  fs.writeFileSync('artifacts/live-reader-results.json',JSON.stringify(report,null,2));console.log('LIVE_READER_SUMMARY '+JSON.stringify({total:all.length,local:Object.keys(manifest).length,counts,deviceFailures:results.filter(r=>r.viewport!==1280&&r.viewport&&r.state==='failed').length}));
  if(results.some(r=>r.state==='failed'))process.exitCode=1;
 }finally{await browser.close();}
