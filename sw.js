@@ -3,14 +3,14 @@
  * feedback, and no MOHW/MOFPS-hosted PDFs. External documents need internet.
  */
 'use strict';
-const VERSION='wrha-public-shell-2026-11-17-universal-cover-1';
+const VERSION='wrha-public-shell-2026-11-17-original-delivery-1';
 const CORE=[
  './','./index.html',
  './styles.css','./enhance.css','./viewer.css','./landing-premium.css','./roles-evidence.css',
  './hub-utilities.css','./pwa-install.css',
  './data.js','./catalog-extra.js','./document-overrides.js',
  './establishment-resource.js','./deep-manual-sources.js','./verified-role-public.js','./deep-rha-job-evidence.js','./srha-verified-positions.js','./cross-region-role-consolidation.js',
- './app-v2.js','./reader-sources.js', './catalog-deep-audit-20261117.js','./reader-availability.js','./viewer.js','./hub-utilities.js','./pwa-install.js',
+ './app-v2.js','./delivery-config.js','./reader-sources.js', './catalog-deep-audit-20261117.js','./reader-availability.js','./viewer.js','./hub-utilities.js','./pwa-install.js',
  './wrha-logo.webp','./assets/wrha-logo-hd.svg','./assets/wrha-logo-original.svg','./jamaicaHigh.svg',
  './manifest.webmanifest',
  './assets/mohw-logo.png','./assets/wrha-hub-share-qr.svg',
