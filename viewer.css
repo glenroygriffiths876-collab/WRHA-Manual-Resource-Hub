@@ -195,3 +195,7 @@
 #pdfDialog.wrha-reader-contrast #pdfCollectionItems .manual-body h3,#pdfDialog.wrha-reader-contrast #pdfCollectionItems .manual-body p{color:#fff}
 @media(max-width:760px){#pdfDialog #pdfCollectionItems{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
 @media(max-width:360px){#pdfDialog #pdfCollectionItems{grid-template-columns:1fr}}
+
+#pdfDialog .wrha-image-pane{flex:1;min-height:0;overflow:auto;background:#173653;display:flex;align-items:flex-start;justify-content:center;padding:10px}
+#pdfDialog .wrha-image-pane img{display:block;width:auto;max-width:100%;height:auto;max-height:100%;object-fit:contain;background:#fff}
+#pdfDialog .wrha-image-pane[hidden]{display:none!important}
