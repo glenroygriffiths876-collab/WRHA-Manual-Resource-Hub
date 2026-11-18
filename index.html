@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="./styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="./enhance.css?v=universal-cover-1">
-<link rel="stylesheet" href="./viewer.css?v=legal-sources-2">
+<link rel="stylesheet" href="./viewer.css?v=hosted-library-1">
 <link rel="stylesheet" href="./landing-premium.css?v=3">
 <link rel="stylesheet" href="./roles-evidence.css">
 <link rel="stylesheet" href="./hub-utilities.css">
@@ -41,9 +41,11 @@
   <script defer src="./reader-sources.js?v=legal-sources-1"></script>
 <script src="./catalog-deep-audit-20261117.js?v=1" defer></script>
   <script defer src="./legal-source-routes.js?v=2"></script>
+  <script defer src="./library/published-local.js?v=1"></script>
+  <script defer src="./hosted-library.js?v=1"></script>
   <script defer src="./reader-availability.js?v=legal-sources-1"></script>
-<script defer src="./viewer.js?v=legal-sources-2"></script>
-<script defer src="./app-v2.js?v=legal-sources-2"></script>
+<script defer src="./viewer.js?v=hosted-library-1"></script>
+<script defer src="./app-v2.js?v=hosted-library-1"></script>
 <script defer src="./hub-utilities.js"></script>
 <script defer src="./pwa-install.js?v=landing-reader-3"></script>
 </head>
@@ -269,7 +271,7 @@
     <iframe id="pdfFrame" title="Embedded official document" loading="eager" referrerpolicy="no-referrer" hidden></iframe>
     <div id="pdfImagePane" class="wrha-image-pane" hidden><img id="pdfSourceImage" referrerpolicy="no-referrer" alt=""></div>
     <div id="pdfBlocked" class="wrha-embed-unavailable" hidden role="status">
-      <p>Document temporarily unavailable.</p><button id="pdfRetryInline" class="viewer-tool" type="button">Retry</button>
+      <p id="pdfMissingMessage">A verified reading copy is not in the library.</p><button id="pdfRetryInline" class="viewer-tool" type="button" hidden>Retry</button>
     </div>
 <div id="pdfWebResource" class="reader-webresource" hidden>
       <div class="reader-web-icon" aria-hidden="true">▤</div>
