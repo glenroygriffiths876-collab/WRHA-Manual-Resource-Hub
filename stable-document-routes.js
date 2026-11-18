@@ -71,7 +71,8 @@ function stableRoutes(d){if(d.deviceCopy)return previous.readerCandidates(d);con
  const unavailableJustice=/^https:\/\/laws\.moj\.gov\.jm\//i.test(d.url);
  // During the known Justice outage, try independent document copies first;
  // retain alternate-edition labels and never mark a maintenance notice as success.
- const routed=unavailableJustice&&alts.length?[...alts,...direct]:prior;
+ const gatewayAlts=[];try{const base=new URL(window.WRHA_DELIVERY_ORIGIN||'');if(base.protocol==='https:'&&base.pathname==='/'&&!base.search&&!base.hash&&!base.username&&!base.password)for(const [i,alt] of (d.alternateLegalSources||[]).entries())gatewayAlts.push({...alt,url:new URL('/document/'+encodeURIComponent(d.id)+'/'+i,base).href,label:alt.label+' · WRHA delivery',delivery:true});}catch(_){}
+ const routed=unavailableJustice&&alts.length?[...gatewayAlts,...alts,...direct]:[...prior,...gatewayAlts];
  const list=[...(local?[local]:[]),...(pinned?[{url:pinned.url,label:'JASDIS repository PDF · pinned edition',jasdis:true}]:[]),...routed];
  return list.filter((r,i)=>list.findIndex(x=>x.url===r.url)===i);
 }
