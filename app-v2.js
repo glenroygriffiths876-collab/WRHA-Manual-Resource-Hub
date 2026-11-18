@@ -30,42 +30,71 @@ addEventListener('hashchange',()=>setView(location.hash.slice(1),false));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('sidebar').classList.remove('open');$('menuBtn').setAttribute('aria-expanded','false')}});
 
 function isPdf(d){return d.format!=='page'&&(/\.pdf(?:\?|$)/i.test(d.url)||/\/download\//i.test(d.url)||d.format==='pdf')}
-const coverCache=new Map(),coverWaiting=[],queued=new Set();let coverActive=0;
+const coverCache=new Map(),coverWaiting=[],queued=new Set(),failedCovers=new Set();let coverActive=0,lastOpened=null;
 if(window.pdfjsLib){pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';}
 const coverObserver=('IntersectionObserver' in window)?new IntersectionObserver(records=>{records.forEach(r=>{if(r.isIntersecting){coverObserver.unobserve(r.target);scheduleCover(r.target);}})},{rootMargin:'280px'}):null;
 function observeCovers(node){node.querySelectorAll('.doc-cover[data-pdf]').forEach(el=>{
  const fallback=()=>{if(coverCache.has(el.dataset.pdf)){showCached(el);return;}if(coverObserver)coverObserver.observe(el);else scheduleCover(el);};
  const staticImg=el.querySelector('.static-cover');
  if(!staticImg){fallback();return;}
- const loaded=()=>{el.classList.add('has-preview');const canvas=el.querySelector('canvas');if(canvas)canvas.hidden=true;};
+ const loaded=()=>{el.classList.add('has-preview');const canvas=el.querySelector('canvas');if(canvas)canvas.hidden=true;const record=[...allDocs,...laws].find(d=>d.url===el.dataset.pdf);if(staticImg.naturalWidth<600&&availability?.state(record||{})!=='blocked'&&!navigator.connection?.saveData)fallback();};
  const missing=()=>{staticImg.remove();fallback();};
  staticImg.addEventListener('load',loaded,{once:true});staticImg.addEventListener('error',missing,{once:true});
  if(staticImg.complete){if(staticImg.naturalWidth)loaded();else missing();}
  });}
-function showCached(el){const img=coverCache.get(el.dataset.pdf);if(!img)return;const canvas=el.querySelector('canvas');if(canvas){const bitmap=new Image();bitmap.onload=()=>{canvas.width=bitmap.width;canvas.height=bitmap.height;canvas.getContext('2d').drawImage(bitmap,0,0);canvas.hidden=false;el.classList.add('has-preview')};bitmap.src=img;}}
-function scheduleCover(el){const url=el.dataset.pdf;if(coverCache.has(url)){showCached(el);return;}if(!window.pdfjsLib||queued.has(url))return;queued.add(url);coverWaiting.push({el,url});flushCovers();}
+function showCached(el){const img=coverCache.get(el.dataset.pdf);if(!img)return;const canvas=el.querySelector('canvas');if(canvas){const bitmap=new Image();bitmap.onload=()=>{if(!el.isConnected)return;canvas.width=bitmap.width;canvas.height=bitmap.height;canvas.getContext('2d').drawImage(bitmap,0,0);const old=el.querySelector('.static-cover');if(old)old.hidden=true;canvas.hidden=false;el.classList.add('has-preview')};bitmap.src=img;}}
+function scheduleCover(el){const url=el.dataset.pdf;if(coverCache.has(url)){showCached(el);return;}if(!window.pdfjsLib||queued.has(url)||failedCovers.has(url))return;queued.add(url);coverWaiting.push({el,url});flushCovers();}
 function flushCovers(){while(coverActive<2&&coverWaiting.length){const {el,url}=coverWaiting.shift();coverActive++;el.classList.add('loading');(async()=>{let task=null,doc=null;try{
- task=pdfjsLib.getDocument({url,withCredentials:false,disableAutoFetch:true,disableStream:true});
+ task=pdfjsLib.getDocument({url,withCredentials:false,disableAutoFetch:true,disableStream:true,isEvalSupported:false,enableXfa:false});
  doc=await task.promise;const page=await doc.getPage(1);const basic=page.getViewport({scale:1});
- const scale=Math.min(2,420/basic.width,540/basic.height);
+ const scale=Math.min(3,900/basic.width,1200/basic.height);
  const vp=page.getViewport({scale});const off=document.createElement('canvas');off.width=Math.max(1,Math.round(vp.width));off.height=Math.max(1,Math.round(vp.height));
  await page.render({canvasContext:off.getContext('2d',{alpha:false}),viewport:vp}).promise;
- const image=off.toDataURL('image/jpeg',.85);coverCache.set(url,image);const record=[...allDocs,...laws].find(d=>d.url===url);if(record)availability?.mark(record,'reachable');
+ const image=off.toDataURL('image/jpeg',.94);coverCache.set(url,image);if(coverCache.size>40)coverCache.delete(coverCache.keys().next().value);const record=[...allDocs,...laws].find(d=>d.url===url);if(record)availability?.mark(record,'reachable');
  const targets=document.querySelectorAll('.doc-cover[data-pdf]');
  targets.forEach(n=>{if(n.dataset.pdf===url)showCached(n)});
- }catch(e){el.classList.add('not-previewable');el.title='Cover preview unavailable from this host; open the original document';}
- finally{el.classList.remove('loading');queued.delete(url);coverActive--;if(doc)try{await doc.destroy()}catch{}flushCovers()}
+ }catch(e){failedCovers.add(url);if(!el.classList.contains('has-preview')){el.classList.add('not-previewable');el.title='Cover preview unavailable from this host; select the document to try the reader';}}
+ finally{el.classList.remove('loading');queued.delete(url);coverActive--;if(task)try{await task.destroy()}catch{}flushCovers()}
  })();}}
 function coverMarkup(d){const pdf=isPdf(d);const label=pdf?'FIRST-PAGE PREVIEW':'OFFICIAL SOURCE PAGE';
  const safeURL=pdf?esc(d.url):'';
  return '<div class="doc-cover '+(pdf?'':'not-previewable')+'" '+(pdf?'data-pdf="'+safeURL+'"':'')+'><div class="cover-placeholder"><span class="crest">♛</span><strong>'+esc(d.title)+'</strong><small>'+label+'</small></div>'+(pdf?'<img class="static-cover" loading="lazy" decoding="async" src="./covers/'+encodeURIComponent(d.id)+'.webp" alt="First page of '+esc(d.title)+'"><canvas aria-hidden="true" hidden></canvas>':'')+'</div>';}
-function docCard(d,type){const law=type==='law',pdf=isPdf(d),title=esc(d.title),href=esc(d.url);
+function docCard(d,type){const law=type==='law',pdf=isPdf(d),title=esc(d.title),href=esc(d.url),key=esc(type+':'+d.id);
  const state=availability?.state(d)||'unknown';const accessLabel='<span class="reader-availability-label" data-state="'+esc(state)+'">'+esc(availability?.label(d)||'Reader availability not yet checked')+'</span>';
- const mainButton='<button type="button" class="read-btn" data-read="'+esc(type+':'+d.id)+'">'+(pdf?(state==='blocked'?'Try reader':'Read in hub'):'Browse in hub')+'</button>';
- const secondary='<a class="download-btn" href="'+href+'" target="_blank" rel="noopener">'+(pdf?'Official PDF ↗':'Official source ↗')+'</a>';
- return '<article class="manual-card '+(law?'manual-legal':'')+'"><div class="manual-top">'+coverMarkup(d)+'<span class="manual-year">'+esc(d.year||d.type||'Resource')+'</span></div><div class="manual-body"><span class="category-label">'+esc(d.category)+'</span><h3>'+title+'</h3><p>'+esc(d.description||'A publicly linked guidance or reference resource.')+'</p><span class="manual-status">'+esc(d.status||'Confirm edition')+'</span>'+accessLabel+'<div class="manual-actions">'+mainButton+secondary+'</div></div></article>';
+ const secondary='<a class="download-btn" '+(pdf?'data-download="'+key+'" download="'+esc(pdfName(d))+'" ':'')+'href="'+href+'" target="_blank" rel="noopener" aria-label="'+(pdf?'Download PDF: ':'Open official source: ')+title+'" title="'+(pdf?'Download PDF; source restrictions may require opening the official file':'Open the publisher website')+'">'+(pdf?'Download PDF ↓':'Official source ↗')+'</a>';
+ return '<article class="manual-card manual-tappable '+(law?'manual-legal':'')+'"><div class="manual-top">'+coverMarkup(d)+'<span class="manual-year">'+esc(d.year||d.type||'Resource')+'</span></div><div class="manual-body"><span class="category-label">'+esc(d.category)+'</span><h3><button type="button" class="manual-open-title" data-read="'+key+'" aria-haspopup="dialog" aria-label="Open '+title+' in resource reader">'+title+'</button></h3><p>'+esc(d.description||'A publicly linked guidance or reference resource.')+'</p><span class="manual-status">'+esc(d.status||'Confirm edition')+'</span>'+accessLabel+'<div class="manual-actions">'+secondary+'</div><span class="manual-download-status" aria-live="polite" hidden></span></div></article>';
 }
-function bindDocumentActions(node){node.querySelectorAll('[data-read]').forEach(btn=>btn.addEventListener('click',()=>{const [kind,id]=btn.dataset.read.split(':');openPdf((kind==='law'?laws:allDocs).find(d=>d.id===id))}));observeCovers(node)}
+function pdfName(d){return (String(d.title||'WRHA document').replace(/[\\/:*?"<>|]/g,'-').trim().slice(0,120)||'WRHA document')+'.pdf'}
+function resolveDoc(value){const i=value.indexOf(':'),kind=value.slice(0,i),id=value.slice(i+1);return (kind==='law'?laws:allDocs).find(d=>d.id===id)}
+async function downloadFromCard(e,link,d){
+ if(!d)return;
+ const state=availability?.state(d);
+ const routes=window.WRHA_READER_SOURCES?.candidates(d)||[{url:d.url}];
+ const same=routes.find(r=>{try{return new URL(r.url,location.href).origin===location.origin}catch(_){return false}});
+ if(same){link.href=same.url;return}
+ if(state==='blocked'||link.dataset.nativeDownload==='1')return; // Publisher controls cross-origin download behaviour.
+ e.preventDefault();if(link.dataset.downloading==='1')return;
+ link.dataset.downloading='1';link.setAttribute('aria-busy','true');link.textContent='Preparing…';
+ const note=link.closest('.manual-card')?.querySelector('.manual-download-status');
+ if(note){note.hidden=true;note.textContent=''}
+ let ok=false;
+ try{
+  for(const route of routes){const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),35000);try{
+   const response=await fetch(route.url,{mode:'cors',credentials:'omit',signal:controller.signal});if(!response.ok)continue;
+   const bytes=Number(response.headers.get('content-length'));if(bytes>150*1024*1024)continue;
+   const blob=await response.blob();if(blob.size>150*1024*1024||!(await blob.slice(0,1024).text()).includes('%PDF-'))continue;
+   const url=URL.createObjectURL(new Blob([blob],{type:'application/pdf'})),a=document.createElement('a');a.href=url;a.download=pdfName(d);document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);ok=true;break;
+  }catch(_){}finally{clearTimeout(timer)}}
+ }finally{
+  delete link.dataset.downloading;link.removeAttribute('aria-busy');link.textContent=ok?'Download PDF ↓':'Open / download PDF ↗';
+  if(!ok){link.dataset.nativeDownload='1';link.removeAttribute('download');if(note){note.textContent='Your browser could not save this source directly. Tap the download link again to open the official file.';note.hidden=false}}
+ }
+}
+function bindDocumentActions(node){
+ node.querySelectorAll('[data-read]').forEach(btn=>btn.addEventListener('click',()=>{lastOpened=btn.dataset.read;openPdf(resolveDoc(lastOpened))}));
+ node.querySelectorAll('[data-download]').forEach(link=>link.addEventListener('click',e=>downloadFromCard(e,link,resolveDoc(link.dataset.download))));
+ observeCovers(node)
+}
 function renderFeatured(){const items=allDocs.filter(d=>isPdf(d)&&availability?.state(d)==='verified').sort((a,b)=>byAccess(a,b)||(b.year||0)-(a.year||0)||a.title.localeCompare(b.title)).slice(0,3);
  $('featuredReaderNote').textContent=items.length?'First page successfully rendered on this device.':'Checking reader availability. You can browse the full library while this runs.';
  $('featured').innerHTML=items.length?items.map(d=>docCard(d,'manual')).join(''):'<button type="button" class="btn btn-primary" id="featuredBrowse">Browse the manual library ↗</button>';bindDocumentActions($('featured'));$('featuredBrowse')?.addEventListener('click',()=>setView('manuals'))}
@@ -105,7 +134,7 @@ function filterLaws(){const q=$('lawSearch').value.trim().toLowerCase(),cat=$('l
 ['lawSearch','lawCategory','lawType'].forEach(x=>$(x).addEventListener(x==='lawSearch'?'input':'change',()=>{lawLimit=18;filterLaws()}));
 $('clearLaws').addEventListener('click',()=>{$('lawSearch').value='';$('lawCategory').value='';$('lawType').value='';lawLimit=18;filterLaws()});filterLaws();
 
-let accessRefresh;window.addEventListener('wrha-reader-availability',()=>{clearTimeout(accessRefresh);accessRefresh=setTimeout(()=>{if($('pdfDialog')?.open)return;renderFeatured();if(current==='manuals')filterManuals();if(current==='legislation')filterLaws()},250)});$('pdfDialog')?.addEventListener('close',()=>{renderFeatured();if(current==='manuals')filterManuals();if(current==='legislation')filterLaws()});
+let accessRefresh;window.addEventListener('wrha-reader-availability',()=>{clearTimeout(accessRefresh);accessRefresh=setTimeout(()=>{if($('pdfDialog')?.open)return;renderFeatured();if(current==='manuals')filterManuals();if(current==='legislation')filterLaws()},250)});$('pdfDialog')?.addEventListener('close',()=>{const key=lastOpened;renderFeatured();if(current==='manuals')filterManuals();if(current==='legislation')filterLaws();if(key){const scope=current==='manuals'?$('manualGrid'):current==='legislation'?$('lawGrid'):$('featured');const target=[...(scope?.querySelectorAll('[data-read]')||[])].find(x=>x.dataset.read===key);target?.focus({preventScroll:true})}lastOpened=null});
 function openPdf(d){if(!d)return;if(window.WRHA_DocViewer){window.WRHA_DocViewer.open(d);return;}if(isPdf(d))window.open(d.url,'_blank','noopener');else window.open(d.sourceUrl||d.url,'_blank','noopener');}
 
 const parishes=Object.keys(D.rhaMap).sort();
@@ -202,6 +231,6 @@ $('roleDialog').addEventListener('click',e=>{if(e.target===$('roleDialog'))$('ro
 filterRoles();
 
 /* Reset to the landing page once after each application release. */
-const release='2026-11-17-premium-3';let newRelease=true;try{newRelease=localStorage.getItem('wrha-home-release')!==release;localStorage.setItem('wrha-home-release',release)}catch(_){}
+const release='2026-11-17-hd-cards-1';let newRelease=true;try{newRelease=localStorage.getItem('wrha-home-release')!==release;localStorage.setItem('wrha-home-release',release)}catch(_){}
 if(newRelease){try{history.scrollRestoration='manual'}catch(_){}setView('home',false);window.scrollTo(0,0)}else setView(location.hash.slice(1)||'home',false);
 })();
