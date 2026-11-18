@@ -68,6 +68,13 @@ jobs:
           fi
       - name: Verify deployed reader assets and local files
         run: node scripts/check-public-document-build.mjs _site
+      - name: Record unresolved catalogue entries for recovery
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: document-recovery-report
+          path: document-recovery-report.json
+          if-no-files-found: warn
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

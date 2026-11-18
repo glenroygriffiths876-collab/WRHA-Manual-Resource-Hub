@@ -20,6 +20,20 @@ for(const [id,entry] of Object.entries(library)){
  const p=check(entry.path);if(!p)continue;
  const b=fs.readFileSync(p);if(!b.subarray(0,1024).includes(Buffer.from('%PDF-'))||crypto.createHash('sha256').update(b).digest('hex')!==entry.sha256)errors.push('Invalid PDF or checksum mismatch: '+id);
 }
+
+const runtimeScripts=['data.js','catalog-extra.js','document-overrides.js','establishment-resource.js','deep-manual-sources.js','reader-sources.js','catalog-deep-audit-20261117.js','legal-source-routes.js','document-library-manifest.js','stable-document-routes.js'];
+const runtime={};
+const ctx=vm.createContext({window:runtime,URL,location:new URL('https://glenroygriffiths876-collab.github.io/WRHA-Manual-Resource-Hub/')});
+for(const f of runtimeScripts){const p=check(f);if(p)vm.runInContext(fs.readFileSync(p,'utf8'),ctx,{filename:f,timeout:15000});}
+const catalogue=[...(runtime.WRHA_DATA?.manuals||[]).map(d=>({...d,kind:'manual'})),...(runtime.WRHA_DATA?.legislation||[]).map(d=>({...d,kind:'legislation'}))];
+const pending=catalogue.map(d=>({id:d.id,title:d.title,kind:d.kind,format:d.format,source:d.sourceUrl||d.url,document:d.url,local:!!runtime.WRHA_READER_SOURCES?.localRoute(d)})).filter(d=>!d.local);
+const peer=catalogue.find(d=>/Peer Approval Signature Form/.test(d.title));
+if(!peer||peer.url!=='https://www.moh.gov.jm/wp-content/uploads/2026/03/Peer-Approval-Signature-Form-Medical-Staff.pdf')errors.push('Official peer signature source missing or changed');
+const report={total:catalogue.length,manuals:catalogue.filter(d=>d.kind==='manual').length,legislation:catalogue.filter(d=>d.kind==='legislation').length,manifestRecords:Object.keys(library).length,unresolved:pending.length,records:pending};
+fs.writeFileSync('document-recovery-report.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({...report,records:undefined},null,2));
+if(process.env.REQUIRE_COMPLETE_LOCAL_LIBRARY==='1'&&pending.length)errors.push('Complete local library required; unresolved: '+pending.length);
+
 console.log(JSON.stringify({checkedLocalDocuments:Object.keys(library).length,errors},null,2));
 if(!Object.keys(library).length)console.warn('No locally prepared documents in this build; external-only entries remain unresolved.');
 if(errors.length)process.exitCode=1;

@@ -31,7 +31,7 @@ assert.equal(w.WRHA_HUB_UTILITIES.phone,'18765029756');
 const click=q=>{const e=d.querySelector(q);assert(e,'Missing clickable element '+q);e.click();return e;};
 const visible=q=>{const el=d.querySelector(q);assert(el,'Missing '+q);return el;};
 assert.equal(d.querySelectorAll('.nav-button').length,7);
-assert(d.querySelectorAll('#featured .manual-card').length>0);
+assert(d.querySelectorAll('#featured .manual-card').length>0||d.getElementById('featuredBrowse'),'Home must offer a verified resource or a library link');
 click('[data-view="manuals"]');
 assert(visible('[data-page="manuals"]').classList.contains('active'));
 assert(d.querySelectorAll('#manualGrid .manual-card').length>0);

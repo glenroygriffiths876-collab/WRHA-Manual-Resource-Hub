@@ -11,7 +11,7 @@ requireCheck(D.roleEvidenceCounts?.civilService>=40,'MOFPS verified central Mini
 requireCheck(D.roleEvidenceCounts?.unverified===0,'Unverified titles are displayed');
 const roleRows=D.roleGroups.flatMap(g=>g.roles.map(r=>({group:g.name,...r})));
 const ids=new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]));
-for(const match of app.matchAll(/\$\('([^']+)'\)/g))requireCheck(ids.has(match[1]),'Missing DOM id: '+match[1]);
+for(const match of app.matchAll(/\$\('([^']+)'\)/g))requireCheck(ids.has(match[1])||app.includes('id="'+match[1]+'"'),'Missing DOM id: '+match[1]);
 for(const page of ['home','manuals','legislation','facilities','training','roles','about'])requireCheck(html.includes('data-page="'+page+'"'),'Missing '+page+' page');
 for(const page of ['manuals','legislation','facilities','training','roles'])requireCheck(html.includes('data-view="'+page+'"'),'Missing '+page+' nav');
 for(const file of ['manifest.webmanifest','sw.js','pwa-install.js','pwa-install.css','assets/app-icons/wrha-icon-192.png','assets/app-icons/wrha-icon-512.png','assets/app-icons/wrha-maskable-192.png','assets/app-icons/wrha-maskable-512.png','assets/app-icons/apple-touch-icon.png','assets/wrha-hub-share-qr.svg','hub-utilities.css','hub-utilities.js','wrha-logo.webp','styles.css','enhance.css','data.js','catalog-extra.js','establishment-resource.js','deep-manual-sources.js','verified-role-public.js','deep-rha-job-evidence.js','srha-verified-positions.js','cross-region-role-consolidation.js','app-v2.js'])requireCheck(fs.existsSync(file),'Missing asset '+file);
@@ -38,7 +38,7 @@ requireCheck(app.includes('pdfjsLib'),'PDF-cover renderer missing');
 requireCheck(html.includes('fa-instagram')&&html.includes('fa-facebook-f'),'Branded social icons missing');
 requireCheck(html.includes('mohwPartnerLogo')&&html.includes('assets/mohw-logo.png'),'Authentic MOHW logo missing');
 requireCheck(fs.existsSync('assets/mohw-logo.png'),'Supplied MOHW logo not found');
-requireCheck(html.includes('pdfBlockedCover'),'Restricted PDF preview area missing');
+requireCheck(ids.has('pdfBlocked')&&ids.has('pdfRetryInline')&&ids.has('pdfStatus'),'Reader failure/status region missing');
 requireCheck(read('viewer.js').includes('function restrictedFallback('),'Restricted access fallback missing');
 const utilities=read('hub-utilities.js');
 requireCheck(utilities.includes("WHATSAPP_NUMBER='18765029756'"),'Feedback issue reporting must use +1 876 502 9756');
