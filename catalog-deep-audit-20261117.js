@@ -718,6 +718,78 @@ const A={
     "audit-covid-surveillance"
   ]
 };
+A.rows.push(...[
+  [
+    "nhf-provider-guide",
+    "NHF Guidelines for Healthcare Professionals",
+    "Pharmacy & Medicines",
+    null,
+    "https://www.nhf.org.jm/wp-content/uploads/2026/01/GUIDELINES-FOR-HEALTHCARE-PROFESSIONALS-1.pdf",
+    "https://www.nhf.org.jm/documents-forms/",
+    "Official provider guideline — publisher-listed 2026 PDF; confirm edition",
+    "National Health Fund, Jamaica"
+  ],
+  [
+    "nhf-research-protocol",
+    "NHF Protocol for Submission of Requests to Conduct Research — Revision 2",
+    "Public Health Research",
+    2024,
+    "https://www.nhf.org.jm/wp-content/uploads/2025/05/Protocol-for-Submission-of-Research-Requests-August302024.pdf",
+    "https://www.nhf.org.jm/documents-forms/",
+    "Revision dated 30 August 2024 — confirm current requirements",
+    "National Health Fund, Jamaica"
+  ],
+  [
+    "nhf-research-evaluation",
+    "NHF External Research Evaluation Guidelines",
+    "Public Health Research",
+    2022,
+    "https://www.nhf.org.jm/wp-content/uploads/2024/03/External-Research-Evaluation-Guidelines-April072022WPN.docx.pdf",
+    "https://www.nhf.org.jm/documents-forms/",
+    "Official agency guideline — confirm current requirements",
+    "National Health Fund, Jamaica"
+  ],
+  [
+    "nhf-grant-report",
+    "NHF Project Reporting Guidelines",
+    "Administration & Governance",
+    null,
+    "https://www.nhf.org.jm/wp-content/uploads/2024/03/ib_project_report_form_howto.pdf",
+    "https://www.nhf.org.jm/documents-forms/",
+    "Official agency guideline — confirm current requirements",
+    "National Health Fund, Jamaica"
+  ],
+  [
+    "pca-labelling",
+    "Pesticide Labelling Standards",
+    "Environmental Health",
+    null,
+    "https://www.caribpesticides.net/pdf_folder/labelling_standards.pdf",
+    "https://www.caribpesticides.net/cp_pes_info.asp?iID=9",
+    "Official agency reference — confirm current standards",
+    "Pesticides Control Authority, Jamaica"
+  ]
+]);
+A.laws.push(...[
+  [
+    "pesticides-residue",
+    "Pesticides (Maximum Residue Limits in Crops, Food and Animal Feed) Regulations, 2017",
+    "Environmental Health",
+    "Regulations",
+    "https://www.caribpesticides.net/tpac_pesticides_act.pdf",
+    "https://caribpesticides.net/cp_reg_body.asp",
+    "Pesticides Control Authority, Jamaica"
+  ],
+  [
+    "tobacco-2013",
+    "Public Health (Tobacco Control) Regulations, 2013 — standalone instrument",
+    "Public Health",
+    "Regulations",
+    "https://extranet.who.int/fctcapps/sites/default/files/2023-04/jamaica_annex1_tobacco_control_regulations_2013.pdf",
+    "https://laws.moj.gov.jm/library/gazette/ln-74c-2013",
+    "Government of Jamaica — WHO FCTC repository"
+  ]
+]);
 const publisher='Ministry of Health & Wellness, Jamaica', justice='Ministry of Justice & Constitutional Affairs, Jamaica';
 const normalize=u=>{try{const x=new URL(u);return (x.hostname.replace(/^www\./,'')+decodeURIComponent(x.pathname).replace(/\/$/,'')).toLowerCase();}catch{return String(u||'').toLowerCase();}};
 const seen=new Set([...D.manuals,...D.legislation].map(x=>normalize(x.url)));
@@ -727,7 +799,7 @@ for(const [id,title,category,year,url,sourceUrl,status,pub] of A.rows){
 const archive=category==='Historical & Archived Guidance';
 add(D.manuals,{id:'audit-'+id,title,category,year,url,sourceUrl,publisher:pub||publisher,format:'pdf',local:false,status,description:archive?'Historical reference only. Check current MOHW or issuing-authority guidance before use.':'Public source-linked document. Confirm current edition and applicable local guidance.',auditDate:'2026-11-17'});
 }
-for(const [id,title,category,type,url,sourceUrl,pub] of A.laws)add(D.legislation,{id:'audit-law-'+id,title,category,type,url,sourceUrl,publisher:pub||justice,format:'pdf',status:'Official PDF located — verify amendments',description:'Jamaican legislation or subsidiary instrument. Confirm current consolidation, amendments and commencement before relying on it.',auditDate:'2026-11-17'});
+for(const [id,title,category,type,url,sourceUrl,pub] of A.laws)add(D.legislation,{id:'audit-law-'+id,title,category,type,url,sourceUrl,publisher:pub||justice,format:'pdf',status:'Official PDF located — verify amendments',description:id==='tobacco-2013'?'Standalone 2013 instrument; also included in the Public Health Act subsidiary compilation. Read with 2014 amendments and verify later changes.':'Jamaican legislation or subsidiary instrument. Confirm current consolidation, amendments and commencement before relying on it.',auditDate:'2026-11-17'});
 for(const [id,title,category,url,status] of A.pages)add(D.manuals,{id:'audit-'+id,title,category,year:id.includes('2026')?2026:null,url,sourceUrl:url,publisher,format:'page',local:false,status,description:status,auditDate:'2026-11-17'});
 for(const [id,title,category,url,status] of A.lawPages)add(D.legislation,{id:'audit-law-'+id,title,category,type:'Act',url,sourceUrl:url,publisher:justice,format:'page',status,description:status,auditDate:'2026-11-17'});
 const prior=window.WRHA_READER_SOURCES;
