@@ -1,0 +1,58 @@
+{
+  "manifestCount": 154,
+  "results": [
+    {
+      "id": "audit-food-security",
+      "pages": 72,
+      "bytes": 614586,
+      "source": "https://jamaicatradeportal.gov.jm/upload/files/Legal_1548181278.pdf"
+    },
+    {
+      "id": "law-10",
+      "pages": 28,
+      "bytes": 746715,
+      "source": "https://mlgcd.s3.amazonaws.com/localauthorities.gov.jm/s3fs-public/resources/the_access__to_information_act.pdf"
+    },
+    {
+      "id": "law-15",
+      "pages": 43,
+      "bytes": 1860832,
+      "source": "https://www.jamaicatradeportal.gov.jm/upload/files/Legal_1550634878.pdf"
+    },
+    {
+      "id": "law-22",
+      "pages": 51,
+      "bytes": 2088049,
+      "source": "https://faolex.fao.org/docs/pdf/jam71313.pdf"
+    },
+    {
+      "id": "audit-law-water-resources",
+      "pages": 65,
+      "bytes": 3035404,
+      "source": "https://faolex.fao.org/docs/pdf/jam5536.pdf"
+    },
+    {
+      "id": "law-12",
+      "pages": 24,
+      "bytes": 924755,
+      "source": "https://dcj.gov.jm/wp-content/uploads/2022/08/Dental-Act.pdf"
+    },
+    {
+      "id": "audit-law-pesticides-residue",
+      "pages": 6,
+      "bytes": 136501,
+      "source": "https://www.pca.gov.jm/tpac_pesticides_act.pdf"
+    },
+    {
+      "id": "audit-pca-labelling",
+      "pages": 21,
+      "bytes": 106071,
+      "source": "https://www.pca.gov.jm/pdf_folder/labelling_standards.pdf"
+    },
+    {
+      "id": "law-20",
+      "source": "https://fspid.gov.jm/FSPI_Act.pdf",
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1011)>"
+    }
+  ]
+}

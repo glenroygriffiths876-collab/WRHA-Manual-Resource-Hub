@@ -1886,5 +1886,93 @@ window.WRHA_LIBRARY_MANIFEST=Object.freeze({
     "verifiedOn": "2026-11-17",
     "originalPath": "documents/originals/audit-community-private-reg.doc",
     "sourceSha256": "a57725c50d67d7c20c3fec88df6cf4ec5eec85a757c6d2403c36f33d99a7af97"
+  },
+  "audit-food-security": {
+    "recordUrl": "https://new.moa.gov.jm/sites/default/files/pdfs/Food_and_Nutrition_Security_Policy.pdf",
+    "path": "documents/library/audit-food-security.pdf",
+    "edition": "Jamaica Trade Portal; National Food and Nutrition Security Policy",
+    "sha256": "513b8209e1630560e587cb04b217bc884eff8b209200da72fd72eea35edf5a39",
+    "pages": 72,
+    "legalAlternate": false,
+    "sourceUrl": "https://jamaicatradeportal.gov.jm/upload/files/Legal_1548181278.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
+  },
+  "law-10": {
+    "recordUrl": "https://laws.moj.gov.jm/legislation/statutes/A/The%20Access%20to%20Information%20Act.pdf",
+    "path": "documents/library/law-10.pdf",
+    "edition": "St Catherine Municipal Corporation; revised pages authorized 2005; verify amendments",
+    "sha256": "1f4875761398332317ce97259c890f8cca31c19b0d8cee74ea97031295ad3f4e",
+    "pages": 28,
+    "legalAlternate": true,
+    "sourceUrl": "https://mlgcd.s3.amazonaws.com/localauthorities.gov.jm/s3fs-public/resources/the_access__to_information_act.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
+  },
+  "law-15": {
+    "recordUrl": "https://laws.moj.gov.jm/legislation/statutes/D/The%20Dangerous%20Drugs%20Act%20%282%29_0.pdf",
+    "path": "documents/library/law-15.pdf",
+    "edition": "Jamaica Trade Portal; revised Act copy; verify amendments",
+    "sha256": "08b1b1b923d38fba8d9277617be60db4b7f0b87ef56360d6e22a02adffb98a38",
+    "pages": 43,
+    "legalAlternate": true,
+    "sourceUrl": "https://www.jamaicatradeportal.gov.jm/upload/files/Legal_1550634878.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
+  },
+  "law-22": {
+    "recordUrl": "https://laws.moj.gov.jm/legislation/statutes/N/National%20Solid%20Waste%20Management%20Act.pdf",
+    "path": "documents/library/law-22.pdf",
+    "edition": "FAOLEX; 2001 Act revised through 2003; verify amendments",
+    "sha256": "8a943394a4e62024f844664de0bdcb164b1fd7b3e9e9fa4f829faac9aad9c095",
+    "pages": 51,
+    "legalAlternate": true,
+    "sourceUrl": "https://faolex.fao.org/docs/pdf/jam71313.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
+  },
+  "audit-law-water-resources": {
+    "recordUrl": "https://laws.moj.gov.jm/library/statute/the-water-resources-act/download",
+    "path": "documents/library/audit-law-water-resources.pdf",
+    "edition": "FAOLEX; 1995 Act revised through 1998; verify amendments",
+    "sha256": "867236f90ad16fbc5dab1d92b278c0488c960c1474f92b92e17429bc1ad267aa",
+    "pages": 65,
+    "legalAlternate": true,
+    "sourceUrl": "https://faolex.fao.org/docs/pdf/jam5536.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
+  },
+  "law-12": {
+    "recordUrl": "https://laws.moj.gov.jm/legislation/statutes/D/Dental%20Act.pdf",
+    "path": "documents/library/law-12.pdf",
+    "edition": "Dental Council; revised Act copy; verify amendments",
+    "sha256": "7c7b7d52fa1614a303b45efca4be9b3745534f7d34fbc819525529ccc7190a4c",
+    "pages": 24,
+    "legalAlternate": true,
+    "sourceUrl": "https://dcj.gov.jm/wp-content/uploads/2022/08/Dental-Act.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
+  },
+  "audit-law-pesticides-residue": {
+    "recordUrl": "https://www.caribpesticides.net/tpac_pesticides_act.pdf",
+    "path": "documents/library/audit-law-pesticides-residue.pdf",
+    "edition": "Pesticides Control Authority; 2017 instrument; check gazette and commencement",
+    "sha256": "b47454051a4c3e00cb42f4b940d55d4dd3b08bc158b94fe8ee25614ddc161e3c",
+    "pages": 6,
+    "legalAlternate": true,
+    "sourceUrl": "https://www.pca.gov.jm/tpac_pesticides_act.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
+  },
+  "audit-pca-labelling": {
+    "recordUrl": "https://www.caribpesticides.net/pdf_folder/labelling_standards.pdf",
+    "path": "documents/library/audit-pca-labelling.pdf",
+    "edition": "Pesticides Control Authority; labelling reference",
+    "sha256": "34ab8aaf9572d5d049957ed421a94741623b0b54a439898232de5398b8d7b1e3",
+    "pages": 21,
+    "legalAlternate": false,
+    "sourceUrl": "https://www.pca.gov.jm/pdf_folder/labelling_standards.pdf",
+    "permissionRef": "documents/publication-authorization.json",
+    "verifiedOn": "2026-11-17"
   }
 });
