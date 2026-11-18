@@ -34,6 +34,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:
@@ -67,6 +69,8 @@ jobs:
             exit 1
           fi
       - name: Verify deployed reader assets and local files
+        env:
+          CHECK_NEW_LOCAL_LIBRARY: '1'
         run: node scripts/check-public-document-build.mjs _site
       - name: Record unresolved catalogue entries for recovery
         if: always()

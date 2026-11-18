@@ -1,0 +1,39 @@
+name: Full document source recoverability audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/recover-public-sources.py'
+      - '.github/workflows/full-source-recovery.yml'
+      - 'catalog-deep-audit-20261117.js'
+      - 'documents/approved-inputs.json'
+permissions:
+  contents: read
+jobs:
+  source-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Enumerate full current catalogue and all known document routes
+        run: node scripts/check-public-document-build.mjs .
+      - name: Install PDF renderer
+        run: python -m pip install pymupdf
+      - name: Retrieve and test actual public file bytes (no publication)
+        run: python scripts/recover-public-sources.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: full-source-recovery-results
+          path: |
+            document-recovery-report.json
+            source-recovery-results.json
+          if-no-files-found: warn
+          retention-days: 30
