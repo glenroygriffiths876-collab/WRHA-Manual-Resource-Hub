@@ -21,7 +21,10 @@ sources={
 'law-12':[('https://dcj.gov.jm/wp-content/uploads/2022/08/Dental-Act.pdf',None,'Dental Council; revised Act copy; verify amendments')],
 'audit-law-pesticides-residue':[('https://www.pca.gov.jm/tpac_pesticides_act.pdf',None,'Pesticides Control Authority; 2017 instrument; check gazette and commencement')],
 'audit-pca-labelling':[('https://www.pca.gov.jm/pdf_folder/labelling_standards.pdf',None,'Pesticides Control Authority; labelling reference')],
-'law-20':[('https://fspid.gov.jm/FSPI_Act.pdf',None,'Food Storage and Prevention of Infestation Division; original 1958 Act; read with 2019 amendments')]
+'law-20':[('https://jamaicatradeportal.gov.jm/upload/files/Legal_1549912055.pdf',None,'Jamaica Trade Portal; original 1958 Act; read with 2019 amendments')],
+'audit-law-precursor':[('https://www.jamaicatradeportal.gov.jm/upload/files/Legal_1559236380.pdf',None,'Jamaica Trade Portal; revised Act pages authorized 2006; verify amendments')],
+'audit-law-precursor-regs':[('https://jamaicatradeportal.gov.jm/upload/files/Legal_1562945374.pdf',28,'Jamaica Trade Portal; 2013 Regulations (L.N. 269A/2013), revised pages 2017; verify any other subsidiary instruments')],
+'audit-law-factories':[('https://natlex.ilo.org/dyn/natlex2/natlex2/files/download/31021/JAM31021%202009.pdf',None,'ILO NATLEX; revised Factories Act including 2009 amendments; verify subsequent changes')]
 }
 # Do not substitute a single regulation for an entire subsidiary-legislation compilation.
 results=[]
@@ -40,7 +43,7 @@ with tempfile.TemporaryDirectory() as td:
                     import fitz
                     with fitz.open(src) as doc:
                         text=' '.join(doc[i].get_text() for i in range(min(3,doc.page_count))).lower()
-                    required={'law-12':['dental act'],'audit-law-pesticides-residue':['maximum residue limits'],'audit-pca-labelling':['labelling'],'law-20':['food storage','infestation']}[ident]
+                    required={'law-12':['dental act'],'audit-law-pesticides-residue':['maximum residue limits'],'audit-pca-labelling':['labelling'],'law-20':['food storage','infestation'],'audit-law-precursor':['precursor','chemicals','act'],'audit-law-factories':['factories act']}[ident]
                     norm=' '.join(text.split())
                     if any(token not in norm for token in required):raise ValueError('Unconfirmed exact title; manual review required')
                 shutil.copyfile(src,dest);prepare.write_cover(dest,root/'covers'/(ident+'.webp'))

@@ -1,0 +1,45 @@
+name: Additional exact-source legal and charter recovery
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/additional-local-recovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write
+jobs:
+  recover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pymupdf pillow beautifulsoup4
+      - run: node scripts/check-public-document-build.mjs .
+      - run: python scripts/recover-final-alternates.py
+      - name: Create faithful reading copy of the Ministry online Charter
+        run: |
+          node scripts/check-public-document-build.mjs .
+          if ! python scripts/recover-patients-charter.py; then
+            rm -f documents/library/audit-patients-charter.pdf
+            echo 'Charter conversion requires review; not published'
+          fi
+      - run: node scripts/check-public-document-build.mjs .
+      - name: Commit validated files and redeploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name 'WRHA document recovery'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add documents/library/ document-library-manifest.js covers/ reports/alternate-source-publication.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Store additional exact legal sources and verified charter reading copy'
+            git push origin HEAD:main
+            gh workflow run pages.yml --ref main
+          fi
