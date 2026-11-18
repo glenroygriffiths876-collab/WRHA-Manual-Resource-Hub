@@ -2,9 +2,9 @@
  * Probes fetch a tiny PDF header where supported, never upload or proxy documents.
  * A failed browser fetch is not proof of a permanent publisher restriction. */
 (()=>{'use strict';
-const D=window.WRHA_DATA,all=[...(D?.manuals||[]),...(D?.legislation||[])],key='wrha-reader-availability-2026-11-v3',ttl=7*86400000,known=new Set(['mofps-civil-establishment-2026']);
+const D=window.WRHA_DATA,all=[...(D?.manuals||[]),...(D?.legislation||[])],key='wrha-reader-availability-2026-11-v4',ttl=7*86400000,known=new Set(['mofps-civil-establishment-2026']);
 let cache={};try{const previous=JSON.parse(localStorage.getItem('wrha-reader-availability-2026-11-v1')||'{}')||{};cache=JSON.parse(localStorage.getItem(key)||'null')||Object.fromEntries(Object.entries(previous).filter(([,r])=>r?.result==='verified'));}catch(_){}
-const isPdf=d=>d?.format!=='page'&&d?.format!=='image'&&(/\.pdf(?:[?#]|$)|\/download(?:\/|$)/i.test(d?.url||'')||d?.format==='pdf');
+const isPdf=d=>d?.format==='office'&&!!window.WRHA_READER_SOURCES?.localRoute?.(d)||d?.format!=='office'&&d?.format!=='page'&&d?.format!=='image'&&(/\.pdf(?:[?#]|$)|\/download(?:\/|$)/i.test(d?.url||'')||d?.format==='pdf');
 const routeKey=d=>d.url,local=d=>{try{return new URL(d.url,location.href).origin===location.origin}catch(_){return false}};
 function record(d){const r=cache[routeKey(d)];return r&&Date.now()-r.at<ttl?r:null}
 function state(d){if(d?.format==='image')return 'image';if(!isPdf(d))return 'collection';const r=record(d);if(r?.result==='verified')return 'verified';if(r?.result==='blocked')return r.confirmed?'blocked':'unconfirmed';if(r?.result==='fallback')return 'fallback';if(r?.result==='unconfirmed')return 'unconfirmed';if(r?.result==='reachable')return 'reachable';if(known.has(d.id))return 'unconfirmed';if(local(d))return 'local';return 'unknown'}
