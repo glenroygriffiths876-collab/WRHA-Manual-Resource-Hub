@@ -1,0 +1,114 @@
+[
+  {
+    "id": "local-1",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/CI_Field_Guide_2025.pdf",
+    "gitBlob": "af11edb22f5506564f761db4b7cc41e147dbfcfb",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  },
+  {
+    "id": "local-2",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/DHIS2_User_Manual_May_2026.pdf",
+    "gitBlob": "a3db3779038eeaa25d11bb297803e8d61aa9f1ca",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  },
+  {
+    "id": "local-4",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/HIV_Disclosure_Protocol_2021.pdf",
+    "gitBlob": "5f08e112dcd81346b1efc7a2ec5c835ae264813f",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  },
+  {
+    "id": "local-5",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/Linkage_Retention_Recovery_Protocol.pdf",
+    "gitBlob": "d910643aa82b1a7598c67d249accacaf019f480c",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  },
+  {
+    "id": "local-7",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/PITC_Facilitator_Manual.pdf",
+    "gitBlob": "4e595a3c5de24110283668db61f7fade217eec32",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  },
+  {
+    "id": "local-8",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/PITC_Participant_Manual.pdf",
+    "gitBlob": "4b8891b13f6b17902ec25d522adc71248ade878c",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  },
+  {
+    "id": "local-10",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/Paediatric_Adolescent_HIV_2021.pdf",
+    "gitBlob": "84d927a28b7b18122f4889d907304468adda5317",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  },
+  {
+    "id": "local-12",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/PrEP_Handbook_2023.pdf",
+    "gitBlob": "da9ffd31f40a93ad6ced3d9ee847e7394706c4d1",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  },
+  {
+    "id": "local-13",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/PrEP_Implementation_Guide_2025.pdf",
+    "gitBlob": "95af175339d91be3a12af9995086c1c4d04eb2fd",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  },
+  {
+    "id": "local-14",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/STI_Case_Management_2020.pdf",
+    "gitBlob": "5cb8498e78b80b9d3347e131f3ca4504ec8c0cef",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  },
+  {
+    "id": "local-15",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/STI_Handbook_2026.pdf",
+    "gitBlob": "11139928228f3111689d239ffc3b144caf7802f0",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  },
+  {
+    "id": "local-16",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/Staff_Orders_for_Public_Service.pdf",
+    "gitBlob": "e23636c88bf7136532dadee2cde26d59a48a48f0",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  },
+  {
+    "id": "local-17",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/TB_Guidelines_2021.pdf",
+    "gitBlob": "37826eb37bc808bd5900441fa54e04d374f6bbd8",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  },
+  {
+    "id": "local-18",
+    "source": "https://raw.githubusercontent.com/jasdis876/JASDIS-Resource-Center/329c5b6a2ee94ac0e4d9dc82c8ca6b0e4ffdf099/TSIS2_User_Guide_2026.pdf",
+    "gitBlob": "67e0a0352775a95d883c72d87e9d9d25d7ef085d",
+    "edition": "Existing JASDIS publication",
+    "basis": "Existing publicly hosted JASDIS file; user-directed reuse; operator must confirm any third-party rehosting rights before physical copying.",
+    "publish": false
+  }
+]
