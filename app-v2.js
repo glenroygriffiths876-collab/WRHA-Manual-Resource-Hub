@@ -22,7 +22,7 @@ function setView(name,scroll=true){
  if(location.hash!=='#'+current)history.replaceState(null,'','#'+current);
  if(scroll)window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
  if(current!==previous){if(current==='manuals')filterManuals();else if(current==='legislation')filterLaws();else if(current==='home')renderFeatured()}
- if(current==='manuals'||current==='legislation')availability?.start();else availability?.pause();if(current==='home')availability?.verifyFeatured();flushCovers();
+ if(current==='manuals'||current==='legislation')availability?.start();else availability?.pause();if(current==='home')availability?.verifyFeatured();const visiblePage=document.querySelector('.page.active');if(visiblePage)observeCovers(visiblePage);flushCovers();
 }
 document.querySelectorAll('[data-view]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();setView(a.dataset.view)}));
 document.querySelectorAll('[data-go]').forEach(a=>a.addEventListener('click',()=>setView(a.dataset.go)));
@@ -44,8 +44,8 @@ function observeCovers(node){node.querySelectorAll('.doc-cover[data-pdf]').forEa
  if(staticImg.complete){if(staticImg.naturalWidth)loaded();else missing();}
  });}
 function showCached(el){const img=coverCache.get(el.dataset.pdf);if(!img||el.dataset.paintVersion)return;const canvas=el.querySelector('canvas');if(canvas){const bitmap=new Image();bitmap.onload=()=>{if(!el.isConnected||el.dataset.paintVersion)return;el.dataset.paintVersion='1';canvas.width=bitmap.width;canvas.height=bitmap.height;canvas.getContext('2d').drawImage(bitmap,0,0);const old=el.querySelector('.static-cover');if(old)old.hidden=true;canvas.hidden=false;el.classList.add('has-preview')};bitmap.src=img;}}
-function scheduleCover(el){if(!el.isConnected)return;const url=el.dataset.pdf;if(coverCache.has(url)){showCached(el);return;}if(!window.pdfjsLib||queued.has(url)||failedCovers.has(url))return;queued.add(url);coverWaiting.push({el,url});flushCovers();}
-function flushCovers(){if($('pdfDialog')?.open)return;while(coverActive<1&&coverWaiting.length){const {el,url}=coverWaiting.shift();if(!el.isConnected||!el.closest('.page.active')){queued.delete(url);const visible=[...document.querySelectorAll('.page.active .doc-cover[data-pdf]')].find(x=>x.dataset.pdf===url);if(visible)scheduleCover(visible);else if(el.isConnected){delete el.dataset.coverObserved;observeCovers(el.closest('.manual-card'))}continue}coverActive++;el.classList.add('loading');(async()=>{let task=null,doc=null;try{
+function scheduleCover(el){if(!el.isConnected)return;if(!el.closest('.page.active')){delete el.dataset.coverObserved;return}const url=el.dataset.pdf;if(coverCache.has(url)){showCached(el);return;}if(!window.pdfjsLib||queued.has(url)||failedCovers.has(url))return;queued.add(url);coverWaiting.push({el,url});flushCovers();}
+function flushCovers(){if($('pdfDialog')?.open)return;while(coverActive<1&&coverWaiting.length){const {el,url}=coverWaiting.shift();if(!el.isConnected||!el.closest('.page.active')){queued.delete(url);const visible=[...document.querySelectorAll('.page.active .doc-cover[data-pdf]')].find(x=>x.dataset.pdf===url);if(visible)scheduleCover(visible);else if(el.isConnected)delete el.dataset.coverObserved;continue}coverActive++;el.classList.add('loading');(async()=>{let task=null,doc=null;try{
  task=pdfjsLib.getDocument({url,withCredentials:false,disableAutoFetch:true,disableStream:true,isEvalSupported:false,enableXfa:false});
  doc=await task.promise;const page=await doc.getPage(1);const basic=page.getViewport({scale:1});
  const scale=Math.min(3,900/basic.width,1200/basic.height);
@@ -150,8 +150,8 @@ function filterLaws(reorder=true){const q=$('lawSearch').value.trim().toLowerCas
 $('clearLaws').addEventListener('click',()=>{$('lawSearch').value='';$('lawCategory').value='';$('lawType').value='';lawLimit=18;filterLaws()});$('moreLaws').addEventListener('click',()=>{lawLimit+=18;filterLaws(false)});$('refreshLawOrder').addEventListener('click',()=>filterLaws());
 
 // Coalesce status changes into one paint; never re-sort an active reading list.
-let statusFrame=0;const pendingStatus=new Set();
-window.addEventListener('wrha-reader-availability',e=>{if(e.detail?.id)pendingStatus.add(e.detail.id);if(statusFrame)return;statusFrame=requestAnimationFrame(()=>{statusFrame=0;const changed=[...pendingStatus];pendingStatus.clear();if(changed.length)changed.forEach(refreshStatusLabels);else refreshStatusLabels()})});
+let statusFrame=0;
+window.addEventListener('wrha-reader-availability',()=>{if(statusFrame)return;statusFrame=requestAnimationFrame(()=>{statusFrame=0;refreshStatusLabels()})});
 $('pdfDialog')?.addEventListener('close',()=>{const key=lastOpened;refreshStatusLabels();if(key){const scope=current==='manuals'?$('manualGrid'):current==='legislation'?$('lawGrid'):$('featured');const target=[...(scope?.querySelectorAll('[data-read]')||[])].find(x=>x.dataset.read===key);target?.focus({preventScroll:true})}lastOpened=null;if(current==='manuals'||current==='legislation')availability?.start();flushCovers()});
 
 function openPdf(d){if(!d)return;if(window.WRHA_DocViewer){availability?.pause();window.WRHA_DocViewer.open(d);return;}if(isPdf(d))window.open(d.url,'_blank','noopener');else window.open(d.sourceUrl||d.url,'_blank','noopener');}
