@@ -16,6 +16,22 @@ const extra=[
 ];
 for(const [id,title,category,url,sourceUrl] of extra)if(!find(id))D.manuals.push({id,title,category,url,sourceUrl,format:'pdf',publisher:'Ministry of Health & Wellness, Jamaica',status:'Official download listed — confirm edition and reader availability',description:'Official resource linked from the Ministry’s Physical Activity Manuals collection.'});
 if(!find('law-food-storage-regs'))D.legislation.push({id:'law-food-storage-regs',title:'Food Storage and Prevention of Infestation Regulations, 1973',category:'Environmental Health',year:1973,url:law+'legislation/subsids/F/The%20Food%20Storage%20and%20Prevention%20of%20Infestation%20Act.pdf',sourceUrl:law+'library/subsidiary-legislation/the-food-storage-and-prevention-of-infestation-act',format:'pdf',publisher:'Ministry of Justice, Jamaica',status:'Official subsidiary legislation — verify amendments',description:'Subsidiary legislation, not the principal Act.'});
+// Images linked by the publisher's physical activity resource index: https://www.moh.gov.jm/manuals/ .
+const publisherCovers={
+  "pa-pregnancy": "2024/04/guides-pregnancy.jpg",
+  "pa-practitioners": "2021/02/Physical-Activity-Guide-for-Medical-Practioners.jpg",
+  "pa-older-persons": "2021/02/Physical-Activity-Guide-for-Older-Persons.jpg",
+  "pa-braille": "2021/02/Physical-Activity-Guide-for-Persons-in-Disabilities.jpg",
+  "expanded-14": "2021/02/Physical-Activity-Bible.jpg",
+  "deep-workplace-physical-activity": "2021/02/Physical-Activity-Guide-for-the-Workplace.jpg",
+  "pa-wellness-coordinators": "2021/05/Wellness-Coordinator-Checklist-2.jpg",
+  "deep-workplace-wellness-checklist": "2021/05/Wellness-Coordinator-Checklist-2.jpg",
+  "deep-workplace-fitness-guide": "2024/04/guides-fitness-test_.jpg"
+};
+for(const [id,file] of Object.entries(publisherCovers))patch(id,{coverUrl:mo+'wp-content/uploads/'+file,coverCredit:'MOHW publisher artwork'});
+patch('pa-pregnancy',{fileSizeNote:'Large PDF — approximately 35 MB'});
+patch('pa-practitioners',{fileSizeNote:'Large PDF — approximately 39 MB'});
+patch('pa-wellness-coordinators',{fileSizeNote:'Large PDF — approximately 13 MB'});
 const collections={
  'expanded-16':{intro:'A reference overview for short-term volunteer health missions. The Ministry’s separate registration form can be read below. The guidance itself is an official webpage, not a single PDF.',note:'Coordinate with local health authorities; obtain the necessary professional registration and work-permit exemption as applicable. Check the official requirements for your profession and mission before submission.',ids:['form-volunteer-2024']},
  'expanded-19':{intro:'Browse the Ministry’s physical activity publications in this collection. Select a title to open the original PDF in the WRHA reader.',ids:['pa-pregnancy','pa-practitioners','pa-older-persons','pa-braille','expanded-14','deep-workplace-physical-activity','pa-wellness-coordinators']},
