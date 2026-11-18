@@ -1,0 +1,57 @@
+name: Recover actual documents and publish cleared copies
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/recover-actual-documents.yml'
+permissions:
+  contents: write
+concurrency:
+  group: wrha-actual-recovery
+  cancel-in-progress: false
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Export full document catalogue
+        run: node scripts/check-public-document-build.mjs .
+      - name: Install PDF and office conversion tools
+        run: |
+          python -m pip install pymupdf pillow cryptography
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libreoffice-writer libreoffice-calc libreoffice-impress
+      - name: Recover actual bytes, convert and prepare cleared public documents
+        run: python scripts/retain-recovered-documents.py
+      - name: Preserve recovered originals privately via encrypted archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: WRHA-encrypted-recovered-documents
+          path: |
+            wrha-recovered-documents.wrha
+            source-recovery-results.json
+            document-recovery-report.json
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 30
+      - name: Commit only individually cleared public copies
+        run: |
+          set -e
+          node scripts/check-public-document-build.mjs .
+          git config user.name 'WRHA document recovery'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add document-library-manifest.js covers/ reports/local-recovery-published.json
+          if test -d documents/library; then git add documents/library; fi
+          if git diff --cached --quiet; then echo 'No cleared changes'; exit 0; fi
+          git commit -m 'Store cleared Parliament PDF reference copies locally'
+          git push origin HEAD:main

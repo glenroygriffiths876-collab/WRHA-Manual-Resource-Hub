@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Recoverability audit from the live catalogue; no permanent publication without approval."""
-import concurrent.futures, hashlib, ipaddress, json, socket, urllib.request, urllib.parse, urllib.error, tempfile
+import concurrent.futures, hashlib, ipaddress, json, socket, urllib.request, urllib.parse, urllib.error, tempfile, os, re, shutil
 from pathlib import Path
 import fitz
 MAX=90*1024*1024
@@ -50,6 +50,14 @@ def try_url(d,route):
             elif d.get('format')=='image' and prefix.startswith((b'\xff\xd8\xff',b'\x89PNG',b'RIFF')):
                 result.update(state='image_candidate_requires_conversion')
             else:raise ValueError('Response was not a matching document file')
+            keep=os.environ.get('WRHA_RECOVERY_DIRECTORY')
+            if keep:
+                if not re.fullmatch(r'[A-Za-z0-9_-]+',d['id']): raise ValueError('Unsafe catalogue id')
+                extension='.pdf' if result['state']=='rendered_pdf_candidate' else ('.docx' if prefix.startswith(b'PK') else '.doc') if result['state'].startswith('office') else '.jpg' if prefix.startswith(b'\xff\xd8\xff') else '.png' if prefix.startswith(b'\x89PNG') else '.webp'
+                dest=Path(keep)/(d['id']+extension)
+                dest.parent.mkdir(parents=True,exist_ok=True)
+                shutil.copyfile(f,dest)
+                result['recoveredFile']=dest.name
     return result
 def audit(d):
     result={'id':d['id'],'title':d['title'],'format':d.get('format'),'kind':d.get('kind'),'attempts':[]}
@@ -73,4 +81,7 @@ def main():
     output={'counts':counts,'total':len(results),'note':'Technical candidates only: identity, edition and public redistribution authority must be reviewed. No PDFs were published by this audit.','records':results}
     Path('source-recovery-results.json').write_text(json.dumps(output,indent=2)+'\n')
     print(json.dumps({'total':len(results),'counts':counts},indent=2))
+    for row in results:
+        if row['state']=='recovery_failed' or 'Peer Approval Signature Form' in row['title']:
+            print(json.dumps({'id':row['id'],'title':row['title'],'state':row['state'],'attempts':row['attempts']},ensure_ascii=False))
 if __name__=='__main__':main()
