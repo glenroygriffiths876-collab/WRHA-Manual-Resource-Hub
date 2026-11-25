@@ -49,6 +49,14 @@
 <script defer src="./hub-utilities.js"></script>
 <script defer src="./pwa-install.js?v=landing-reader-3"></script>
 <style>.local-recovery-register{margin:18px 0;padding:14px 16px;border:1px solid #b7c5cc;border-radius:10px;font-size:.9rem}.local-recovery-register summary{cursor:pointer;font-weight:600}.local-recovery-register li{margin:.4rem 0}.local-recovery-register[hidden]{display:none}</style>
+<style id="bc-credit-style">
+.bc-hub-credit{pointer-events:auto;display:inline-flex;align-items:center;justify-content:center;gap:5px;flex:0 0 auto;min-height:44px;padding:4px 9px;background:#fff;color:#102b40;border:1px solid #d8c49d;border-radius:14px;box-shadow:0 5px 18px #102b4020;text-decoration:none;font:700 10px/1.15 "DM Sans",sans-serif}
+.bc-hub-credit img{width:30px;height:30px;object-fit:contain}
+.bc-hub-credit small{display:block;font-size:9px;font-weight:500}
+.bc-hub-credit:focus-visible{outline:3px solid #eea22c;outline-offset:3px}
+@media(max-width:740px){.bc-hub-credit{padding:4px;min-width:44px}.bc-hub-credit span{display:none}}
+@media(max-width:280px){.bc-hub-credit{position:absolute;bottom:60px;left:0}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -159,6 +167,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2.6 20h18.8L12 3Z"/><path d="M12 9v4M12 17h.01"/></svg><span>Report issue</span>
     </button>
   </div>
+  <a class="bc-hub-credit" href="https://beginningconcepts.org/" target="_blank" rel="noopener noreferrer" aria-label="Made by Beginning Concepts — visit website (opens in a new tab)" title="Made by Beginning Concepts"><img src="https://beginningconcepts.org/assets/brand-logo-hd.avif" alt="" width="30" height="30"><span><small>Made by</small>Beginning Concepts</span></a>
   <div class="hub-right-actions">
   <button id="hubInstallFab" class="hub-fab hub-fab-install" type="button" aria-haspopup="dialog" aria-controls="hubInstallDialog" title="Install WRHA Manual & Resource Hub on your device" aria-label="Install WRHA Hub">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 17v4h16v-4"/></svg><span>Install</span>
