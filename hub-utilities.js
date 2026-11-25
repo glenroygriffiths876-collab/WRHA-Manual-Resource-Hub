@@ -1,10 +1,10 @@
 /* WAPS-inspired Feedback / Report Issue / Share.
  * WRHA styling and privacy safeguards. No backend or account needed.
- * Drafts are passed to WhatsApp only after an explicit user action.
+ * Drafts are passed to email only after an explicit user action.
  */
 (function(){'use strict';
 const SHARE_URL='https://glenroygriffiths876-collab.github.io/WRHA-Manual-Resource-Hub/#home';
-const WHATSAPP_NUMBER='18765029756'; // Jamaica: +1 876 502 9756
+const SUPPORT_EMAIL='beginningconcepts.org@gmail.com';
 const $=id=>document.getElementById(id);
 const feedback=$('hubFeedbackDialog'),share=$('hubShareDialog');
 if(!feedback||!share)return;
@@ -54,11 +54,11 @@ function openFeedback(nextMode='feedback',category=null){
  fillOptions(mode==='issue'?issueTypes:feedbackTypes,category);
  $('hubFeedbackMessage').value='';
  $('hubFeedbackResult').hidden=true;
- $('hubWhatsAppFallback').removeAttribute('href');
+ $('hubEmailFallback').removeAttribute('href');
  if(!feedback.open)feedback.showModal();
  $('hubFeedbackType').focus();
 }
-function whatsappMessage(){
+function emailMessage(){
  const c=pendingContext||currentContext();
  const content=$('hubFeedbackMessage').value.trim();
  const kind=$('hubFeedbackType').value;
@@ -78,7 +78,7 @@ function whatsappMessage(){
   'Browser: '+c.browser,
   'Time: '+c.time,
   '',
-  '_Please attach a screenshot in WhatsApp if helpful. Do not share confidential patient information._'
+  '_Please attach a screenshot to your email if helpful. Do not share confidential patient information._'
  ];
  return lines.join('\n');
 }
@@ -87,14 +87,15 @@ function sendFeedback(event){
  const message=$('hubFeedbackMessage').value.trim();
  if(!message){$('hubFeedbackMessage').setCustomValidity('Please describe your feedback or issue.');$('hubFeedbackMessage').reportValidity();$('hubFeedbackMessage').focus();return}
  $('hubFeedbackMessage').setCustomValidity('');
- const url='https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(whatsappMessage());
- const link=$('hubWhatsAppFallback');
+ const subject=mode==='issue'?'WRHA Resource Hub — Issue Report':'WRHA Resource Hub — Feedback';
+ const url='mailto:'+SUPPORT_EMAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(emailMessage());
+ const link=$('hubEmailFallback');
  link.href=url;
- link.target='_blank';link.rel='noopener noreferrer';
+ link.removeAttribute('target');
  $('hubFeedbackResult').hidden=false;
  // Open a compose window in direct response to the form's submit click.
- // This prepares a message; the user decides whether to press Send in WhatsApp.
- try{window.open(url,'_blank','noopener,noreferrer')}catch(error){/* The visible fallback remains available. */}
+ // This prepares a message; the user decides whether to press Send in their email app.
+ try{window.location.href=url}catch(error){/* The visible fallback remains available. */}
 }
 function openShare(){
  closeIfOpen(feedback);
@@ -156,5 +157,5 @@ document.querySelectorAll('[data-hub-close]').forEach(button=>button.addEventLis
 [feedback,share].forEach(dialog=>dialog.addEventListener('click',event=>{
  if(event.target===dialog)dialog.close();
 }));
-window.WRHA_HUB_UTILITIES={shareUrl:SHARE_URL,phone:WHATSAPP_NUMBER,openFeedback,openShare}; // Read-only integration reference.
+window.WRHA_HUB_UTILITIES={shareUrl:SHARE_URL,email:SUPPORT_EMAIL,openFeedback,openShare}; // Read-only integration reference.
 })();
