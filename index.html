@@ -46,7 +46,7 @@
   <script defer src="./reader-availability.js?v=local-library-6"></script>
 <script defer src="./viewer.js?v=local-library-6"></script>
 <script defer src="./app-v2.js?v=local-library-6"></script>
-<script defer src="./hub-utilities.js"></script>
+<script defer src="./hub-utilities.js?v=bc-email-1"></script>
 <script defer src="./pwa-install.js?v=landing-reader-3"></script>
 <style>.local-recovery-register{margin:18px 0;padding:14px 16px;border:1px solid #b7c5cc;border-radius:10px;font-size:.9rem}.local-recovery-register summary{cursor:pointer;font-weight:600}.local-recovery-register li{margin:.4rem 0}.local-recovery-register[hidden]{display:none}</style>
 <style id="bc-credit-style">
@@ -205,9 +205,9 @@
     <p class="hub-context-pill">Page: <strong id="hubFeedbackScreen">Overview</strong></p>
     <div class="hub-form-field"><label for="hubFeedbackType">What best describes this?</label><select id="hubFeedbackType" required></select></div>
     <div class="hub-form-field"><label for="hubFeedbackMessage">Your message <span aria-hidden="true">*</span></label><textarea id="hubFeedbackMessage" rows="5" required maxlength="1200" placeholder="Describe your feedback or the issue you've noticed."></textarea><span class="hub-field-help">Please give enough detail to help us understand or reproduce the issue.</span></div>
-    <div class="hub-privacy-note"><strong>Privacy:</strong> Do not include patient names, medical records, passwords or confidential information. The page, browser and screen details will be added to help troubleshoot. WhatsApp shows your sending number to the recipient.</div>
-    <div class="hub-dialog-actions"><button id="hubSendFeedback" class="hub-primary-action" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.1-.2.2-.3.2-.7.1a9 9 0 0 1-2.5-1.5c-.7-.6-1.2-1.4-1.4-1.7-.2-.4 0-.6.2-.8l.5-.6.3-.5c.1-.2 0-.5 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5H8c-.3 0-.6.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2.1 3.4 5 4.6 2.9 1.1 2.9.7 3.4.7s1.7-.7 1.9-1.4c.2-.7.2-1.4.1-1.4-.1-.2-.3-.3-.5-.4ZM12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Z"/></svg>Continue to WhatsApp</button><button class="hub-secondary-action" type="button" data-hub-close>Cancel</button></div>
-    <div id="hubFeedbackResult" class="hub-sending-result" role="status" aria-live="polite" hidden>WhatsApp should open with your message. Please press <strong>Send</strong> there. If it does not open, <a id="hubWhatsAppFallback" href="#" target="_blank" rel="noopener noreferrer">open your WhatsApp draft here</a>.</div>
+    <div class="hub-privacy-note"><strong>Privacy:</strong> Do not include patient names, medical records, passwords or confidential information. The page, browser and screen details will be added to help troubleshoot. Your email address will be visible to Beginning Concepts.</div>
+    <div class="hub-dialog-actions"><button id="hubSendFeedback" class="hub-primary-action" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Continue to email</button><button class="hub-secondary-action" type="button" data-hub-close>Cancel</button></div>
+    <div id="hubFeedbackResult" class="hub-sending-result" role="status" aria-live="polite" hidden>Your email app should open with a draft addressed to Beginning Concepts (beginningconcepts.org@gmail.com). Please press <strong>Send</strong> there. If it does not open, <a id="hubEmailFallback" href="#">open your email draft here</a>.</div>
   </form>
 </dialog>
 <dialog id="hubShareDialog" class="hub-utility-dialog hub-share-dialog" aria-labelledby="hubShareTitle">
