@@ -53,6 +53,9 @@ jobs:
           find covers -maxdepth 1 -name '*.webp' -type f -exec cp {} _site/covers/ \;
           if test -d documents/library; then mkdir -p _site/documents; cp -r documents/library _site/documents/library; fi
           if test -d documents/originals; then mkdir -p _site/documents; cp -r documents/originals _site/documents/originals; fi
+          cp gia.js _site/
+          sudo apt-get update -qq && sudo apt-get install -y poppler-utils
+          python3 scripts/build-gia-index.py
           touch _site/.nojekyll
           test -f _site/verified-role-public.js
           test -s _site/deep-manual-sources.js
