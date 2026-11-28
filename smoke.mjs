@@ -155,3 +155,18 @@ assert(d.getElementById('hubInstallFab').hidden,'Install button must disappear w
 assert(d.getElementById('hubOfflineBanner').textContent.includes('official PDF'));
 assert.equal(issues.length,0,'Console errors: '+issues.join('; '));
 console.log('DOM SMOKE: PASS — existing hub, WAPS-style feedback/share plus native install lifecycle, manifest and device guidance');
+
+// Gia regression tests: real catalogue, simulated index network failure, no AI downloads.
+w.fetch=async()=>({ok:false,status:503});
+w.HTMLDialogElement.prototype.showModal=function(){this.setAttribute('open','')};
+w.HTMLDialogElement.prototype.close=function(){this.removeAttribute('open');this.dispatchEvent(new w.Event('close'))};
+w.eval(fs.readFileSync('gia.js','utf8'));
+click('#gia-launch');
+assert(d.querySelector('#gia-panel[open]'),'Gia must open');
+async function giaAsk(q,expected){const log=d.getElementById('gia-log');const before=log.children.length;d.querySelector('#gia-form input').value=q;d.querySelector('#gia-form').dispatchEvent(new w.Event('submit',{cancelable:true,bubbles:true}));await new Promise(resolve=>setTimeout(resolve,100));const fresh=[...log.children].slice(before).map(x=>x.textContent).join(' ');assert(fresh.toLowerCase().includes(expected.toLowerCase()),'Gia missing expected result for '+q+': '+fresh.slice(0,300));assert(!fresh.includes('Search could not finish'),'Gia search error');}
+await giaAsk('Contact Investigator','Contact Investigator');
+await giaAsk('Mental Health Act','Mental Health Act');
+await giaAsk('Health centres in Hanover','Hanover');
+await giaAsk('Community Peer Educator','Community Peer Educator');
+assert(d.getElementById('gia-status').textContent.includes('catalogue only'),'Gia must disclose index failure');
+console.log('Gia catalogue fallback regression tests passed');
