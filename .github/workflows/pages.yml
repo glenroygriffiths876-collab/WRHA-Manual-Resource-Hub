@@ -54,6 +54,12 @@ jobs:
           if test -d documents/library; then mkdir -p _site/documents; cp -r documents/library _site/documents/library; fi
           if test -d documents/originals; then mkdir -p _site/documents; cp -r documents/originals _site/documents/originals; fi
           cp gia.js _site/
+          mkdir -p _site/vendor/transformers
+          npm pack @huggingface/transformers@3.7.2 --pack-destination /tmp
+          tar -xzf /tmp/huggingface-transformers-3.7.2.tgz -C /tmp
+          cp -r /tmp/package/dist/. _site/vendor/transformers/
+          cp /tmp/package/LICENSE* _site/vendor/transformers/ || true
+          test -s _site/vendor/transformers/transformers.min.js
           sudo apt-get update -qq && sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-eng
           python3 scripts/build-gia-index.py
           python3 -c 'import json; d=json.load(open("_site/gia-index.json")); assert d["entries"], "Empty Gia index"; assert all(e["page"]>0 and e["text"].strip() for e in d["entries"]); print("Gia coverage:", len(d["coverage"]), "documents", len(d["entries"]), "passages", len(d["missing"]), "missing")'
