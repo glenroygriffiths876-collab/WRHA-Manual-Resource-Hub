@@ -162,6 +162,8 @@ w.HTMLDialogElement.prototype.showModal=function(){this.setAttribute('open','')}
 w.HTMLDialogElement.prototype.close=function(){this.removeAttribute('open');this.dispatchEvent(new w.Event('close'))};
 w.eval(fs.readFileSync('gia.js','utf8'));
 click('#gia-launch');
+assert(d.querySelector('#gia-settings'),'Gia settings menu missing');
+const aiToggle=[...d.querySelectorAll('#gia-settings button')].find(b=>b.textContent==='Advanced AI: on');assert(aiToggle,'Advanced AI should default on');aiToggle.click();assert.equal(aiToggle.textContent,'Advanced AI: off');
 assert(d.querySelector('#gia-panel[open]'),'Gia must open');
 async function giaAsk(q,expected){const log=d.getElementById('gia-log');const before=log.children.length;d.querySelector('#gia-form input').value=q;d.querySelector('#gia-form').dispatchEvent(new w.Event('submit',{cancelable:true,bubbles:true}));await new Promise(resolve=>setTimeout(resolve,100));const fresh=[...log.children].slice(before).map(x=>x.textContent).join(' ');assert(fresh.toLowerCase().includes(expected.toLowerCase()),'Gia missing expected result for '+q+': '+fresh.slice(0,300));assert(!fresh.includes('Search could not finish'),'Gia search error');}
 await giaAsk('Contact Investigator','Contact Investigator');
