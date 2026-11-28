@@ -1,0 +1,5 @@
+{
+  "enabled": false,
+  "tenant": "wrha-resource-hub",
+  "note": "Enable only after gateway verifies origin, tenant and evidence isolation and echoes tenant/application."
+}
